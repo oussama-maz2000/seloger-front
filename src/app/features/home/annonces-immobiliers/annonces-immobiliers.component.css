@@ -1,0 +1,16 @@
+.section-four {
+  background-color: rgb(250, 245, 245);
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+}
+a {
+  display: block;
+  color: #333;
+  font-size: 14px;
+}
+#ventes-card {
+  background: rgb(245, 247, 250);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px 0px;
+  border-radius: 6px;
+  line-height: 1.71;
+}

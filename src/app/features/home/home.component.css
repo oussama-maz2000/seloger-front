@@ -1,0 +1,9 @@
+.img-section {
+  color: rgba(15, 9, 9, 0.6);
+  position: relative;
+  background-position: right bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 480px;
+  background-image: url("../../../assets/background.webp");
+}

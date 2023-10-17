@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4 ">
+            <img src="../../../assets/connect-img.webp" alt="..." class="img-connect">
+        </div>
+        <div class="col-8 ">
+            <div class="info-section">
+                <p class="title"> Se connecter</p>
+                <p class="cree-compte">Vous n'avez pas de compte ? <a href="#" class="link-offset-3"> Créer un
+                        compte</a>
+                </p>
+                <form [formGroup]="connecter" (ngSubmit)="onSubmit()">
+
+                    <div class="my-4">
+                        <label for="email" class="form-label">Votre e-mail</label>
+                        <input type="text" class="form-control" id="email" name="email" formControlName="email">
+
+                        <span *ngIf="!connecter.get('email').valid ">
+                            <span *ngIf=" connecter.get('email').errors['email']" class="error-message">
+                                Veuillez renseigner une address mail valide
+                            </span>
+                        </span>
+
+
+                    </div>
+                    <div class="my-4">
+                        <label for="password" class="form-label">Votre mot de passe</label>
+                        <div class="input-group" id="input-grp">
+
+
+
+                            <input type="{{visible ? 'text':'password'}}" class="form-control"
+                                aria-describedby="password" name="password" formControlName="password">
+
+
+
+
+                            <button class="btn btn-outline-secondary" type="button" id="password"
+                                (click)="changeVisibility()">
+                                <i class="{{ visible ? 'bi bi-eye-slash' : 'bi bi-eye' }}"></i>
+                            </button>
+
+                        </div>
+                        <span *ngIf="!connecter.get('password').valid ">
+                            <span *ngIf="!connecter.get('password').pristine " class="error-message">
+                                Vous devez renseigner le mot de passe.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="my-4">
+                        <button class="btn btn-outline-secondary" id="connect-btn" [disabled]="!connecter.valid">Se
+                            connecter</button>
+                    </div>
+                    <div class="my-4">
+                        <a href="#" id="passord-forget" class="link-offset-3">Mot de passe oublié
+                            ?</a>
+
+                    </div>
+                    <div class="my-4" style="color: rgb(142, 138, 138);padding-left: 22%;">
+                        <p>ou</p>
+                    </div>
+
+                    <div class="my-3">
+                        <div class="google-section">
+                            <div class="d-flex align-items-start justify-content-center pt-2">
+                                <img src="../../../assets/google-icon.svg" alt="..." class="icon">
+                                <p class="google-connect">Se connecter avec Google</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-3">
+                        <div class="google-section" style="background-color:#2b2b2b ;color: white;">
+                            <div class="d-flex align-items-start justify-content-center pt-2">
+                                <img src="../../../assets/apple-icon.svg" alt="..." class="icon">
+                                <p class="google-connect">Se connecter avec Apple</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

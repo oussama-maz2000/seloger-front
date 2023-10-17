@@ -1,0 +1,105 @@
+.main-section {
+  height: 50%;
+  width: 100%;
+}
+
+.img-section {
+  color: rgba(15, 9, 9, 0.6);
+  position: relative;
+  background-position: right bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 480px;
+  background-image: url("../../../../assets/background.webp");
+}
+
+.img-section h1 {
+  color: black;
+}
+#search-btn {
+  background: linear-gradient(45deg, rgb(224, 0, 52) 15%, rgb(254, 0, 75) 85%);
+  color: rgb(255, 255, 255);
+  transition-duration: 0.2s;
+  border: none transparent;
+  height: 50px;
+  border-radius: 32px;
+  font-size: 16px;
+  min-width: 125px;
+  padding: 0px 24px;
+}
+
+.form-section {
+  display: inline-block;
+  margin-top: 5%;
+  margin-left: 30%;
+}
+
+.form-content {
+  background-color: rgb(253, 253, 254);
+  display: inline-block;
+  border-radius: 5%;
+  border: 1px solid transparent;
+}
+.form-control {
+  background-color: rgb(242, 243, 245);
+  border: 1.2px solid rgb(214, 208, 208);
+  border-radius: 8px;
+  color: black;
+}
+
+input {
+  box-sizing: border-box;
+}
+
+.search-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.check {
+  margin-top: 4%;
+}
+
+.check label {
+  font-size: 20px;
+  font-family: arial;
+}
+
+.title {
+  margin-bottom: 50px;
+  font-family: arial;
+}
+
+.label-control {
+  padding-left: 2px;
+  color: black;
+}
+
+h2 {
+  color: black;
+  font-weight: 600;
+  font-family: arial;
+}
+
+.ngselect {
+  width: 200px;
+  height: auto;
+}
+
+.budget {
+  box-sizing: border-box;
+  padding: 3.2px;
+}
+#form {
+  color: #333;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  min-height: 36px;
+  align-items: center;
+}
+
+.input-group {
+  width: 200px;
+  height: 36px;
+}

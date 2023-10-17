@@ -1,0 +1,104 @@
+<div class="container-fluid">
+  <div class="row my-5">
+    <div class="col-sm">
+      <div>
+        <div
+          id="carouselExampleFade"
+          class="carousel slide carousel-fade"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner d-flex justify-content-between">
+            <div
+              class="carousel-item active d-flex justify-content-center"
+              id="carousel_item"
+            >
+              <img [src]="data.images[currentIndex]" alt="..." />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            (click)="previousImg()"
+            data-bs-target="#carouselExampleFade"
+            data-bs-slide="prev"
+          >
+            <span aria-hidden="true"
+              ><i class="bi bi-arrow-left-circle-fill"></i
+            ></span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleFade"
+            (click)="nextImg()"
+            data-bs-slide="next"
+          >
+            <span aria-hidden="true"
+              ><i class="bi bi-arrow-right-circle-fill"></i
+            ></span>
+          </button>
+        </div>
+
+        <span style="position: absolute; top: 0px; right: 10px"
+          ><i class="bi bi-bookmark-heart"></i
+        ></span>
+      </div>
+      <div>
+        <h6>lorem ipsum</h6>
+        <h1>lorem ipsum</h1>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div>
+        <img
+          src="https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/PROPERTY_IMAGES/img_basic_pub_11_template.jpg"
+          class="img-fluid"
+        />
+        <span><i class="fas fa-like"></i></span>
+      </div>
+      <div>
+        <h6>lorem ipsum</h6>
+        <h1>lorem ipsum</h1>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div>
+        <img
+          src="https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/PROPERTY_IMAGES/img_basic_pub_11_template.jpg"
+          class="img-fluid"
+        />
+        <span><i class="fas fa-like"></i></span>
+      </div>
+      <div>
+        <h6>lorem ipsum</h6>
+        <h1>lorem ipsum</h1>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div>
+        <img
+          src="https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/PROPERTY_IMAGES/img_basic_pub_11_template.jpg"
+          class="img-fluid"
+        />
+        <span><i class="fas fa-like"></i></span>
+      </div>
+      <div>
+        <h6>lorem ipsum</h6>
+        <h1>lorem ipsum</h1>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div>
+        <img
+          src="https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/PROPERTY_IMAGES/img_basic_pub_11_template.jpg"
+          class="img-fluid"
+        />
+        <span><i class="fas fa-like"></i></span>
+      </div>
+      <div>
+        <h6>lorem ipsum</h6>
+        <h1>lorem ipsum</h1>
+      </div>
+    </div>
+  </div>
+</div>

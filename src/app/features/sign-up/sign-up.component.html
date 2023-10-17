@@ -1,0 +1,100 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4 ">
+            <img src="../../../assets/connect-img.webp" alt="..." class="img-connect">
+        </div>
+        <div class="col-8 ">
+            <div class="info-section">
+                <p class="title"> Créer un compte</p>
+                <p class="cree-compte">Vous avez déjà un compte ? <a href="#" class="link-offset-3">
+                        Se connecter</a>
+                </p>
+                <form [formGroup]="createAccount" (ngSubmit)="onSubmit()">
+
+                    <div class="my-4">
+                        <label for="email" class="form-label">Votre e-mail</label>
+                        <input type="text" class="form-control" id="email" formControlName="email">
+                        <span *ngIf="!createAccount.get('email').valid">
+                            <span *ngIf="createAccount.get('email').errors['email']" class="error-message">Veuillez
+                                renseigner une address mail valide</span>
+                        </span>
+                    </div>
+                    <div class="my-4">
+                        <label for="password" class="form-label">Votre mot de passe</label>
+                        <div class="input-group" id="input-grp">
+                            <input type="{{visible ? 'text':'password'}}" class="form-control"
+                                aria-describedby="password" formControlName="password">
+                            <button class="btn btn-outline-secondary" type="button" id="password"
+                                (click)="changeVisibility()">
+                                <i class="{{ visible ? 'bi bi-eye-slash' : 'bi bi-eye' }}"></i>
+                            </button>
+
+                        </div>
+                        <span>
+                            <span
+                                *ngIf="(createAccount.get ('password').dirty||createAccount.get('password').touched)&& createAccount.get('password').invalid"
+                                class="error-message">
+                                Vous devez renseigner un mot de passe valide. </span>
+                        </span>
+
+                        <div class="my-3" *ngIf="!createAccount.get('password').pristine ">
+                            <div class="d-flex ">
+                                <div class="me-5 ms-4">
+                                    <div [style.color]="caractersControl ? 'rgb(34, 124, 89)' : 'rgb(224, 0, 52)'">8
+                                        caractères</div>
+
+                                    <div [style.color]="majusculeContorl ? 'rgb(34, 124, 89)' : 'rgb(224, 0, 52)'">1
+                                        majuscule</div>
+
+                                </div>
+                                <div class="me-5 ms-4">
+                                    <div [style.color]="minisculeControl ? 'rgb(34, 124, 89)' : 'rgb(224, 0, 52)'">1
+                                        miniscule</div>
+
+
+                                    <div [style.color]="numControl ? 'rgb(34, 124, 89)' : 'rgb(224, 0, 52)'">1 chiffre
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="my-4">
+                        <button class="btn btn-outline-secondary" id="connect-btn" [disabled]="!createAccount.valid">Se
+                            connecter</button>
+                    </div>
+                    <div class="my-4">
+                        <a href="#" id="passord-forget" class="link-offset-3">Mot de passe oublié
+                            ?</a>
+
+                    </div>
+                    <div class="my-4" style="color: rgb(142, 138, 138);padding-left: 22%;">
+                        <p>ou</p>
+                    </div>
+
+                    <div class="my-3">
+                        <div class="google-section">
+                            <div class="d-flex align-items-start justify-content-center pt-2">
+                                <img src="../../../assets/google-icon.svg" alt="..." class="icon">
+                                <p class="google-connect">S'inscrire avec Google</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-3">
+                        <div class="google-section" style="background-color:#2b2b2b ;color: white;">
+                            <div class="d-flex align-items-start justify-content-center pt-2">
+                                <img src="../../../assets/apple-icon.svg" alt="..." class="icon">
+                                <p class="google-connect">S'inscrire avec Apple</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

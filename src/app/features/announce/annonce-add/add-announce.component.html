@@ -1,0 +1,343 @@
+<div class="container ">
+    <div class="d-flex justify-content-center">
+        <h3 class="mb-2">Create new annonce</h3>
+    </div>
+
+    <form [formGroup]="annonceForm" class="mb-5 d-flex justify-content-evenly">
+        <div class="row ">
+            <div class="col-8  ">
+                <div class="col-md-6">
+
+
+                    <div class="form-group mt-5 ">
+                        <label for="prpType" class="mb-2"> Property Type *</label>
+                        <select class="form-select" id="prpType" formControlName="propType">
+                            <option ngValue="HOUSE"> HOUSE</option>
+                            <option ngValue="APARTMENT"> APARTMENT</option>
+                        </select>
+                    </div>
+
+
+
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2"> Annonce Type *</label>
+                        <select class="form-select" formControlName="anncType">
+                            <option ngValue="SALE"> SALE</option>
+                            <option ngValue="RENT"> RENT</option>
+                        </select>
+                    </div>
+
+
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Willaya *</label>
+                        <ng-select [items]="willays" bindLabel="name" appearance="outline" formControlName="willaya"
+                            notFoundText="n'existe pas">
+                        </ng-select>
+                        <div *ngIf="willaya.invalid && (willaya.dirty || willaya.touched)" class="mt-1">
+                            <div *ngIf="willaya.errors['required']">
+                                willaya is required
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group mt-5">
+                        <label for="address" class="mb-2">Address *</label>
+                        <input type="text" class="form-control" id="address" formControlName="address">
+                        <div *ngIf="address.invalid && (address.dirty || address.touched)" class="mt-1">
+                            <div *ngIf="address.errors['required']">
+                                address is required
+                            </div>
+                            <div *ngIf="address.errors['minlength']">
+                                address is invalid
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-5">
+                        <label for="etage" class="mb-2">Etage *</label>
+                        <input type="number" class="form-control " id="etage" formControlName="etage">
+
+                        <div *ngIf="etage.invalid && (etage.dirty || etage.touched)" class="mt-1">
+                            <div *ngIf="etage.errors['required']">
+                                etage is required
+                            </div>
+                            <div *ngIf="etage.errors['invalidNum']">
+                                etage is invalid
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Facade *</label>
+                        <input type="number" class="form-control " formControlName="facede">
+
+                        <div *ngIf="facede.invalid && (facede.dirty || facede.touched)" class="mt-1">
+                            <div *ngIf="facede.errors['required']">
+                                facede is required
+                            </div>
+                            <div *ngIf="facede.errors['invalidNum']">
+                                facede is invalid
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Price DZ *</label>
+                        <input type="number" class="form-control " formControlName="price">
+
+                        <div *ngIf="price.invalid && (price.dirty || price.touched)" class="mt-1">
+                            <div *ngIf="price.errors['required']">
+                                price is required
+                            </div>
+                            <div *ngIf="price.errors['invalidNum']">
+                                price is invalid
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Surface m² * </label>
+                        <input type="text" class="form-control " formControlName="surface">
+
+                        <div *ngIf="surface.invalid && (surface.dirty || surface.touched)" class="mt-1">
+                            <div *ngIf="surface.errors['required']">
+                                surface is required
+                            </div>
+                            <div *ngIf="surface.errors['invalidNum']">
+                                surface is invalid
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group mt-5">
+                        <label for="jrdcType" class="mb-2"> Juridic Type *</label>
+                        <select class="form-select" id="prpType" formControlName="jrdcType">
+                            <option ngValue="XXX"> XXX</option>
+                            <option ngValue="YYY"> YYY</option>
+                            <option ngValue="ZZZ"> ZZZ</option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="form-group mt-5">
+                        <form>
+                            <label class="mb-2"> Images *</label>
+                            <input type="file" class="form-control" multiple (change)="imagesProcess($event)">
+                        </form>
+                    </div>
+
+                    <div *ngIf="imagesList.length>0">
+                        <ul class="list-group" *ngFor="let item of imagesList">
+                            <li class="list-group-item">{{item[0].name}}</li>
+                        </ul>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+            <div class="col-4 ">
+                <div class="col-md-6 ">
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Title </label>
+                        <input type="text" class="form-control " formControlName="title">
+                    </div>
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Description </label>
+                        <input type="text" class="form-control " formControlName="description">
+                    </div>
+
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Service & Accessibility</label>
+                        <div class="dropdown">
+
+                            <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="true">
+                                <div class="data-selected">{{annonceForm.get("serviceAccessibility").value}}</div>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown" formArrayName="serviceAccessibility">
+
+
+                                <li class="dropdown-item" *ngFor="let item of serviceAccessibilityList">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" [value]="item"
+                                            (change)="addServiceAccessibility($event)">
+                                        <label class="form-check-label">
+                                            {{item}}
+                                        </label>
+                                    </div>
+
+                                </li>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2"> Cuisin</label>
+                        <select class="form-select" formControlName="cuisin">
+                            <option ngValue="CORNER"> CORNER</option>
+                            <option ngValue="SEPERATE"> SEPERATE</option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Hygiene</label>
+                        <div class="dropdown">
+
+                            <div class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="data-selected">{{annonceForm.get("hygiene").value}}</div>
+
+                            </div>
+                            <div class="dropdown-menu" id="dropdown">
+                                <li class="dropdown-item" *ngFor="let item of hygieneList">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" [value]="item"
+                                            (change)="addhygiene($event)">
+                                        <label class="form-check-label">
+                                            {{item}}
+                                        </label>
+                                    </div>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Pieces</label>
+                        <div class="dropdown">
+
+                            <div class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="data-selected">{{annonceForm.get("pieces").value}}</div>
+
+                            </div>
+                            <div class="dropdown-menu" id="dropdown">
+                                <li class="dropdown-item" *ngFor="let item of piecesList">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" [value]="item"
+                                            (change)="addpiece($event)">
+                                        <label class="form-check-label">
+                                            {{item}}
+                                        </label>
+                                    </div>
+                                </li>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2"> Lime</label>
+                        <select class="form-select" formControlName="lime">
+                            <option value="CENTRAL"> CENTRAL</option>
+                            <option value="CHIMNEY"> CHIMNEY</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Availabilty </label>
+                        <input type="text" class="form-control " formControlName="availability">
+                    </div>
+
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Air conditioning</label>
+                        <select class="form-select" formControlName="airCondition">
+                            <option ngValue="YES"> YES</option>
+                            <option ngValue="NO"> NO</option>
+                        </select>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-group mt-5">
+                        <label class="mb-2">Public Service</label>
+                        <div class="dropdown">
+
+                            <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="data-selected">{{annonceForm.get("publicService").value}}</div>
+
+                            </button>
+                            <div class="dropdown-menu" id="dropdown">
+                                <li class="dropdown-item" *ngFor="let item of publicServcieList">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" [value]="item"
+                                            (change)="addpublicService($event)">
+                                        <label class="form-check-label">
+                                            {{item}}
+                                        </label>
+                                    </div>
+                                </li>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary my-4" (click)="submitData()">Submit</button>
+</div>

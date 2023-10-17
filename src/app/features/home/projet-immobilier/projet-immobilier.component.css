@@ -1,0 +1,41 @@
+.list-group-item {
+  font-size: 15.5px;
+  padding-top: 24px;
+  color: #5a5a5a;
+  text-align: left;
+}
+
+i {
+  font-size: 2em;
+}
+
+#card-card {
+  margin-bottom: 10px;
+}
+
+#card-card .list-group :hover {
+  background-color: #545252;
+  color: white;
+}
+
+.section-three {
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+}
+
+a {
+  display: block;
+  color: #333;
+}
+
+a {
+  display: block;
+  font-size: 14px;
+}
+
+#ventes-card {
+  background: rgb(245, 247, 250);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px 0px;
+  border-radius: 6px;
+  line-height: 1.71;
+}

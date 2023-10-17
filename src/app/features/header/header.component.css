@@ -1,0 +1,16 @@
+#nav-bar {
+  box-shadow: 0px 1.3px 10px 0px rgba(42, 42, 42, 0.2);
+  height: 60px;
+  z-index: 1;
+}
+#nav-element:hover {
+  font-size: 17px;
+  font-weight: bold;
+}
+.navbar-brand {
+  margin-left: -2.7rem;
+}
+
+#navsection {
+  margin-right: -70px;
+}

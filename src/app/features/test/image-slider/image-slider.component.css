@@ -1,0 +1,8 @@
+.slide {
+  width: 300px;
+
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-color: rgb(158, 203, 236);
+}

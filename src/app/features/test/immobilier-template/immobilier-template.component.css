@@ -1,0 +1,33 @@
+/* .carousel.slide {
+  
+  width: 100%;
+  object-fit: fill;
+} */
+li {
+  display: inline;
+}
+ul {
+  font-size: 15px;
+  /*  line-height: 22px; */
+  font-weight: 400;
+  margin: 0px 0px 4px;
+  padding: 0px;
+}
+li::after {
+  content: "•";
+  display: inline-block;
+  margin: 0px 2px;
+}
+p {
+  margin: 0;
+}
+
+img {
+  max-width: 240px;
+  min-width: 240px;
+  max-height: 190px;
+  min-height: 190px;
+}
+.carousel-inner {
+  border-radius: 12px;
+}
