@@ -8,32 +8,6 @@ import { TypeImmobilier } from 'src/app/core/model/type-immobilier.enum';
   styleUrls: ['./immobilier-template.component.css'],
 })
 export class ImmobilierTemplateComponent implements OnInit {
-  slides: Array<any> = [
-    {
-      id: 1,
-      url: 'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/PROPERTY_IMAGES/img_basic_pub_11_template.jpg',
-    },
-    {
-      id: 2,
-      url: 'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/PROPERTY_IMAGES/img_basic_pub_15_template.jpg',
-    },
-    {
-      id: 3,
-      url: 'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/PROPERTY_IMAGES/img_basic_pub_2_templatev2.jpg',
-    },
-    {
-      id: 4,
-      url: 'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/PROPERTY_IMAGES/img_basic_pub_5_template.jpg',
-    },
-    {
-      id: 5,
-      url: 'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/PROPERTY_IMAGES/img_basic_pub_7_template.jpg',
-    },
-    {
-      id: 6,
-      url: 'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/PROPERTY_IMAGES/img_basic_pub_9_template.jpg',
-    },
-  ];
   data: ImmobilierInterface = {
     type: TypeImmobilier.Appartement,
     price: 2000,
