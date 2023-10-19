@@ -1,27 +1,54 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-white" id="nav-bar">
-    <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/21_Angular_logo_logos-512.png"
-                class="img-thumbnail me-3" [ngStyle]="{'width':'50px'}">
-            <label class="h5 mt-2" style="cursor: pointer;">Angular</label>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto" id="navsection">
-
-                <li class="nav-item">
-                    <a class="nav-link " href="" id="nav-element" [routerLink]="['/mon-compte/creation']">Créer un
-                        compte</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="" id="nav-element" [routerLink]="['/mon-compte/connexion']">Se
-                        connecter</a>
-                </li>
-
-            </ul>
-        </div>
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img
+        src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/21_Angular_logo_logos-512.png"
+        class="img-thumbnail me-3"
+        [ngStyle]="{ width: '50px' }"
+      />
+      <label class="h5 mt-2" style="cursor: pointer">Angular</label>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto" id="navsection">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href=""
+            id="nav-element"
+            [routerLink]="['/mon-compte/creation']"
+            >Créer un compte</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href=""
+            id="nav-element"
+            [routerLink]="['/mon-compte/connexion']"
+            >Se connecter</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href=""
+            id="nav-element"
+            [routerLink]="['/mon-compte/connexion']"
+            >Se deconnecter</a
+          >
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
