@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { willaya } from 'src/app/core/shared/willaya';
@@ -53,7 +54,7 @@ export class AddAnnounce implements OnInit {
   //  	        FUNCTIONS
   // _______----------------_______
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.willays = willaya;
   }
 
@@ -105,62 +106,11 @@ export class AddAnnounce implements OnInit {
     return this.annonceForm.get('surface');
   }
 
-  addServiceAccessibility(e: any) {
+  addOrRemoveFormControl(e: any, formControlName: string) {
     const checkArray: FormArray = this.annonceForm.get(
-      'serviceAccessibility'
+      formControlName
     ) as FormArray;
-    if (e.target.checked) {
-      checkArray.push(
-        new FormControl(e.target.value, validateServiceAccessebility())
-      );
-    } else {
-      let i: number = 0;
-      checkArray.controls.forEach((item: FormControl) => {
-        if (item.value == e.target.value) {
-          checkArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
-    }
-  }
 
-  addhygiene(e: any) {
-    const checkArray: FormArray = this.annonceForm.get('hygiene') as FormArray;
-    if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
-    } else {
-      let i: number = 0;
-      checkArray.controls.forEach((item: FormControl) => {
-        if (item.value == e.target.value) {
-          checkArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
-    }
-  }
-
-  addpiece(e: any) {
-    const checkArray: FormArray = this.annonceForm.get('pieces') as FormArray;
-    if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
-    } else {
-      let i: number = 0;
-      checkArray.controls.forEach((item: FormControl) => {
-        if (item.value == e.target.value) {
-          checkArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
-    }
-  }
-
-  addpublicService(e: any) {
-    const checkArray: FormArray = this.annonceForm.get(
-      'publicService'
-    ) as FormArray;
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
     } else {
@@ -182,6 +132,11 @@ export class AddAnnounce implements OnInit {
 
       const formData = new FormData();
       formData.append('file', file);
+      this.http
+        .post('/api/announce/new/announce', formData, {
+          responseType: 'text',
+        })
+        .subscribe(console.log);
     }
   }
 
@@ -192,4 +147,17 @@ export class AddAnnounce implements OnInit {
       alert('Invalid annonce try again please ');
     }
   }
+
+  /*   upload(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+      this.http.post('/announce/new/announce', formData, {
+        responseType: 'text',
+      });
+     
+      
+    }
+  } */
 }

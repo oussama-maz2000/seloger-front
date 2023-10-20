@@ -8,7 +8,7 @@ import { AnnonceSingleComponent } from './annonce-single/annonce-single.componen
 import { BrowserModule } from '@angular/platform-browser';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   {
     path: '',
@@ -26,6 +26,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     NgSelectModule,
     RouterModule.forChild(routes),
   ],
