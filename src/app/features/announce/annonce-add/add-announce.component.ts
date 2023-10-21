@@ -1,12 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable, ReplaySubject, forkJoin } from 'rxjs';
 import { willaya } from 'src/app/core/shared/willaya';
 import {
   validateServiceAccessebility,
   validateNumber,
 } from 'src/app/core/validation/ValidationFn';
 import { log } from 'winston';
+
 @Component({
   selector: 'app-announce-form',
   templateUrl: './add-announce.component.html',
@@ -165,19 +167,35 @@ export class AddAnnounce implements OnInit {
   } */
   formData = new FormData();
   files: File[] = [];
+  imgs: string[] = [];
   onSelect(event: any): void {
-    if (event.addedFiles[0].size < 21000) {
-      console.log(event.addedFiles[0].size);
+    if (event.addedFiles[0].size < 22221000) {
       this.files.push(...event.addedFiles);
     }
 
-    for (let file in this.files) {
-      this.formData.append('file', file);
+    /*  for (let file of this.files) {
+      this.convertFile(file).subscribe((base64) => {
+        this.imgs.push(base64);
+      });
     }
-    console.log(this.formData);
+    console.log(this.imgs); */
+  }
 
-    //send one image to back-end
-    /*  this.formData.append('file', this.files[0]); */
+  convertFile(file: File): Observable<string> {
+    return new Observable<string>((observer) => {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        if (event.target && typeof event.target.result === 'string') {
+          observer.next(event.target.result);
+          observer.complete();
+        } else {
+          observer.error('Failed to convert the file to Base64');
+        }
+      };
+
+      reader.readAsDataURL(file);
+    });
   }
 
   onRemove(event) {
@@ -193,12 +211,23 @@ export class AddAnnounce implements OnInit {
     const headers = {
       /* 'Content-Type': 'multipart/form-data',
        */
+
       responseType: 'text',
     };
 
+    const conversionObservables = this.files.map((file) =>
+      this.convertFile(file)
+    );
+
+    // Use forkJoin to wait for all conversions to complete
+    forkJoin(conversionObservables).subscribe((base64Array) => {
+      this.imgs.push(...base64Array);
+    });
+    console.log(this.imgs);
+
     this.http
-      .post('/api/announce/new/announce', this.formData, {
-        headers,
+      .post('/api/announce/new/announce', this.imgs, {
+        responseType: 'text',
       })
       .subscribe(console.log);
   }
