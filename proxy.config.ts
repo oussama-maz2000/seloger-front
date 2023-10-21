@@ -1,8 +1,8 @@
-var winston = require("winston");
+var winston = require('winston');
 
 function logProvider() {
   return winston.createLogger({
-    level: "debug",
+    level: 'debug',
     format: winston.format.combine(
       winston.format.splat(),
       winston.format.simple()
@@ -13,12 +13,12 @@ function logProvider() {
 
 const PROXY_CONF = [
   {
-    context: ["/api/**"],
-    target: "http://localhost:8080",
+    context: ['/api/**'],
+    target: 'http://localhost:8080',
     secure: false,
-    logLevel: "debug",
+    logLevel: 'debug',
     logProvider: logProvider,
-    cookiePathRewrite: "/local/",
+    cookiePathRewrite: '/local/',
   },
 ];
 

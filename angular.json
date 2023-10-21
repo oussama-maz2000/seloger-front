@@ -59,7 +59,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "seLoger:build",
-            "proxyConfig": "proxy.config.js"
+            "proxyConfig": "proxy.config.ts"
           },
           "configurations": {
             "production": {

@@ -25,34 +25,18 @@
 
           <div class="form-group mt-5">
             <label class="mb-2">Willaya *</label>
-            <ng-select
-              [items]="willays"
-              bindLabel="name"
-              appearance="outline"
-              formControlName="willaya"
-              notFoundText="n'existe pas"
-            >
+            <ng-select [items]="willays" bindLabel="name" appearance="outline" formControlName="willaya"
+              notFoundText="n'existe pas">
             </ng-select>
-            <div
-              *ngIf="willaya.invalid && (willaya.dirty || willaya.touched)"
-              class="mt-1"
-            >
+            <div *ngIf="willaya.invalid && (willaya.dirty || willaya.touched)" class="mt-1">
               <div *ngIf="willaya.errors['required']">willaya is required</div>
             </div>
           </div>
 
           <div class="form-group mt-5">
             <label class="mb-2">Address *</label>
-            <input
-              type="text"
-              class="form-control"
-              id="address"
-              formControlName="address"
-            />
-            <div
-              *ngIf="address.invalid && (address.dirty || address.touched)"
-              class="mt-1"
-            >
+            <input type="text" class="form-control" id="address" formControlName="address" />
+            <div *ngIf="address.invalid && (address.dirty || address.touched)" class="mt-1">
               <div *ngIf="address.errors['required']">address is required</div>
               <div *ngIf="address.errors['minlength']">address is invalid</div>
             </div>
@@ -60,17 +44,9 @@
 
           <div class="form-group mt-5">
             <label class="mb-2">Etage *</label>
-            <input
-              type="number"
-              class="form-control"
-              id="etage"
-              formControlName="etage"
-            />
+            <input type="number" class="form-control" id="etage" formControlName="etage" />
 
-            <div
-              *ngIf="etage.invalid && (etage.dirty || etage.touched)"
-              class="mt-1"
-            >
+            <div *ngIf="etage.invalid && (etage.dirty || etage.touched)" class="mt-1">
               <div *ngIf="etage.errors['required']">etage is required</div>
               <div *ngIf="etage.errors['invalidNum']">etage is invalid</div>
             </div>
@@ -78,16 +54,9 @@
 
           <div class="form-group mt-5">
             <label class="mb-2">Facade *</label>
-            <input
-              type="number"
-              class="form-control"
-              formControlName="facede"
-            />
+            <input type="number" class="form-control" formControlName="facede" />
 
-            <div
-              *ngIf="facede.invalid && (facede.dirty || facede.touched)"
-              class="mt-1"
-            >
+            <div *ngIf="facede.invalid && (facede.dirty || facede.touched)" class="mt-1">
               <div *ngIf="facede.errors['required']">facede is required</div>
               <div *ngIf="facede.errors['invalidNum']">facede is invalid</div>
             </div>
@@ -97,10 +66,7 @@
             <label class="mb-2">Price DZ *</label>
             <input type="number" class="form-control" formControlName="price" />
 
-            <div
-              *ngIf="price.invalid && (price.dirty || price.touched)"
-              class="mt-1"
-            >
+            <div *ngIf="price.invalid && (price.dirty || price.touched)" class="mt-1">
               <div *ngIf="price.errors['required']">price is required</div>
               <div *ngIf="price.errors['invalidNum']">price is invalid</div>
             </div>
@@ -110,10 +76,7 @@
             <label class="mb-2">Surface m² * </label>
             <input type="text" class="form-control" formControlName="surface" />
 
-            <div
-              *ngIf="surface.invalid && (surface.dirty || surface.touched)"
-              class="mt-1"
-            >
+            <div *ngIf="surface.invalid && (surface.dirty || surface.touched)" class="mt-1">
               <div *ngIf="surface.errors['required']">surface is required</div>
               <div *ngIf="surface.errors['invalidNum']">surface is invalid</div>
             </div>
@@ -131,12 +94,16 @@
           <div class="form-group mt-5">
             <div>
               <label class="mb-2"> Images *</label>
-              <input
-                type="file"
-                class="form-control"
-                multiple
-                (change)="imagesProcess($event)"
-              />
+              <!--  <input type="file" class="form-control" multiple (change)="imagesProcess($event)" /> -->
+
+
+
+              <ngx-dropzone (change)="onSelect($event)">
+                <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
             </div>
           </div>
 
@@ -156,45 +123,24 @@
 
           <div class="form-group mt-5">
             <label class="mb-2">Description </label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="description"
-            />
+            <input type="text" class="form-control" formControlName="description" />
           </div>
 
           <div class="form-group mt-5">
             <label class="mb-2">Service & Accessibility</label>
             <div class="dropdown">
-              <div
-                class="btn btn-secondary dropdown-toggle"
-                role="button"
-                id="dropdownMenuLink"
-                data-bs-toggle="dropdown"
-                aria-expanded="true"
-              >
+              <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="true">
                 <div class="data-selected">
                   {{ annonceForm.get("serviceAccessibility").value }}
                 </div>
               </div>
-              <div
-                class="dropdown-menu"
-                id="dropdown"
-                formArrayName="serviceAccessibility"
-              >
-                <li
-                  class="dropdown-item"
-                  *ngFor="let item of serviceAccessibilityList"
-                >
+              <div class="dropdown-menu" id="dropdown" formArrayName="serviceAccessibility">
+                <li class="dropdown-item" *ngFor="let item of serviceAccessibilityList">
                   <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      [value]="item"
-                      (change)="
+                    <input class="form-check-input" type="checkbox" [value]="item" (change)="
                         addOrRemoveFormControl($event, 'serviceAccessibility')
-                      "
-                    />
+                      " />
                     <label class="form-check-label">
                       {{ item }}
                     </label>
@@ -215,12 +161,8 @@
           <div class="form-group mt-5">
             <label class="mb-2">Hygiene</label>
             <div class="dropdown">
-              <div
-                class="btn btn-secondary dropdown-toggle"
-                id="dropdownMenuLink"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <div class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                aria-expanded="false">
                 <div class="data-selected">
                   {{ annonceForm.get("hygiene").value }}
                 </div>
@@ -228,12 +170,8 @@
               <div class="dropdown-menu" id="dropdown">
                 <li class="dropdown-item" *ngFor="let item of hygieneList">
                   <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      [value]="item"
-                      (change)="addOrRemoveFormControl($event, 'hygiene')"
-                    />
+                    <input class="form-check-input" type="checkbox" [value]="item"
+                      (change)="addOrRemoveFormControl($event, 'hygiene')" />
                     <label class="form-check-label">
                       {{ item }}
                     </label>
@@ -246,12 +184,8 @@
           <div class="form-group mt-5">
             <label class="mb-2">Pieces</label>
             <div class="dropdown">
-              <div
-                class="btn btn-secondary dropdown-toggle"
-                id="dropdownMenuLink"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <div class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                aria-expanded="false">
                 <div class="data-selected">
                   {{ annonceForm.get("pieces").value }}
                 </div>
@@ -259,12 +193,8 @@
               <div class="dropdown-menu" id="dropdown">
                 <li class="dropdown-item" *ngFor="let item of piecesList">
                   <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      [value]="item"
-                      (change)="addOrRemoveFormControl($event, 'pieces')"
-                    />
+                    <input class="form-check-input" type="checkbox" [value]="item"
+                      (change)="addOrRemoveFormControl($event, 'pieces')" />
                     <label class="form-check-label">
                       {{ item }}
                     </label>
@@ -284,11 +214,7 @@
 
           <div class="form-group mt-5">
             <label class="mb-2">Availabilty </label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="availability"
-            />
+            <input type="text" class="form-control" formControlName="availability" />
           </div>
 
           <div class="form-group mt-5">
@@ -302,28 +228,17 @@
           <div class="form-group mt-5">
             <label class="mb-2">Public Service</label>
             <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                id="dropdownMenuLink"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                aria-expanded="false">
                 <div class="data-selected">
                   {{ annonceForm.get("publicService").value }}
                 </div>
               </button>
               <div class="dropdown-menu" id="dropdown">
-                <li
-                  class="dropdown-item"
-                  *ngFor="let item of publicServcieList"
-                >
+                <li class="dropdown-item" *ngFor="let item of publicServcieList">
                   <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      [value]="item"
-                      (change)="addOrRemoveFormControl($event, 'publicService')"
-                    />
+                    <input class="form-check-input" type="checkbox" [value]="item"
+                      (change)="addOrRemoveFormControl($event, 'publicService')" />
                     <label class="form-check-label">
                       {{ item }}
                     </label>
@@ -341,7 +256,7 @@
   <button type="button" class="btn btn-primary my-4" (click)="submitData()">
     Submit
   </button>
-  <!-- <button type="button" class="btn btn-primary my-4" (click)="sendimg()">
-        Submit
-      </button> -->
+  <button type="button" class="btn btn-waring my-4" (click)="sendImgs()">
+    send
+  </button>
 </div>

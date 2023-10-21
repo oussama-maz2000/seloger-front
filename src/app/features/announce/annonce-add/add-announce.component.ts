@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { willaya } from 'src/app/core/shared/willaya';
@@ -6,6 +6,7 @@ import {
   validateServiceAccessebility,
   validateNumber,
 } from 'src/app/core/validation/ValidationFn';
+import { log } from 'winston';
 @Component({
   selector: 'app-announce-form',
   templateUrl: './add-announce.component.html',
@@ -124,20 +125,22 @@ export class AddAnnounce implements OnInit {
       });
     }
   }
-
+  formDataList: FormData[] = [];
   imagesProcess(event: any) {
     this.imagesList.push(event.target.files);
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
 
+    const formData = new FormData();
+    for (let file in this.imagesList) {
+      formData.append('file', file);
+      this.formDataList.push(formData);
+    }
+
+    /*   if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      const formDataList: FormData[] = [];
       const formData = new FormData();
       formData.append('file', file);
-      this.http
-        .post('/api/announce/new/announce', formData, {
-          responseType: 'text',
-        })
-        .subscribe(console.log);
-    }
+    } */
   }
 
   submitData(): void {
@@ -160,4 +163,43 @@ export class AddAnnounce implements OnInit {
       
     }
   } */
+  formData = new FormData();
+  files: File[] = [];
+  onSelect(event: any): void {
+    if (event.addedFiles[0].size < 21000) {
+      console.log(event.addedFiles[0].size);
+      this.files.push(...event.addedFiles);
+    }
+
+    for (let file in this.files) {
+      this.formData.append('file', file);
+    }
+    console.log(this.formData);
+
+    //send one image to back-end
+    /*  this.formData.append('file', this.files[0]); */
+  }
+
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  sendImgs(): void {
+    /*    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'multipart/form-data');
+
+    headers = headers.append('boundary', null); */
+    const headers = {
+      /* 'Content-Type': 'multipart/form-data',
+       */
+      responseType: 'text',
+    };
+
+    this.http
+      .post('/api/announce/new/announce', this.formData, {
+        headers,
+      })
+      .subscribe(console.log);
+  }
 }
