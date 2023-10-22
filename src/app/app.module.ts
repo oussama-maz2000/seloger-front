@@ -15,6 +15,7 @@ import { ImmobilierTemplateComponent } from './features/test/immobilier-template
 import { ImageSliderComponent } from './features/test/image-slider/image-slider.component';
 import { LogInComponent } from './features/log-in/log-in.component';
 import { SignUpComponent } from './features/sign-up/sign-up.component';
+import { AnnonceService } from './core/services/annonce.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { SignUpComponent } from './features/sign-up/sign-up.component';
     ReactiveFormsModule,
     NgSelectModule,
   ],
-  providers: [],
+  providers: [AnnonceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

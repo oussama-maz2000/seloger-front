@@ -1,0 +1,55 @@
+#dropdownMenuLink {
+  color: rgb(0, 0, 0);
+  background-color: white;
+  width: 30rem;
+  border-color: #dee2e6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 40px;
+}
+#dropdown {
+  width: 30em;
+}
+.dropdown-toggle::after {
+  margin-left: 17.255em;
+  vertical-align: 0.3em;
+}
+
+.data-selected {
+  width: 17rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.btn.btn-primary {
+  background: linear-gradient(45deg, #e00034 15%, #fe004b 85%);
+  color: white;
+  border-color: transparent;
+  width: 26em;
+  border-radius: 32px;
+  min-width: 100px;
+  height: 40px;
+}
+
+select,
+input[type="text"],
+input[type="number"] {
+  width: 30rem;
+  height: 40px;
+  border-color: #dee2e6;
+}
+textarea.form-control {
+  width: 30rem;
+
+  border-color: #dee2e6;
+}
+
+ng-select {
+  width: 30rem;
+  margin-bottom: 2px;
+}
+
+label {
+  white-space: nowrap; /* Prevent label text from wrapping to the next line */
+  overflow: hidden; /* Hide any overflow if labels are too long */
+  text-overflow: ellipsis;
+}

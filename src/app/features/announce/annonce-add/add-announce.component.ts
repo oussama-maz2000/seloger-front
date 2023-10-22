@@ -7,7 +7,6 @@ import {
   validateServiceAccessebility,
   validateNumber,
 } from 'src/app/core/validation/ValidationFn';
-import { log } from 'winston';
 
 @Component({
   selector: 'app-announce-form',
