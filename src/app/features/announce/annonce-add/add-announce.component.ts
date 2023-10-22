@@ -164,37 +164,14 @@ export class AddAnnounce implements OnInit {
       
     }
   } */
-  formData = new FormData();
+
   files: File[] = [];
   imgs: string[] = [];
   onSelect(event: any): void {
-    if (event.addedFiles[0].size < 22221000) {
+    /* if (event.addedFiles[0].size < 22222222221000) {
       this.files.push(...event.addedFiles);
-    }
-
-    /*  for (let file of this.files) {
-      this.convertFile(file).subscribe((base64) => {
-        this.imgs.push(base64);
-      });
-    }
-    console.log(this.imgs); */
-  }
-
-  convertFile(file: File): Observable<string> {
-    return new Observable<string>((observer) => {
-      const reader = new FileReader();
-
-      reader.onload = (event) => {
-        if (event.target && typeof event.target.result === 'string') {
-          observer.next(event.target.result);
-          observer.complete();
-        } else {
-          observer.error('Failed to convert the file to Base64');
-        }
-      };
-
-      reader.readAsDataURL(file);
-    });
+    } */
+    this.files.push(...event.addedFiles);
   }
 
   onRemove(event) {
@@ -203,31 +180,19 @@ export class AddAnnounce implements OnInit {
   }
 
   sendImgs(): void {
-    /*    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'multipart/form-data');
-
-    headers = headers.append('boundary', null); */
-    const headers = {
-      /* 'Content-Type': 'multipart/form-data',
-       */
-
-      responseType: 'text',
-    };
-
-    const conversionObservables = this.files.map((file) =>
-      this.convertFile(file)
-    );
-
-    // Use forkJoin to wait for all conversions to complete
-    forkJoin(conversionObservables).subscribe((base64Array) => {
-      this.imgs.push(...base64Array);
-    });
-    console.log(this.imgs);
+    const formData = new FormData();
+    for (const file of this.files) {
+      formData.append('file', file, file.name);
+    }
+    const headers = new HttpHeaders();
+    headers.append('Accept', '*/*');
 
     this.http
-      .post('/api/announce/new/announce', this.imgs, {
+      .post('/api/announce/new/announce', formData, {
+        headers: headers,
         responseType: 'text',
       })
       .subscribe(console.log);
+    formData.delete;
   }
 }
