@@ -62,8 +62,8 @@
                 </div>
 
                 <div class="form-group mt-5">
-                    <button type="button" class="btn btn-warning">Valid</button>
-
+                    <!--  <button type="button" class="btn btn-warning">Valid</button> -->
+                    <button type="button" class="btn btn-primary" mdbRipple>Valid</button>
                 </div>
             </form>
         </div>
@@ -79,13 +79,20 @@
             <h5 class="card-title">Optional Information</h5>
 
             <form [formGroup]="optionalIngo_Form">
-
-                <div class="form-group mt-5">
+                <!--  <div class="form-group mt-5">
                     <label class="mb-2">Title </label>
                     <input type="text" class="form-control" formControlName="title"
                         (ngModelChange)="onChangeInput($event)" />
                     <p>{{this.optionalIngo_Form.get('title').value}}</p>
+                </div> -->
+
+                <div class="form-group mt-5">
+                    <mdb-form-control>
+                        <input mdbInput type="text" id="form1" class="form-control" />
+                        <label mdbLabel class="form-label" for="form1">Title</label>
+                    </mdb-form-control>
                 </div>
+
 
                 <div class="form-group mt-5">
                     <label class="mb-2">Description </label>
