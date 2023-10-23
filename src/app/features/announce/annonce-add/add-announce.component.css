@@ -1,4 +1,4 @@
-#dropdownMenuLink {
+/* #dropdownMenuLink {
   color: rgb(0, 0, 0);
   background-color: white;
   width: 20rem;
@@ -44,7 +44,8 @@ ng-select {
 }
 
 label {
-  white-space: nowrap; /* Prevent label text from wrapping to the next line */
-  overflow: hidden; /* Hide any overflow if labels are too long */
+  white-space: nowrap; 
+  overflow: hidden;
   text-overflow: ellipsis;
 }
+ */

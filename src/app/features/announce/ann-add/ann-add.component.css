@@ -30,13 +30,13 @@
   height: 40px;
 }
  */
-select,
+/* select,
 input[type="text"],
 input[type="number"] {
   width: 30rem;
   height: 40px;
   border-color: #dee2e6;
-}
+} */
 textarea.form-control {
   width: 30rem;
 
@@ -48,8 +48,8 @@ ng-select {
   margin-bottom: 2px;
 }
 
-label {
-  white-space: nowrap; /* Prevent label text from wrapping to the next line */
-  overflow: hidden; /* Hide any overflow if labels are too long */
+/* label {
+  white-space: nowrap; 
+  overflow: hidden; 
   text-overflow: ellipsis;
-}
+} */
