@@ -9,7 +9,6 @@ import {
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { AnnonceService } from 'src/app/core/services/annonce.service';
 import { willaya } from 'src/app/core/shared/willaya';
-import { log } from 'winston';
 
 @Component({
   selector: 'app-ann-add',
@@ -92,5 +91,19 @@ export class AnnAddComponent implements OnInit {
         i++;
       });
     }
+  }
+
+  files: File[] = [];
+  imgs: string[] = [];
+  onSelect(event: any): void {
+    /* if (event.addedFiles[0].size < 22222222221000) {
+      this.files.push(...event.addedFiles);
+    } */
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
   }
 }

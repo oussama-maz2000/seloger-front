@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AddAnnounce } from './annonce-add/add-announce.component';
@@ -28,6 +28,10 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { QuillModule } from 'ngx-quill';
+import { TextEditComponent } from 'src/app/core/shared/text-edit/text-edit.component';
+import { SharedModule } from 'src/app/core/shared/shared.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -71,6 +75,7 @@ const routes: Routes = [
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
+    SharedModule,
   ],
 })
 export class AnnonceModule {}

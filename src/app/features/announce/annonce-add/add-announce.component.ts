@@ -51,6 +51,7 @@ export class AddAnnounce implements OnInit {
   ];
   imagesList = [];
   annonceForm: FormGroup;
+  optionalIngo_Form: FormGroup;
 
   // _______----------------_______
   //  	        FUNCTIONS
@@ -74,15 +75,17 @@ export class AddAnnounce implements OnInit {
       price: new FormControl(null, [Validators.required, validateNumber()]),
       surface: new FormControl(null, [Validators.required, validateNumber()]),
       jrdcType: new FormControl('XXX', [Validators.required]),
+    });
+    this.optionalIngo_Form = new FormGroup({
       title: new FormControl(),
       description: new FormControl(),
       serviceAccessibility: new FormArray([]),
-      cuisin: new FormControl('SEPERATE'),
+      cuisin: new FormControl(),
       hygiene: new FormArray([]),
       pieces: new FormArray([]),
-      lime: new FormControl('CHIMNEY'),
+      lime: new FormControl(),
       availability: new FormControl(),
-      airCondition: new FormControl('NO', []),
+      airCondition: new FormControl([]),
       publicService: new FormArray([]),
     });
   }

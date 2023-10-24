@@ -1,360 +1,285 @@
-<!-- <div class="container">
-  <div class="d-flex justify-content-center">
-    <h3 class="mb-2">Create new annonce</h3>
-  </div>
-
-  <form [formGroup]="annonceForm" class="mb-5 d-flex justify-content-evenly">
-    <div class="row">
-      <div class="col-8">
-        <div class="col-md-6">
-          <div class="form-group mt-5">
-            <label class="mb-2"> Property Type *</label>
-            <select class="form-select" id="prpType" formControlName="propType">
-              <option ngValue="HOUSE">HOUSE</option>
-              <option ngValue="APARTMENT">APARTMENT</option>
-            </select>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2"> Annonce Type *</label>
-             <option ngValue="SALE">SALE</option>
-             <select class="form-select" formControlName="anncType">
-              <option ngValue="RENT">RENT</option>
-            </select>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Willaya *</label>
-            <ng-select [items]="willays" bindLabel="name" appearance="outline" formControlName="willaya"
-              notFoundText="n'existe pas">
-            </ng-select>
-            <div *ngIf="willaya.invalid && (willaya.dirty || willaya.touched)" class="mt-1">
-              <div *ngIf="willaya.errors['required']">willaya is required</div>
-            </div>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Address *</label>
-            <input type="text" class="form-control" id="address" formControlName="address" />
-            <div *ngIf="address.invalid && (address.dirty || address.touched)" class="mt-1">
-              <div *ngIf="address.errors['required']">address is required</div>
-              <div *ngIf="address.errors['minlength']">address is invalid</div>
-            </div>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Etage *</label>
-            <input type="number" class="form-control" id="etage" formControlName="etage" />
-
-            <div *ngIf="etage.invalid && (etage.dirty || etage.touched)" class="mt-1">
-              <div *ngIf="etage.errors['required']">etage is required</div>
-              <div *ngIf="etage.errors['invalidNum']">etage is invalid</div>
-            </div>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Facade *</label>
-            <input type="number" class="form-control" formControlName="facede" />
-
-            <div *ngIf="facede.invalid && (facede.dirty || facede.touched)" class="mt-1">
-              <div *ngIf="facede.errors['required']">facede is required</div>
-              <div *ngIf="facede.errors['invalidNum']">facede is invalid</div>
-            </div>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Price DZ *</label>
-            <input type="number" class="form-control" formControlName="price" />
-
-            <div *ngIf="price.invalid && (price.dirty || price.touched)" class="mt-1">
-              <div *ngIf="price.errors['required']">price is required</div>
-              <div *ngIf="price.errors['invalidNum']">price is invalid</div>
-            </div>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Surface m² * </label>
-            <input type="text" class="form-control" formControlName="surface" />
-
-            <div *ngIf="surface.invalid && (surface.dirty || surface.touched)" class="mt-1">
-              <div *ngIf="surface.errors['required']">surface is required</div>
-              <div *ngIf="surface.errors['invalidNum']">surface is invalid</div>
-            </div>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2"> Juridic Type *</label>
-            <select class="form-select" id="prpType" formControlName="jrdcType">
-              <option ngValue="XXX">XXX</option>
-              <option ngValue="YYY">YYY</option>
-              <option ngValue="ZZZ">ZZZ</option>
-            </select>
-          </div>
-
-          <div class="form-group mt-5">
-            <div>
-              <label class="mb-2"> Images *</label>
-
-
-
-              <ngx-dropzone (change)="onSelect($event)">
-                <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
-                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                </ngx-dropzone-preview>
-              </ngx-dropzone>
-            </div>
-          </div>
-
-          <div *ngIf="imagesList.length > 0">
-            <ul class="list-group" *ngFor="let item of imagesList">
-              <li class="list-group-item">{{ item[0].name }}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="col-md-6">
-          <div class="form-group mt-5">
-            <label class="mb-2">Title </label>
-            <input type="text" class="form-control" formControlName="title" />
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Description </label>
-            <input type="text" class="form-control" formControlName="description" />
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Service & Accessibility</label>
-            <div class="dropdown">
-              <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"
-                data-bs-toggle="dropdown" aria-expanded="true">
-                <div class="data-selected">
-                  {{ annonceForm.get("serviceAccessibility").value }}
-                </div>
-              </div>
-              <div class="dropdown-menu" id="dropdown" formArrayName="serviceAccessibility">
-                <li class="dropdown-item" *ngFor="let item of serviceAccessibilityList">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" [value]="item" (change)="
-                        addOrRemoveFormControl($event, 'serviceAccessibility')
-                      " />
-                    <label class="form-check-label">
-                      {{ item }}
-                    </label>
-                  </div>
-                </li>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2"> Cuisin</label>
-            <select class="form-select" formControlName="cuisin">
-              <option ngValue="CORNER">CORNER</option>
-              <option ngValue="SEPERATE">SEPERATE</option>
-            </select>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Hygiene</label>
-            <div class="dropdown">
-              <div class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <div class="data-selected">
-                  {{ annonceForm.get("hygiene").value }}
-                </div>
-              </div>
-              <div class="dropdown-menu" id="dropdown">
-                <li class="dropdown-item" *ngFor="let item of hygieneList">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" [value]="item"
-                      (change)="addOrRemoveFormControl($event, 'hygiene')" />
-                    <label class="form-check-label">
-                      {{ item }}
-                    </label>
-                  </div>
-                </li>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Pieces</label>
-            <div class="dropdown">
-              <div class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <div class="data-selected">
-                  {{ annonceForm.get("pieces").value }}
-                </div>
-              </div>
-              <div class="dropdown-menu" id="dropdown">
-                <li class="dropdown-item" *ngFor="let item of piecesList">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" [value]="item"
-                      (change)="addOrRemoveFormControl($event, 'pieces')" />
-                    <label class="form-check-label">
-                      {{ item }}
-                    </label>
-                  </div>
-                </li>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2"> Lime</label>
-            <select class="form-select" formControlName="lime">
-              <option value="CENTRAL">CENTRAL</option>
-              <option value="CHIMNEY">CHIMNEY</option>
-            </select>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Availabilty </label>
-            <input type="text" class="form-control" formControlName="availability" />
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Air conditioning</label>
-            <select class="form-select" formControlName="airCondition">
-              <option ngValue="YES">YES</option>
-              <option ngValue="NO">NO</option>
-            </select>
-          </div>
-
-          <div class="form-group mt-5">
-            <label class="mb-2">Public Service</label>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <div class="data-selected">
-                  {{ annonceForm.get("publicService").value }}
-                </div>
-              </button>
-              <div class="dropdown-menu" id="dropdown">
-                <li class="dropdown-item" *ngFor="let item of publicServcieList">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" [value]="item"
-                      (change)="addOrRemoveFormControl($event, 'publicService')" />
-                    <label class="form-check-label">
-                      {{ item }}
-                    </label>
-                  </div>
-                </li>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
-<div class="d-flex justify-content-center">
-  <button type="button" class="btn btn-primary my-4" (click)="submitData()">
-    Submit
-  </button>
-  <button type="button" class="btn btn-waring my-4" (click)="sendImgs()">
-    send
-  </button>
-</div> -->
-
-
 <div class="contianer">
 
+
   <div class="card mt-2">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-sm-4">
-          <div>
 
-            <div class="form-group mt-2">
-              <label class="mb-1"> Property Type </label>
-              <select class="form-select" id="prpType">
-                <option ngValue="HOUSE">HOUSE</option>
-                <option ngValue="APARTMENT">APARTMENT</option>
-              </select>
-            </div>
+    <div class="card-header mb-2">
+      <div class="d-flex justify-content-between">
+        <h5>Required Information</h5>
 
-            <div class="form-group mt-2">
-              <label class="mb-1">Address </label>
-              <input type="text" class="form-control" id="address" />
-            </div>
-
-
-            <div class="form-group mt-2">
-              <label class="mb-1">Price DZ </label>
-              <input type="number" class="form-control" />
-            </div>
-
-
-          </div>
-        </div>
-        <div class="col-sm-4">
-
-
-
-          <div>
-
-            <div class="form-group mt-2">
-              <label class="mb-1"> Annonce Type </label>
-              <select class="form-select">
-                <option selected ngValue="SALE">SALE</option>
-                <option ngValue="RENT">RENT</option>
-              </select>
-            </div>
-
-            <div class="form-group mt-2">
-              <label class="mb-1">Etage </label>
-              <input type="number" class="form-control" id="etage" />
-            </div>
-            <div class="form-group mt-2">
-              <label class="mb-1">Surface m² </label>
-              <input type="text" class="form-control" />
-            </div>
-          </div>
-
-
-
-
-
-
-
-        </div>
-        <div class="col-sm-4 ">
-          <div>
-            <div class="form-group mt-2">
-              <label class="mb-1"> willaya </label>
-              <select class="form-select">
-                <option *ngFor="let element of willays" [ngValue]="element.id">{{element.name}}</option>
-              </select>
-            </div>
-
-            <div class="form-group mt-2">
-              <label class="mb-1">Facade </label>
-              <input type="number" class="form-control" />
-            </div>
-
-
-            <div class="form-group mt-2">
-              <label class="mb-1"> Juridic Type *</label>
-              <select class="form-select" id="prpType">
-                <option ngValue="XXX">XXX</option>
-                <option ngValue="YYY">YYY</option>
-                <option ngValue="ZZZ">ZZZ</option>
-              </select>
-            </div>
-          </div>
-
+        <div class="form-group">
+          <button data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+            aria-controls="collapseExample" type="button" class="btn btn-success">Valid</button>
         </div>
       </div>
-      <div class="form-group mt-2">
-        <button type="button" class="btn btn-success">Success</button>
-      </div>
-
     </div>
+
+    <div class="collapse" id="collapseExample">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-4">
+            <div>
+
+              <div class="form-group mt-2">
+                <label class="mb-1"> Property Type </label>
+                <select class="form-select" id="prpType">
+                  <option ngValue="HOUSE">HOUSE</option>
+                  <option ngValue="APARTMENT">APARTMENT</option>
+                </select>
+              </div>
+
+              <div class="form-group mt-2">
+                <label class="mb-1">Address </label>
+                <input type="text" class="form-control" id="address" />
+              </div>
+
+
+              <div class="form-group mt-2">
+                <label class="mb-1">Price DZ </label>
+                <input type="number" class="form-control" />
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-sm-4">
+
+
+
+            <div>
+
+              <div class="form-group mt-2">
+                <label class="mb-1"> Annonce Type </label>
+                <select class="form-select">
+                  <option selected ngValue="SALE">SALE</option>
+                  <option ngValue="RENT">RENT</option>
+                </select>
+              </div>
+
+              <div class="form-group mt-2">
+                <label class="mb-1">Etage </label>
+                <input type="number" class="form-control" id="etage" />
+              </div>
+              <div class="form-group mt-2">
+                <label class="mb-1">Surface m² </label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+
+
+
+
+
+
+
+          </div>
+          <div class="col-sm-4 ">
+            <div>
+              <div class="form-group mt-2">
+                <label class="mb-1"> willaya </label>
+                <select class="form-select">
+                  <option *ngFor="let element of willays" [ngValue]="element.id">{{element.name}}</option>
+                </select>
+              </div>
+
+              <div class="form-group mt-2">
+                <label class="mb-1">Facade </label>
+                <input type="number" class="form-control" />
+              </div>
+
+
+              <div class="form-group mt-2">
+                <label class="mb-1"> Juridic Type *</label>
+                <select class="form-select" id="prpType">
+                  <option ngValue="XXX">XXX</option>
+                  <option ngValue="YYY">YYY</option>
+                  <option ngValue="ZZZ">ZZZ</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
   </div>
 
+
+  <div class="card mt-3">
+
+    <div class="card-header mb-2">
+      <div class="d-flex justify-content-between">
+        <h5>Optional Information</h5>
+
+        <div class="form-group">
+          <button data-bs-toggle="collapse" href="#optioanlCollapse" role="button" aria-expanded="false"
+            aria-controls="optioanlCollapse" type="button" class="btn btn-warning">Valid</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse" id="optioanlCollapse">
+
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col-sm-4">
+
+
+            <div class="form-group mt-2">
+              <label class="mb-1">Title </label>
+              <input type="text" class="form-control" id="title" />
+            </div>
+
+            <div class="form-group mt-2">
+              <label class="mb-1">Availabilty </label>
+              <input type="text" class="form-control" formControlName="availability" />
+            </div>
+
+
+
+
+
+
+
+
+          </div>
+          <div class="col-sm-4">
+
+
+            <div class="form-group mt-2">
+              <label class="mb-1"> Cuisin</label>
+              <select class="form-select" formControlName="cuisin">
+                <option ngValue="CORNER">CORNER</option>
+                <option ngValue="SEPERATE">SEPERATE</option>
+              </select>
+            </div>
+
+
+
+            <div class="form-group mt-2">
+              <label class="mb-1">Air conditioning</label>
+              <select class="form-select" formControlName="airCondition">
+                <option ngValue="YES">YES</option>
+                <option ngValue="NO">NO</option>
+              </select>
+            </div>
+
+            <div class="form-group mt-2">
+              <label class="mb-1"> Lime</label>
+              <select class="form-select" formControlName="lime">
+                <option value="CENTRAL">CENTRAL</option>
+                <option value="CHIMNEY">CHIMNEY</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-4 ">
+            <div>
+              <div class="form-group mt-4">
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Pieces
+                  </button>
+                  <div class="dropdown-menu">
+                    <a *ngFor="let item of piecesList; let i = index" class="dropdown-item">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [value]="item"
+                          (change)="addOrRemoveFormControl($event, 'pieces')" />
+                        <label class="form-check-label">
+                          {{ item }}
+                        </label>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-4">
+                <div class="dropdown mt-1">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Services
+                  </button>
+                  <div class="dropdown-menu">
+                    <a *ngFor="let item of serviceAccessibilityList; let i = index" class="dropdown-item">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [value]="item"
+                          (change)="addOrRemoveFormControl($event, 'serviceAccessibility')" />
+                        <label class="form-check-label">
+                          {{ item }}
+                        </label>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="form-group mt-4">
+
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Hygiene
+                  </button>
+                  <div class="dropdown-menu">
+                    <a *ngFor="let item of hygieneList; let i = index" class="dropdown-item">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [value]="item"
+                          (change)="addOrRemoveFormControl($event, 'hygiene')" />
+                        <label class="form-check-label">
+                          {{ item }}
+                        </label>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group mt-4">
+
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Service Public
+                  </button>
+                  <div class="dropdown-menu">
+                    <a *ngFor="let item of publicServcieList; let i = index" class="dropdown-item">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [value]="item"
+                          (change)="addOrRemoveFormControl($event, 'publicService')" />
+                        <label class="form-check-label">
+                          {{ item }}
+                        </label>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+  </div>
+  <!-- <app-text-edit></app-text-edit> -->
 
 </div>

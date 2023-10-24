@@ -1,0 +1,5 @@
+.edit {
+  max-height: 7rem;
+  min-height: 7rem;
+  overflow: auto;
+}

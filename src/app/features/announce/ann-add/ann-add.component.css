@@ -53,3 +53,8 @@ ng-select {
   overflow: hidden; 
   text-overflow: ellipsis;
 } */
+.card {
+  min-height: 85rem;
+  max-height: 85rem;
+  overflow: auto;
+}

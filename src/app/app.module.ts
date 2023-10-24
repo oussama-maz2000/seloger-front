@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +34,9 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+import { QuillModule } from 'ngx-quill';
+import { TextEditComponent } from './core/shared/text-edit/text-edit.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +56,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-
     ReactiveFormsModule,
     NgSelectModule,
     MdbAccordionModule,
@@ -72,7 +74,9 @@ import { HttpClientModule } from '@angular/common/http';
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
+    QuillModule.forRoot(),
   ],
+
   providers: [AnnonceService],
   bootstrap: [AppComponent],
 })
