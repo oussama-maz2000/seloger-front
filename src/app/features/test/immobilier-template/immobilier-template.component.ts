@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ImmobilierInterface } from 'src/app/core/model/immobilier.interface';
 import { TypeImmobilier } from 'src/app/core/model/type-immobilier.enum';
 
 @Component({
@@ -8,7 +7,7 @@ import { TypeImmobilier } from 'src/app/core/model/type-immobilier.enum';
   styleUrls: ['./immobilier-template.component.css'],
 })
 export class ImmobilierTemplateComponent implements OnInit {
-  data: ImmobilierInterface = {
+  /* data: ImmobilierInterface = {
     type: TypeImmobilier.Appartement,
     price: 2000,
     caractéristiques: ['hello', 'hello'],
@@ -23,8 +22,8 @@ export class ImmobilierTemplateComponent implements OnInit {
       '../../../../assets/maison/photo-06.webp',
     ],
     description: 'hello world ',
-  };
-  currentIndex = 0;
+  }; */
+  /*  currentIndex = 0;
   characters: Array<string>;
   ngOnInit(): void {
     this.characters = this.data.caractéristiques;
@@ -41,5 +40,6 @@ export class ImmobilierTemplateComponent implements OnInit {
     } else {
       this.currentIndex = 0;
     }
-  }
+  } */
+  ngOnInit(): void {}
 }

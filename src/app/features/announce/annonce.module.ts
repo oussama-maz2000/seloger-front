@@ -3,14 +3,14 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AddAnnounce } from './annonce-add/add-announce.component';
-import { AnnonceListComponent } from './annonce-list/annonce-list.component';
-import { AnnonceSingleComponent } from './annonce-single/annonce-single.component';
+import { AnnonceListComponent } from './list-annonce/annonce-list.component';
+import { AnnonceSingleComponent } from './details-annonce/annonce-single.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AnnAddComponent } from './ann-add/ann-add.component';
+import { AnnAddComponent } from './create-annonce/ann-add.component';
 import { AnnonceComponent } from './annonce/annonce.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
@@ -29,8 +29,6 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { QuillModule } from 'ngx-quill';
-import { TextEditComponent } from 'src/app/core/shared/text-edit/text-edit.component';
-import { SharedModule } from 'src/app/core/shared/shared.module';
 
 const routes: Routes = [
   {
@@ -75,7 +73,7 @@ const routes: Routes = [
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
-    SharedModule,
+    QuillModule,
   ],
 })
 export class AnnonceModule {}

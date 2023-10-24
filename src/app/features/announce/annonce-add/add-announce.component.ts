@@ -49,10 +49,12 @@ export class AddAnnounce implements OnInit {
     'COURT',
     'TOWN HALL',
   ];
+
   imagesList = [];
   annonceForm: FormGroup;
   optionalIngo_Form: FormGroup;
-
+  files: File[] = [];
+  imgs: string[] = [];
   // _______----------------_______
   //  	        FUNCTIONS
   // _______----------------_______
@@ -130,22 +132,6 @@ export class AddAnnounce implements OnInit {
     }
   }
   formDataList: FormData[] = [];
-  imagesProcess(event: any) {
-    this.imagesList.push(event.target.files);
-
-    const formData = new FormData();
-    for (let file in this.imagesList) {
-      formData.append('file', file);
-      this.formDataList.push(formData);
-    }
-
-    /*   if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      const formDataList: FormData[] = [];
-      const formData = new FormData();
-      formData.append('file', file);
-    } */
-  }
 
   submitData(): void {
     if (this.annonceForm.valid) {
@@ -155,21 +141,6 @@ export class AddAnnounce implements OnInit {
     }
   }
 
-  /*   upload(event: any): void {
-    const file: File = event.target.files[0];
-    if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
-      this.http.post('/announce/new/announce', formData, {
-        responseType: 'text',
-      });
-     
-      
-    }
-  } */
-
-  files: File[] = [];
-  imgs: string[] = [];
   onSelect(event: any): void {
     /* if (event.addedFiles[0].size < 22222222221000) {
       this.files.push(...event.addedFiles);

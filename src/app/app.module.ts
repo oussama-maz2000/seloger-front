@@ -35,7 +35,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { QuillModule } from 'ngx-quill';
-import { TextEditComponent } from './core/shared/text-edit/text-edit.component';
 
 @NgModule({
   declarations: [

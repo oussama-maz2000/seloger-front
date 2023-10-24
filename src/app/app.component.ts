@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ImmobilierInterface } from './core/model/immobilier.interface';
 import { TypeImmobilier } from './core/model/type-immobilier.enum';
+import { Property } from './core/model/property.interface';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,9 @@ import { TypeImmobilier } from './core/model/type-immobilier.enum';
 })
 export class AppComponent {
   title = 'seLoger';
-  appartements: Array<ImmobilierInterface> = [
+  /* appartements: Array<Property> = [
     {
-      type: TypeImmobilier.Maison,
+      propType: TypeImmobilier.Maison,
       price: 2000,
       caractéristiques: ['3 pieces', '2 chambrs', '39 m²', 'etage 3/6'],
       willaya: 'Batna',
@@ -25,7 +25,7 @@ export class AppComponent {
         "Co-exclusivité LBI ! Quartier Garibaldi, au troisième étage d'un bel immeuble ancien, appartement traversant de type 3 pièces transformable en grand T2 composé d'un séjour avec cuisine ouverte, de deux chambres, et d'une salle d'eau avec wc",
     },
     {
-      type: TypeImmobilier.Maison,
+      propType: "Maison",
       price: 2000,
       caractéristiques: ['3 pieces', '2 chambrs', '39 m²', 'etage 3/6'],
       willaya: 'Batna',
@@ -39,7 +39,7 @@ export class AppComponent {
         "Co-exclusivité LBI ! Quartier Garibaldi, au troisième étage d'un bel immeuble ancien, appartement traversant de type 3 pièces transformable en grand T2 composé d'un séjour avec cuisine ouverte, de deux chambres, et d'une salle d'eau avec wc",
     },
     {
-      type: TypeImmobilier.Maison,
+      propType: TypeImmobilier.Maison,
       price: 2000,
       caractéristiques: ['3 pieces', '2 chambrs', '39 m²', 'etage 3/6'],
       willaya: 'Batna',
@@ -53,7 +53,7 @@ export class AppComponent {
         "Co-exclusivité LBI ! Quartier Garibaldi, au troisième étage d'un bel immeuble ancien, appartement traversant de type 3 pièces transformable en grand T2 composé d'un séjour avec cuisine ouverte, de deux chambres, et d'une salle d'eau avec wc",
     },
     {
-      type: TypeImmobilier.Maison,
+      propType: TypeImmobilier.Maison,
       price: 2000,
       caractéristiques: ['3 pieces', '2 chambrs', '39 m²', 'etage 3/6'],
       willaya: 'Batna',
@@ -66,5 +66,5 @@ export class AppComponent {
       description:
         "Co-exclusivité LBI ! Quartier Garibaldi, au troisième étage d'un bel immeuble ancien, appartement traversant de type 3 pièces transformable en grand T2 composé d'un séjour avec cuisine ouverte, de deux chambres, et d'une salle d'eau avec wc",
     },
-  ];
+  ]; */
 }

@@ -4,28 +4,48 @@
       <div>
         <div class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-inner d-flex justify-content-between">
-            <div class="carousel-item active d-flex justify-content-center" id="carousel_item">
-              <img [src]="data.images[currentIndex]" alt="..." />
+            <div
+              class="carousel-item active d-flex justify-content-center"
+              id="carousel_item"
+            >
+              <!-- <img [src]="data.images[currentIndex]" alt="..." /> -->
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" (click)="previousImg()"
-            data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span aria-hidden="true"><i class="bi bi-arrow-left-circle-fill"></i></span>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleFade"
+            data-bs-slide="prev"
+          >
+            <span aria-hidden="true"
+              ><i class="bi bi-arrow-left-circle-fill"></i
+            ></span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" (click)="nextImg()"
-            data-bs-slide="next">
-            <span aria-hidden="true"><i class="bi bi-arrow-right-circle-fill"></i></span>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleFade"
+            data-bs-slide="next"
+          >
+            <span aria-hidden="true"
+              ><i class="bi bi-arrow-right-circle-fill"></i
+            ></span>
           </button>
         </div>
 
-        <span style="position: absolute; top: 0px; right: 10px"><i class="bi bi-bookmark-heart"></i></span>
+        <span style="position: absolute; top: 0px; right: 10px"
+          ><i class="bi bi-bookmark-heart"></i
+        ></span>
       </div>
       <div class="ps-1">
-        <div class="address"><span class="commun">Constantine </span>,<span class="willaya">Constantine</span></div>
+        <div class="address">
+          <span class="commun">Constantine </span>,<span class="willaya"
+            >Constantine</span
+          >
+        </div>
         <div class="type-class"><span class="type">Appartement</span></div>
         <!--       <div><span>titre ou remarque </span></div> -->
         <div><b> 20000</b><b> DA </b><small>par mois</small></div>
-
       </div>
     </div>
   </div>
