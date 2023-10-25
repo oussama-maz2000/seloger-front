@@ -12,7 +12,6 @@ import { Property } from 'src/app/core/model/property.interface';
 import { AnnonceService } from 'src/app/core/services/annonce.service';
 import { willaya } from 'src/app/core/shared/willaya';
 import { validateNumber } from 'src/app/core/validation/ValidationFn';
-import { log } from 'winston';
 
 @Component({
   selector: 'app-ann-add',
@@ -20,10 +19,22 @@ import { log } from 'winston';
   styleUrls: ['./ann-add.component.css'],
 })
 export class AnnAddComponent implements OnInit {
+  quillConfig = {
+    toolbar: {
+      container: [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['code-block'],
+        [{ header: 1 }, { header: 2 }],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['clean'],
+      ],
+    },
+  };
+
   willays: { id: string; name: string }[];
 
   requiredInfo_Form: FormGroup;
-  optionalIngo_Form: FormGroup;
+  optionalInfo_Form: FormGroup;
   files: File[] = [];
   imgs: string[] = [];
   serviceAccessibilityList = [
@@ -77,16 +88,16 @@ export class AnnAddComponent implements OnInit {
       juridicType: new FormControl('', [Validators.required]), // Removed the array around Validators.required
     });
 
-    this.optionalIngo_Form = new FormGroup({
-      title: new FormControl(),
+    this.optionalInfo_Form = new FormGroup({
+      title: new FormControl(''),
       description: new FormControl(),
       serviceAccessibility: new FormArray([]),
-      cuisin: new FormControl('SEPERATE'),
+      cuisin: new FormControl(''),
       hygiene: new FormArray([]),
       pieces: new FormArray([]),
-      lime: new FormControl('CHIMNEY'),
-      availability: new FormControl(),
-      airCondition: new FormControl('NO', []),
+      lime: new FormControl(''),
+      availability: new FormControl(''),
+      airCondition: new FormControl(),
       publicService: new FormArray([]),
     });
   }
@@ -94,7 +105,7 @@ export class AnnAddComponent implements OnInit {
   logData() {
     const form = new FormData();
 
-    const property: Property = {
+    /*  const property: Property = {
       propType: this.requiredInfo_Form.get('propType').value,
       ancType: this.requiredInfo_Form.get('anncType').value,
       address: this.requiredInfo_Form.get('adrs').value,
@@ -103,34 +114,40 @@ export class AnnAddComponent implements OnInit {
       price: +this.requiredInfo_Form.get('price').value,
       etage: +this.requiredInfo_Form.get('etage').value,
       facade: +this.requiredInfo_Form.get('facade').value,
-      title: 'null',
-      description: 'null',
-      serviceAccessibility: ['null'],
-      cuisin: 'null',
-      hygiene: ['null'],
-      pieces: ['null'],
-      lime: 'null',
-      airConditioning: false,
-      publicService: ['null'],
-      availability: 'null',
-    };
+      title: this.optionalIngo_Form.get('title').value || null,
+      description: this.optionalIngo_Form.get('description').value || null,
+      serviceAccessibility: this.optionalIngo_Form.get('serviceAccessibility')
+        .value || [null],
+      cuisin: this.optionalIngo_Form.get('cuisin').value || null,
+      hygiene: this.optionalIngo_Form.get('hygiene').value || [null],
+      pieces: this.optionalIngo_Form.get('pieces').value || [null],
+      lime: this.optionalIngo_Form.get('lime').value || null,
+      airConditioning:
+        this.optionalIngo_Form.get('airCondition').value || false,
+      publicService: this.optionalIngo_Form.get('publicService').value || [
+        null,
+      ],
+      availability: this.optionalIngo_Form.get('availability').value || null,
+    }; */
 
     /* const headers = new HttpHeaders();
     headers.append('Content-Type': 'application/json'); */
 
-    const headers = new HttpHeaders({
+    /*   const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-    });
-    this.http
+    }); */
+    /*  this.http
       .post('/api/announce/post/annonce', [property], {
         headers: headers,
         responseType: 'text',
       })
-      .subscribe(console.log);
+      .subscribe(console.log); */
+    console.log(this.optionalInfo_Form.get('description').value);
+    console.log(this.optionalInfo_Form.get('serviceAccessibility').value);
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {
-    const checkArray: FormArray = this.optionalIngo_Form.get(
+    const checkArray: FormArray = this.optionalInfo_Form.get(
       formControlName
     ) as FormArray;
 
