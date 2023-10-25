@@ -1,111 +1,46 @@
 <div class="continer">
   <div class="row">
     <div class="col-sm-4">
-      <div class="card mt-2 me-2" style="background-color: rgb(248, 251, 252)">
-        <div class="card-header" id="required-info">
-          <h5 class="card-title">Required Information</h5>
-        </div>
-        <div class="card-body">
-          <form [formGroup]="requiredInfo_Form">
-
-
-            <div class="form-group my-1">
-              <label class="mb-1"> Property Type </label>
-              <select class="form-select" id="prpType" formControlName="propType">
-                <option ngValue="HOUSE">HOUSE</option>
-                <option ngValue="APARTMENT">APARTMENT</option>
-              </select>
-            </div>
-            <div class="form-group my-3">
-              <label class="mb-1"> Annonce Type </label>
-              <select class="form-select" formControlName="anncType">
-                <option ngValue="SALE">SALE</option>
-                <option ngValue="RENT">RENT</option>
-              </select>
-            </div>
-
-            <div class="form-group my-3">
-              <label class="mb-1"> Juridic Type </label>
-              <select class="form-select" id="prpType" formControlName="juridicType">
-                <option ngValue="XXX">XXX</option>
-                <option ngValue="YYY">YYY</option>
-                <option ngValue="ZZZ">ZZZ</option>
-              </select>
-            </div>
-
-            <div class="form-group my-3">
-              <label class="mb-1">Willaya </label>
-              <ng-select [items]="willays" bindLabel="name" appearance="outline" notFoundText="n'existe pas"
-                formControlName="willaya">
-              </ng-select>
-            </div>
-
-            <div class="form-group my-3">
-              <label class="mb-1">Address</label>
-              <input type="text" class="form-control" id="address" formControlName="adrs" />
-            </div>
-
-            <div class="form-group my-3">
-              <label class="mb-1">Etage </label>
-              <input type="number" class="form-control" id="etage" formControlName="etage" />
-            </div>
-
-            <div class="form-group my-3">
-              <label class="mb-1">Facade </label>
-              <input type="number" class="form-control" formControlName="facade" />
-            </div>
-
-            <div class="form-group my-3">
-              <label class="mb-1">Price DZ </label>
-              <input type="number" class="form-control" formControlName="price" />
-            </div>
-
-            <div class="form-group my-3">
-              <label class="mb-1">Surface m²</label>
-              <input type="number" class="form-control" formControlName="surface" />
-            </div>
-
-            <div class="form-group my-3">
-              <ngx-dropzone (change)="onSelect($event)">
-                <ngx-dropzone-label>select or drop your images</ngx-dropzone-label>
-                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                </ngx-dropzone-preview>
-              </ngx-dropzone>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
       <div class="card mt-2" style="background-color: rgb(255, 255, 255)">
         <div class="card-header" id="optional-info">
           <h5 class="card-title">Optional Information</h5>
         </div>
         <div class="card-body">
-          <form [formGroup]="optionalInfo_Form">
+          <form [formGroup]="fromOptional">
             <div class="form-group my-1">
               <label class="mb-1">Title </label>
               <input type="text" class="form-control" formControlName="title" />
-
             </div>
 
             <div class="form-group my-3">
               <label class="mb-1">Service & Accessibility</label>
               <div class="dropdown">
-                <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"
-                  data-bs-toggle="dropdown" aria-expanded="true">
+                <div
+                  class="btn btn-secondary dropdown-toggle"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="true"
+                >
                   <div class="data-selected">
-                    {{ optionalInfo_Form.get("serviceAccessibility").value }}
+                    {{ fromOptional.get("serviceAccessibility").value }}
                   </div>
                 </div>
                 <div class="dropdown-menu" id="dropdown">
-                  <li class="dropdown-item" *ngFor="let item of serviceAccessibilityList"
-                    formArrayName="serviceAccessibility">
+                  <li
+                    class="dropdown-item"
+                    *ngFor="let item of serviceAccessibilityList"
+                    formArrayName="serviceAccessibility"
+                  >
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" [value]="item" (change)="
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        [value]="item"
+                        (change)="
                           addOrRemoveFormControl($event, 'serviceAccessibility')
-                        " />
+                        "
+                      />
                       <label class="form-check-label">
                         {{ item }}
                       </label>
@@ -126,17 +61,26 @@
             <div class="form-group my-3">
               <label class="mb-1">Hygiene</label>
               <div class="dropdown">
-                <div class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                  aria-expanded="false">
+                <div
+                  class="btn btn-secondary dropdown-toggle"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   <div class="data-selected">
-                    {{ optionalInfo_Form.get("hygiene").value }}
+                    {{ fromOptional.get("hygiene").value }}
                   </div>
                 </div>
                 <div class="dropdown-menu" id="dropdown">
                   <li class="dropdown-item" *ngFor="let item of hygieneList">
                     <div class="form-check">
-                      <input formArrayName="hygiene" class="form-check-input" type="checkbox" [value]="item"
-                        (change)="addOrRemoveFormControl($event, 'hygiene')" />
+                      <input
+                        formArrayName="hygiene"
+                        class="form-check-input"
+                        type="checkbox"
+                        [value]="item"
+                        (change)="addOrRemoveFormControl($event, 'hygiene')"
+                      />
                       <label class="form-check-label">
                         {{ item }}
                       </label>
@@ -149,17 +93,26 @@
             <div class="form-group my-3">
               <label class="mb-1">Pieces</label>
               <div class="dropdown">
-                <div class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                  aria-expanded="false">
+                <div
+                  class="btn btn-secondary dropdown-toggle"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   <div class="data-selected">
-                    {{ optionalInfo_Form.get("pieces").value }}
+                    {{ fromOptional.get("pieces").value }}
                   </div>
                 </div>
                 <div class="dropdown-menu" id="dropdown">
                   <li class="dropdown-item" *ngFor="let item of piecesList">
                     <div class="form-check">
-                      <input formArrayName="pieces" class="form-check-input" type="checkbox" [value]="item"
-                        (change)="addOrRemoveFormControl($event, 'pieces')" />
+                      <input
+                        formArrayName="pieces"
+                        class="form-check-input"
+                        type="checkbox"
+                        [value]="item"
+                        (change)="addOrRemoveFormControl($event, 'pieces')"
+                      />
                       <label class="form-check-label">
                         {{ item }}
                       </label>
@@ -179,7 +132,11 @@
 
             <div class="form-group my-3">
               <label class="mb-1">Availabilty </label>
-              <input type="text" class="form-control" formControlName="availability" />
+              <input
+                type="text"
+                class="form-control"
+                formControlName="availability"
+              />
             </div>
 
             <div class="form-group my-3">
@@ -193,19 +150,31 @@
             <div class="form-group my-3">
               <label class="mb-1">Public Service</label>
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                  aria-expanded="false">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   <div class="data-selected">
-                    {{ optionalInfo_Form.get("publicService").value }}
+                    {{ fromOptional.get("publicService").value }}
                   </div>
                 </button>
                 <div class="dropdown-menu" id="dropdown">
-                  <li class="dropdown-item" *ngFor="let item of publicServcieList">
+                  <li
+                    class="dropdown-item"
+                    *ngFor="let item of publicServcieList"
+                  >
                     <div class="form-check">
-                      <input formArrayName="publicService" class="form-check-input" type="checkbox" [value]="item"
+                      <input
+                        formArrayName="publicService"
+                        class="form-check-input"
+                        type="checkbox"
+                        [value]="item"
                         (change)="
                           addOrRemoveFormControl($event, 'publicService')
-                        " />
+                        "
+                      />
                       <label class="form-check-label">
                         {{ item }}
                       </label>
@@ -216,16 +185,144 @@
             </div>
             <div class="form-group my-3">
               <div class="edit">
-                <quill-editor class="content-editor" [modules]="quillConfig" [placeholder]="'description'"
-                  formControlName="description">
+                <quill-editor
+                  class="content-editor"
+                  [modules]="quillConfig"
+                  [placeholder]="'description'"
+                  formControlName="description"
+                >
                 </quill-editor>
               </div>
             </div>
-
           </form>
         </div>
       </div>
     </div>
+    <div class="col-sm-4">
+      <div class="card mt-2 me-2" style="background-color: rgb(248, 251, 252)">
+        <div class="card-header" id="required-info">
+          <h5 class="card-title">Required Information</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="fromRequired">
+            <div class="form-group my-1">
+              <label class="mb-1"> Property Type </label>
+
+              <select
+                class="form-select"
+                id="prpType"
+                formControlName="propType"
+              >
+                <option ngValue="HOUSE">HOUSE</option>
+                <option ngValue="APARTMENT">APARTMENT</option>
+              </select>
+              <!-- <div *ngIf="!fromRequired.get('propType').valid ">
+                <span *ngIf="fromRequired.get('propType').errors?.['required']">
+                  Veuillez selectionner un choix
+                </span>
+              </div> -->
+            </div>
+            <div class="form-group my-3">
+              <label class="mb-1"> Annonce Type </label>
+              <select class="form-select" formControlName="anncType">
+                <option ngValue="SALE">SALE</option>
+                <option ngValue="RENT">RENT</option>
+              </select>
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1"> Juridic Type </label>
+              <select
+                class="form-select"
+                id="prpType"
+                formControlName="juridicType"
+              >
+                <option ngValue="XXX">XXX</option>
+                <option ngValue="YYY">YYY</option>
+                <option ngValue="ZZZ">ZZZ</option>
+              </select>
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1">Willaya </label>
+              <ng-select
+                [items]="willays"
+                bindLabel="name"
+                appearance="outline"
+                notFoundText="n'existe pas"
+                formControlName="willaya"
+              >
+              </ng-select>
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                formControlName="adrs"
+              />
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1">Etage </label>
+              <input
+                type="number"
+                class="form-control"
+                id="etage"
+                formControlName="etage"
+              />
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1">Facade </label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="facade"
+              />
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1">Price DZ </label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="price"
+              />
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1">Surface m²</label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="surface"
+              />
+            </div>
+
+            <div class="form-group my-3">
+              <ngx-dropzone (change)="onSelect($event)">
+                <ngx-dropzone-label
+                  >select or drop your images</ngx-dropzone-label
+                >
+                <ngx-dropzone-preview
+                  *ngFor="let f of files"
+                  [removable]="true"
+                  (removed)="onRemove(f)"
+                >
+                  <ngx-dropzone-label
+                    >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                  >
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <div class="col-sm-4">
       <div class="card mt-2" style="background-color: rgb(248, 251, 252)">
         <div class="card-header" id="annonce">
@@ -233,89 +330,135 @@
         </div>
         <div class="card-body">
           <form>
-
-
             <div class="form-group my-1">
-              <label class="mb-1"> Property Type : {{this.requiredInfo_Form.get('propType').value}}</label>
-
-
+              <label class="mb-1">
+                Property Type :
+                {{ fromRequired.get("propType").value }}</label
+              >
             </div>
             <div class="form-group my-3">
-              <label class="mb-1"> Annonce Type :{{this.requiredInfo_Form.get('anncType').value}} </label>
-            </div>
-
-            <div class="form-group my-3">
-              <label class="mb-1"> Juridic Type :{{this.requiredInfo_Form.get('juridicType').value}}</label>
-
+              <label class="mb-1">
+                Annonce Type :{{ fromRequired.get("anncType").value }}
+              </label>
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1">Willaya :{{this.requiredInfo_Form.get('willaya').value.name}}</label>
-
+              <label class="mb-1">
+                Juridic Type :{{ fromRequired.get("juridicType").value }}</label
+              >
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1">Address :{{this.requiredInfo_Form.get('adrs').value}}</label>
+              <label class="mb-1"
+                >Willaya :{{ fromRequired.get("willaya").value.name }}</label
+              >
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1">Etage :{{this.requiredInfo_Form.get('etage').value}}</label>
+              <label class="mb-1"
+                >Address :{{ this.fromRequired.get("adrs").value }}</label
+              >
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1">Facade :{{this.requiredInfo_Form.get('facade').value}}</label>
+              <label class="mb-1"
+                >Etage :{{ fromRequired.get("etage").value }}</label
+              >
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1">Price DZ :{{this.requiredInfo_Form.get('price').value}}</label>
+              <label class="mb-1"
+                >Facade :{{ fromRequired.get("facade").value }}</label
+              >
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1">Surface m² :{{this.requiredInfo_Form.get('surface').value}}</label>
+              <label class="mb-1"
+                >Price DZ :{{ fromRequired.get("price").value }}</label
+              >
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1">Number Images</label>
-            </div>
-
-
-            <div class="form-group my-3">
-              <label class="mb-1"> Title </label>
+              <label class="mb-1"
+                >Surface m² :{{ fromRequired.get("surface").value }}</label
+              >
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1"> Service </label>
+              <label class="mb-1">Number Images </label>
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1"> Cuisin </label>
+              <label class="mb-1">
+                Title :{{ fromOptional.get("title").value }}</label
+              >
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1"> Hygiene </label>
+              <label class="mb-1">
+                Service :
+                {{ fromOptional.get("serviceAccessibility").value.length }}
+                items</label
+              >
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1"> Pieces </label>
-            </div>
-
-
-            <div class="form-group my-3">
-              <label class="mb-1">Lime </label>
-            </div>
-
-
-            <div class="form-group my-3">
-              <label class="mb-1"> Availabilty </label>
-            </div>
-
-
-            <div class="form-group my-3">
-              <label class="mb-1"> Air conditioning </label>
+              <label class="mb-1">
+                Cuisin :{{ fromOptional.get("cuisin").value }}
+              </label>
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1">Description</label>
+              <label class="mb-1">
+                Hygiene :
+                {{ fromOptional.get("hygiene").value.length }}
+                items</label
+              >
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1">
+                Pieces :{{
+                  fromOptional.get("pieces").value.length
+                }}
+                items</label
+              >
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1"
+                >Lime :{{ fromOptional.get("lime").value }}</label
+              >
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1">
+                Availabilty :{{ fromOptional.get("availability").value }}</label
+              >
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1">
+                Air conditioning :{{
+                  fromOptional.get("airCondition").value
+                }}</label
+              >
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1">
+                public Service :{{
+                  fromOptional.get("publicService").value.length
+                }}
+                items</label
+              >
+            </div>
+
+            <div class="form-group my-3">
+              <label class="mb-1"
+                >Description :
+                <div [innerHTML]="fromOptional.get('description').value"></div
+              ></label>
             </div>
           </form>
         </div>
@@ -323,11 +466,12 @@
     </div>
   </div>
   <div class="d-flex justify-content-center my-4">
-    <button class="btn btn-outline-secondary" id="connect-btn" (click)="logData()">
+    <button
+      class="btn btn-outline-secondary"
+      id="connect-btn"
+      (click)="logData()"
+    >
       Create
     </button>
   </div>
-
-
-  <div [innerHTML]="optionalInfo_Form.get('description').value"></div>
 </div>

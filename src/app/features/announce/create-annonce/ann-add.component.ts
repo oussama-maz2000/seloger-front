@@ -33,8 +33,9 @@ export class AnnAddComponent implements OnInit {
 
   willays: { id: string; name: string }[];
 
-  requiredInfo_Form: FormGroup;
-  optionalInfo_Form: FormGroup;
+  fromRequired: FormGroup;
+
+  fromOptional: FormGroup;
   files: File[] = [];
   imgs: string[] = [];
   serviceAccessibilityList = [
@@ -73,22 +74,22 @@ export class AnnAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.requiredInfo_Form = new FormGroup({
-      propType: new FormControl('', [Validators.required]), // Removed the array around Validators.required
-      anncType: new FormControl('', [Validators.required]), // Removed the array around Validators.required
-      willaya: new FormControl('', [Validators.required]), // Removed the array around Validators.required
+    this.fromRequired = new FormGroup({
+      propType: new FormControl('', [Validators.required]),
+      anncType: new FormControl('', [Validators.required]),
+      willaya: new FormControl('', [Validators.required]),
       adrs: new FormControl('', [
         Validators.required,
         Validators.minLength(10),
-      ]), // Removed the array around Validators.required and Validators.minLength(10)
-      etage: new FormControl('', [Validators.required, validateNumber()]), // Removed the array around Validators.required
-      facade: new FormControl('', [Validators.required, validateNumber()]), // Removed the array around Validators.required
-      price: new FormControl('', [Validators.required, validateNumber()]), // Removed the array around Validators.required
-      surface: new FormControl('', [Validators.required, validateNumber()]), // Removed the array around Validators.required
-      juridicType: new FormControl('', [Validators.required]), // Removed the array around Validators.required
+      ]),
+      etage: new FormControl('', [Validators.required, validateNumber()]),
+      facade: new FormControl('', [Validators.required, validateNumber()]),
+      price: new FormControl('', [Validators.required, validateNumber()]),
+      surface: new FormControl('', [Validators.required, validateNumber()]),
+      juridicType: new FormControl('', [Validators.required]),
     });
 
-    this.optionalInfo_Form = new FormGroup({
+    this.fromOptional = new FormGroup({
       title: new FormControl(''),
       description: new FormControl(),
       serviceAccessibility: new FormArray([]),
@@ -103,32 +104,32 @@ export class AnnAddComponent implements OnInit {
   }
 
   logData() {
-    const form = new FormData();
-
-    /*  const property: Property = {
-      propType: this.requiredInfo_Form.get('propType').value,
-      ancType: this.requiredInfo_Form.get('anncType').value,
-      address: this.requiredInfo_Form.get('adrs').value,
-      willaya: this.requiredInfo_Form.get('willaya').value.name,
-      surface: +this.requiredInfo_Form.get('surface').value,
-      price: +this.requiredInfo_Form.get('price').value,
-      etage: +this.requiredInfo_Form.get('etage').value,
-      facade: +this.requiredInfo_Form.get('facade').value,
-      title: this.optionalIngo_Form.get('title').value || null,
-      description: this.optionalIngo_Form.get('description').value || null,
-      serviceAccessibility: this.optionalIngo_Form.get('serviceAccessibility')
+    const property: Property = {
+      propType: this.fromRequired.get('propType').value,
+      ancType: this.fromRequired.get('anncType').value,
+      address: this.fromRequired.get('adrs').value,
+      willaya: this.fromRequired.get('willaya').value.name,
+      surface: +this.fromRequired.get('surface').value,
+      price: +this.fromRequired.get('price').value,
+      etage: +this.fromRequired.get('etage').value,
+      facade: +this.fromRequired.get('facade').value,
+      title: this.fromOptional.get('title').value || null,
+      description: this.fromOptional.get('description').value || null,
+      serviceAccessibility: this.fromOptional.get('serviceAccessibility')
         .value || [null],
-      cuisin: this.optionalIngo_Form.get('cuisin').value || null,
-      hygiene: this.optionalIngo_Form.get('hygiene').value || [null],
-      pieces: this.optionalIngo_Form.get('pieces').value || [null],
-      lime: this.optionalIngo_Form.get('lime').value || null,
-      airConditioning:
-        this.optionalIngo_Form.get('airCondition').value || false,
-      publicService: this.optionalIngo_Form.get('publicService').value || [
-        null,
-      ],
-      availability: this.optionalIngo_Form.get('availability').value || null,
-    }; */
+      cuisin: this.fromOptional.get('cuisin').value || null,
+      hygiene: this.fromOptional.get('hygiene').value || [null],
+      pieces: this.fromOptional.get('pieces').value || [null],
+      lime: this.fromOptional.get('lime').value || null,
+      airConditioning: this.fromOptional.get('airCondition').value || false,
+      publicService: this.fromOptional.get('publicService').value || [null],
+      availability: this.fromOptional.get('availability').value || null,
+    };
+
+    if (this.fromRequired.valid == true && this.files.length > 1) {
+      alert('your property has sent ');
+    }
+    console.log(this.fromRequired.valid);
 
     /* const headers = new HttpHeaders();
     headers.append('Content-Type': 'application/json'); */
@@ -142,12 +143,10 @@ export class AnnAddComponent implements OnInit {
         responseType: 'text',
       })
       .subscribe(console.log); */
-    console.log(this.optionalInfo_Form.get('description').value);
-    console.log(this.optionalInfo_Form.get('serviceAccessibility').value);
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {
-    const checkArray: FormArray = this.optionalInfo_Form.get(
+    const checkArray: FormArray = this.fromOptional.get(
       formControlName
     ) as FormArray;
 
@@ -169,6 +168,7 @@ export class AnnAddComponent implements OnInit {
     /* if (event.addedFiles[0].size < 22222222221000) {
       this.files.push(...event.addedFiles);
     } */
+
     this.files.push(...event.addedFiles);
   }
 
