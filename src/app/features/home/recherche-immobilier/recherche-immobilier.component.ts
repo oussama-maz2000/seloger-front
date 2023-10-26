@@ -9,7 +9,7 @@ import { willaya } from 'src/app/core/shared/willaya';
 })
 export class RechercheImmobilierComponent {
   searchForm: FormGroup;
-  willays: { id: string; name: string }[];
+  willays: string[];
   needs: Array<any> = [
     {
       key: 'appartement',

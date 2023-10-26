@@ -1,12 +1,12 @@
 <div class="continer">
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="card mt-2" style="background-color: rgb(255, 255, 255)">
-        <div class="card-header" id="optional-info">
-          <h5 class="card-title">Optional Information</h5>
-        </div>
-        <div class="card-body">
-          <form [formGroup]="fromOptional">
+  <form [formGroup]="fromRequired">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card mt-2" style="background-color: rgb(255, 255, 255)">
+          <div class="card-header" id="optional-info">
+            <h5 class="card-title">Optional Information</h5>
+          </div>
+          <div class="card-body">
             <div class="form-group my-1">
               <label class="mb-1">Title </label>
               <input type="text" class="form-control" formControlName="title" />
@@ -23,7 +23,7 @@
                   aria-expanded="true"
                 >
                   <div class="data-selected">
-                    {{ fromOptional.get("serviceAccessibility").value }}
+                    {{ fromRequired.get("serviceAccessibility").value }}
                   </div>
                 </div>
                 <div class="dropdown-menu" id="dropdown">
@@ -68,7 +68,7 @@
                   aria-expanded="false"
                 >
                   <div class="data-selected">
-                    {{ fromOptional.get("hygiene").value }}
+                    {{ fromRequired.get("hygiene").value }}
                   </div>
                 </div>
                 <div class="dropdown-menu" id="dropdown">
@@ -100,7 +100,7 @@
                   aria-expanded="false"
                 >
                   <div class="data-selected">
-                    {{ fromOptional.get("pieces").value }}
+                    {{ fromRequired.get("pieces").value }}
                   </div>
                 </div>
                 <div class="dropdown-menu" id="dropdown">
@@ -157,7 +157,7 @@
                   aria-expanded="false"
                 >
                   <div class="data-selected">
-                    {{ fromOptional.get("publicService").value }}
+                    {{ fromRequired.get("publicService").value }}
                   </div>
                 </button>
                 <div class="dropdown-menu" id="dropdown">
@@ -194,19 +194,21 @@
                 </quill-editor>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card mt-2 me-2" style="background-color: rgb(248, 251, 252)">
-        <div class="card-header" id="required-info">
-          <h5 class="card-title">Required Information</h5>
-        </div>
-        <div class="card-body">
-          <form [formGroup]="fromRequired">
+
+      <div class="col-sm-4">
+        <div
+          class="card mt-2 me-2"
+          style="background-color: rgb(248, 251, 252)"
+        >
+          <div class="card-header" id="required-info">
+            <h5 class="card-title">Required Information</h5>
+          </div>
+          <div class="card-body">
             <div class="form-group my-1">
-              <label class="mb-1"> Property Type </label>
+              <label class="mb-1"> Property </label>
 
               <select
                 class="form-select"
@@ -223,7 +225,7 @@
               </div> -->
             </div>
             <div class="form-group my-3">
-              <label class="mb-1"> Annonce Type </label>
+              <label class="mb-1"> Annonce </label>
               <select class="form-select" formControlName="anncType">
                 <option ngValue="SALE">SALE</option>
                 <option ngValue="RENT">RENT</option>
@@ -231,7 +233,7 @@
             </div>
 
             <div class="form-group my-3">
-              <label class="mb-1"> Juridic Type </label>
+              <label class="mb-1"> Juridic </label>
               <select
                 class="form-select"
                 id="prpType"
@@ -245,14 +247,15 @@
 
             <div class="form-group my-3">
               <label class="mb-1">Willaya </label>
-              <ng-select
-                [items]="willays"
-                bindLabel="name"
-                appearance="outline"
-                notFoundText="n'existe pas"
+              <select
+                class="form-select"
+                id="prpType"
                 formControlName="willaya"
               >
-              </ng-select>
+                <option *ngFor="let element of willays" [ngValue]="element">
+                  {{ element }}
+                </option>
+              </select>
             </div>
 
             <div class="form-group my-3">
@@ -303,7 +306,7 @@
             </div>
 
             <div class="form-group my-3">
-              <ngx-dropzone (change)="onSelect($event)">
+              <ngx-dropzone (change)="onSelect($event)" formArrayName="images">
                 <ngx-dropzone-label
                   >select or drop your images</ngx-dropzone-label
                 >
@@ -318,18 +321,16 @@
                 </ngx-dropzone-preview>
               </ngx-dropzone>
             </div>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-sm-4">
-      <div class="card mt-2" style="background-color: rgb(248, 251, 252)">
-        <div class="card-header" id="annonce">
-          <h5 class="card-title">Annonce</h5>
-        </div>
-        <div class="card-body">
-          <form>
+      <div class="col-sm-4">
+        <div class="card mt-2" style="background-color: rgb(248, 251, 252)">
+          <div class="card-header" id="annonce">
+            <h5 class="card-title">Annonce</h5>
+          </div>
+          <div class="card-body">
             <div class="form-group my-1">
               <label class="mb-1">
                 Property Type :
@@ -350,7 +351,7 @@
 
             <div class="form-group my-3">
               <label class="mb-1"
-                >Willaya :{{ fromRequired.get("willaya").value.name }}</label
+                >Willaya :{{ fromRequired.get("willaya").value }}</label
               >
             </div>
 
@@ -390,28 +391,28 @@
 
             <div class="form-group my-3">
               <label class="mb-1">
-                Title :{{ fromOptional.get("title").value }}</label
+                Title :{{ fromRequired.get("title").value }}</label
               >
             </div>
 
             <div class="form-group my-3">
               <label class="mb-1">
                 Service :
-                {{ fromOptional.get("serviceAccessibility").value.length }}
+                {{ fromRequired.get("serviceAccessibility").value.length }}
                 items</label
               >
             </div>
 
             <div class="form-group my-3">
               <label class="mb-1">
-                Cuisin :{{ fromOptional.get("cuisin").value }}
+                Cuisin :{{ fromRequired.get("cuisin").value }}
               </label>
             </div>
 
             <div class="form-group my-3">
               <label class="mb-1">
                 Hygiene :
-                {{ fromOptional.get("hygiene").value.length }}
+                {{ fromRequired.get("hygiene").value.length }}
                 items</label
               >
             </div>
@@ -419,7 +420,7 @@
             <div class="form-group my-3">
               <label class="mb-1">
                 Pieces :{{
-                  fromOptional.get("pieces").value.length
+                  fromRequired.get("pieces").value.length
                 }}
                 items</label
               >
@@ -427,20 +428,20 @@
 
             <div class="form-group my-3">
               <label class="mb-1"
-                >Lime :{{ fromOptional.get("lime").value }}</label
+                >Lime :{{ fromRequired.get("lime").value }}</label
               >
             </div>
 
             <div class="form-group my-3">
               <label class="mb-1">
-                Availabilty :{{ fromOptional.get("availability").value }}</label
+                Availabilty :{{ fromRequired.get("availability").value }}</label
               >
             </div>
 
             <div class="form-group my-3">
               <label class="mb-1">
                 Air conditioning :{{
-                  fromOptional.get("airCondition").value
+                  fromRequired.get("airCondition").value
                 }}</label
               >
             </div>
@@ -448,7 +449,7 @@
             <div class="form-group my-3">
               <label class="mb-1">
                 public Service :{{
-                  fromOptional.get("publicService").value.length
+                  fromRequired.get("publicService").value.length
                 }}
                 items</label
               >
@@ -457,14 +458,14 @@
             <div class="form-group my-3">
               <label class="mb-1"
                 >Description :
-                <div [innerHTML]="fromOptional.get('description').value"></div
+                <div [innerHTML]="fromRequired.get('description').value"></div
               ></label>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
   <div class="d-flex justify-content-center my-4">
     <button
       class="btn btn-outline-secondary"

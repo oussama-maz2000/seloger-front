@@ -18,7 +18,7 @@ export class AddAnnounce implements OnInit {
   //  	       Attributes
   // _______----------------_______
 
-  willays: { id: string; name: string }[];
+  willays: string[];
   serviceAccessibilityList = [
     'ELEVATOR',
     'INTERCOM',

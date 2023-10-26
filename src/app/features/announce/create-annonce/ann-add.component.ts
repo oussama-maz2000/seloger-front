@@ -12,6 +12,7 @@ import { Property } from 'src/app/core/model/property.interface';
 import { AnnonceService } from 'src/app/core/services/annonce.service';
 import { willaya } from 'src/app/core/shared/willaya';
 import { validateNumber } from 'src/app/core/validation/ValidationFn';
+import { log } from 'winston';
 
 @Component({
   selector: 'app-ann-add',
@@ -31,7 +32,7 @@ export class AnnAddComponent implements OnInit {
     },
   };
 
-  willays: { id: string; name: string }[];
+  willays: string[];
 
   fromRequired: FormGroup;
 
@@ -87,62 +88,46 @@ export class AnnAddComponent implements OnInit {
       price: new FormControl('', [Validators.required, validateNumber()]),
       surface: new FormControl('', [Validators.required, validateNumber()]),
       juridicType: new FormControl('', [Validators.required]),
-    });
-
-    this.fromOptional = new FormGroup({
-      title: new FormControl(''),
+      title: new FormControl(),
       description: new FormControl(),
       serviceAccessibility: new FormArray([]),
-      cuisin: new FormControl(''),
+      cuisin: new FormControl(),
       hygiene: new FormArray([]),
       pieces: new FormArray([]),
-      lime: new FormControl(''),
-      availability: new FormControl(''),
+      lime: new FormControl(),
+      availability: new FormControl(),
       airCondition: new FormControl(),
       publicService: new FormArray([]),
+      images: new FormArray([]),
     });
+
+    this.fromOptional = new FormGroup({});
   }
 
   logData() {
-    const property: Property = {
-      propType: this.fromRequired.get('propType').value,
-      ancType: this.fromRequired.get('anncType').value,
-      address: this.fromRequired.get('adrs').value,
-      willaya: this.fromRequired.get('willaya').value.name,
-      surface: +this.fromRequired.get('surface').value,
-      price: +this.fromRequired.get('price').value,
-      etage: +this.fromRequired.get('etage').value,
-      facade: +this.fromRequired.get('facade').value,
-      title: this.fromOptional.get('title').value || null,
-      description: this.fromOptional.get('description').value || null,
-      serviceAccessibility: this.fromOptional.get('serviceAccessibility')
-        .value || [null],
-      cuisin: this.fromOptional.get('cuisin').value || null,
-      hygiene: this.fromOptional.get('hygiene').value || [null],
-      pieces: this.fromOptional.get('pieces').value || [null],
-      lime: this.fromOptional.get('lime').value || null,
-      airConditioning: this.fromOptional.get('airCondition').value || false,
-      publicService: this.fromOptional.get('publicService').value || [null],
-      availability: this.fromOptional.get('availability').value || null,
-    };
+    const formData = new FormData();
 
-    if (this.fromRequired.valid == true && this.files.length > 1) {
-      alert('your property has sent ');
+    // Append files to formData
+    for (const file of this.files) {
+      formData.append('file', file, file.name);
     }
-    console.log(this.fromRequired.valid);
 
-    /* const headers = new HttpHeaders();
-    headers.append('Content-Type': 'application/json'); */
+    // Append form data to the same formData
+    formData.append('requiredInfo', JSON.stringify(this.fromRequired.value));
 
-    /*   const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    }); */
-    /*  this.http
-      .post('/api/announce/post/annonce', [property], {
-        headers: headers,
-        responseType: 'text',
-      })
-      .subscribe(console.log); */
+    if (this.fromRequired.valid && this.files.length > 1) {
+      const headers = new HttpHeaders();
+      headers.append('Accept', '*/*');
+      headers.append('Content-Type', 'multipart/form-data');
+
+      /*  this.http
+        .post('/api/announce/post/annonce', formData, {
+          headers: headers,
+          responseType: 'text',
+        })
+        .subscribe(console.log); */
+      console.log(this.fromRequired.value);
+    }
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {
@@ -165,11 +150,14 @@ export class AnnAddComponent implements OnInit {
   }
 
   onSelect(event: any): void {
-    /* if (event.addedFiles[0].size < 22222222221000) {
+    /* if (event.addedFiles[0].size < 2222222222) {
       this.files.push(...event.addedFiles);
     } */
-
+    const imageArray = this.fromRequired.get('images') as FormArray;
     this.files.push(...event.addedFiles);
+    for (const file of this.files) {
+      imageArray.push(new FormControl(file));
+    }
   }
 
   onRemove(event) {

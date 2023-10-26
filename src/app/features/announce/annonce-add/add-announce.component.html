@@ -1,15 +1,21 @@
 <div class="contianer">
-
-
   <div class="card mt-2">
-
     <div class="card-header mb-2">
       <div class="d-flex justify-content-between">
         <h5>Required Information</h5>
 
         <div class="form-group">
-          <button data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-            aria-controls="collapseExample" type="button" class="btn btn-success">Valid</button>
+          <button
+            data-bs-toggle="collapse"
+            href="#collapseExample"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+            type="button"
+            class="btn btn-success"
+          >
+            Valid
+          </button>
         </div>
       </div>
     </div>
@@ -19,7 +25,6 @@
         <div class="row">
           <div class="col-sm-4">
             <div>
-
               <div class="form-group mt-2">
                 <label class="mb-1"> Property Type </label>
                 <select class="form-select" id="prpType">
@@ -33,21 +38,14 @@
                 <input type="text" class="form-control" id="address" />
               </div>
 
-
               <div class="form-group mt-2">
                 <label class="mb-1">Price DZ </label>
                 <input type="number" class="form-control" />
               </div>
-
-
             </div>
           </div>
           <div class="col-sm-4">
-
-
-
             <div>
-
               <div class="form-group mt-2">
                 <label class="mb-1"> Annonce Type </label>
                 <select class="form-select">
@@ -65,20 +63,15 @@
                 <input type="text" class="form-control" />
               </div>
             </div>
-
-
-
-
-
-
-
           </div>
-          <div class="col-sm-4 ">
+          <div class="col-sm-4">
             <div>
               <div class="form-group mt-2">
                 <label class="mb-1"> willaya </label>
                 <select class="form-select">
-                  <option *ngFor="let element of willays" [ngValue]="element.id">{{element.name}}</option>
+                  <option *ngFor="let element of willays" [ngValue]="element">
+                    {{ element }}
+                  </option>
                 </select>
               </div>
 
@@ -86,7 +79,6 @@
                 <label class="mb-1">Facade </label>
                 <input type="number" class="form-control" />
               </div>
-
 
               <div class="form-group mt-2">
                 <label class="mb-1"> Juridic Type *</label>
@@ -97,38 +89,37 @@
                 </select>
               </div>
             </div>
-
           </div>
         </div>
-
-
       </div>
     </div>
-
   </div>
 
-
   <div class="card mt-3">
-
     <div class="card-header mb-2">
       <div class="d-flex justify-content-between">
         <h5>Optional Information</h5>
 
         <div class="form-group">
-          <button data-bs-toggle="collapse" href="#optioanlCollapse" role="button" aria-expanded="false"
-            aria-controls="optioanlCollapse" type="button" class="btn btn-warning">Valid</button>
+          <button
+            data-bs-toggle="collapse"
+            href="#optioanlCollapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="optioanlCollapse"
+            type="button"
+            class="btn btn-warning"
+          >
+            Valid
+          </button>
         </div>
       </div>
     </div>
 
     <div class="collapse" id="optioanlCollapse">
-
       <div class="card-body">
         <div class="row">
-
           <div class="col-sm-4">
-
-
             <div class="form-group mt-2">
               <label class="mb-1">Title </label>
               <input type="text" class="form-control" id="title" />
@@ -136,20 +127,14 @@
 
             <div class="form-group mt-2">
               <label class="mb-1">Availabilty </label>
-              <input type="text" class="form-control" formControlName="availability" />
+              <input
+                type="text"
+                class="form-control"
+                formControlName="availability"
+              />
             </div>
-
-
-
-
-
-
-
-
           </div>
           <div class="col-sm-4">
-
-
             <div class="form-group mt-2">
               <label class="mb-1"> Cuisin</label>
               <select class="form-select" formControlName="cuisin">
@@ -157,8 +142,6 @@
                 <option ngValue="SEPERATE">SEPERATE</option>
               </select>
             </div>
-
-
 
             <div class="form-group mt-2">
               <label class="mb-1">Air conditioning</label>
@@ -177,19 +160,30 @@
             </div>
           </div>
 
-          <div class="col-sm-4 ">
+          <div class="col-sm-4">
             <div>
               <div class="form-group mt-4">
                 <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                  <button
+                    class="btn btn-primary dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
                     Pieces
                   </button>
                   <div class="dropdown-menu">
-                    <a *ngFor="let item of piecesList; let i = index" class="dropdown-item">
+                    <a
+                      *ngFor="let item of piecesList; let i = index"
+                      class="dropdown-item"
+                    >
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [value]="item"
-                          (change)="addOrRemoveFormControl($event, 'pieces')" />
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          [value]="item"
+                          (change)="addOrRemoveFormControl($event, 'pieces')"
+                        />
                         <label class="form-check-label">
                           {{ item }}
                         </label>
@@ -200,37 +194,65 @@
               </div>
               <div class="form-group mt-4">
                 <div class="dropdown mt-1">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                  <button
+                    class="btn btn-primary dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
                     Services
                   </button>
                   <div class="dropdown-menu">
-                    <a *ngFor="let item of serviceAccessibilityList; let i = index" class="dropdown-item">
+                    <a
+                      *ngFor="
+                        let item of serviceAccessibilityList;
+                        let i = index
+                      "
+                      class="dropdown-item"
+                    >
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [value]="item"
-                          (change)="addOrRemoveFormControl($event, 'serviceAccessibility')" />
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          [value]="item"
+                          (change)="
+                            addOrRemoveFormControl(
+                              $event,
+                              'serviceAccessibility'
+                            )
+                          "
+                        />
                         <label class="form-check-label">
                           {{ item }}
                         </label>
                       </div>
                     </a>
                   </div>
-
                 </div>
               </div>
 
               <div class="form-group mt-4">
-
                 <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                  <button
+                    class="btn btn-primary dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
                     Hygiene
                   </button>
                   <div class="dropdown-menu">
-                    <a *ngFor="let item of hygieneList; let i = index" class="dropdown-item">
+                    <a
+                      *ngFor="let item of hygieneList; let i = index"
+                      class="dropdown-item"
+                    >
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [value]="item"
-                          (change)="addOrRemoveFormControl($event, 'hygiene')" />
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          [value]="item"
+                          (change)="addOrRemoveFormControl($event, 'hygiene')"
+                        />
                         <label class="form-check-label">
                           {{ item }}
                         </label>
@@ -240,19 +262,30 @@
                 </div>
               </div>
 
-
               <div class="form-group mt-4">
-
                 <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                  <button
+                    class="btn btn-primary dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
                     Service Public
                   </button>
                   <div class="dropdown-menu">
-                    <a *ngFor="let item of publicServcieList; let i = index" class="dropdown-item">
+                    <a
+                      *ngFor="let item of publicServcieList; let i = index"
+                      class="dropdown-item"
+                    >
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [value]="item"
-                          (change)="addOrRemoveFormControl($event, 'publicService')" />
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          [value]="item"
+                          (change)="
+                            addOrRemoveFormControl($event, 'publicService')
+                          "
+                        />
                         <label class="form-check-label">
                           {{ item }}
                         </label>
@@ -261,25 +294,11 @@
                   </div>
                 </div>
               </div>
-
-
-
             </div>
-
           </div>
-
-
-
         </div>
-
       </div>
-
-
     </div>
-
-
-
   </div>
   <!-- <app-text-edit></app-text-edit> -->
-
 </div>
