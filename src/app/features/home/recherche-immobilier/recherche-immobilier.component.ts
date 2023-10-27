@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { willaya } from 'src/app/core/shared/willaya';
+import { willaya } from 'src/app/core/shared/data';
 
 @Component({
   selector: 'app-recherche-immobilier',

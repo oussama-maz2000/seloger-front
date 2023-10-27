@@ -53,8 +53,8 @@
             <div class="form-group my-3">
               <label class="mb-1"> Cuisin</label>
               <select class="form-select" formControlName="cuisin">
-                <option ngValue="CORNER">CORNER</option>
-                <option ngValue="SEPERATE">SEPERATE</option>
+                <option ngValue="CORNER">corner</option>
+                <option ngValue="SEPERATE">seperate</option>
               </select>
             </div>
 
@@ -125,8 +125,8 @@
             <div class="form-group my-3">
               <label class="mb-1"> Lime</label>
               <select class="form-select" formControlName="lime">
-                <option value="CENTRAL">CENTRAL</option>
-                <option value="CHIMNEY">CHIMNEY</option>
+                <option value="CENTRAL">central</option>
+                <option value="CHIMNEY">chimney</option>
               </select>
             </div>
 
@@ -142,8 +142,8 @@
             <div class="form-group my-3">
               <label class="mb-1">Air conditioning</label>
               <select class="form-select" formControlName="airCondition">
-                <option ngValue="YES">YES</option>
-                <option ngValue="NO">NO</option>
+                <option ngValue="yes">yes</option>
+                <option ngValue="no">no</option>
               </select>
             </div>
 
@@ -201,7 +201,7 @@
       <div class="col-sm-4">
         <div
           class="card mt-2 me-2"
-          style="background-color: rgb(248, 251, 252)"
+          style="background-color: rgb(244, 251, 253)"
         >
           <div class="card-header" id="required-info">
             <h5 class="card-title">Required Information</h5>
@@ -215,8 +215,8 @@
                 id="prpType"
                 formControlName="propType"
               >
-                <option ngValue="HOUSE">HOUSE</option>
-                <option ngValue="APARTMENT">APARTMENT</option>
+                <option ngValue="HOUSE">house</option>
+                <option ngValue="APARTMENT">apartment</option>
               </select>
               <!-- <div *ngIf="!fromRequired.get('propType').valid ">
                 <span *ngIf="fromRequired.get('propType').errors?.['required']">
@@ -227,8 +227,8 @@
             <div class="form-group my-3">
               <label class="mb-1"> Annonce </label>
               <select class="form-select" formControlName="anncType">
-                <option ngValue="SALE">SALE</option>
-                <option ngValue="RENT">RENT</option>
+                <option ngValue="SALE">sale</option>
+                <option ngValue="RENT">rent</option>
               </select>
             </div>
 
@@ -239,9 +239,9 @@
                 id="prpType"
                 formControlName="juridicType"
               >
-                <option ngValue="XXX">XXX</option>
-                <option ngValue="YYY">YYY</option>
-                <option ngValue="ZZZ">ZZZ</option>
+                <option ngValue="XXX">xxx</option>
+                <option ngValue="YYY">yyy</option>
+                <option ngValue="ZZZ">zzz</option>
               </select>
             </div>
 
@@ -264,7 +264,7 @@
                 type="text"
                 class="form-control"
                 id="address"
-                formControlName="adrs"
+                formControlName="address"
               />
             </div>
 
@@ -326,7 +326,7 @@
       </div>
 
       <div class="col-sm-4">
-        <div class="card mt-2" style="background-color: rgb(248, 251, 252)">
+        <div class="card mt-2" style="background-color: rgb(248, 248, 248)">
           <div class="card-header" id="annonce">
             <h5 class="card-title">Annonce</h5>
           </div>
@@ -357,7 +357,7 @@
 
             <div class="form-group my-3">
               <label class="mb-1"
-                >Address :{{ this.fromRequired.get("adrs").value }}</label
+                >Address :{{ this.fromRequired.get("address").value }}</label
               >
             </div>
 
@@ -470,7 +470,7 @@
     <button
       class="btn btn-outline-secondary"
       id="connect-btn"
-      (click)="logData()"
+      (click)="sendData()"
     >
       Create
     </button>
