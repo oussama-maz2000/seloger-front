@@ -93,15 +93,17 @@ export class CreateAnnonceComponent implements OnInit {
 
     if (this.fromRequired.valid) {
       const headers = new HttpHeaders({
-        Accept: '*/*',
+        //     Accept: '*/*',
       });
-      this.http
-        .post('/api/announce/post/annonce', form, {
-          headers: headers,
-          responseType: 'text',
-        })
-        .subscribe(console.log);
+      /*  this.http
+         .post('/api/announce/post/annonce', form, {
+           headers: headers,
+           responseType: 'text',
+         })
+         .subscribe(console.log);
+     } */
     }
+    console.log(this.fromRequired.value);
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {

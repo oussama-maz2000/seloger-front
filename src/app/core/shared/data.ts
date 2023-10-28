@@ -65,29 +65,29 @@ export const serviceAccessibilityList = [
   'CHIP PORT',
   'GUARDIAN',
   'PARKING',
-  'COLLECTION PARABLES',
+  'COLLECTION_PARABLES',
   'INTERNET',
 ];
 
 export const hygieneList = [
   'WATER_ANK',
-  'WATER PUMP',
+  'WATER_PUMP',
   'BATHROOM',
-  'SEPARATE TOILET',
-  'NO SEPARATE TOILET',
+  'SEPARATE_TOILET',
+  'NO_SEPARATE_TOILET',
 ];
 
 export const piecesList = ['SALON', 'TERRACE', 'BALCONY', 'CLOSETS', 'GARDEN'];
 
 export const publicServcieList = [
-  'PRIMARY SCHOOL',
-  'SECONDARY SCHOOL',
-  'HIGH SCHOOL',
+  'PRIMARY_SCHOOL',
+  'SECONDARY_SCHOOL',
+  'HIGH_SCHOOL',
   'BALCONY',
   'BANK',
-  'PUBLIC GARDEN',
+  'PUBLIC_GARDEN',
   'COURT',
-  'TOWN HALL',
+  'TOWN_HALL',
 ];
 
 export const quillConfig = {
