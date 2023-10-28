@@ -62,19 +62,19 @@ export const willaya = [
 export const serviceAccessibilityList = [
   'ELEVATOR',
   'INTERCOM',
-  'CHIP PORT',
+  'CHIP_PORT',
   'GUARDIAN',
   'PARKING',
-  'COLLECTION_PARABLES',
   'INTERNET',
+  'COLLECTION_PARABLES',
 ];
 
 export const hygieneList = [
-  'WATER_ANK',
+  'WATER_TANK',
   'WATER_PUMP',
-  'BATHROOM',
   'SEPARATE_TOILET',
   'NO_SEPARATE_TOILET',
+  'BATHROOM',
 ];
 
 export const piecesList = ['SALON', 'TERRACE', 'BALCONY', 'CLOSETS', 'GARDEN'];
@@ -83,7 +83,6 @@ export const publicServcieList = [
   'PRIMARY_SCHOOL',
   'SECONDARY_SCHOOL',
   'HIGH_SCHOOL',
-  'BALCONY',
   'BANK',
   'PUBLIC_GARDEN',
   'COURT',
