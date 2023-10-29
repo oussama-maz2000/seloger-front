@@ -82,6 +82,7 @@ export class CreateAnnonceComponent implements OnInit {
       this.fromRequired.get('serviceAccessibility').value
     );
     form.append('cuisin', this.fromRequired.get('cuisin').value);
+    form.append('lime', this.fromRequired.get('lime').value);
     form.append('hygiene', this.fromRequired.get('hygiene').value);
     form.append('pieces', this.fromRequired.get('pieces').value);
     form.append('availability', this.fromRequired.get('availability').value);
