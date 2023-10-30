@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,6 +41,8 @@ import { EntityDataModule, EntityDataService } from '@ngrx/data';
 import { AnnounceDataService } from './core/services/announce-service/announce.data.service';
 import { entityConfiguration } from './app-entity-metadat';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { appReducer } from './core/store';
 
 @NgModule({
   declarations: [
@@ -82,8 +84,9 @@ import { StoreModule } from '@ngrx/store';
     BrowserAnimationsModule,
     QuillModule.forRoot(),
     NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
-    StoreModule.forRoot(),
+    StoreModule.forRoot(appReducer),
     EntityDataModule.forRoot(entityConfiguration),
+    StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [NgxSpinnerModule],

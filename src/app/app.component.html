@@ -1,6 +1,6 @@
 <app-header></app-header>
+<app-spinner *ngIf="showLoading | async"></app-spinner>
 <router-outlet></router-outlet>
-<!-- <app-spinner></app-spinner> -->
 <!-- <quill-editor class="content-editor" [placeholder]="''"> </quill-editor> -->
 
 <!-- <app-immobilier-template *ngFor="let i of appartements" [data]="i"></app-immobilier-template> -->
