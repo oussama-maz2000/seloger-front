@@ -1,6 +1,6 @@
 import { TypeImmobilier } from './type-immobilier.enum';
 
-export interface Property {
+export interface Announce {
   propType: string;
   ancType: string;
   address: string;

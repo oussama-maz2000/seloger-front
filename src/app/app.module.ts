@@ -15,7 +15,7 @@ import { ImmobilierTemplateComponent } from './features/test/immobilier-template
 import { ImageSliderComponent } from './features/test/image-slider/image-slider.component';
 import { LogInComponent } from './features/log-in/log-in.component';
 import { SignUpComponent } from './features/sign-up/sign-up.component';
-import { AnnonceService } from './core/services/annonce.service';
+
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
@@ -35,6 +35,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { QuillModule } from 'ngx-quill';
+import { SpinnerComponent } from './core/shared/spinner/spinner.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { EntityDataModule, EntityDataService } from '@ngrx/data';
+import { AnnounceDataService } from './core/services/announce-service/announce.data.service';
+import { entityConfiguration } from './app-entity-metadat';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -49,6 +55,7 @@ import { QuillModule } from 'ngx-quill';
     ImageSliderComponent,
     LogInComponent,
     SignUpComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,9 +81,20 @@ import { QuillModule } from 'ngx-quill';
     MdbValidationModule,
     BrowserAnimationsModule,
     QuillModule.forRoot(),
+    NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
+    StoreModule.forRoot(),
+    EntityDataModule.forRoot(entityConfiguration),
   ],
-
-  providers: [AnnonceService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [NgxSpinnerModule],
+  providers: [AnnounceDataService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(
+    entityDataService: EntityDataService,
+    announceDataService: AnnounceDataService
+  ) {
+    entityDataService.registerService('Announce', announceDataService);
+  }
+}
