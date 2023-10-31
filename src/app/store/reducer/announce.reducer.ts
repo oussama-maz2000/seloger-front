@@ -13,5 +13,7 @@ export function reducer(
         announce: action.payload,
       };
     }
+    default:
+      return state;
   }
 }

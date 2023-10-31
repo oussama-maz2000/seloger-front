@@ -5,8 +5,13 @@ import { State } from '..';
 import { Router } from '@angular/router';
 import { AnnounceService } from 'src/app/core/services/announce-service/annonce.service';
 
-import { ActionTypes, AddAnnounceErrorAction } from '../action/announce.action';
+import {
+  ActionTypes,
+  AddAnnounceErrorAction,
+  AddAnnounceSuccessAction,
+} from '../action/announce.action';
 import { catchError, mergeMap, of } from 'rxjs';
+import { ShowLoadingAction } from '../action/shared.action';
 
 @Injectable()
 export class AnnounceEffect {
@@ -23,8 +28,10 @@ export class AnnounceEffect {
       mergeMap((actionData: any) =>
         this.announceService.addAnnounce(actionData.payload).pipe(
           mergeMap((data: any) => {
+            this.store.dispatch(new ShowLoadingAction(true));
             console.log(data);
-            return of(data);
+
+            return [new AddAnnounceSuccessAction(data)];
           }),
           catchError((error) => {
             console.log(error);

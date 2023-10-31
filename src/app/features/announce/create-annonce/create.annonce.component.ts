@@ -16,6 +16,7 @@ import {
 import { validateNumber } from 'src/app/core/validation/ValidationFn';
 import { State } from 'src/app/store';
 import { AddAnnounceAction } from 'src/app/store/action/announce.action';
+import { ShowLoadingAction } from 'src/app/store/action/shared.action';
 
 @Component({
   selector: 'app-ann-add',
@@ -98,15 +99,14 @@ export class CreateAnnonceComponent implements OnInit {
     }
 
     /* if (this.fromRequired.valid) {} */
-    console.log('announce sent');
-    this.store.dispatch(new AddAnnounceAction(form));
 
-    /* this.http
-        .post('/api/announce/post/annonce', form, {
-          headers: headers,
-          responseType: 'text',
-        })
-        .subscribe(console.log); */
+    this.store.dispatch(new AddAnnounceAction(form));
+    this.store.dispatch(new ShowLoadingAction(true));
+    /*  this.http
+      .post('/api/announce/post/annonce', form, {
+        responseType: 'text',
+      })
+      .subscribe(console.log); */
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {
