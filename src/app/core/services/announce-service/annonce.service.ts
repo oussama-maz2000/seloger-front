@@ -1,12 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  EntityCollectionServiceBase,
-  EntityCollectionServiceElementsFactory,
-} from '@ngrx/data';
-import { Announce } from '../../model/property.interface';
+
 @Injectable({ providedIn: 'root' })
-export class AnnounceService extends EntityCollectionServiceBase<Announce> {
-  constructor(serviceElementFactory: EntityCollectionServiceElementsFactory) {
-    super('Announce', serviceElementFactory);
+export class AnnounceService {
+  constructor(private http: HttpClient) {}
+
+  addAnnounce(annonces: any) {
+    console.log(annonces);
+    return this.http.post('/api/announce/post/annonce', annonces, {
+      responseType: 'text',
+    });
   }
 }

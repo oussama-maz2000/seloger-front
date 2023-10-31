@@ -15,7 +15,6 @@ import { ImmobilierTemplateComponent } from './features/test/immobilier-template
 import { ImageSliderComponent } from './features/test/image-slider/image-slider.component';
 import { LogInComponent } from './features/log-in/log-in.component';
 import { SignUpComponent } from './features/sign-up/sign-up.component';
-
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
@@ -33,16 +32,16 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
 import { QuillModule } from 'ngx-quill';
 import { SpinnerComponent } from './core/shared/spinner/spinner.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { EntityDataModule, EntityDataService } from '@ngrx/data';
-import { AnnounceDataService } from './core/services/announce-service/announce.data.service';
-import { entityConfiguration } from './app-entity-metadat';
+
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { appReducer } from './core/store';
+
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from './store';
+import { AnnounceEffect } from './store/effect/announce.effect';
 
 @NgModule({
   declarations: [
@@ -84,20 +83,18 @@ import { appReducer } from './core/store';
     BrowserAnimationsModule,
     QuillModule.forRoot(),
     NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
-    StoreModule.forRoot(appReducer),
-    EntityDataModule.forRoot(entityConfiguration),
-    StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictStateImmutability: false,
+        strictActionImmutability: false,
+      },
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([AnnounceEffect]),
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   exports: [NgxSpinnerModule],
-  providers: [AnnounceDataService],
+  providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor(
-    entityDataService: EntityDataService,
-    announceDataService: AnnounceDataService
-  ) {
-    entityDataService.registerService('Announce', announceDataService);
-  }
-}
+export class AppModule {}

@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Announce } from 'src/app/core/model/announce.interface';
+import { AnnounceService } from 'src/app/core/services/announce-service/annonce.service';
 
 import {
   willaya,
@@ -11,6 +14,8 @@ import {
   quillConfig,
 } from 'src/app/core/shared/data';
 import { validateNumber } from 'src/app/core/validation/ValidationFn';
+import { State } from 'src/app/store';
+import { AddAnnounceAction } from 'src/app/store/action/announce.action';
 
 @Component({
   selector: 'app-ann-add',
@@ -27,7 +32,7 @@ export class CreateAnnonceComponent implements OnInit {
   fromRequired: FormGroup;
   files: File[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private store: Store<State>) {
     this.willays = willaya;
     this.serviceAccessibilityList = serviceAccessibilityList;
     this.hygieneList = hygieneList;
@@ -92,17 +97,16 @@ export class CreateAnnonceComponent implements OnInit {
       form.append('images', file);
     }
 
-    if (this.fromRequired.valid) {
-      const headers = new HttpHeaders({
-        //     Accept: '*/*',
-      });
-      this.http
+    /* if (this.fromRequired.valid) {} */
+    console.log('announce sent');
+    this.store.dispatch(new AddAnnounceAction(form));
+
+    /* this.http
         .post('/api/announce/post/annonce', form, {
           headers: headers,
           responseType: 'text',
         })
-        .subscribe(console.log);
-    }
+        .subscribe(console.log); */
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {

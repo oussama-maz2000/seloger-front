@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getLoading } from './core/store/selector/shared.selector';
+import { getLoading } from './store/selector/shared.selector';
 
 @Component({
   selector: 'app-root',

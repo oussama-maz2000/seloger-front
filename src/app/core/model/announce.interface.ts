@@ -7,6 +7,7 @@ export interface Announce {
   willaya: string;
   surface: number;
   price: number;
+  juridicType: string;
   etage: number;
   facade: number;
   title?: string;
@@ -16,7 +17,8 @@ export interface Announce {
   hygiene?: string[];
   pieces?: string[];
   lime?: string;
-  airConditioning?: boolean;
+  airCondition?: boolean;
   publicService?: string[];
   availability?: string;
+  images: File[];
 }
