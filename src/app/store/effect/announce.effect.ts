@@ -28,7 +28,7 @@ export class AnnounceEffect {
       mergeMap((actionData: any) =>
         this.announceService.addAnnounce(actionData.payload).pipe(
           mergeMap((data: any) => {
-            this.store.dispatch(new ShowLoadingAction(true));
+            this.store.dispatch(new ShowLoadingAction(false));
             console.log(data);
 
             return [new AddAnnounceSuccessAction(data)];

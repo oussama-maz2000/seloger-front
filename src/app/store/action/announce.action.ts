@@ -1,5 +1,4 @@
-import { Action, createAction, props } from '@ngrx/store';
-import { Announce } from 'src/app/core/model/announce.interface';
+import { Action } from '@ngrx/store';
 import { type } from 'src/app/core/utils/utils';
 
 export const ActionTypes = {
@@ -16,7 +15,7 @@ export class AddAnnounceAction implements Action {
 export class AddAnnounceSuccessAction implements Action {
   readonly type = ActionTypes.ADD_ANNOUNCE_SUCCESS;
 
-  constructor(public payload: Announce) {}
+  constructor(public payload: any) {}
 }
 
 export class AddAnnounceErrorAction implements Action {

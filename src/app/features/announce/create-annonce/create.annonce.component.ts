@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Announce } from 'src/app/core/model/announce.interface';
 import { AnnounceService } from 'src/app/core/services/announce-service/annonce.service';
 
 import {
