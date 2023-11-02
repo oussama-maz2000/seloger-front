@@ -1,6 +1,7 @@
 import { TypeImmobilier } from './type-immobilier.enum';
 
-export interface AnnounceRequest {
+export interface Announce {
+  anncID?: number;
   propType: string;
   ancType: string;
   address: string;
@@ -20,11 +21,11 @@ export interface AnnounceRequest {
   airCondition?: boolean;
   publicService?: string[];
   availability?: string;
-  images: File[];
+  images?: File[];
+  imgPaths?: string[];
 }
 
-export interface AnnounceResponse {
-  anncID: number;
+/* export interface AnnounceResponse {
   propType: string;
   anncType: string;
   juridicType: string;
@@ -40,5 +41,4 @@ export interface AnnounceResponse {
   airCondition?: boolean;
   publicService?: string[];
   availability?: string;
-  imgPaths: string[];
-}
+} */

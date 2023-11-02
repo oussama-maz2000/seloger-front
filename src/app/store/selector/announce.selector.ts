@@ -1,10 +1,16 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AnnounceState } from '../state/announce.state';
+import { announceAdapter } from '../entity/announce.entity';
 
-export const profileSelector =
+const getAnnounceState =
   createFeatureSelector<AnnounceState>('announceReducer');
+const announceSelectore = announceAdapter.getSelectors();
+const getAnnounceEntities = createSelector(
+  getAnnounceState,
+  announceSelectore.selectEntities
+);
 
-export const getProfile = createSelector(
-  profileSelector,
-  (announceState: AnnounceState) => announceState.announce
+export const getAnnounces = createSelector(
+  getAnnounceState,
+  announceSelectore.selectAll
 );

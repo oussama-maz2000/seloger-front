@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AnnounceService } from 'src/app/core/services/announce-service/annonce.service';
+import { Announce } from 'src/app/core/model/announce.interface';
 
 import {
   willaya,
@@ -14,8 +14,8 @@ import {
 } from 'src/app/core/shared/data';
 import { validateNumber } from 'src/app/core/validation/ValidationFn';
 import { State } from 'src/app/store';
-import { AddAnnounceAction } from 'src/app/store/action/announce.action';
-import { ShowLoadingAction } from 'src/app/store/action/shared.action';
+import { addAnnounceAction } from 'src/app/store/action/announce.action';
+import { SpinnerAction } from 'src/app/store/action/shared.action';
 
 @Component({
   selector: 'app-ann-add',
@@ -58,10 +58,10 @@ export class CreateAnnonceComponent implements OnInit {
       title: new FormControl(),
       description: new FormControl(),
       serviceAccessibility: new FormArray([]),
-      cuisin: new FormControl(),
+      cuisin: new FormControl(''),
       hygiene: new FormArray([]),
       pieces: new FormArray([]),
-      lime: new FormControl(),
+      lime: new FormControl(''),
       availability: new FormControl(),
       airCondition: new FormControl(),
       publicService: new FormArray([]),
@@ -97,10 +97,14 @@ export class CreateAnnonceComponent implements OnInit {
       form.append('images', file);
     }
 
+    const formValues = form;
     /* if (this.fromRequired.valid) {} */
 
-    this.store.dispatch(new AddAnnounceAction(form));
-    this.store.dispatch(new ShowLoadingAction(true));
+    this.store.dispatch(addAnnounceAction({ formValues }));
+    this.store.dispatch(SpinnerAction({ status: true }));
+
+    console.log(this.fromRequired.value);
+
     /*  this.http
       .post('/api/announce/post/annonce', form, {
         responseType: 'text',

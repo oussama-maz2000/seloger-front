@@ -1,15 +1,17 @@
 import { SharedState, initialSharedState } from '../state/shared.state';
-import * as sharedAction from '../action/shared.action';
+import { SpinnerAction } from '../action/shared.action';
+import { createReducer, on } from '@ngrx/store';
 
-export function reducer(state = initialSharedState, action: any): SharedState {
-  switch (action.type) {
-    case sharedAction.ActionTypes.SHOW_LOADING: {
-      return {
-        ...state,
-        showLoading: action.payload,
-      };
-    }
-    default:
-      return state;
-  }
+const _sharedReducer = createReducer(
+  initialSharedState,
+  on(SpinnerAction, (state, action) => {
+    return {
+      ...state,
+      showLoading: action.status,
+    };
+  })
+);
+
+export function reducer(state, action) {
+  return _sharedReducer(state, action);
 }
