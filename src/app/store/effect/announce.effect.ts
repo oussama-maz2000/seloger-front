@@ -8,12 +8,15 @@ import { AnnounceService } from 'src/app/core/services/announce-service/annonce.
 import {
   ActionTypes,
   AddAnnounceSuccessAction,
+  LoadAnnounceAction,
+  LoadAnnounceSuccessAction,
   addAnnounceAction,
 } from '../action/announce.action';
-import { catchError, map, mergeMap, of } from 'rxjs';
+import { catchError, map, mergeMap, of, withLatestFrom } from 'rxjs';
 
 import { Announce } from 'src/app/core/model/announce.interface';
 import { SpinnerAction } from '../action/shared.action';
+import { getAnnounces } from '../selector/announce.selector';
 
 @Injectable()
 export class AnnounceEffect {
@@ -50,7 +53,7 @@ export class AnnounceEffect {
         ofType(addAnnounceAction),
         mergeMap((action) => {
           return this.announceService.addAnnounce(action.formValues).pipe(
-            map((data: Announce) => {
+            map((data: Announce[]) => {
               this.store.dispatch(SpinnerAction({ status: false }));
               this.store.dispatch(AddAnnounceSuccessAction({ announce: data }));
               this.router.navigate(['/']);
@@ -61,4 +64,22 @@ export class AnnounceEffect {
     },
     { dispatch: false }
   );
+
+  loadPosts$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(LoadAnnounceAction),
+      withLatestFrom(this.store.select(getAnnounces)),
+      mergeMap(([action, annonce]) => {
+        if (!annonce.length || annonce.length === 1) {
+          return this.announceService.getAllAnnounces().pipe(
+            map((announces: any[]) => {
+              console.log(announces);
+              return LoadAnnounceSuccessAction({ announces });
+            })
+          );
+        }
+        return of();
+      })
+    );
+  });
 }
