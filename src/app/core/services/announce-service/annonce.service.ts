@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Announce } from '../../model/announce.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AnnounceService {
@@ -12,6 +13,14 @@ export class AnnounceService {
   }
 
   getAllAnnounces() {
-    return this.http.get('/api/announce/get/announces');
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get('/api/announce/get/announces', { headers }).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }

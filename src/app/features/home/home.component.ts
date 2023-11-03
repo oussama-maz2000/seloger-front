@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { AnnounceService } from 'src/app/core/services/announce-service/annonce.service';
 import {
   LoadAnnounceAction,
   LoadAnnounceSuccessAction,
@@ -12,9 +13,10 @@ import { getAnnounces } from 'src/app/store/selector/announce.selector';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private store: Store) {}
+  constructor(private store: Store, private anncService: AnnounceService) {}
   ngOnInit(): void {
-    this.store.dispatch(LoadAnnounceAction());
-    this.store.select(getAnnounces).subscribe(console.log);
+    /* this.store.dispatch(LoadAnnounceAction());
+    this.store.select(getAnnounces).subscribe(console.log); */
+    this.anncService.getAllAnnounces();
   }
 }

@@ -23,5 +23,5 @@ export const LoadAnnounceAction = createAction(ActionTypes.LOAD_ANNOUNCE);
 
 export const LoadAnnounceSuccessAction = createAction(
   ActionTypes.LOAD_ANNOUNCE_SUCCESS,
-  props<{ announces: Announce[] }>()
+  props<{ announces: any[] }>()
 );

@@ -65,6 +65,23 @@ export class AnnounceEffect {
     { dispatch: false }
   );
 
+  /*   loadAnnounces$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(LoadAnnounceAction),
+        mergeMap((action) => {
+          return this.announceService.getAllAnnounces().pipe(
+            map((data: any[]) => {
+              console.log(data);
+            })
+          );
+        })
+      );
+    },
+    { dispatch: false }
+  );
+ */
+  /* 
   loadPosts$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(LoadAnnounceAction),
@@ -82,4 +99,5 @@ export class AnnounceEffect {
       })
     );
   });
+ */
 }
