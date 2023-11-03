@@ -12,6 +12,6 @@ export class AnnounceService {
   }
 
   getAllAnnounces() {
-    return this.http.get('/api/announce/');
+    return this.http.get('/api/announce/get/announces');
   }
 }

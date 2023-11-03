@@ -25,6 +25,9 @@ const _announceReducer = createReducer(
 
   on(announceAction.AddAnnounceSuccessAction, (state, action) => {
     return announceAdapter.addOne(action.announce, state);
+  }),
+  on(announceAction.LoadAnnounceSuccessAction, (state, action) => {
+    return announceAdapter.setAll(action.announces, state);
   })
 );
 
