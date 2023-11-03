@@ -10,4 +10,8 @@ export class AnnounceService {
       responseType: 'json',
     });
   }
+
+  getAllAnnounces() {
+    return this.http.get('/api/announce/');
+  }
 }

@@ -42,6 +42,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './store';
 import { AnnounceEffect } from './store/effect/announce.effect';
+import { AdminComponent } from './features/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AnnounceEffect } from './store/effect/announce.effect';
     LogInComponent,
     SignUpComponent,
     SpinnerComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
