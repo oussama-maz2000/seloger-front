@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { willaya } from 'src/app/core/shared/data';
+import { LoadAnnounceAction } from 'src/app/store/action/announce.action';
+import { SpinnerAction } from 'src/app/store/action/shared.action';
 
 @Component({
   selector: 'app-recherche-immobilier',
@@ -29,16 +33,21 @@ export class RechercheImmobilierComponent {
     },
   ];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private store: Store,
+    private router: Router
+  ) {
     this.willays = willaya;
+  }
+  ngOnInit(): void {
     this.searchForm = this.formBuilder.group({
-      type: ['L', ''],
+      type: [],
       willaya: [],
-      budget: [''],
-      besoin: formBuilder.array([]),
+      budget: [],
+      besoin: this.formBuilder.array([]),
     });
   }
-  ngOnInit(): void {}
 
   elementSelected: string[] = [];
   onCheckSelected(event) {
@@ -60,5 +69,9 @@ export class RechercheImmobilierComponent {
   showData() {
     console.log(this.searchForm.value);
     //console.log(this.searchForm.value['willaya']['$ngOptionLabel']);
+    this.store.dispatch(LoadAnnounceAction());
+    this.store.dispatch(SpinnerAction({ status: true }));
+
+    this.router.navigate(['annonce']);
   }
 }

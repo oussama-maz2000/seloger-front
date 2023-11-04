@@ -65,22 +65,22 @@ export class AnnounceEffect {
     { dispatch: false }
   );
 
-  /*   loadAnnounces$ = createEffect(
-    () => {
-      return this.actions$.pipe(
-        ofType(LoadAnnounceAction),
-        mergeMap((action) => {
-          return this.announceService.getAllAnnounces().pipe(
-            map((data: any[]) => {
-              console.log(data);
-            })
-          );
-        })
-      );
-    },
-    { dispatch: false }
-  );
- */
+  loadAnnounces$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(LoadAnnounceAction),
+      mergeMap((action) => {
+        return this.announceService.getAllAnnounces().pipe(
+          map((announces: Announce[]) => {
+            console.log(announces);
+            this.store.dispatch(SpinnerAction({ status: false }));
+
+            return LoadAnnounceSuccessAction({ announces });
+          })
+        );
+      })
+    );
+  });
+
   /* 
   loadPosts$ = createEffect(() => {
     return this.actions$.pipe(

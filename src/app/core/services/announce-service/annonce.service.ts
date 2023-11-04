@@ -14,13 +14,6 @@ export class AnnounceService {
 
   getAllAnnounces() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get('/api/announce/get/announces', { headers }).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+    return this.http.get('/api/announce/get/announces', { headers });
   }
 }

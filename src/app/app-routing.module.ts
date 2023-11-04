@@ -5,6 +5,7 @@ import { LogInComponent } from './features/log-in/log-in.component';
 import { SignUpComponent } from './features/sign-up/sign-up.component';
 import { ImmobilierTemplateComponent } from './features/test/immobilier-template/immobilier-template.component';
 import { QuillModule } from 'ngx-quill';
+import { AdminComponent } from './features/admin/admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
         (module) => module.AnnonceModule
       ),
   },
+  { path: 'admin', component: AdminComponent },
 ];
 
 @NgModule({
