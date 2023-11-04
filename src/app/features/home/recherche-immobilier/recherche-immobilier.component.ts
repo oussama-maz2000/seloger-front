@@ -70,8 +70,8 @@ export class RechercheImmobilierComponent {
     console.log(this.searchForm.value);
     //console.log(this.searchForm.value['willaya']['$ngOptionLabel']);
     this.store.dispatch(LoadAnnounceAction());
-    this.store.dispatch(SpinnerAction({ status: true }));
-
+    /* this.store.dispatch(SpinnerAction({ status: true }));
+     */
     this.router.navigate(['annonce']);
   }
 }
