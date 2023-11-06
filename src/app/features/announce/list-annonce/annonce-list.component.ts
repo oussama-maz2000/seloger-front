@@ -22,12 +22,13 @@ export class AnnonceListComponent implements OnInit {
       willaya: ['Batna'],
       budget: [2000],
       besoin: [['House', 'appartement']],
+      etage: [],
+      surface: [],
+      facade: [],
     });
   }
 
-  ngOnInit(): void {
-    this.store.select(getAnnounces).subscribe(console.log);
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     console.log(this.filterForm.value);

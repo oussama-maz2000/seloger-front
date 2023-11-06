@@ -10,6 +10,7 @@ import { CreateAnnonceComponent } from './create-annonce/create.annonce.componen
 import { AnnonceComponent } from './annonce/annonce.component';
 
 import { QuillModule } from 'ngx-quill';
+import { SingleAnnounceComponent } from './single-announce/single-announce.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
     AnnonceSingleComponent,
     CreateAnnonceComponent,
     AnnonceComponent,
+    SingleAnnounceComponent,
   ],
   imports: [
     CommonModule,

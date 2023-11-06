@@ -12,7 +12,9 @@
   min-height: 480px;
   background-image: url("../../../../assets/background.webp");
 }
-
+.offset-3.col-sm-6 {
+  width: 100%;
+}
 .img-section h1 {
   color: black;
 }

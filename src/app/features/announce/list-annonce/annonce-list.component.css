@@ -54,3 +54,23 @@ h3,
 h5 {
   color: rgb(0, 91, 228);
 } */
+.carousel-inner img {
+  height: 200px;
+}
+.carousel-inner {
+  height: 13rem;
+}
+
+.listing-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.listing-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.listing-card .card-body {
+  padding: 1.25rem;
+}
