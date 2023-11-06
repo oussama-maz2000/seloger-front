@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Dictionary } from '@ngrx/entity';
 import { Store } from '@ngrx/store';
-import { getAnnounces } from 'src/app/store/selector/announce.selector';
+import { Observable } from 'rxjs';
+import { getAllAnnounces } from 'src/app/store/selector/announce.selector';
 
 @Component({
   selector: 'app-single-announce',
@@ -9,27 +11,19 @@ import { getAnnounces } from 'src/app/store/selector/announce.selector';
 })
 export class SingleAnnounceComponent implements OnInit {
   currentIndex = 0;
-  images = [
-    '../../../../assets/maison/photo_01.webp',
-    '../../../../assets/maison/photo_02.webp',
-    '../../../../assets/maison/photo_03.webp',
-  ];
+
+  data$: Observable<any>;
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.store.select(getAnnounces).subscribe(console.log);
+    this.data$ = this.store.select(getAllAnnounces);
+    this.data$.subscribe(console.log);
   }
 
   previousImg() {
-    if (this.currentIndex != 0) this.currentIndex--;
-    else this.currentIndex = this.images.length - 1;
+    this.currentIndex--;
   }
   nextImg() {
-    const isLastSlide = this.currentIndex === this.images.length - 1; // return true or false
-    if (!isLastSlide) {
-      this.currentIndex++;
-    } else {
-      this.currentIndex = 0;
-    }
+    this.currentIndex++;
   }
 }

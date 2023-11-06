@@ -16,7 +16,7 @@ import { catchError, map, mergeMap, of, withLatestFrom } from 'rxjs';
 
 import { Announce } from 'src/app/core/model/announce.interface';
 import { SpinnerAction } from '../action/shared.action';
-import { getAnnounces } from '../selector/announce.selector';
+import { getAllAnnounces } from '../selector/announce.selector';
 
 @Injectable()
 export class AnnounceEffect {
@@ -68,7 +68,8 @@ export class AnnounceEffect {
   loadAnnounces$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(LoadAnnounceAction),
-      mergeMap((action) => {
+      withLatestFrom(this.store.select(getAllAnnounces)),
+      mergeMap(([action, Announce]) => {
         return this.announceService.getAllAnnounces().pipe(
           map((announces: Announce[]) => {
             console.log(announces);

@@ -1,91 +1,38 @@
 <section class="container-fluid">
-    <h1 class="text-center">Announces</h1>
-    <div class="row">
-
-        <div class="col-sm-4 col-md-3 mt-4">
-            <div class="div-container-img-anc" style="--img: (images[currentIndex]) ">
-                <span class="heart-like"><i class="bi bi-heart"></i></span>
-                <span class="left-icon" (click)="previousImg()"><i class="bi bi-arrow-left-circle-fill"></i></span>
-                <span class="right-icon" (click)="nextImg()"><i class="bi bi-arrow-right-circle-fill"></i></span>
-            </div>
-            <div>
-                <p><span class="type ">House</span><span class="willaya">Batna</span></p>
-                <p class="p-surface">Surface <span class="surface">200 m²</span></p>
-                <p class="prix">10000 DA<span class="temps">par mois</span></p>
-
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 mt-4">
-            <div class="div-container-img-anc " style="background: url('../../../../assets/maison/photo_02.webp')
-                        no-repeat center center; background-size: cover;">
-                <span class="heart-like"><i class="bi bi-heart"></i></span>
-                <span class="left-icon"><i class="bi bi-arrow-left-circle-fill"></i></span>
-                <span class="right-icon"><i class="bi bi-arrow-right-circle-fill"></i></span>
-            </div>
-            <div>
-                <p><span class="type ">House</span><span class="willaya">Batna</span></p>
-                <p class="p-surface">Surface <span class="surface">200 m²</span></p>
-                <p class="prix">10000 DA<span class="temps">par mois</span></p>
-
-            </div>
-        </div>
-
-
-        <div class="col-sm-4 col-md-3 mt-4">
-            <div class="div-container-img-anc " style="background: url('../../../../assets/maison/photo_03.webp')
-                    no-repeat center center; background-size: cover;">
-                <span class="heart-like"><i class="bi bi-heart"></i></span>
-                <span class="left-icon"><i class="bi bi-arrow-left-circle-fill"></i></span>
-                <span class="right-icon"><i class="bi bi-arrow-right-circle-fill"></i></span>
-            </div>
-            <div>
-                <p><span class="type ">House</span><span class="willaya">Batna</span></p>
-                <p class="p-surface">Surface <span class="surface">200 m²</span></p>
-                <p class="prix">10000 DA<span class="temps">par mois</span></p>
-
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 mt-4">
-            <div class="div-container-img-anc " style="background: url('../../../../assets/maison/photo_04.webp')
-                    no-repeat center center; background-size: cover;">
-                <span class="heart-like"><i class="bi bi-heart"></i></span>
-                <span class="left-icon"><i class="bi bi-arrow-left-circle-fill"></i></span>
-                <span class="right-icon"><i class="bi bi-arrow-right-circle-fill"></i></span>
-            </div>
-            <div>
-                <p><span class="type ">House</span><span class="willaya">Batna</span></p>
-                <p class="p-surface">Surface <span class="surface">200 m²</span></p>
-                <p class="prix">10000 DA<span class="temps">par mois</span></p>
-
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 mt-4">
-            <div class="div-container-img-anc " style="background: url('../../../../assets/maison/photo_05.webp')
-                    no-repeat center center; background-size: cover;">
-                <span class="heart-like"><i class="bi bi-heart"></i></span>
-                <span class="left-icon"><i class="bi bi-arrow-left-circle-fill"></i></span>
-                <span class="right-icon"><i class="bi bi-arrow-right-circle-fill"></i></span>
-            </div>
-            <div>
-                <p><span class="type ">House</span><span class="willaya">Batna</span></p>
-                <p class="p-surface">Surface <span class="surface">200 m²</span></p>
-                <p class="prix">10000 DA<span class="temps">par mois</span></p>
-
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 mt-4">
-            <div class="div-container-img-anc " style="background: url('../../../../assets/maison/photo_06.webp')
-                    no-repeat center center; background-size: cover;">
-                <span class="heart-like"><i class="bi bi-heart"></i></span>
-                <span class="left-icon"><i class="bi bi-arrow-left-circle-fill"></i></span>
-                <span class="right-icon"><i class="bi bi-arrow-right-circle-fill"></i></span>
-            </div>
-            <div>
-                <p><span class="type ">House</span><span class="willaya">Batna</span></p>
-                <p class="p-surface">Surface <span class="surface">200 m²</span></p>
-                <p class="prix">10000 DA<span class="temps">par mois</span></p>
-
-            </div>
-        </div>
+  <h1 class="text-center">Announces</h1>
+  <div class="row">
+    <div class="col-sm-4 col-md-3 mt-4" *ngFor="let element of data$ | async">
+      <div
+        class="div-container-img-anc"
+        [style.background-image]="'url(' + element.imgPaths[currentIndex] + ')'"
+        [ngStyle]="{
+          'background-size': 'cover',
+          'background-repeat': 'no-repeat'
+        }"
+      >
+        <span class="heart-like"><i class="bi bi-heart"></i></span>
+        <span class="left-icon" (click)="previousImg()"
+          ><i class="bi bi-arrow-left-circle-fill"></i
+        ></span>
+        <span class="right-icon" (click)="nextImg()"
+          ><i class="bi bi-arrow-right-circle-fill"></i
+        ></span>
+      </div>
+      <div>
+        <p>
+          <span class="type">{{ element.propType }}</span>
+          <span class="willaya">, {{ element.willaya }}</span>
+        </p>
+        <p>
+          <span class="p-surface">{{ element.anncType }}</span>
+        </p>
+        <p class="p-surface">
+          Surface <span class="surface">{{ element.surface }} m²</span>
+        </p>
+        <p class="prix">
+          {{ element.price }} DA<span class="temps">par mois</span>
+        </p>
+      </div>
     </div>
+  </div>
 </section>

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { willaya } from 'src/app/core/shared/data';
-import { getAnnounces } from 'src/app/store/selector/announce.selector';
 
 @Component({
   selector: 'app-annonce-list',

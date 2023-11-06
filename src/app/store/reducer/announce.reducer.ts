@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import * as announceAction from '../action/announce.action';
-import { announceAdapter } from '../entity/announce.entity';
-import { AnnounceState, announceInitialState } from '../state/announce.state';
+
+import { AnnounceState, intialAnnounceState } from '../state/announce.state';
 
 /* export function reducer(
   state = announceInitialState,
@@ -21,13 +21,19 @@ import { AnnounceState, announceInitialState } from '../state/announce.state';
  */
 
 const _announceReducer = createReducer(
-  announceInitialState,
+  intialAnnounceState,
 
   on(announceAction.AddAnnounceSuccessAction, (state, action) => {
-    return announceAdapter.addOne(action.announce, state);
+    return {
+      ...state,
+      announces: action.announce,
+    };
   }),
   on(announceAction.LoadAnnounceSuccessAction, (state, action) => {
-    return announceAdapter.setAll(action.announces, state);
+    return {
+      ...state,
+      announces: action.announces,
+    };
   })
 );
 

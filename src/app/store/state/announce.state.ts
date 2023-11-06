@@ -1,7 +1,9 @@
-import { EntityState, createEntityAdapter } from '@ngrx/entity';
-import { announceAdapter } from '../entity/announce.entity';
+import { Announce } from 'src/app/core/model/announce.interface';
 
-export interface AnnounceState extends EntityState<any> {}
+export interface AnnounceState {
+  announces: Announce[];
+}
 
-export const announceInitialState: AnnounceState =
-  announceAdapter.getInitialState();
+export const intialAnnounceState: AnnounceState = {
+  announces: undefined,
+};
