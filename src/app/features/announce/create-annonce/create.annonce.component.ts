@@ -102,14 +102,6 @@ export class CreateAnnonceComponent implements OnInit {
 
     this.store.dispatch(addAnnounceAction({ formValues }));
     this.store.dispatch(SpinnerAction({ status: true }));
-
-    console.log(this.fromRequired.value);
-
-    /*  this.http
-      .post('/api/announce/post/annonce', form, {
-        responseType: 'text',
-      })
-      .subscribe(console.log); */
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {
