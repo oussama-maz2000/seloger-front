@@ -33,6 +33,8 @@ import { SpeedDialModule } from 'primeng/speeddial';
 import { InputTextModule } from 'primeng/inputtext';
 import { AgGridModule } from 'ag-grid-angular';
 import { UpdateBtnComponent } from './core/shared/update-btn/update-btn.component';
+import { TreeSelectModule } from 'primeng/treeselect';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,10 +60,12 @@ import { UpdateBtnComponent } from './core/shared/update-btn/update-btn.componen
     ReactiveFormsModule,
     NgSelectModule,
     SpeedDialModule,
+    TreeSelectModule,
     ButtonModule,
     ToastModule,
     InputTextModule,
     ConfirmDialogModule,
+
     TableModule,
     BrowserAnimationsModule,
     AgGridModule,
