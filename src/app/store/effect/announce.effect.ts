@@ -27,26 +27,6 @@ export class AnnounceEffect {
     private announceService: AnnounceService
   ) {}
 
-  /*  addAnnounce = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ActionTypes.ADD_ANNOUNCE),
-      mergeMap((actionData: any) =>
-        this.announceService.addAnnounce(actionData.announce).pipe(
-          mergeMap((announce:any) => {
-            this.store.dispatch(new ShowLoadingAction(false));
-             AddAnnounceSuccessAction({ announce }); 
-          ),
-          catchError((error) => {
-            console.log(error);
-            return [new AddAnnounceErrorAction(error)];
-          })
-        )
-      )
-    ),
-    {dispatch:false}
-  );
-  */
-
   addAnnounce$ = createEffect(
     () => {
       return this.actions$.pipe(
@@ -56,7 +36,7 @@ export class AnnounceEffect {
             map((data: Announce[]) => {
               this.store.dispatch(SpinnerAction({ status: false }));
               this.store.dispatch(AddAnnounceSuccessAction({ announce: data }));
-              this.router.navigate(['/']);
+              this.router.navigate(['admin']);
             })
           );
         })
@@ -72,33 +52,11 @@ export class AnnounceEffect {
       mergeMap(([action, Announce]) => {
         return this.announceService.getAllAnnounces().pipe(
           map((announces: Announce[]) => {
-            console.log(announces);
             this.store.dispatch(SpinnerAction({ status: false }));
-
             return LoadAnnounceSuccessAction({ announces });
           })
         );
       })
     );
   });
-
-  /* 
-  loadPosts$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(LoadAnnounceAction),
-      withLatestFrom(this.store.select(getAnnounces)),
-      mergeMap(([action, annonce]) => {
-        if (!annonce.length || annonce.length === 1) {
-          return this.announceService.getAllAnnounces().pipe(
-            map((announces: any[]) => {
-              console.log(announces);
-              return LoadAnnounceSuccessAction({ announces });
-            })
-          );
-        }
-        return of();
-      })
-    );
-  });
- */
 }

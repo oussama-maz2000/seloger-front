@@ -12,6 +12,6 @@ import { LoadAnnounceAction } from 'src/app/store/action/announce.action';
 export class HomeComponent implements OnInit {
   constructor(private store: Store, private formBuilder: FormBuilder) {}
   ngOnInit(): void {
-    this.store.dispatch(LoadAnnounceAction());
+    /*  this.store.dispatch(LoadAnnounceAction()); */
   }
 }

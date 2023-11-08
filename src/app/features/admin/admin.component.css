@@ -8,14 +8,15 @@ body {
   color: #444444;
 }
 
-a {
-  color: #4154f1;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #717ff5;
-  text-decoration: none;
+.ag-theme-balham {
+  --ag-font-size: 17px;
+  --ag-font-family: "Nunito", sans-serif;
+  --ag-header-foreground-color: rgb(255, 255, 255);
+  --ag-header-background-color: #9bbec8;
+  --ag-header-column-resize-handle-color: rgb(126, 46, 132);
+  --ag-row-background-color: #e1e7ea;
+  --ag-head-icon-color: white;
+  --ag-foreground-color: #0b2635;
 }
 
 h1,

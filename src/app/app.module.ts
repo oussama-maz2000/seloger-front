@@ -1,6 +1,7 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule, isDevMode } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './features/header/header.component';
@@ -15,35 +16,23 @@ import { ImmobilierTemplateComponent } from './features/test/immobilier-template
 import { ImageSliderComponent } from './features/test/image-slider/image-slider.component';
 import { LogInComponent } from './features/log-in/log-in.component';
 import { SignUpComponent } from './features/sign-up/sign-up.component';
-import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
-import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
-import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
-import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
-import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
-import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
-import { MdbPopoverModule } from 'mdb-angular-ui-kit/popover';
-import { MdbRadioModule } from 'mdb-angular-ui-kit/radio';
-import { MdbRangeModule } from 'mdb-angular-ui-kit/range';
-import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
-import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
-import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
-import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
-import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { QuillModule } from 'ngx-quill';
 import { SpinnerComponent } from './core/shared/spinner/spinner.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
+import { ToastModule } from 'primeng/toast';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './store';
 import { AnnounceEffect } from './store/effect/announce.effect';
 import { AdminComponent } from './features/admin/admin.component';
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { SpeedDialModule } from 'primeng/speeddial';
+import { InputTextModule } from 'primeng/inputtext';
+import { AgGridModule } from 'ag-grid-angular';
+import { UpdateBtnComponent } from './core/shared/update-btn/update-btn.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +48,7 @@ import { AdminComponent } from './features/admin/admin.component';
     SignUpComponent,
     SpinnerComponent,
     AdminComponent,
+    UpdateBtnComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,22 +57,14 @@ import { AdminComponent } from './features/admin/admin.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgSelectModule,
-    MdbAccordionModule,
-    MdbCarouselModule,
-    MdbCheckboxModule,
-    MdbCollapseModule,
-    MdbDropdownModule,
-    MdbFormsModule,
-    MdbModalModule,
-    MdbPopoverModule,
-    MdbRadioModule,
-    MdbRangeModule,
-    MdbRippleModule,
-    MdbScrollspyModule,
-    MdbTabsModule,
-    MdbTooltipModule,
-    MdbValidationModule,
+    SpeedDialModule,
+    ButtonModule,
+    ToastModule,
+    InputTextModule,
+    ConfirmDialogModule,
+    TableModule,
     BrowserAnimationsModule,
+    AgGridModule,
     QuillModule.forRoot(),
     NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
     StoreModule.forRoot(reducers, {
