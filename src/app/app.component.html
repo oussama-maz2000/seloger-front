@@ -1,5 +1,6 @@
 <app-header></app-header>
 <app-spinner *ngIf="showLoading | async"></app-spinner>
+<app-message *ngIf="showAlert | async"></app-message>
 <router-outlet></router-outlet>
 
 <!-- <quill-editor class="content-editor" [placeholder]="''"> </quill-editor> -->

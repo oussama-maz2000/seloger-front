@@ -34,6 +34,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AgGridModule } from 'ag-grid-angular';
 import { UpdateBtnComponent } from './core/shared/update-btn/update-btn.component';
 import { TreeSelectModule } from 'primeng/treeselect';
+import { MessageComponent } from './core/shared/message/message.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,7 @@ import { TreeSelectModule } from 'primeng/treeselect';
     ToastModule,
     InputTextModule,
     ConfirmDialogModule,
-
+    MessageComponent,
     TableModule,
     BrowserAnimationsModule,
     AgGridModule,

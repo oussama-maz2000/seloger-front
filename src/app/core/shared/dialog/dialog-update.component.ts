@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICellRendererParams } from 'ag-grid-community';
@@ -8,6 +8,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { QuillModule } from 'ngx-quill';
 import { quillConfig } from 'src/app/core/shared/data';
+import { AnnounceService } from '../../services/announce-service/annonce.service';
 @Component({
   selector: 'app-dialog-update',
   standalone: true,
@@ -23,7 +24,7 @@ import { quillConfig } from 'src/app/core/shared/data';
   templateUrl: './dialog-update.component.html',
   styleUrls: ['./dialog-update.component.css'],
 })
-export class DialogUpdateComponent implements ICellRendererAngularComp {
+export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
   public closeResult: string = '';
   public cellValue: string;
   files: File[] = [];
@@ -59,9 +60,13 @@ export class DialogUpdateComponent implements ICellRendererAngularComp {
     },
   ];
 
-  constructor(private modalService: NgbModal) {
+  constructor(
+    private modalService: NgbModal,
+    private ancService: AnnounceService
+  ) {
     this.quillConfig = quillConfig;
   }
+  ngOnInit(): void {}
 
   openFullScreen(content) {
     const modalRef = this.modalService.open(content, {
@@ -72,6 +77,8 @@ export class DialogUpdateComponent implements ICellRendererAngularComp {
       scrollable: true,
       animation: true,
     });
+
+    this.ancService.getData().subscribe((data) => console.log(data));
   }
 
   onSelect(event: any): void {
@@ -91,6 +98,7 @@ export class DialogUpdateComponent implements ICellRendererAngularComp {
 
   agInit(params: ICellRendererParams<any, any, any>): void {
     this.cellValue = this.getValueToDisplay(params);
+    console.log('ag init ');
   }
   refresh(params: ICellRendererParams<any, any, any>): boolean {
     this.cellValue = this.getValueToDisplay(params);

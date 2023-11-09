@@ -15,7 +15,7 @@ import {
 import { catchError, map, mergeMap, of, withLatestFrom } from 'rxjs';
 
 import { Announce } from 'src/app/core/model/announce.interface';
-import { SpinnerAction } from '../action/shared.action';
+import { MessageAction, SpinnerAction } from '../action/shared.action';
 import { getAllAnnounces } from '../selector/announce.selector';
 
 @Injectable()
@@ -53,6 +53,13 @@ export class AnnounceEffect {
         return this.announceService.getAllAnnounces().pipe(
           map((announces: Announce[]) => {
             this.store.dispatch(SpinnerAction({ status: false }));
+            this.store.dispatch(
+              MessageAction({
+                status: true,
+                typeMessage: 'suc',
+                message: 'well saved',
+              })
+            );
             return LoadAnnounceSuccessAction({ announces });
           })
         );

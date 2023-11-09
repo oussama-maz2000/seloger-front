@@ -8,9 +8,11 @@ import {
   ConfirmEventType,
 } from 'primeng/api';
 import { Observable } from 'rxjs';
-import { DialogUpdateComponent } from 'src/app/core/shared/dialog-update.component';
+import { AnnounceService } from 'src/app/core/services/announce-service/annonce.service';
+import { DialogUpdateComponent } from 'src/app/core/shared/dialog/dialog-update.component';
 import { UpdateBtnComponent } from 'src/app/core/shared/update-btn/update-btn.component';
 import { LoadAnnounceAction } from 'src/app/store/action/announce.action';
+import { MessageAction } from 'src/app/store/action/shared.action';
 import { getAllAnnounces } from 'src/app/store/selector/announce.selector';
 
 @Component({
@@ -21,7 +23,11 @@ import { getAllAnnounces } from 'src/app/store/selector/announce.selector';
 })
 export class AdminComponent implements OnInit {
   data$: Observable<any>;
-  constructor(private store: Store, private http: HttpClient) {
+  constructor(
+    private store: Store,
+    private http: HttpClient,
+    private ancService: AnnounceService
+  ) {
     this.store.dispatch(LoadAnnounceAction());
   }
   ngOnInit(): void {
@@ -50,10 +56,11 @@ export class AdminComponent implements OnInit {
     this.rowData$ = this.http.get<any[]>(
       'https://www.ag-grid.com/example-assets/row-data.json'
     );
+
     this.rowData$.subscribe(console.log);
   }
 
   onCellClicked(e: CellClickedEvent): void {
-    console.log('cellClicked', e);
+    this.ancService.setData(e.data);
   }
 }

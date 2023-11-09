@@ -1,5 +1,5 @@
 import { SharedState, initialSharedState } from '../state/shared.state';
-import { SpinnerAction } from '../action/shared.action';
+import { MessageAction, SpinnerAction } from '../action/shared.action';
 import { createReducer, on } from '@ngrx/store';
 
 const _sharedReducer = createReducer(
@@ -8,6 +8,16 @@ const _sharedReducer = createReducer(
     return {
       ...state,
       showLoading: action.status,
+    };
+  }),
+  on(MessageAction, (state, action) => {
+    console.log(action);
+
+    return {
+      ...state,
+      showAlert: action.status,
+      type: action.typeMessage,
+      message: action.message,
     };
   })
 );
