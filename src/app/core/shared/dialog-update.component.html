@@ -1,0 +1,104 @@
+<i (click)="openFullScreen(content)" class="bi bi-pencil-square">
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Annonce update from dialog component</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    <div class="input-group">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Property</option>
+                            <option value="1">house</option>
+                            <option value="2">apartement</option>
+                        </select>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Annonce</option>
+                            <option value="1">rent</option>
+                            <option value="2">sale</option>
+                        </select>
+                    </div>
+                    <div class="input-group mt-1">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>juridic</option>
+                            <option value="1">notarie</option>
+                            <option value="2">akkar</option>
+                        </select>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>willaya</option>
+                            <option value="1">rent</option>
+                            <option value="2">sale</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mt-1">
+                        <input type="number" class="form-control" placeholder="etage" />
+                        <input type="number" class="form-control" placeholder="facade" />
+                        <input type="number" class="form-control" placeholder="surface" />
+                        <input type="number" class="form-control" placeholder="prix" />
+                    </div>
+                    <div class="input-group mt-1">
+                        <input type="text" class="form-control" placeholder="address" />
+                    </div>
+
+
+                    <div class="input-group mt-1">
+                        <input type="text" class="form-control" placeholder="title" />
+                        <input type="text" class="form-control" placeholder="availability" />
+
+                    </div>
+                    <div class="input-group mt-1">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>willaya</option>
+                            <option value="1">rent</option>
+                            <option value="2">sale</option>
+                        </select>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>willaya</option>
+                            <option value="1">rent</option>
+                            <option value="2">sale</option>
+                        </select>
+                    </div>
+                    <div class="input-group mt-1">
+                        <div class="d-flex justify-content-around">
+                            <p-multiSelect [style]="{'max-width':'220px', 'width':'215px'}"
+                                [options]="serviceAccessibility" optionLabel="label" [filter]="false"
+                                placeholder="service"></p-multiSelect>
+                            <p-multiSelect [style]="{'max-width':'220px', 'width':'215px'}"
+                                [options]="serviceAccessibility" optionLabel="label" [filter]="false"
+                                placeholder="service"></p-multiSelect>
+                            <p-multiSelect [style]="{'max-width':'220px', 'width':'215px'}"
+                                [options]="serviceAccessibility" optionLabel="label" [filter]="false"
+                                placeholder="service"></p-multiSelect>
+                            <p-multiSelect [style]="{'max-width':'220px', 'width':'215px'}"
+                                [options]="serviceAccessibility" optionLabel="label" [filter]="false"
+                                placeholder="service"></p-multiSelect>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="input-group mt-3">
+                        <ngx-dropzone (change)="onSelect($event)" class="form-control">
+                            <ngx-dropzone-label>select or drop your images</ngx-dropzone-label>
+                            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                        <quill-editor class="content-editor" [modules]="quillConfig" [placeholder]="'description'"
+                            formControlName="description">
+                        </quill-editor>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">
+                Updae
+            </button>
+        </div>
+    </ng-template>
+</i>

@@ -1,0 +1,19 @@
+ngx-dropzone {
+  height: 100px;
+}
+p-multiselect {
+  max-width: 220px;
+  min-width: 220px;
+}
+.custom-multiselect {
+  max-width: 220px;
+  min-width: 220px;
+}
+.p-multiselect .p-multiselect-panel {
+  min-width: auto;
+  max-width: 220px;
+}
+quill-editor {
+  width: 100%;
+  height: 7rem;
+}

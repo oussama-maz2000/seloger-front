@@ -8,6 +8,7 @@ import {
   ConfirmEventType,
 } from 'primeng/api';
 import { Observable } from 'rxjs';
+import { DialogUpdateComponent } from 'src/app/core/shared/dialog-update.component';
 import { UpdateBtnComponent } from 'src/app/core/shared/update-btn/update-btn.component';
 import { LoadAnnounceAction } from 'src/app/store/action/announce.action';
 import { getAllAnnounces } from 'src/app/store/selector/announce.selector';
@@ -41,21 +42,8 @@ export class AdminComponent implements OnInit {
     { field: 'price' },
     {
       field: 'action',
-      cellRenderer: UpdateBtnComponent,
+      cellRenderer: DialogUpdateComponent,
     },
-  ];
-
-  rowData = [
-    {
-      make: 'Toyota',
-      model: 'm1',
-      price: 35351,
-      year: 2000,
-      country: 'algeria',
-    },
-    { make: 'Ford', model: 'm2', price: 6546, year: 2000, country: 'algeria' },
-    { make: 'M3', model: 'm3', price: 646, year: 2000, country: 'algeria' },
-    { make: 'M765', model: 'm4', price: 56486, year: 2000, country: 'algeria' },
   ];
 
   onGridReady(params: GridReadyEvent) {

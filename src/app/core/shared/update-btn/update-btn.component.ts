@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @Component({
   selector: 'app-update-btn',
