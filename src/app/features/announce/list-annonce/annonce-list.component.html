@@ -1,5 +1,5 @@
 <body>
-  <div
+  <!-- <div
     id="carouselExampleFade"
     class="carousel slide carousel-fade"
     data-bs-ride="carousel"
@@ -43,7 +43,7 @@
     >
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
+  </div> -->
 
   <!-- filter card  -->
 
@@ -289,5 +289,21 @@
     </div>
   </div> -->
 
-  <app-single-announce></app-single-announce>
+  <!--   <div class="row" *ngFor="let annonce of data$ | async">
+    <app-single-announce
+      [annonces]="annonce"
+      class="col-sm-4 col-md-3 mt-4"
+    ></app-single-announce>
+  </div>
+</body>
+ -->
+  <section class="container-fluid">
+    <div class="row">
+      <app-single-announce
+        *ngFor="let annonce of data$ | async"
+        [annonces]="annonce"
+        [ngClass]="'col-sm-4 col-md-3 mt-4 '"
+      ></app-single-announce>
+    </div>
+  </section>
 </body>

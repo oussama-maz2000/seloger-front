@@ -35,6 +35,13 @@ export class AnnounceEffect {
           return this.announceService.addAnnounce(action.formValues).pipe(
             map((data: Announce[]) => {
               this.store.dispatch(SpinnerAction({ status: false }));
+              this.store.dispatch(
+                MessageAction({
+                  status: true,
+                  typeMessage: 'suc',
+                  message: 'well saved',
+                })
+              );
               this.store.dispatch(AddAnnounceSuccessAction({ announce: data }));
               this.router.navigate(['admin']);
             })
@@ -53,13 +60,7 @@ export class AnnounceEffect {
         return this.announceService.getAllAnnounces().pipe(
           map((announces: Announce[]) => {
             this.store.dispatch(SpinnerAction({ status: false }));
-            this.store.dispatch(
-              MessageAction({
-                status: true,
-                typeMessage: 'suc',
-                message: 'well saved',
-              })
-            );
+
             return LoadAnnounceSuccessAction({ announces });
           })
         );

@@ -11,13 +11,11 @@ const _sharedReducer = createReducer(
     };
   }),
   on(MessageAction, (state, action) => {
-    console.log(action);
-
     return {
       ...state,
       showAlert: action.status,
-      type: action.typeMessage,
-      message: action.message,
+      typeAlert: action.typeMessage,
+      messageAlert: action.message,
     };
   })
 );

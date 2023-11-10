@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { getMessage, getType } from 'src/app/store/selector/shared.selector';
+import { MessageAction } from 'src/app/store/action/shared.action';
 
 @Component({
   selector: 'app-message',
@@ -24,5 +25,15 @@ export class MessageComponent implements OnInit {
     this.store.select(getMessage).subscribe((date) => {
       this.alertMessage = date;
     });
+
+    setTimeout(() => {
+      this.store.dispatch(
+        MessageAction({
+          status: false,
+          typeMessage: '',
+          message: '',
+        })
+      );
+    }, 6000);
   }
 }
