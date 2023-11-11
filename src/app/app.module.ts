@@ -35,6 +35,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { UpdateBtnComponent } from './core/shared/update-btn/update-btn.component';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { MessageComponent } from './core/shared/message/message.component';
+import { TestComponent } from './features/test/test/test.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { MessageComponent } from './core/shared/message/message.component';
     SpinnerComponent,
     AdminComponent,
     UpdateBtnComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
