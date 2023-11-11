@@ -1,0 +1,84 @@
+<style>
+    .dropdown-menu[data-bs-popper] {
+        left: unset;
+        right: 0px;
+    }
+
+    .filter-div {
+        background-color: #FFFFFF;
+        border: 1px solid #DDDDDD;
+        border-radius: 40px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .btn-div {
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+        text-align: inherit;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        margin: -1px;
+        padding-left: 8px;
+        border-top-left-radius: inherit;
+        border-bottom-left-radius: inherit;
+    }
+
+    .text-div {
+        font-size: 0.875rem;
+        line-height: 22px;
+        line-height: 1.375rem;
+        font-weight: 600;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        flex: 1 1 auto;
+        min-width: 80px;
+    }
+</style>
+<div class="container-fluid">
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="padding: 0px;"><img src="../../../../assets/logo.png"
+                    style="max-height: 50px;" alt=""></a>
+            <form class="d-flex" role="search">
+                <button class="btn btn-outline-success"
+                    type="submit">Search</button><!-- Example single danger button -->&nbsp;&nbsp;
+                <button class="btn btn-outline-success"
+                    type="submit">Search</button><!-- Example single danger button -->&nbsp;&nbsp;
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Action
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+
+    <div class="filter-div" role="search">
+        <span>
+            <button class="btn-div" data-index="0" type="button">
+                <div class="text-div">N'importe où</div>
+            </button>
+            <span class="d242rgr dir dir-ltr"></span>
+            <button class="btn-div" data-index="1" type="button">
+                <div class="f16sug5q dir dir-ltr">Une semaine</div>
+            </button>
+            <button class="btn-div" data-index="2" type="button">
+                <div class="">Une semaine</div>
+            </button>
+        </span>
+    </div>
+</div>
