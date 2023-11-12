@@ -13,7 +13,7 @@
     }
 
     .btn-div {
-        background: transparent;
+        /*  background: transparent;
         cursor: pointer;
         padding: 0;
         text-align: inherit;
@@ -22,10 +22,21 @@
         margin: -1px;
         padding-left: 8px;
         border-top-left-radius: inherit;
-        border-bottom-left-radius: inherit;
+        border-bottom-left-radius: inherit; */
+        line-height: 1.499;
+        position: relative;
+        display: inline-block;
+        font-weight: 400;
+        white-space: nowrap;
+        text-align: center;
+        background-image: none;
+        border: 1px solid transparent;
+        box-shadow: 0 2px 0 rgba(0, 0, 0, .015);
+        cursor: pointer;
+        transition: all .3s cubic-bezier(.645, .045, .355, 1);
     }
 
-    .text-div {
+    .button-text {
         font-size: 0.875rem;
         line-height: 22px;
         line-height: 1.375rem;
@@ -36,17 +47,73 @@
         flex: 1 1 auto;
         min-width: 80px;
     }
+
+    .vertical-line {
+        border-left: 2px solide rgb(154, 26, 26);
+        height: 20px;
+        position: absolute;
+        left: 50%;
+        margin-left: -4px;
+        top: 60px;
+
+    }
+
+    #filter-card {
+        padding: 2px;
+        background: whitesmoke;
+        border-radius: 50px;
+    }
+
+    #filter-card {
+        text-align: center;
+        border-radius: 50px;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: #222831;
+        cursor: pointer;
+
+    }
+
+    #filter-card .col.active {
+        background-color: #FF385C;
+        color: rgb(255, 243, 243);
+        border-radius: 50px;
+        font-family: "Poppins", sans-serif;
+
+    }
+
+    #filter-card .row {
+        height: 30px;
+    }
+
+    .dropdown-toggle::after {
+        content: unset;
+    }
+
+    #willaya {
+        max-height: 150px;
+        overflow: auto;
+    }
+
+    /*  #filter-card #filter-btn {
+        background-color: #FF385C;
+        color: rgb(255, 243, 243);
+        text-align: center;
+        border-radius: 50px;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+    } */
 </style>
 <div class="container-fluid">
     <nav class="navbar bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" style="padding: 0px;"><img src="../../../../assets/logo.png"
                     style="max-height: 50px;" alt=""></a>
-            <form class="d-flex" role="search">
-                <button class="btn btn-outline-success"
-                    type="submit">Search</button><!-- Example single danger button -->&nbsp;&nbsp;
-                <button class="btn btn-outline-success"
-                    type="submit">Search</button><!-- Example single danger button -->&nbsp;&nbsp;
+            <form class="d-flex align-items-center" role="search">
+                <div>Log in</div>&nbsp;&nbsp;
+
                 <div class="btn-group">
                     <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -67,18 +134,77 @@
     </nav>
 
 
-    <div class="filter-div" role="search">
-        <span>
-            <button class="btn-div" data-index="0" type="button">
-                <div class="text-div">N'importe où</div>
-            </button>
-            <span class="d242rgr dir dir-ltr"></span>
-            <button class="btn-div" data-index="1" type="button">
-                <div class="f16sug5q dir dir-ltr">Une semaine</div>
-            </button>
-            <button class="btn-div" data-index="2" type="button">
-                <div class="">Une semaine</div>
-            </button>
-        </span>
+
+
+
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="offset-sm-2 col-sm-8 mt-3" id="filter-card">
+                <div class="row">
+                    <div class="col pt-1" data-bs-toggle="dropdown" id="property" aria-expanded="false">
+                        <div class="dropdown">
+                            <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Property
+                            </div>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item">House</a></li>
+                                <li><a class="dropdown-item">Appartement</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col pt-1 " data-bs-toggle="dropdown" aria-expanded="false">
+
+                        <div class="dropdown">
+                            <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Besoin
+                            </div>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item">Acheter</a></li>
+                                <li><a class="dropdown-item">Louer</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="col pt-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="dropdown">
+                            <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                prix
+                            </div>
+
+                            <ul class="dropdown-menu">
+
+                                <li><a class="dropdown-item"><input type="number" class="form-control"
+                                            placeholder="prix" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col pt-1">
+                        <div class="dropdown">
+                            <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Willaya
+                            </div>
+
+                            <ul class="dropdown-menu" id="willaya">
+                                <li *ngFor="let element of willaya">
+                                    <div class="dropdown-item">{{element}}</div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col pt-1 active">Filter</div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 </div>
