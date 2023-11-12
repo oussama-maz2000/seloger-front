@@ -1,210 +1,231 @@
 <style>
-    .dropdown-menu[data-bs-popper] {
-        left: unset;
-        right: 0px;
-    }
+  .dropdown-menu[data-bs-popper] {
+    left: unset;
+    right: 0px;
+  }
 
-    .filter-div {
-        background-color: #FFFFFF;
-        border: 1px solid #DDDDDD;
-        border-radius: 40px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
-        transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
-    }
+  .filter-div {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 40px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
 
-    .btn-div {
-        /*  background: transparent;
-        cursor: pointer;
-        padding: 0;
-        text-align: inherit;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        margin: -1px;
-        padding-left: 8px;
-        border-top-left-radius: inherit;
-        border-bottom-left-radius: inherit; */
-        line-height: 1.499;
-        position: relative;
-        display: inline-block;
-        font-weight: 400;
-        white-space: nowrap;
-        text-align: center;
-        background-image: none;
-        border: 1px solid transparent;
-        box-shadow: 0 2px 0 rgba(0, 0, 0, .015);
-        cursor: pointer;
-        transition: all .3s cubic-bezier(.645, .045, .355, 1);
-    }
+  .btn-div {
+    line-height: 1.499;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
 
-    .button-text {
-        font-size: 0.875rem;
-        line-height: 22px;
-        line-height: 1.375rem;
-        font-weight: 600;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        flex: 1 1 auto;
-        min-width: 80px;
-    }
+  .button-text {
+    font-size: 0.875rem;
+    line-height: 22px;
+    line-height: 1.375rem;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    flex: 1 1 auto;
+    min-width: 80px;
+  }
 
-    .vertical-line {
-        border-left: 2px solide rgb(154, 26, 26);
-        height: 20px;
-        position: absolute;
-        left: 50%;
-        margin-left: -4px;
-        top: 60px;
+  .vertical-line {
+    border-left: 2px solide rgb(154, 26, 26);
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    margin-left: -4px;
+    top: 60px;
+  }
 
-    }
+  #filter-card {
+    padding: 2px;
+    background: whitesmoke;
+    border-radius: 50px;
+  }
 
-    #filter-card {
-        padding: 2px;
-        background: whitesmoke;
-        border-radius: 50px;
-    }
+  #filter-card {
+    text-align: center;
+    border-radius: 50px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #222831;
+    cursor: pointer;
+  }
 
-    #filter-card {
-        text-align: center;
-        border-radius: 50px;
-        font-family: "Poppins", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        color: #222831;
-        cursor: pointer;
+  #filter-card .col.active {
+    background-color: #ff385c;
+    color: rgb(255, 243, 243);
+    border-radius: 50px;
+    font-family: "Poppins", sans-serif;
+  }
 
-    }
+  #filter-card .row {
+    height: 30px;
+  }
 
-    #filter-card .col.active {
-        background-color: #FF385C;
-        color: rgb(255, 243, 243);
-        border-radius: 50px;
-        font-family: "Poppins", sans-serif;
+  .dropdown-toggle::after {
+    content: unset;
+  }
 
-    }
+  #willaya {
+    max-height: 150px;
+    overflow: auto;
+  }
 
-    #filter-card .row {
-        height: 30px;
-    }
-
-    .dropdown-toggle::after {
-        content: unset;
-    }
-
-    #willaya {
-        max-height: 150px;
-        overflow: auto;
-    }
-
-    /*  #filter-card #filter-btn {
-        background-color: #FF385C;
-        color: rgb(255, 243, 243);
-        text-align: center;
-        border-radius: 50px;
-        font-family: "Poppins", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-    } */
+  .row > * {
+    padding-left: unset;
+    padding-right: unset;
+  }
 </style>
 <div class="container-fluid">
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" style="padding: 0px;"><img src="../../../../assets/logo.png"
-                    style="max-height: 50px;" alt=""></a>
-            <form class="d-flex align-items-center" role="search">
-                <div>Log in</div>&nbsp;&nbsp;
-
-                <div class="btn-group">
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Action
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                    </ul>
-                </div>
-            </form>
-        </div>
-    </nav>
-
-
-
-
-
+  <nav class="navbar bg-light">
     <div class="container-fluid">
-        <div class="row ">
-            <div class="offset-sm-2 col-sm-8 mt-3" id="filter-card">
-                <div class="row">
-                    <div class="col pt-1" data-bs-toggle="dropdown" id="property" aria-expanded="false">
-                        <div class="dropdown">
-                            <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Property
-                            </div>
+      <a class="navbar-brand" style="padding: 0px"
+        ><img src="../../../../assets/logo.png" style="max-height: 50px" alt=""
+      /></a>
+      <form class="d-flex align-items-center" role="search">
+        <div>Log in</div>
+        &nbsp;&nbsp;
 
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item">House</a></li>
-                                <li><a class="dropdown-item">Appartement</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-
-                    <div class="col pt-1 " data-bs-toggle="dropdown" aria-expanded="false">
-
-                        <div class="dropdown">
-                            <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Besoin
-                            </div>
-
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item">Acheter</a></li>
-                                <li><a class="dropdown-item">Louer</a></li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <div class="col pt-1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="dropdown">
-                            <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                prix
-                            </div>
-
-                            <ul class="dropdown-menu">
-
-                                <li><a class="dropdown-item"><input type="number" class="form-control"
-                                            placeholder="prix" /></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col pt-1">
-                        <div class="dropdown">
-                            <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Willaya
-                            </div>
-
-                            <ul class="dropdown-menu" id="willaya">
-                                <li *ngFor="let element of willaya">
-                                    <div class="dropdown-item">{{element}}</div>
-                                </li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col pt-1 active">Filter</div>
-                </div>
-            </div>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-danger dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Action
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
         </div>
-
+      </form>
     </div>
+  </nav>
 
+  <div class="container-fluid">
+    <form [formGroup]="filterForm">
+      <div class="row">
+        <div class="offset-sm-2 col-sm-8 mt-3" id="filter-card">
+          <div class="row" style="padding-right: 0; padding-left: 0px">
+            <div class="col pt-1">
+              <div class="dropdown">
+                <div
+                  class="dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="border-right: 0.1px solid #222831"
+                >
+                  Property
+                </div>
+
+                <ul class="dropdown-menu">
+                  <li
+                    class="dropdown-item"
+                    (click)="setProperty('appartement')"
+                  >
+                    Appartement
+                  </li>
+                  <li class="dropdown-item" (click)="setProperty('house')">
+                    House
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col pt-1">
+              <div class="dropdown">
+                <div
+                  class="dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="border-right: 0.1px solid #222831"
+                >
+                  Besoin
+                </div>
+
+                <ul class="dropdown-menu" id="willaya">
+                  <li>
+                    <div class="dropdown-item" (click)="setBesoin('louer')">
+                      Louer
+                    </div>
+                  </li>
+                  <li>
+                    <div class="dropdown-item" (click)="setBesoin('acheter')">
+                      Acheter
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col pt-1">
+              <div class="dropdown">
+                <div
+                  class="dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="border-right: 0.1px solid #222831"
+                >
+                  Prix
+                </div>
+
+                <ul class="dropdown-menu">
+                  <li>
+                    <div class="dropdown-item">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="prix"
+                        formControlName="prix"
+                      />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col pt-1">
+              <div class="dropdown">
+                <div
+                  class="dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Willaya
+                </div>
+
+                <ul class="dropdown-menu" id="willaya">
+                  <li *ngFor="let element of willaya">
+                    <div class="dropdown-item" (click)="setWillaya(element)">
+                      {{ element }}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col pt-1 active" (click)="onSubmit()">Filter</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
