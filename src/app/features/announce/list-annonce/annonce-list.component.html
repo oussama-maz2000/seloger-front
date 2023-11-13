@@ -1,4 +1,4 @@
-<body>
+<body class="container-fluid">
   <!-- <div
     id="carouselExampleFade"
     class="carousel slide carousel-fade"
@@ -300,13 +300,92 @@
 
 
 
-  <section class="container">
-    <div class="filter-card">
+  <div id="top_filter_search" class="container-fluid">
+    <form [formGroup]="filterForm">
       <div class="row">
+        <div class="offset-sm-2 col-sm-8 mt-1">
+          <div id="filter-card">
+            <div class="container-fluid">
+              <div class="row" style="padding-right: 0; padding-left: 0px">
+                <div class="col border-right">
+                  <div class="dropdown">
+                    <div class="dropdown-toggle filter_menu_item" data-bs-toggle="dropdown" aria-expanded="false">
+                      Property
+                    </div>
 
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-item" (click)="setProperty('appartement')">
+                        Appartement
+                      </li>
+                      <li class="dropdown-item" (click)="setProperty('house')">
+                        House
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col border-right">
+                  <div class="dropdown">
+                    <div class="dropdown-toggle filter_menu_item" data-bs-toggle="dropdown" aria-expanded="false">
+                      Besoin
+                    </div>
+
+                    <ul class="dropdown-menu" id="willaya">
+                      <li>
+                        <div class="dropdown-item" (click)="setBesoin('louer')">
+                          Louer
+                        </div>
+                      </li>
+                      <li>
+                        <div class="dropdown-item" (click)="setBesoin('acheter')">
+                          Acheter
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col border-right">
+                  <div class="dropdown">
+                    <div class="dropdown-toggle filter_menu_item" data-bs-toggle="dropdown" aria-expanded="false">
+                      Prix
+                    </div>
+
+                    <ul class="dropdown-menu">
+                      <li>
+                        <div class="dropdown-item">
+                          <input type="number" class="form-control" placeholder="prix" formControlName="prix" />
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="dropdown">
+                    <div class="dropdown-toggle filter_menu_item" data-bs-toggle="dropdown" aria-expanded="false">
+                      Willaya
+                    </div>
+
+                    <ul class="dropdown-menu" id="willaya">
+                      <li *ngFor="let element of willaya">
+                        <div class="dropdown-item" (click)="setWillaya(element)">
+                          {{ element }}
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col" (click)="onSubmit()">
+                  <div class="active filter_menu_item">Filter</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </form>
+  </div>
 
 
 

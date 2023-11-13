@@ -83,41 +83,32 @@
     overflow: auto;
   }
 
-  .row > * {
+  .row>* {
     padding-left: unset;
     padding-right: unset;
   }
 </style>
 <div class="container-fluid">
-  <nav class="navbar bg-light">
+  <nav class="navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" style="padding: 0px"
-        ><img src="../../../../assets/logo.png" style="max-height: 50px" alt=""
-      /></a>
-      <form class="d-flex align-items-center" role="search">
-        <div>Log in</div>
-        &nbsp;&nbsp;
+      <a class="navbar-brand" style="padding: 0px"><img src="../../../../assets/logo.png" style="max-height: 45px"
+          alt="" /></a>
+      <div class="d-flex align-items-center" role="search">
+        <div style="cursor: pointer;"> Log in</div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
 
         <div class="btn-group">
-          <button
-            type="button"
-            class="btn btn-danger dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
             Action
-          </button>
+          </div>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-            <li><a class="dropdown-item" href="#">Separated link</a></li>
+
+            <li><a class="dropdown-item" href="#">creation une announce</a></li>
+            <li><a class="dropdown-item" href="#">creation de compte </a></li>
+
           </ul>
         </div>
-      </form>
+      </div>
     </div>
   </nav>
 
@@ -128,20 +119,13 @@
           <div class="row" style="padding-right: 0; padding-left: 0px">
             <div class="col pt-1">
               <div class="dropdown">
-                <div
-                  class="dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  style="border-right: 0.1px solid #222831"
-                >
+                <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+                  style="border-right: 0.1px solid #222831">
                   Property
                 </div>
 
                 <ul class="dropdown-menu">
-                  <li
-                    class="dropdown-item"
-                    (click)="setProperty('appartement')"
-                  >
+                  <li class="dropdown-item" (click)="setProperty('appartement')">
                     Appartement
                   </li>
                   <li class="dropdown-item" (click)="setProperty('house')">
@@ -153,12 +137,8 @@
 
             <div class="col pt-1">
               <div class="dropdown">
-                <div
-                  class="dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  style="border-right: 0.1px solid #222831"
-                >
+                <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+                  style="border-right: 0.1px solid #222831">
                   Besoin
                 </div>
 
@@ -179,24 +159,15 @@
 
             <div class="col pt-1">
               <div class="dropdown">
-                <div
-                  class="dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  style="border-right: 0.1px solid #222831"
-                >
+                <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+                  style="border-right: 0.1px solid #222831">
                   Prix
                 </div>
 
                 <ul class="dropdown-menu">
                   <li>
                     <div class="dropdown-item">
-                      <input
-                        type="number"
-                        class="form-control"
-                        placeholder="prix"
-                        formControlName="prix"
-                      />
+                      <input type="number" class="form-control" placeholder="prix" formControlName="prix" />
                     </div>
                   </li>
                 </ul>
@@ -205,11 +176,7 @@
 
             <div class="col pt-1">
               <div class="dropdown">
-                <div
-                  class="dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   Willaya
                 </div>
 

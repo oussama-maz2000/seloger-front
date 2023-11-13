@@ -12,21 +12,18 @@ import { log } from 'winston';
   styleUrls: ['./annonce-list.component.css'],
 })
 export class AnnonceListComponent implements OnInit {
-  willays: string[];
-  besoinType = ['House', 'appartement', 'Terrain', 'Local commercial'];
+  willaya: string[];
+
   data$: Observable<any[]>;
   selectedBesoin = [];
   filterForm: FormGroup;
   constructor(private store: Store, private formBuilder: FormBuilder) {
-    this.willays = willaya;
+    this.willaya = willaya;
     this.filterForm = this.formBuilder.group({
-      type: ['louer'],
-      willaya: ['Batna'],
-      budget: [2000],
-      besoin: [['House', 'appartement']],
-      etage: [],
-      surface: [],
-      facade: [],
+      property: [''],
+      besoin: [''],
+      prix: [],
+      willaya: [],
     });
   }
 
@@ -34,6 +31,17 @@ export class AnnonceListComponent implements OnInit {
     this.data$ = this.store.select(getAllAnnounces);
   }
 
+  setBesoin(value: string): void {
+    this.filterForm.get('besoin').setValue(value);
+  }
+
+  setProperty(value: string): void {
+    this.filterForm.get('property').setValue(value);
+  }
+
+  setWillaya(value: string): void {
+    this.filterForm.get('willaya').setValue(value);
+  }
   onSubmit() {
     console.log(this.filterForm.value);
   }
