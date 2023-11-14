@@ -314,8 +314,11 @@
                     </div>
 
                     <ul class="dropdown-menu">
-                      <li class="dropdown-item" (click)="setProperty('appartement')">
-                        Appartement
+                      <li class="dropdown-item" (click)="setProperty('*')">
+                        All
+                      </li>
+                      <li class="dropdown-item" (click)="setProperty('apartment')">
+                        Apartment
                       </li>
                       <li class="dropdown-item" (click)="setProperty('house')">
                         House
@@ -330,14 +333,18 @@
                       Besoin
                     </div>
 
-                    <ul class="dropdown-menu" id="willaya">
+                    <ul class="dropdown-menu">
                       <li>
-                        <div class="dropdown-item" (click)="setBesoin('louer')">
+                        <div class="dropdown-item" (click)="setBesoin('*')">
+                          All
+                        </div>
+                      <li>
+                        <div class="dropdown-item" (click)="setBesoin('rent')">
                           Louer
                         </div>
                       </li>
                       <li>
-                        <div class="dropdown-item" (click)="setBesoin('acheter')">
+                        <div class="dropdown-item" (click)="setBesoin('sale')">
                           Acheter
                         </div>
                       </li>
@@ -354,7 +361,8 @@
                     <ul class="dropdown-menu">
                       <li>
                         <div class="dropdown-item">
-                          <input type="number" class="form-control" placeholder="prix" formControlName="prix" />
+                          <input type="number" class="form-control" placeholder="prix" (keyup.enter)="setPrix()"
+                            formControlName="price" />
                         </div>
                       </li>
                     </ul>

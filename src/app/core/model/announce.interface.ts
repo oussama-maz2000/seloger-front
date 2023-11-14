@@ -3,7 +3,7 @@ import { TypeImmobilier } from './type-immobilier.enum';
 export interface Announce {
   anncID: number;
   propType: string;
-  ancType: string;
+  anncType: string;
   address: string;
   willaya: string;
   surface: number;

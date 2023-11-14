@@ -1,4 +1,5 @@
 export const willaya = [
+  'All',
   'Adrar',
   'Chlef',
   'Laghouat',
