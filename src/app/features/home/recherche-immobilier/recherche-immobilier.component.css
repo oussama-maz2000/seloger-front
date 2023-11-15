@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
 .conbrd {
   background-color: rgb(241, 8, 8);
   border-radius: 8px 8px 0px 0px;
@@ -75,3 +77,77 @@ ul#pills-tab {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.h2 {
+  font-family: "Nunito", serif;
+  font-weight: 800;
+}
+button {
+  font-family: "Nunito", serif;
+  font-weight: 700;
+}
+hr {
+  width: 4%;
+  color: #ff385c;
+  border-top: 4px solid #ff385c;
+  opacity: unset;
+  border-radius: 5px;
+}
+.h5 {
+  font-family: "Nunito", serif;
+  font-weight: 700;
+  margin-bottom: -0.5rem;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.07);
+  transition: all 0.15s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1), 0 10px 8px rgba(0, 0, 0, 0.015);
+}
+
+.card-body .card-title {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  font-size: 24px;
+  color: #222831;
+}
+
+.card-text {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  color: #222831;
+}
+
+.card .container {
+  width: 90%;
+
+  background: #f0eef8;
+  border-radius: 30px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .container:hover > img {
+  transform: scale(1.2);
+}
+ */
+/* .container img {
+  padding: 75px;
+  margin-top: -40px;
+  margin-bottom: -40px;
+  transition: 0.4s ease;
+ 
+} */

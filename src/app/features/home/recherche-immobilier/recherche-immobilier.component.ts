@@ -14,24 +14,6 @@ import { SpinnerAction } from 'src/app/store/action/shared.action';
 export class RechercheImmobilierComponent {
   searchForm: FormGroup;
   willays: string[];
-  needs: Array<any> = [
-    {
-      key: 'appartement',
-      value: 'Appartement',
-    },
-    {
-      key: 'maison',
-      value: 'Maison',
-    },
-    {
-      key: 'local',
-      value: 'Local commercial',
-    },
-    {
-      key: 'terrain',
-      value: 'Terrain',
-    },
-  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,10 +24,10 @@ export class RechercheImmobilierComponent {
   }
   ngOnInit(): void {
     this.searchForm = this.formBuilder.group({
-      type: [],
-      willaya: [],
+      type: ['tous'],
+      willaya: ['All'],
       budget: [],
-      besoin: this.formBuilder.array([]),
+      besoin: this.formBuilder.array(['maison']),
     });
   }
 
@@ -65,6 +47,10 @@ export class RechercheImmobilierComponent {
   }
 
   onSearch(): void {}
+
+  setType(type: string): void {
+    this.searchForm.get('type').setValue(type);
+  }
 
   showData() {
     console.log(this.searchForm.value);
