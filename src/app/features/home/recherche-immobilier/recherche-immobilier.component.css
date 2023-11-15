@@ -1,107 +1,77 @@
-.main-section {
-  height: 100%;
+.conbrd {
+  background-color: rgb(241, 8, 8);
+  border-radius: 8px 8px 0px 0px;
+  /*box-shadow: 0px 0px 9px #31383b0d;*/
+  height: 36px;
   width: 100%;
+  padding: 9px 0px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+.table_content {
+  background-color: rgb(197, 213, 221);
+  width: 100%;
+  border-radius: 0px 10px 10px 10px;
+  /*   padding: 20px 40px 40px 40px; */
+}
+h5 {
+  font-size: 0.9rem;
 }
 
-.img-section {
-  color: rgba(15, 9, 9, 0.6);
-  position: relative;
-  background-position: right bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 480px;
-  background-image: url("../../../../assets/background.webp");
-}
-.offset-3.col-sm-6 {
+.form-select,
+.form-control {
   width: 100%;
+  /*  padding: 0.4rem 2.25rem 0.375rem 0.75rem; */
 }
-.img-section h1 {
-  color: black;
+
+.table_content .col-6 {
+  padding: 0px;
+}
+
+.nav-pills li.nav-item {
+  width: 33.33%;
+}
+.nav-pills li.nav-item button {
+  width: 100%;
+  border-radius: 30px;
+}
+ul#pills-tab {
+  background: #eff6ff;
+  border-radius: 30px;
+}
+.input-group {
+  position: relative;
+  display: flex;
+
+  align-items: stretch;
+  width: 100%;
+  flex-wrap: unset;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: var(--bs-nav-pills-link-active-color);
+  background-color: #ff385c;
+}
+
+.nav-link {
+  color: #222831;
 }
 #search-btn {
-  background: linear-gradient(45deg, rgb(224, 0, 52) 15%, rgb(254, 0, 75) 85%);
+  background: #ff385c;
   color: rgb(255, 255, 255);
   transition-duration: 0.2s;
   border: none transparent;
-  height: 50px;
+  height: 40px;
   border-radius: 32px;
   font-size: 16px;
   min-width: 125px;
-  padding: 0px 24px;
+  width: 50%;
 }
 
-.form-section {
-  display: inline-block;
-  margin-top: 5%;
-  margin-left: 30%;
-}
-
-.form-content {
-  background-color: rgb(253, 253, 254);
-  display: inline-block;
-  border-radius: 5%;
-  border: 1px solid transparent;
-}
-.form-control {
-  background-color: rgb(242, 243, 245);
-  border: 1.2px solid rgb(214, 208, 208);
-  border-radius: 8px;
-  color: black;
-}
-
-input {
-  box-sizing: border-box;
-}
-
-.search-btn {
-  display: flex;
-  justify-content: center;
-}
-
-.check {
-  margin-top: 4%;
-}
-
-.check label {
-  font-size: 20px;
-  font-family: arial;
-}
-
-.title {
-  margin-bottom: 50px;
-  font-family: arial;
-}
-
-.label-control {
-  padding-left: 2px;
-  color: black;
-}
-
-h2 {
-  color: black;
-  font-weight: 600;
-  font-family: arial;
-}
-
-.ngselect {
-  width: 200px;
-  height: auto;
-}
-
-.budget {
-  box-sizing: border-box;
-  padding: 3.2px;
-}
-#form {
-  color: #333;
-  background-color: #fff;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  min-height: 36px;
-  align-items: center;
-}
-
-.input-group {
-  width: 200px;
-  height: 36px;
+#main-section {
+  background-image: url(../../../../assets/background.webp);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
