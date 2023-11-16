@@ -1,256 +1,238 @@
-<div class="countainer-fluid p-5" id="main-section">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="col-sm-6 m-auto">
-        <h2 class="h2">Quel est votre projet ?</h2>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="col-sm-6 m-auto">
-        <div
-          class="shadow-lg p-3 mb-5 bg-body rounded"
-          [formGroup]="searchForm"
-        >
-          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="pills-home-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-home"
-                type="button"
-                role="tab"
-                aria-controls="pills-home"
-                aria-selected="true"
-                (click)="setType('tous')"
-              >
-                TOUS
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="pills-profile-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-profile"
-                type="button"
-                role="tab"
-                aria-controls="pills-profile"
-                aria-selected="false"
-                (click)="setType('acheter')"
-              >
-                ACHETER
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="pills-contact-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-contact"
-                type="button"
-                role="tab"
-                aria-controls="pills-contact"
-                aria-selected="false"
-                (click)="setType('louer')"
-              >
-                LOUER
-              </button>
-            </li>
-          </ul>
-          <div class="tab-content" id="pills-tabContent">
-            <div
-              class="tab-pane fade show active"
-              id="pills-home"
-              role="tabpanel"
-              aria-labelledby="pills-home-tab"
-              tabindex="0"
-            ></div>
-            <div
-              class="tab-pane fade"
-              id="pills-profile"
-              role="tabpanel"
-              aria-labelledby="pills-profile-tab"
-              tabindex="0"
-            ></div>
-            <div
-              class="tab-pane fade"
-              id="pills-contact"
-              role="tabpanel"
-              aria-labelledby="pills-contact-tab"
-              tabindex="0"
-            ></div>
-          </div>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-sm-7">
-                <div class="input-group mb-3">
-                  <label class="input-group-text" for="inputGroupSelect01"
-                    >Willaya</label
-                  >
-                  <select class="form-select" formControlName="willaya">
-                    <option *ngFor="let element of willays" [value]="element">
-                      {{ element }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-5">
-                <div class="input-group mb-3">
-                  <input
-                    type="number"
-                    class="form-control"
-                    placeholder="Max budget"
-                    aria-describedby="basic-addon2"
-                    formControlName="budget"
-                  />
-                  <span class="input-group-text" id="basic-addon2">DZ</span>
-                </div>
-              </div>
-              <div class="col-sm-12">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="appartement"
-                        id="flexCheckDefault"
-                        (change)="onCheckSelected($event)"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Appartement
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="maison"
-                        id="flexCheckChecked"
-                        checked
-                        (change)="onCheckSelected($event)"
-                      />
-                      <label class="form-check-label" for="flexCheckChecked">
-                        Maison
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="locaux"
-                        (change)="onCheckSelected($event)"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Locaux Commercials
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="terrains"
-                        (change)="onCheckSelected($event)"
-                      />
-                      <label class="form-check-label"> Terrains </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<div class="countainer-fluid " id="main-section">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-6 m-auto">
+                <h2 class="h2">Quel est votre projet ?</h2>
             </div>
-          </div>
-          <div class="search-btn d-flex justify-content-center mt-3">
-            <button class="btn my-0" id="search-btn" (click)="showData()">
-              Rechercher
-            </button>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-6 m-auto">
+                <div class="shadow-lg p-3 mb-5 bg-body rounded" [formGroup]="searchForm">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="true" (click)="setType('tous')">
+                                TOUS
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                                aria-selected="false" (click)="setType('acheter')">
+                                ACHETER
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                                aria-selected="false" (click)="setType('louer')">
+                                LOUER
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                            aria-labelledby="pills-home-tab" tabindex="0"></div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                            aria-labelledby="pills-profile-tab" tabindex="0"></div>
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                            aria-labelledby="pills-contact-tab" tabindex="0"></div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="inputGroupSelect01">Willaya</label>
+                                    <select class="form-select" formControlName="willaya">
+                                        <option *ngFor="let element of willays" [value]="element">
+                                            {{ element }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" placeholder="Max budget"
+                                        aria-describedby="basic-addon2" formControlName="budget" />
+                                    <span class="input-group-text" id="basic-addon2">DZ</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="appartement"
+                                                id="flexCheck_Appartement" (change)="onCheckSelected($event)" />
+                                            <label class="form-check-label" for="flexCheck_Appartement">
+                                                Appartement
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="maison"
+                                                id="flexCheck_Maison" checked (change)="onCheckSelected($event)" />
+                                            <label class="form-check-label" for="flexCheck_Maison">
+                                                Maison
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="locaux"
+                                                id="flexCheck_Locaux" (change)="onCheckSelected($event)" />
+                                            <label class="form-check-label" for="flexCheck_Locaux">
+                                                Locaux Commercials
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="terrains"
+                                                id="flexCheck_Terrains" (change)="onCheckSelected($event)" />
+                                            <label class="form-check-label" for="flexCheck_Terrains"> Terrains </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-btn d-flex justify-content-center mt-3">
+                        <button class="btn my-0" id="search-btn" (click)="showData()">
+                            Rechercher
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="container-fluid" id="second-section">
-  <div class="row mt-3">
-    <div class="col-sm-12">
-      <div class="col-sm-9">
-        <h2 class="h5">Les actualités <strong>de l’immobilier </strong></h2>
+    <div class="row mt-3">
+        <div class="col-sm-12">
+            <div class="col-sm-9">
+                <h2 class="h5">Les actualités <strong>de l’immobilier </strong></h2>
 
-        <hr />
-      </div>
+                <hr class="hr" />
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3 pt-3 px-5">
-      <div class="card" style="width: 100%">
-        <img
-          src="../../../../assets/calcul-nombre-pieces-seloger.jpeg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+    <div class="row">
+        <div class="col-sm-3 pt-3 px-5">
+            <div class="card" style="width: 100%">
+                <img src="../../../../assets/calcul-nombre-pieces-seloger.jpeg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the
+                        bulk of the card's content.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col-sm-3 pt-3 px-5">
-      <div class="card" style="width: 100%">
-        <img
-          src="../../../../assets/calculer-loye-seloger.jpeg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+        <div class="col-sm-3 pt-3 px-5">
+            <div class="card" style="width: 100%">
+                <img src="../../../../assets/calculer-loye-seloger.jpeg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the
+                        bulk of the card's content.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col-sm-3 pt-3 px-5">
-      <div class="card" style="width: 100%">
-        <img
-          src="../../../../assets/meilleur-moment-vendre-maison.jpg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+        <div class="col-sm-3 pt-3 px-5">
+            <div class="card" style="width: 100%">
+                <img src="../../../../assets/meilleur-moment-vendre-maison.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the
+                        bulk of the card's content.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col-sm-3 pt-3 px-5">
-      <div class="card" style="width: 100%">
-        <img
-          src="../../../../assets/Promoteur-immobilier-seloger.jpeg"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+        <div class="col-sm-3 pt-3 px-5">
+            <div class="card" style="width: 100%">
+                <img src="../../../../assets/Promoteur-immobilier-seloger.jpeg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the
+                        bulk of the card's content.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
+<footer class="container-fluid">
+    <div class="row pt-2">
+        <div class="col-sm-8">
+            <h5 class="h6">Notre service aussi</h5>
+            <div class="container-fluid">
+                <div class="row p-2 justify-content-between">
+                    <div class="col">
+                        <img src="../../../../assets/beeca-removebg-preview.png" style="width:60%;" id="img-icon"
+                            class="img-fluid" alt="">
+                    </div>
+                    <div class="col">
+                        <img src="../../../../assets/MedSign_colored.png"
+                            style="width: 50%;background-color: aliceblue;" class="img-fluid" alt="" id="img-icon">
+                    </div>
+                    <div class="col">
+                        <img src="../../../../assets/CSLogo_hr_white.png" style="width: 50%;" class="img-fluid"
+                            id="img-icon" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <h5 class="h6">Retrouvez-nous sur</h5>
+
+            <div class="container-fluid">
+                <div class="row py-2 text-center">
+                    <div class="col"><i class="bi bi-facebook"></i></div>
+                    <div class="col"><i class="bi bi-instagram"></i></div>
+                    <div class="col"><i class="bi bi-google"></i></div>
+                    <div class="col"><i class="bi bi-linkedin"></i></div>
+                </div>
+            </div>
+
+        </div>
+        <hr class="hr-footer m-auto">
+    </div>
+    <div class="container-fluid m-auto">
+        <div class="row pt-3">
+            <div class="col-sm-3 pb-3">
+                <h5>L'ENTREPRISE</h5>
+                <P>Qui sommes-nous?</P>
+                <p>Nous contacter</p>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <h5>NOS APPLICATIONS</h5>
+                <P><i class="bi bi-apple pe-1"></i> <i class="bi bi-android2"></i></P>
+
+            </div>
+            <div class="col-sm-3 pb-3">
+                <h5>SERVICES PRO</h5>
+                <P>Tous nos service pro</P>
+                <p>Accés client</p>
+                <p>Notre Annonces</p>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <h5>À DÉCOUVRIR</h5>
+                <P>Tout l'immobilier</P>
+                <p>Toutes les villes</p>
+                <p>Toutes les régions</p>
+            </div>
+            <hr class="hr-footer m-auto">
+
+        </div>
+    </div>
+
+</footer>
