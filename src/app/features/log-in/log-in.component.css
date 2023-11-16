@@ -46,13 +46,14 @@ input {
   font-size: 16px;
 }
 #connect-btn {
-  background: linear-gradient(45deg, #e00034 15%, #fe004b 85%);
-  color: white;
-  border-color: transparent;
-  width: 26em;
-  border-radius: 32px;
-  min-width: 100px;
+  /*  background: linear-gradient(45deg, #e00034 15%, #fe004b 85%); */
+  width: 40%;
+  background: #ff385c;
+  color: rgb(255, 255, 255);
+  transition-duration: 0.2s;
+  border: none transparent;
   height: 40px;
+  border-radius: 32px;
 }
 
 #passord-forget {
@@ -92,4 +93,17 @@ input.ng-invalid.ng-touched {
   line-height: 18px;
   font-size: 13px;
   font-family: arial;
+}
+
+.input-group {
+  width: 40%;
+}
+
+@media screen and (max-width: 480px) {
+  .input-group {
+    width: 100%;
+  }
+  #connect-btn {
+    width: 100%;
+  }
 }

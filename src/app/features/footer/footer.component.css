@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+footer {
+  background-color: black;
+  color: white;
+}
+
+.h5-title {
+  margin-bottom: 0.3rem;
+}
+
+@media screen and (max-width: 480px) {
+  .img-fluid #img-icon {
+    width: 100% !important;
+  }
+}
+
+.h6 {
+  font-family: "Nunito", serif;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.hr-footer {
+  width: 90%;
+  color: #ebeaea;
+  border: 0.3px solid #ebeaea;
+  opacity: unset;
+  border-radius: 5px;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 0rem;
+  font-size: 12px;
+}
+
+.bi {
+  font-size: 20px;
+}
+.h5-title {
+  font-size: 15px;
+  font-family: "Nunito", serif;
+  font-weight: 400;
+}

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-4 ">
             <img src="../../../assets/connect-img.webp" alt="..." class="img-connect">
@@ -83,4 +83,78 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+      <img
+        src="../../../assets/connect-img.webp"
+        style="height: 100%"
+        class="img-fluid"
+        alt=""
+      />
+    </div>
+    <div class="col-sm-8 pt-5">
+      <p class="title">Se connecter</p>
+      <p>Vous n'avez pas de compte ? <a> Créer un compte</a></p>
+
+      <div class="my-2">
+        <label for="email" class="form-label">Votre e-mail</label>
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            name="email"
+            formControlName="email"
+          />
+        </div>
+
+        <span *ngIf="!connecter.get('email').valid">
+          <span
+            *ngIf="connecter.get('email').errors['email']"
+            class="error-message"
+          >
+            Veuillez renseigner une address mail valide
+          </span>
+        </span>
+      </div>
+      <div class="my-2">
+        <label for="password" class="form-label">Votre mot de passe</label>
+        <div class="input-group">
+          <input
+            type="{{ visible ? 'text' : 'password' }}"
+            class="form-control"
+            aria-describedby="password"
+            formControlName="password"
+          />
+          <span
+            class="input-group-text"
+            id="basic-addon2"
+            style="cursor: pointer"
+            (click)="changeVisibility()"
+            ><i class="{{ visible ? 'bi bi-eye-slash' : 'bi bi-eye' }}"></i
+          ></span>
+        </div>
+        <span *ngIf="!connecter.get('password').valid">
+          <span
+            *ngIf="!connecter.get('password').pristine"
+            class="error-message"
+          >
+            Vous devez renseigner le mot de passe.
+          </span>
+        </span>
+      </div>
+      <div class="my-4">
+        <button
+          class="btn btn-outline-secondary"
+          id="connect-btn"
+          [disabled]="connecter.valid"
+        >
+          Se connecter
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
