@@ -36,6 +36,7 @@ import { UpdateBtnComponent } from './core/shared/update-btn/update-btn.componen
 import { TreeSelectModule } from 'primeng/treeselect';
 import { MessageComponent } from './core/shared/message/message.component';
 import { TestComponent } from './features/test/test/test.component';
+import { FooterComponent } from './features/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { TestComponent } from './features/test/test/test.component';
     AdminComponent,
     UpdateBtnComponent,
     TestComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
