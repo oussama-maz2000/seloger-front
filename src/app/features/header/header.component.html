@@ -57,7 +57,7 @@
 <div class="container-fluid">
   <nav class="navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" style="padding: 0px"
+      <a class="navbar-brand" style="padding: 0px" href="#"
         ><img src="../../../../assets/logo.png" style="max-height: 45px" alt=""
       /></a>
       <div class="d-flex align-items-center" role="search">
@@ -81,8 +81,14 @@
             <i class="bi bi-globe"></i>
           </div>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">creation une announce</a></li>
-            <li><a class="dropdown-item" href="#">creation de compte </a></li>
+            <li>
+              <a class="dropdown-item" href="#">creation une announce</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['demand-compte']"
+                >creation de compte
+              </a>
+            </li>
           </ul>
         </div>
       </div>

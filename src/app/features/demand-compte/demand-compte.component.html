@@ -1,0 +1,117 @@
+<div class="container-fluid" id="main">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-sm-6 m-auto">
+        <div class="shadow-lg p-3 mb-5 bg-body rounded">
+          <div class="row">
+            <div class="col-sm-4 px-4 pt-2">
+              <img
+                src="../../../assets/undraw_on_the_office_re_cxds.svg"
+                class="img-fluid"
+                alt=""
+              />
+            </div>
+            <div class="col-sm-7 px-4 pt-2">
+              <h5>
+                <span class="nouveau"> NOUVEAU : </span>Captez les projets de
+                vente de votre secteur !
+              </h5>
+              <p>
+                Nos équipes pré-qualifient pour vous les projets de vente
+                proches de chez vous. Que diriez-vous d'être mis en relation
+                avec ces vendeurs ?
+              </p>
+            </div>
+          </div>
+
+          <div class="row px-5">
+            <div class="col-sm-6">
+              <div class="pb-2">
+                <label for="agence_nom" class="form-label"
+                  >Nom de votre agence</label
+                >
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="agence_nom"
+                    name="agence_nom"
+                  />
+                </div>
+              </div>
+              <div class="pb-2">
+                <label for="Nom" class="form-label">Nom</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="Nom" name="Nom" />
+                </div>
+              </div>
+              <div class="pb-2">
+                <label for="Prenom" class="form-label">Prenom</label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Prenom"
+                    name="Prenom"
+                  />
+                </div>
+              </div>
+              <div class="pb-2">
+                <label for="adress_agence" class="form-label"
+                  >Adress d'agence</label
+                >
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="adress_agence"
+                    name="adress_agence"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="pb-2">
+                <label for="adress-email" class="form-label"
+                  >Adress email</label
+                >
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="adress-email"
+                    name="adress-email"
+                  />
+                </div>
+              </div>
+              <div class="pb-2">
+                <label for="telephone" class="form-label">Telephone</label>
+                <div class="input-group">
+                  <input
+                    type="number"
+                    class="form-control"
+                    aria-describedby="telephone"
+                  />
+                  <span class="input-group-text" id="telephone"> +213</span>
+                </div>
+              </div>
+              <div class="pb-2">
+                <label for="willaya" class="form-label">Willaya</label>
+                <div class="input-group">
+                  <select class="form-select">
+                    <option *ngFor="let element of willays" [value]="element">
+                      {{ element }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="pb-2" style="padding-top: 2rem !important">
+                <button class="btn" id="search-btn">Demander</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

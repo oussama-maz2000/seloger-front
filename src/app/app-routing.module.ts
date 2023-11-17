@@ -2,16 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import { LogInComponent } from './features/log-in/log-in.component';
-import { SignUpComponent } from './features/sign-up/sign-up.component';
-import { ImmobilierTemplateComponent } from './features/test/immobilier-template/immobilier-template.component';
-import { QuillModule } from 'ngx-quill';
 import { AdminComponent } from './features/admin/admin.component';
+import { DemandCompteComponent } from './features/demand-compte/demand-compte.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'mon-compte/connexion', component: LogInComponent },
-  { path: 'mon-compte/creation', component: SignUpComponent },
-  { path: 'mon-compte/test', component: ImmobilierTemplateComponent },
+  { path: 'connexion', component: LogInComponent },
+  { path: 'demand-compte', component: DemandCompteComponent },
+
   {
     path: 'annonce',
     loadChildren: () =>
