@@ -11,6 +11,7 @@ import { AnnonceComponent } from './annonce/annonce.component';
 
 import { QuillModule } from 'ngx-quill';
 import { SingleAnnounceComponent } from './single-announce/single-announce.component';
+import { AddAnnonceComponent } from './add-annonce/add-annonce.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'annonce-details/:id', component: AnnonceSingleComponent },
       { path: 'annonce-create', component: CreateAnnonceComponent },
       { path: 'annonce', component: AnnonceComponent },
+      { path: 'annonce-add', component: AddAnnonceComponent },
     ],
   },
 ];
@@ -31,6 +33,7 @@ const routes: Routes = [
     CreateAnnonceComponent,
     AnnonceComponent,
     SingleAnnounceComponent,
+    AddAnnonceComponent,
   ],
   imports: [
     CommonModule,

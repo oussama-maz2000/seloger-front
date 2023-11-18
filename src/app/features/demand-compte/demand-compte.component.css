@@ -16,12 +16,12 @@ input {
 
 .form-label {
   font-family: "Nunito", serif;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 500;
+  /* font-size: 16px; */
 }
 
 .input-group {
-  width: 90%;
+  width: 100%;
 }
 .form-select {
   width: 26em;
@@ -38,11 +38,11 @@ input {
   color: rgb(255, 255, 255);
   transition-duration: 0.2s;
   border: none transparent;
-  height: 40px;
+  height: 42px;
   border-radius: 8px;
   font-size: 16px;
   min-width: 125px;
-  width: 90%;
+  width: 40%;
 }
 .nouveau {
   color: #ff385c;
@@ -52,16 +52,40 @@ h5 {
   font-family: "Nunito", serif;
   color: #2b2b2b;
   font-weight: 800;
-  font-size: 22px;
 }
 p {
   font-family: "Nunito", serif;
   color: #2b2b2b;
+  font-size: 12px;
 }
 #main {
-  background-image: url(../../../assets/alger_01.avif);
+  background-image: url(../../../assets/bg_HP2.webp);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   padding: 3rem 1rem;
+}
+
+.error-message {
+  color: rgb(197, 42, 42);
+  /* line-height: 18px; */
+  font-size: 12px;
+  font-family: arial;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid rgb(238, 103, 103);
+  background-color: rgb(247, 231, 231);
+}
+
+.hr-line {
+  width: 100%;
+  color: #ff385c;
+  border: 0.3px solid #ff385c;
+  opacity: unset;
+  border-radius: 5px;
+}
+.space-error-msg {
+  display: inline-block;
+  /* height: 1px; */
 }
