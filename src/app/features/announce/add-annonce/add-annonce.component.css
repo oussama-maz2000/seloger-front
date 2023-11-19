@@ -1,0 +1,88 @@
+.hr-line {
+  width: 100%;
+  color: #ff385c;
+  border: 0.3px solid #ff385c;
+  opacity: unset;
+  border-radius: 5px;
+}
+
+input {
+  width: 26em;
+  font-size: 16px;
+  border: solid 1px #929292;
+  height: 42px;
+  color: #2b2b2b;
+  background-color: white;
+  transition-duration: 0.2s;
+}
+.form-label {
+  font-family: "Nunito", serif;
+  font-weight: 500;
+  /* font-size: 16px; */
+}
+
+.input-group {
+  width: 100%;
+}
+.form-select {
+  width: 26em;
+  font-size: 16px;
+  border: solid 1px #929292;
+  height: 42px;
+  color: #2b2b2b;
+  background-color: white;
+  transition-duration: 0.2s;
+}
+
+ngx-dropzone {
+  display: unset;
+  align-items: unset;
+  height: 42px;
+
+  cursor: pointer;
+  width: 26em;
+  font-size: 16px;
+  border: solid 1px #929292;
+
+  color: #2b2b2b;
+  background-color: white;
+  transition-duration: 0.2s;
+  overflow-x: auto;
+  width: 100%;
+}
+
+ngx-dropzone-preview {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  margin: 10px;
+  max-width: 24rem;
+  min-height: 20px;
+  min-width: 24rem;
+  padding: 0px 20px;
+  position: relative;
+}
+
+ngx-dropzone-label {
+  font-weight: 400;
+  padding-left: 3px;
+}
+
+.list-group-item {
+  border: unset;
+}
+
+ul.list-group.list-group-flush {
+  border: unset;
+}
+#custom-card {
+  border: 1px solid rgba(0, 0, 0, 0.175);
+}
+
+.h5 {
+  font-family: "Nunito", serif;
+  color: #2b2b2b;
+  font-weight: 800;
+}
