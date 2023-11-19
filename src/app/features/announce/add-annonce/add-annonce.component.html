@@ -1,228 +1,467 @@
 <div class="container-fluid pt-3">
-    <div class="row">
-        <div class="col-sm-4 px-5">
-
-            <div class="card shadow-sm mb-3" style="width: 100%;">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-                            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-                            aria-selected="true">Information de Propriétaire
-                        </button>
-                    </li>
-                    <li class="list-group-item">
-                        <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
-                            data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
-                            aria-selected="false">Information d'Announce
-                        </button>
-                    </li>
-                    <li class="list-group-item">
-                        <button class="nav-link" id="v-pills-optional-tab" data-bs-toggle="pill"
-                            data-bs-target="#v-pills-optional" type="button" role="tab" aria-controls="v-pills-optional"
-                            aria-selected="false">Information Optional d'Announce
-                        </button>
-                    </li>
-                </ul>
-            </div>
-
-
-        </div>
-        <div class="col-sm-8">
-            <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                    aria-labelledby="v-pills-home-tab" tabindex="0">
-                    <div class="shadow-sm p-3  rounded" id="custom-card">
-                        <h5 class="h5 d-flex justify-content-center">Information de Propriétaire</h5>
-                        <!-- <hr class="hr-line"> -->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div>
-                                    <label for="nom" class="form-label">Nom</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="nom" name="nom" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label for="email" class="form-label">Email</label>
-                                    <div class="input-group">
-                                        <input type="email" class="form-control" id="email" name="nom" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div>
-                                    <label for="prenom" class="form-label">Prenom</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="prenom" name="prenom" />
-                                    </div>
-                                    <div>
-                                        <label for="address" class="form-label">Address</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="address" name="address" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-
-
-                </div>
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
-                    tabindex="0">
-                    <div class=" p-3 mb-5 bg-body rounded">
-                        <div class="row">
-                            <h5 class="h5 d-flex justify-content-center">Information d'Announce</h5>
-                            <hr class="hr-line">
-                            <div class="col-sm-6">
-
-
-                                <div class="pb-4">
-                                    <label for="property" class="form-label"> Type de propriete</label>
-                                    <div class="input-group">
-                                        <select class="form-select">
-                                            <option>
-                                                Maison
-                                            </option>
-                                            <option>
-                                                Appartement
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <div class="pb-4">
-                                    <label for="juridic" class="form-label"> Type juridic</label>
-                                    <div class="input-group">
-                                        <select class="form-select">
-                                            <option>
-                                                Maison
-                                            </option>
-                                            <option>
-                                                Appartement
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                </div>
-
-                                <div class="pb-4">
-                                    <label for="address" class="form-label">Address</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="address" name="address" />
-                                    </div>
-                                </div>
-
-                                <div class="pb-4">
-                                    <label for="facade" class="form-label">Facade</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="facade" name="facade" />
-                                    </div>
-                                </div>
-
-
-                                <div class="pb-4">
-                                    <label for="surface" class="form-label">Suraface</label>
-                                    <div class="input-group">
-                                        <input type="tel" class="form-control" aria-describedby="surface"
-                                            formControlName="surface" />
-                                        <span class="input-group-text" id="surface">m²</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-
-                                <div class="pb-4">
-                                    <label for="announce" class="form-label"> Type de announce</label>
-                                    <div class="input-group">
-                                        <select class="form-select">
-                                            <option>
-                                                A vendre
-                                            </option>
-                                            <option>
-                                                A louer
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                </div>
-
-                                <div class="pb-4">
-                                    <label for="willaya" class="form-label"> Willaya</label>
-                                    <div class="input-group">
-                                        <select class="form-select">
-                                            <option>
-                                                A vendre
-                                            </option>
-                                            <option>
-                                                A louer
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="pb-4">
-                                    <label for="etage" class="form-label">Etage</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="etage" name="etage" />
-                                    </div>
-                                </div>
-
-
-
-                                <div class="pb-4">
-                                    <label for="prix" class="form-label">Prix</label>
-                                    <div class="input-group">
-                                        <input type="tel" class="form-control" aria-describedby="surface"
-                                            formControlName="prix" />
-                                        <span class="input-group-text" id="prix">DZD</span>
-                                    </div>
-                                </div>
-
-
-                                <div class="pb-4">
-                                    <label for="images" class="form-label">Images</label>
-                                    <div class="input-group ">
-                                        <ngx-dropzone (change)="onSelect($event)">
-                                            <ngx-dropzone-label class="h6">sélectionner ou glisser-déposer les
-                                                images</ngx-dropzone-label>
-                                            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true"
-                                                (removed)="onRemove(f)">
-                                                <ngx-dropzone-label>{{ f.name}} </ngx-dropzone-label>
-                                            </ngx-dropzone-preview>
-                                        </ngx-dropzone>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-
-
-
-
-
-
-
-                </div>
-                <div class="tab-pane fade" id="v-pills-optional" role="tabpanel" aria-labelledby="v-pills-optional-tab"
-                    tabindex="0">
-                    Information Optional d'Announce
-                </div>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-sm-4 px-5">
+      <div class="card shadow-sm mb-3" style="width: 100%">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <button
+              class="nav-link active"
+              id="v-pills-home-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-home"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-home"
+              aria-selected="true"
+            >
+              Information de Propriétaire
+            </button>
+          </li>
+          <li class="list-group-item">
+            <button
+              class="nav-link"
+              id="v-pills-profile-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-profile"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-profile"
+              aria-selected="false"
+            >
+              Information d'Announce
+            </button>
+          </li>
+          <li class="list-group-item">
+            <button
+              class="nav-link"
+              id="v-pills-optional-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-optional"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-optional"
+              aria-selected="false"
+            >
+              Information Optional d'Announce
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
+    <div class="col-sm-8">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div
+          class="tab-pane fade show active"
+          id="v-pills-home"
+          role="tabpanel"
+          aria-labelledby="v-pills-home-tab"
+          tabindex="0"
+        >
+          <div class="shadow-sm p-3 rounded" id="custom-card">
+            <h5 class="h5 d-flex justify-content-center">
+              Information de Propriétaire
+            </h5>
+            <!-- <hr class="hr-line"> -->
+            <div class="row">
+              <div class="col-sm-6">
+                <div>
+                  <label for="nom" class="form-label">Nom</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="nom"
+                      id="input"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label for="email" class="form-label">Email</label>
+                  <div class="input-group">
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      id="input"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div>
+                  <label for="prenom" class="form-label">Prenom</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="prenom"
+                      id="input"
+                    />
+                  </div>
+                  <div>
+                    <label for="address" class="form-label">Address</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="address"
+                        id="input"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="v-pills-profile"
+          role="tabpanel"
+          aria-labelledby="v-pills-profile-tab"
+          tabindex="0"
+        >
+          <div class="shadow-sm p-3 mb-5 bg-body rounded" id="custom-card">
+            <div class="row">
+              <h5 class="h5 d-flex justify-content-center">
+                Information d'Announce
+              </h5>
+              <!-- <hr class="hr-line">-->
+              <div class="col-sm-6">
+                <div class="pb-4">
+                  <label for="property" class="form-label">
+                    Type de propriete</label
+                  >
+                  <div class="input-group">
+                    <select class="form-select">
+                      <option>Maison</option>
+                      <option>Appartement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="pb-4">
+                  <label for="juridic" class="form-label"> Type juridic</label>
+                  <div class="input-group">
+                    <select class="form-select">
+                      <option>Maison</option>
+                      <option>Appartement</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pb-4">
+                  <label for="address" class="form-label">Address</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="address"
+                      id="input"
+                    />
+                  </div>
+                </div>
+
+                <div class="pb-4">
+                  <label for="facade" class="form-label">Facade</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="facade"
+                      id="input"
+                    />
+                  </div>
+                </div>
+
+                <div class="pb-4">
+                  <label for="surface" class="form-label">Suraface</label>
+                  <div class="input-group">
+                    <input
+                      type="tel"
+                      class="form-control"
+                      aria-describedby="surface"
+                      id="surface"
+                      style="width: 80%"
+                    />
+                    <span class="input-group-text" id="surface">m²</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="pb-4">
+                  <label for="announce" class="form-label">
+                    Type de announce</label
+                  >
+                  <div class="input-group">
+                    <select class="form-select">
+                      <option>A vendre</option>
+                      <option>A louer</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pb-4">
+                  <label for="willaya" class="form-label"> Willaya</label>
+                  <div class="input-group">
+                    <select class="form-select">
+                      <option>A vendre</option>
+                      <option>A louer</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pb-4">
+                  <label for="etage" class="form-label">Etage</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="etage"
+                      id="input"
+                    />
+                  </div>
+                </div>
+
+                <div class="pb-4">
+                  <label for="prix" class="form-label">Prix</label>
+                  <div class="input-group">
+                    <input
+                      type="tel"
+                      class="form-control"
+                      id="prix"
+                      name="prix"
+                      style="width: 80%"
+                    />
+                    <span class="input-group-text" id="prix">DZD</span>
+                  </div>
+                </div>
+
+                <div class="pb-4">
+                  <label for="images" class="form-label">Images</label>
+                  <div class="input-group">
+                    <ngx-dropzone (change)="onSelect($event)">
+                      <ngx-dropzone-preview
+                        *ngFor="let f of files"
+                        [removable]="true"
+                        (removed)="onRemove(f)"
+                      >
+                        <ngx-dropzone-label>{{ f.name }} </ngx-dropzone-label>
+                      </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="v-pills-optional"
+          role="tabpanel"
+          aria-labelledby="v-pills-optional-tab"
+          tabindex="0"
+        >
+          <div class="shadow-sm p-3 mb-5 bg-body rounded" id="custom-card">
+            <h5 class="h5 d-flex justify-content-center">
+              Information Optional d'Announce
+            </h5>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group pb-4">
+                  <label class="form-label">Service et accessibilité</label>
+                  <div class="dropdown" (click)="preventClose($event)">
+                    <div
+                      class="btn btn-secondary dropdown"
+                      role="button"
+                      id="dropdownMenuButton01"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <div class="data-selected">hello world , hello world</div>
+                    </div>
+
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton01"
+                    >
+                      <ul class="list-unstyled">
+                        <li *ngFor="let item of serviceAccessibilityList">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              [value]="item"
+                              id="{{ item }}"
+                              (click)="$event.stopPropagation()"
+                            />
+                            <label class="form-check-label" for="{{ item }}">
+                              {{ item }}
+                            </label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group pb-4">
+                  <label class="form-label">hygiène</label>
+                  <div class="dropdown" (click)="preventClose($event)">
+                    <div
+                      class="btn btn-secondary dropdown"
+                      role="button"
+                      id="dropdownMenuButton02"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <div class="data-selected">hello world , hello world</div>
+                    </div>
+
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton02"
+                    >
+                      <ul class="list-unstyled">
+                        <li *ngFor="let item of serviceAccessibilityList">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              [value]="item"
+                              id="{{ item }}"
+                              (click)="$event.stopPropagation()"
+                            />
+                            <label class="form-check-label" for="{{ item }}">
+                              {{ item }}
+                            </label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group pb-4">
+                  <label class="form-label">pièces</label>
+                  <div class="dropdown" (click)="preventClose($event)">
+                    <div
+                      class="btn btn-secondary dropdown"
+                      role="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <div class="data-selected">hello world , hello world</div>
+                    </div>
+
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <ul class="list-unstyled">
+                        <li *ngFor="let item of serviceAccessibilityList">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              [value]="item"
+                              id="{{ item }}"
+                              (click)="$event.stopPropagation()"
+                            />
+                            <label class="form-check-label" for="{{ item }}">
+                              {{ item }}
+                            </label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group pb-4">
+                  <label class="form-label">service public</label>
+                  <div class="dropdown" (click)="preventClose($event)">
+                    <div
+                      class="btn btn-secondary dropdown"
+                      role="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <div class="data-selected">hello world , hello world</div>
+                    </div>
+
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <ul class="list-unstyled">
+                        <li *ngFor="let item of serviceAccessibilityList">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              [value]="item"
+                              id="{{ item }}"
+                              (click)="$event.stopPropagation()"
+                            />
+                            <label class="form-check-label" for="{{ item }}">
+                              {{ item }}
+                            </label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="pb-4">
+                  <label for="climatisation" class="form-label">
+                    Climatisation</label
+                  >
+                  <div class="input-group">
+                    <select class="form-select">
+                      <option>A vendre</option>
+                      <option>A louer</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pb-4">
+                  <label for="chauffage" class="form-label"> Chauffage</label>
+                  <div class="input-group">
+                    <select class="form-select">
+                      <option>A vendre</option>
+                      <option>A louer</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pb-4">
+                  <label for="cuisin" class="form-label"> Cuisin</label>
+                  <div class="input-group">
+                    <select class="form-select">
+                      <option>A vendre</option>
+                      <option>A louer</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pb-4">
+                  <label for="disponible" class="form-label"
+                    >La disponibilité</label
+                  >
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="disponible" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

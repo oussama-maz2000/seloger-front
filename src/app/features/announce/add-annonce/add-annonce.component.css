@@ -6,7 +6,7 @@
   border-radius: 5px;
 }
 
-input {
+.input-group input {
   width: 26em;
   font-size: 16px;
   border: solid 1px #929292;
@@ -85,4 +85,47 @@ ul.list-group.list-group-flush {
   font-family: "Nunito", serif;
   color: #2b2b2b;
   font-weight: 800;
+}
+
+.dropdown .btn {
+  width: 100%;
+  font-size: 16px;
+  border: solid 1px #929292;
+  height: 42px;
+  color: #2b2b2b;
+  background-color: white;
+  transition-duration: 0.2s;
+
+  /* height: 40px; */
+
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.dropdown-toggle::after {
+  margin-left: 17.255em;
+  vertical-align: 0.3em;
+}
+
+.data-selected {
+  display: flex;
+  padding-top: 2px;
+  font-weight: 400;
+}
+
+.form-check .form-check-input {
+  margin-left: unset;
+  margin-right: 4px;
+}
+
+.dropdown-menu.show {
+  width: 60%;
+}
+
+.form-check-label {
+  font-family: "Nunito", serif;
+  color: #2b2b2b;
+  font-weight: 400;
+  font-size: 13px;
 }
