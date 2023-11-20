@@ -33,9 +33,9 @@ export class AddAnnonceComponent implements OnInit {
   optionalAnnounceFormControl: FormGroup;
 
   checkProprietaireFormValidation: boolean = false;
-
-  showProfilTab: string = 'tab-pane fade show active';
-  showAnnonceTab: string = 'tab-pane fade';
+  checkAnnonceFormValidation: boolean = false;
+  showProfilTab: string = 'tab-pane fade';
+  showAnnonceTab: string = 'tab-pane fade show active';
   showOptionalTab: string = 'tab-pane fade';
   profileBtn: string = 'nav-link active';
   annonceBtn: string = 'nav-link';
@@ -83,14 +83,14 @@ export class AddAnnonceComponent implements OnInit {
     }
   }
   nextToOptional(): void {
-    this.showAnnonceTab = 'tab-pane fade';
-    this.showOptionalTab = 'tab-pane fade active show';
+    if (this.onSubmitAnnonce()) {
+      this.showAnnonceTab = 'tab-pane fade';
+      this.showOptionalTab = 'tab-pane fade active show';
 
-    this.annonceBtn = 'nav-link ';
+      this.annonceBtn = 'nav-link ';
 
-    this.optionalBtn = 'nav-link active';
-
-    this.onSubmitAnnonce();
+      this.optionalBtn = 'nav-link active';
+    }
   }
 
   backToProfile(): void {
@@ -114,11 +114,10 @@ export class AddAnnonceComponent implements OnInit {
     return this.proprietaireFormControl.valid;
   }
 
-  onSubmitAnnonce() {
+  onSubmitAnnonce(): boolean {
     console.log(this.annonceFormControl.value);
-    console.log(this.annonceFormControl.errors);
-
-    console.log(this.annonceFormControl.valid);
+    this.checkAnnonceFormValidation = true;
+    return this.annonceFormControl.valid;
   }
 
   createProfileProprietaireForm() {
@@ -132,10 +131,10 @@ export class AddAnnonceComponent implements OnInit {
 
   createAnnonceForm() {
     this.annonceFormControl = this.formBuilder.group({
-      typeProperty: ['Maison', [Validators.required]],
-      typeAnnonce: ['A vendre', [Validators.required]],
-      typeJuridic: ['Maison', [Validators.required]],
-      willaya: ['Tous'],
+      typeProperty: [, [Validators.required]],
+      typeAnnonce: [, [Validators.required]],
+      typeJuridic: [, [Validators.required]],
+      willaya: [, [Validators.required]],
       address: [, [Validators.required]],
       etage: [, [Validators.required, Validators.min(0)]],
       facade: [, [Validators.required, Validators.min(0)]],
