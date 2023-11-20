@@ -23,7 +23,7 @@ export class DemandCompteComponent implements OnInit {
       adress_agence: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       telephone: ['', [Validators.required]],
-      willaya: ['All', [Validators.required]],
+      willaya: ['Tous', [Validators.required]],
     });
   }
 

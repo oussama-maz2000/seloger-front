@@ -24,8 +24,8 @@ export class RechercheImmobilierComponent {
   }
   ngOnInit(): void {
     this.searchForm = this.formBuilder.group({
-      type: ['tous'],
-      willaya: ['All'],
+      type: ['Tous'],
+      willaya: ['Tous'],
       budget: [],
       besoin: this.formBuilder.array(['maison']),
     });

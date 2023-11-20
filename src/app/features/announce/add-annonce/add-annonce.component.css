@@ -7,7 +7,7 @@
 }
 
 .input-group input {
-  width: 26em;
+  width: 100%;
   font-size: 16px;
   border: solid 1px #929292;
   height: 42px;
@@ -25,7 +25,7 @@
   width: 100%;
 }
 .form-select {
-  width: 26em;
+  width: 100%;
   font-size: 16px;
   border: solid 1px #929292;
   height: 42px;
@@ -128,4 +128,27 @@ ul.list-group.list-group-flush {
   color: #2b2b2b;
   font-weight: 400;
   font-size: 13px;
+}
+button.nav-link.active {
+  background-color: #ff385c;
+  width: 100%;
+  border-radius: 6px;
+  color: white;
+  transition: 0.8s;
+}
+
+button .btn {
+  background-color: #ff385c;
+  color: white;
+}
+
+.space-error-msg {
+  display: inline-block;
+  /* height: 1px; */
+}
+.error-message {
+  color: rgb(197, 42, 42);
+  /* line-height: 18px; */
+  font-size: 12px;
+  font-family: arial;
 }

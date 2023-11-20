@@ -1,5 +1,5 @@
 export const willaya = [
-  'All',
+  'Tous',
   'Adrar',
   'Chlef',
   'Laghouat',
@@ -61,33 +61,32 @@ export const willaya = [
 ];
 
 export const serviceAccessibilityList = [
-  'ELEVATOR',
-  'INTERCOM',
-  'CHIP_PORT',
-  'GUARDIAN',
-  'PARKING',
-  'INTERNET',
-  'COLLECTION_PARABLES',
+  'Ascenseur',
+  'Interphone',
+  'Puce Port',
+  'Gardien',
+  'Parking',
+  'Internet',
+  'Parabole Collectif',
 ];
 
 export const hygieneList = [
-  'WATER_TANK',
-  'WATER_PUMP',
-  'SEPARATE_TOILET',
-  'NO_SEPARATE_TOILET',
-  'BATHROOM',
+  "Réservoir D'eau",
+  'Pompe A Eau',
+  'Toilettes Séparées',
+  'Toilettes Non Séparées',
+  'Salle De Bain',
 ];
 
-export const piecesList = ['SALON', 'TERRACE', 'BALCONY', 'CLOSETS', 'GARDEN'];
+export const piecesList = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'Plus'];
 
 export const publicServcieList = [
-  'PRIMARY_SCHOOL',
-  'SECONDARY_SCHOOL',
-  'HIGH_SCHOOL',
-  'BANK',
-  'PUBLIC_GARDEN',
-  'COURT',
-  'TOWN_HALL',
+  'Jardin Public',
+  'Tribunal',
+  'École Primaire',
+  'École secondaire',
+  'Lycée',
+  'Banque',
 ];
 
 export const quillConfig = {
