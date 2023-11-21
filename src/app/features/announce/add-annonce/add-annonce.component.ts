@@ -5,7 +5,13 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import {
   willaya,
   serviceAccessibilityList,
@@ -35,11 +41,11 @@ export class AddAnnonceComponent implements OnInit {
   checkProprietaireFormValidation: boolean = false;
   checkAnnonceFormValidation: boolean = false;
   showProfilTab: string = 'tab-pane fade';
-  showAnnonceTab: string = 'tab-pane fade show active';
-  showOptionalTab: string = 'tab-pane fade';
-  profileBtn: string = 'nav-link active';
+  showAnnonceTab: string = 'tab-pane fade';
+  showOptionalTab: string = 'tab-pane fade show active';
+  profileBtn: string = 'nav-link ';
   annonceBtn: string = 'nav-link';
-  optionalBtn: string = 'nav-link';
+  optionalBtn: string = 'nav-link active';
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -52,6 +58,7 @@ export class AddAnnonceComponent implements OnInit {
 
     this.createProfileProprietaireForm();
     this.createAnnonceForm();
+    this.createOptionalAnnonceInformationForm();
   }
 
   onSelect(event: any): void {
@@ -120,6 +127,16 @@ export class AddAnnonceComponent implements OnInit {
     return this.annonceFormControl.valid;
   }
 
+  onSubmitOptionalInformation(): boolean {
+    /* console.log(this.optionalAnnounceFormControl.value);
+    console.log(this.optionalAnnounceFormControl.valid); */
+    console.log(
+      this.optionalAnnounceFormControl.get('serviceAccessibilite').value
+    );
+    console.log(this.optionalAnnounceFormControl.get('serviceAccessibilite'));
+    return this.optionalAnnounceFormControl.valid;
+  }
+
   createProfileProprietaireForm() {
     this.proprietaireFormControl = this.formBuilder.group({
       nom: [, Validators.required],
@@ -142,5 +159,37 @@ export class AddAnnonceComponent implements OnInit {
       surface: [, [Validators.required, Validators.min(0)]],
       images: [],
     });
+  }
+
+  createOptionalAnnonceInformationForm() {
+    this.optionalAnnounceFormControl = this.formBuilder.group({
+      serviceAccessibilite: this.formBuilder.array([]),
+      hygiene: this.formBuilder.array([]),
+      pieces: this.formBuilder.array([]),
+      servicePublic: this.formBuilder.array([]),
+      climatisation: [],
+      chauffage: [],
+      cuisin: [],
+      disponibilite: [],
+    });
+  }
+
+  addOrRemoveFormControl(e: any, formControlName: string) {
+    const controlArray: FormArray = this.optionalAnnounceFormControl.get(
+      formControlName
+    ) as FormArray;
+
+    if (e.target.checked) {
+      controlArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      controlArray.controls.forEach((item: FormControl) => {
+        if (item.value == e.target.value) {
+          controlArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
   }
 }
