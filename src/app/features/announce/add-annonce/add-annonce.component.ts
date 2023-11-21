@@ -33,6 +33,7 @@ export class AddAnnonceComponent implements OnInit {
   piecesList: string[];
   publicServcieList: string[];
   willays: string[];
+  quillConfig: any;
 
   proprietaireFormControl: FormGroup;
   annonceFormControl: FormGroup;
@@ -40,7 +41,7 @@ export class AddAnnonceComponent implements OnInit {
 
   checkProprietaireFormValidation: boolean = false;
   checkAnnonceFormValidation: boolean = false;
-  showProfilTab: string = 'tab-pane fade';
+  showProfilTab: string = 'tab-pane fade ';
   showAnnonceTab: string = 'tab-pane fade';
   showOptionalTab: string = 'tab-pane fade show active';
   profileBtn: string = 'nav-link ';
@@ -55,6 +56,7 @@ export class AddAnnonceComponent implements OnInit {
     this.piecesList = piecesList;
     this.publicServcieList = publicServcieList;
     this.willays = willaya;
+    this.quillConfig = quillConfig;
 
     this.createProfileProprietaireForm();
     this.createAnnonceForm();
@@ -131,7 +133,7 @@ export class AddAnnonceComponent implements OnInit {
     /* console.log(this.optionalAnnounceFormControl.value);
     console.log(this.optionalAnnounceFormControl.valid); */
     console.log(
-      this.optionalAnnounceFormControl.get('serviceAccessibilite').value
+      this.optionalAnnounceFormControl.get('serviceAccessibilite').value.length
     );
     console.log(this.optionalAnnounceFormControl.get('serviceAccessibilite'));
     return this.optionalAnnounceFormControl.valid;
@@ -167,10 +169,11 @@ export class AddAnnonceComponent implements OnInit {
       hygiene: this.formBuilder.array([]),
       pieces: this.formBuilder.array([]),
       servicePublic: this.formBuilder.array([]),
-      climatisation: [],
-      chauffage: [],
-      cuisin: [],
+      climatisation: ['Non exist'],
+      chauffage: ['Chemini'],
+      cuisin: ['Séparer'],
       disponibilite: [],
+      description: [],
     });
   }
 

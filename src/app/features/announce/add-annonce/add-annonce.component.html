@@ -371,7 +371,9 @@
                   <div class="dropdown" (click)="preventClose($event)">
                     <div class="btn btn-secondary dropdown" role="button" id="dropdownMenuButton01"
                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <div class="data-selected"></div>
+                      <div class="data-selected">
+                        {{optionalAnnounceFormControl.get('serviceAccessibilite').value.length>2?optionalAnnounceFormControl.get('serviceAccessibilite').value.length+'
+                        Données':optionalAnnounceFormControl.get('serviceAccessibilite').value }}</div>
                     </div>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton01">
@@ -396,7 +398,10 @@
                   <div class="dropdown" (click)="preventClose($event)">
                     <div class="btn btn-secondary dropdown" role="button" id="dropdownMenuButton02"
                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <div class="data-selected"></div>
+                      <div class="data-selected">
+                        {{optionalAnnounceFormControl.get('hygiene').value.length>2?optionalAnnounceFormControl.get('hygiene').value.length+'
+                        Données':optionalAnnounceFormControl.get('hygiene').value }}
+                      </div>
                     </div>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton02">
@@ -421,7 +426,10 @@
                   <div class="dropdown" (click)="preventClose($event)">
                     <div class="btn btn-secondary dropdown" role="button" id="dropdownMenuButton"
                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <div class="data-selected"></div>
+                      <div class="data-selected">
+                        {{optionalAnnounceFormControl.get('pieces').value.length>2?optionalAnnounceFormControl.get('pieces').value.length+'
+                        Données':optionalAnnounceFormControl.get('pieces').value }}
+                      </div>
                     </div>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -446,7 +454,10 @@
                   <div class="dropdown" (click)="preventClose($event)">
                     <div class="btn btn-secondary dropdown" role="button" id="dropdownMenuButton"
                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <div class="data-selected"></div>
+                      <div class="data-selected">
+                        {{optionalAnnounceFormControl.get('servicePublic').value.length>2?optionalAnnounceFormControl.get('servicePublic').value.length+'
+                        Données':optionalAnnounceFormControl.get('servicePublic').value }}
+                      </div>
                     </div>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -473,7 +484,7 @@
                     Climatisation</label>
                   <div class="input-group">
                     <select class="form-select" formControlName="climatisation">
-                      <option>Non Exist</option>
+                      <option>Non exist</option>
                       <option>Exist</option>
                     </select>
                   </div>
@@ -503,6 +514,15 @@
                   <label for="disponible" class="form-label">La disponibilité</label>
                   <div class="input-group">
                     <input type="text" class="form-control" name="disponible" formControlName="disponibilite" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div>
+                  <div class="edit">
+                    <quill-editor class="content-editor" [modules]="quillConfig" [placeholder]="'description'"
+                      formControlName="description">
+                    </quill-editor>
                   </div>
                 </div>
               </div>
