@@ -152,3 +152,8 @@ button .btn {
   font-size: 12px;
   font-family: arial;
 }
+
+quill-editor {
+  width: 100%;
+  height: 7rem;
+}

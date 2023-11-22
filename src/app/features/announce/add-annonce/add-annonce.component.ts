@@ -67,16 +67,40 @@ export class AddAnnonceComponent implements OnInit {
     /* if (event.addedFiles[0].size < 2222222222) {
       this.files.push(...event.addedFiles);
     } */
-    /*  const imageArray = this.fromRequired.get('images') as FormArray; */
+    /*  const imageArray = this.annonceFormControl.get('images') as FormArray;
     this.files.push(...event.addedFiles);
     for (const file of this.files) {
-      /*  imageArray.push(new FormControl(file)); */
+      imageArray.push(new FormControl(file));
+    }
+    console.log(imageArray);
+    console.log(this.files); */
+    const imageArray = this.annonceFormControl.get('images') as FormArray;
+
+    for (const file of event.addedFiles) {
+      // Check for duplicates before adding to the form array
+      const fileExists = this.files.some(
+        (existingFile) => existingFile.name === file.name
+      );
+
+      if (!fileExists) {
+        this.files.push(file);
+        this.files.map((el) => imageArray.push(new FormControl(el)));
+      }
     }
   }
 
   onRemove(event) {
-    console.log(event);
-    this.files.splice(this.files.indexOf(event), 1);
+    const imageArray = this.annonceFormControl.get('images') as FormArray;
+
+    // Find the index of the file based on some condition (e.g., name or other unique property)
+    const indexToRemove = this.files.findIndex(
+      (file) => file.name === event.name
+    );
+
+    if (indexToRemove !== -1) {
+      this.files.splice(indexToRemove, 1);
+      imageArray.value.splice(indexToRemove, 1);
+    }
   }
 
   preventClose(event: Event): void {
@@ -124,18 +148,15 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   onSubmitAnnonce(): boolean {
-    console.log(this.annonceFormControl.value);
     this.checkAnnonceFormValidation = true;
+    console.log(this.annonceFormControl.get('images').value.length);
+    console.log(this.annonceFormControl.valid);
+    console.log(this.annonceFormControl.value);
+
     return this.annonceFormControl.valid;
   }
 
   onSubmitOptionalInformation(): boolean {
-    /* console.log(this.optionalAnnounceFormControl.value);
-    console.log(this.optionalAnnounceFormControl.valid); */
-    console.log(
-      this.optionalAnnounceFormControl.get('serviceAccessibilite').value.length
-    );
-    console.log(this.optionalAnnounceFormControl.get('serviceAccessibilite'));
     return this.optionalAnnounceFormControl.valid;
   }
 
@@ -159,7 +180,7 @@ export class AddAnnonceComponent implements OnInit {
       facade: [, [Validators.required, Validators.min(0)]],
       prix: [, [Validators.required, Validators.min(0)]],
       surface: [, [Validators.required, Validators.min(0)]],
-      images: [],
+      images: this.formBuilder.array([], Validators.required),
     });
   }
 

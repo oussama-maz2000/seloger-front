@@ -6,21 +6,21 @@
           <li class="list-group-item">
             <button [class]="profileBtn" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
               type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" disabled="true">
-              Information de Propriétaire
+              Information du Propriétaire
             </button>
           </li>
           <li class="list-group-item">
             <button [class]="annonceBtn" id="v-pills-profile-tab" data-bs-toggle="pill"
               data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
               aria-selected="false" disabled="true">
-              Information d'Announce
+              Information de la propriete
             </button>
           </li>
           <li class="list-group-item">
             <button [class]="optionalBtn" id="v-pills-optional-tab" data-bs-toggle="pill"
               data-bs-target="#v-pills-optional" type="button" role="tab" aria-controls="v-pills-optional"
               aria-selected="false" disabled="true">
-              Information Optional d'Announce
+              Information Optional de la propriete
             </button>
           </li>
         </ul>
@@ -31,7 +31,7 @@
         <div [class]="showProfilTab" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
           <div class="shadow-sm p-3 rounded" id="custom-card">
             <h5 class="h5 d-flex justify-content-center">
-              Information de Propriétaire
+              Information sur le propriétaire
             </h5>
             <!-- <hr class="hr-line"> -->
             <div class="row" [formGroup]="proprietaireFormControl">
@@ -131,7 +131,7 @@
           tabindex="0">
           <div class="shadow-sm p-3 mb-5 bg-body rounded" id="custom-card">
             <h5 class="h5 d-flex justify-content-center">
-              Information d'Announce
+              Information sur la propriete
             </h5>
             <div class="row" [formGroup]="annonceFormControl">
               <!-- <hr class="hr-line">-->
@@ -178,7 +178,7 @@
                             'required'
                           ]
                         " class="error-message">
-                        Veuillez selectionner le type juridic de proprietaire
+                        Veuillez selectionner le type juridic de propriete
                       </span>
                     </span>
                   </span>
@@ -197,7 +197,7 @@
                       <span *ngIf="
                           annonceFormControl.get('address').errors['required']
                         " class="error-message">
-                        Veuillez saisir l'address de proprietaire
+                        Veuillez saisir l'address de propriete
                       </span>
                     </span>
                   </span>
@@ -335,7 +335,7 @@
                   </span>
                 </div>
 
-                <div>
+                <div class="mb-4">
                   <label for="images" class="form-label">Images</label>
                   <div class="input-group">
                     <ngx-dropzone (change)="onSelect($event)">
@@ -343,6 +343,7 @@
                         <ngx-dropzone-label>{{ f.name }} </ngx-dropzone-label>
                       </ngx-dropzone-preview>
                     </ngx-dropzone>
+
                   </div>
                 </div>
               </div>
@@ -362,7 +363,7 @@
           tabindex="0">
           <div class="shadow-sm p-3 mb-5 bg-body rounded" id="custom-card">
             <h5 class="h5 d-flex justify-content-center">
-              Information Optional d'Announce
+              Information plus sur la propriete
             </h5>
             <div class="row" [formGroup]="optionalAnnounceFormControl">
               <div class="col-sm-6">
