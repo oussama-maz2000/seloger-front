@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Announce } from '../../model/announce.interface';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AnnounceService {
@@ -26,5 +26,15 @@ export class AnnounceService {
 
   getData(): Subject<any> {
     return this.dataSubject;
+  }
+
+  addProprietaireWithPropriete(data: any): Observable<any> {
+    return this.http.post(
+      '/api/announce/post/ProprietaireWithPropriete',
+      data,
+      {
+        responseType: 'text',
+      }
+    );
   }
 }

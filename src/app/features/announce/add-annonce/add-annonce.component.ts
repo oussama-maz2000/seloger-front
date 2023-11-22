@@ -12,6 +12,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { AnnounceService } from 'src/app/core/services/announce-service/annonce.service';
 import {
   willaya,
   serviceAccessibilityList,
@@ -36,19 +37,22 @@ export class AddAnnonceComponent implements OnInit {
   quillConfig: any;
 
   proprietaireFormControl: FormGroup;
-  annonceFormControl: FormGroup;
-  optionalAnnounceFormControl: FormGroup;
+  proprieteFormControl: FormGroup;
+  optionalInformationFormControl: FormGroup;
 
   checkProprietaireFormValidation: boolean = false;
-  checkAnnonceFormValidation: boolean = false;
-  showProfilTab: string = 'tab-pane fade ';
-  showAnnonceTab: string = 'tab-pane fade';
-  showOptionalTab: string = 'tab-pane fade show active';
-  profileBtn: string = 'nav-link ';
-  annonceBtn: string = 'nav-link';
-  optionalBtn: string = 'nav-link active';
+  checkProprieteFormValidation: boolean = false;
+  showProfilTab: string = 'tab-pane fade show active';
+  showProprieteTab: string = 'tab-pane fade';
+  showOptionalTab: string = 'tab-pane fade ';
+  profileBtn: string = 'nav-link active';
+  proprieteBtn: string = 'nav-link';
+  optionalBtn: string = 'nav-link ';
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private annonceService: AnnounceService
+  ) {}
 
   ngOnInit(): void {
     this.serviceAccessibilityList = serviceAccessibilityList;
@@ -59,22 +63,18 @@ export class AddAnnonceComponent implements OnInit {
     this.quillConfig = quillConfig;
 
     this.createProfileProprietaireForm();
-    this.createAnnonceForm();
-    this.createOptionalAnnonceInformationForm();
+    this.createProprieteForm();
+    this.createOptionalInformationForm();
+  }
+
+  get images() {
+    return this.proprieteFormControl.get('images') as FormArray;
   }
 
   onSelect(event: any): void {
     /* if (event.addedFiles[0].size < 2222222222) {
       this.files.push(...event.addedFiles);
     } */
-    /*  const imageArray = this.annonceFormControl.get('images') as FormArray;
-    this.files.push(...event.addedFiles);
-    for (const file of this.files) {
-      imageArray.push(new FormControl(file));
-    }
-    console.log(imageArray);
-    console.log(this.files); */
-    const imageArray = this.annonceFormControl.get('images') as FormArray;
 
     for (const file of event.addedFiles) {
       // Check for duplicates before adding to the form array
@@ -84,22 +84,19 @@ export class AddAnnonceComponent implements OnInit {
 
       if (!fileExists) {
         this.files.push(file);
-        this.files.map((el) => imageArray.push(new FormControl(el)));
+        this.files.map((el) => this.images.push(new FormControl(el)));
       }
     }
   }
 
   onRemove(event) {
-    const imageArray = this.annonceFormControl.get('images') as FormArray;
-
-    // Find the index of the file based on some condition (e.g., name or other unique property)
     const indexToRemove = this.files.findIndex(
       (file) => file.name === event.name
     );
 
     if (indexToRemove !== -1) {
       this.files.splice(indexToRemove, 1);
-      imageArray.value.splice(indexToRemove, 1);
+      this.images.value.splice(indexToRemove, 1);
     }
   }
 
@@ -107,58 +104,60 @@ export class AddAnnonceComponent implements OnInit {
     event.stopPropagation();
   }
 
-  nextToAnnonce(): void {
+  /* handles the jumping between forms  */
+
+  nextToPropriete(): void {
     if (this.onSubmitProprietaire()) {
-      this.showAnnonceTab = 'tab-pane fade active show';
+      this.showProprieteTab = 'tab-pane fade active show';
       this.showProfilTab = 'tab-pane fade';
       this.profileBtn = 'nav-link';
-      this.annonceBtn = 'nav-link active';
+      this.proprieteBtn = 'nav-link active';
     }
   }
   nextToOptional(): void {
-    if (this.onSubmitAnnonce()) {
-      this.showAnnonceTab = 'tab-pane fade';
+    if (this.onSubmitPropriete()) {
+      this.showProprieteTab = 'tab-pane fade';
       this.showOptionalTab = 'tab-pane fade active show';
 
-      this.annonceBtn = 'nav-link ';
+      this.proprieteBtn = 'nav-link ';
 
       this.optionalBtn = 'nav-link active';
     }
   }
 
   backToProfile(): void {
-    this.showAnnonceTab = 'tab-pane fade';
+    this.showProprieteTab = 'tab-pane fade';
     this.showProfilTab = 'tab-pane fade active show';
 
     this.profileBtn = 'nav-link active';
-    this.annonceBtn = 'nav-link';
+    this.proprieteBtn = 'nav-link';
   }
-  backToAnnonce(): void {
-    this.showAnnonceTab = 'tab-pane fade active show';
+  backToPropriete(): void {
+    this.showProprieteTab = 'tab-pane fade active show';
     this.showOptionalTab = 'tab-pane fade ';
 
-    this.annonceBtn = 'nav-link active';
+    this.proprieteBtn = 'nav-link active';
     this.optionalBtn = 'nav-link ';
   }
 
+  /* submit the forms */
+
   onSubmitProprietaire(): boolean {
-    console.log(this.proprietaireFormControl.value);
     this.checkProprietaireFormValidation = true;
     return this.proprietaireFormControl.valid;
   }
 
-  onSubmitAnnonce(): boolean {
-    this.checkAnnonceFormValidation = true;
-    console.log(this.annonceFormControl.get('images').value.length);
-    console.log(this.annonceFormControl.valid);
-    console.log(this.annonceFormControl.value);
+  onSubmitPropriete(): boolean {
+    this.checkProprieteFormValidation = true;
 
-    return this.annonceFormControl.valid;
+    return this.proprieteFormControl.valid;
   }
 
   onSubmitOptionalInformation(): boolean {
-    return this.optionalAnnounceFormControl.valid;
+    return this.optionalInformationFormControl.valid;
   }
+
+  /* creation of the form controlers */
 
   createProfileProprietaireForm() {
     this.proprietaireFormControl = this.formBuilder.group({
@@ -169,8 +168,8 @@ export class AddAnnonceComponent implements OnInit {
     });
   }
 
-  createAnnonceForm() {
-    this.annonceFormControl = this.formBuilder.group({
+  createProprieteForm() {
+    this.proprieteFormControl = this.formBuilder.group({
       typeProperty: [, [Validators.required]],
       typeAnnonce: [, [Validators.required]],
       typeJuridic: [, [Validators.required]],
@@ -184,8 +183,8 @@ export class AddAnnonceComponent implements OnInit {
     });
   }
 
-  createOptionalAnnonceInformationForm() {
-    this.optionalAnnounceFormControl = this.formBuilder.group({
+  createOptionalInformationForm() {
+    this.optionalInformationFormControl = this.formBuilder.group({
       serviceAccessibilite: this.formBuilder.array([]),
       hygiene: this.formBuilder.array([]),
       pieces: this.formBuilder.array([]),
@@ -199,7 +198,7 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {
-    const controlArray: FormArray = this.optionalAnnounceFormControl.get(
+    const controlArray: FormArray = this.optionalInformationFormControl.get(
       formControlName
     ) as FormArray;
 
@@ -215,5 +214,25 @@ export class AddAnnonceComponent implements OnInit {
         i++;
       });
     }
+  }
+
+  sendDataToServer(): void {
+    const combinedData = {
+      proprietaire: this.proprietaireFormControl.value,
+      propriete: this.proprieteFormControl.value,
+      optionalInformation: this.optionalInformationFormControl.value,
+    };
+    console.log(combinedData);
+
+    this.annonceService.addProprietaireWithPropriete(combinedData).subscribe(
+      (response) => {
+        // Handle success
+        console.log('Data sent successfully', response);
+      },
+      (error) => {
+        // Handle error
+        console.error('Error sending data', error);
+      }
+    );
   }
 }
