@@ -97,11 +97,13 @@ export class CreateAnnonceComponent implements OnInit {
       form.append('images', file);
     }
 
-    const formValues = form;
-    /* if (this.fromRequired.valid) {} */
+    console.log(form.getAll);
+    console.log(form.get('images'));
+    /*    const formValues = form;
+     if (this.fromRequired.valid) {} 
 
     this.store.dispatch(addAnnounceAction({ formValues }));
-    this.store.dispatch(SpinnerAction({ status: true }));
+    this.store.dispatch(SpinnerAction({ status: true }));  */
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {

@@ -39,7 +39,7 @@ export class AddAnnonceComponent implements OnInit {
   proprietaireFormControl: FormGroup;
   proprieteFormControl: FormGroup;
   optionalInformationFormControl: FormGroup;
-
+  uploadFilesFormControl: FormGroup;
   checkProprietaireFormValidation: boolean = false;
   checkProprieteFormValidation: boolean = false;
   showProfilTab: string = 'tab-pane fade show active';
@@ -65,10 +65,11 @@ export class AddAnnonceComponent implements OnInit {
     this.createProfileProprietaireForm();
     this.createProprieteForm();
     this.createOptionalInformationForm();
+    this.createUploadsFileForm();
   }
 
   get images() {
-    return this.proprieteFormControl.get('images') as FormArray;
+    return this.uploadFilesFormControl.get('images') as FormArray;
   }
 
   onSelect(event: any): void {
@@ -84,7 +85,7 @@ export class AddAnnonceComponent implements OnInit {
 
       if (!fileExists) {
         this.files.push(file);
-        this.files.map((el) => this.images.push(new FormControl(el)));
+        this.images.push(new FormControl(file));
       }
     }
   }
@@ -96,7 +97,7 @@ export class AddAnnonceComponent implements OnInit {
 
     if (indexToRemove !== -1) {
       this.files.splice(indexToRemove, 1);
-      this.images.value.splice(indexToRemove, 1);
+      this.images.removeAt(indexToRemove);
     }
   }
 
@@ -179,7 +180,6 @@ export class AddAnnonceComponent implements OnInit {
       facade: [, [Validators.required, Validators.min(0)]],
       prix: [, [Validators.required, Validators.min(0)]],
       surface: [, [Validators.required, Validators.min(0)]],
-      images: this.formBuilder.array([], Validators.required),
     });
   }
 
@@ -194,6 +194,12 @@ export class AddAnnonceComponent implements OnInit {
       cuisin: ['Séparer'],
       disponibilite: [],
       description: [],
+    });
+  }
+
+  createUploadsFileForm() {
+    this.uploadFilesFormControl = this.formBuilder.group({
+      images: this.formBuilder.array([]),
     });
   }
 
@@ -222,17 +228,18 @@ export class AddAnnonceComponent implements OnInit {
       propriete: this.proprieteFormControl.value,
       optionalInformation: this.optionalInformationFormControl.value,
     };
-    console.log(combinedData);
 
-    this.annonceService.addProprietaireWithPropriete(combinedData).subscribe(
-      (response) => {
-        // Handle success
-        console.log('Data sent successfully', response);
-      },
-      (error) => {
-        // Handle error
-        console.error('Error sending data', error);
-      }
-    );
+    this.annonceService
+      .addProprietaireWithPropriete(combinedData, this.images.value)
+      .subscribe(
+        (response) => {
+          // Handle success
+          console.log('Data sent successfully', response);
+        },
+        (error) => {
+          // Handle error
+          console.error('Error sending data', error);
+        }
+      );
   }
 }
