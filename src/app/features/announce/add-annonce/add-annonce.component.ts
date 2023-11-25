@@ -162,24 +162,33 @@ export class AddAnnonceComponent implements OnInit {
 
   createProfileProprietaireForm() {
     this.proprietaireFormControl = this.formBuilder.group({
-      nom: [, Validators.required],
-      prenom: [, Validators.required],
+      firstName: [, Validators.required],
+      lastName: [, Validators.required],
       email: [, [Validators.required, Validators.email]],
-      address: [, [Validators.required]],
+      phone: [, [Validators.required]],
     });
   }
 
   createProprieteForm() {
     this.proprieteFormControl = this.formBuilder.group({
-      typeProperty: [, [Validators.required]],
-      typeAnnonce: [, [Validators.required]],
-      typeJuridic: [, [Validators.required]],
+      prpType: [, [Validators.required]],
+      annType: [, [Validators.required]],
+      jrcType: [, [Validators.required]],
       willaya: [, [Validators.required]],
       address: [, [Validators.required]],
       etage: [, [Validators.required, Validators.min(0)]],
       facade: [, [Validators.required, Validators.min(0)]],
-      prix: [, [Validators.required, Validators.min(0)]],
+      price: [, [Validators.required, Validators.min(0)]],
       surface: [, [Validators.required, Validators.min(0)]],
+      service: this.formBuilder.array([]),
+      hygiene: this.formBuilder.array([]),
+      pieces: this.formBuilder.array([]),
+      servicePublic: this.formBuilder.array([]),
+      climatisation: ['Non exist'],
+      chauffage: ['Chemini'],
+      cuisin: ['Séparer'],
+      disponible: [],
+      description: [],
     });
   }
 
@@ -204,7 +213,7 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {
-    const controlArray: FormArray = this.optionalInformationFormControl.get(
+    const controlArray: FormArray = this.proprieteFormControl.get(
       formControlName
     ) as FormArray;
 
@@ -226,8 +235,8 @@ export class AddAnnonceComponent implements OnInit {
     const combinedData = {
       proprietaire: this.proprietaireFormControl.value,
       propriete: this.proprieteFormControl.value,
-      optionalInformation: this.optionalInformationFormControl.value,
     };
+    console.log(combinedData);
 
     this.annonceService
       .addProprietaireWithPropriete(combinedData, this.images.value)

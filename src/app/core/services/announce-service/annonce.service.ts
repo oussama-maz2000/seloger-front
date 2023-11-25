@@ -48,10 +48,9 @@ export class AnnounceService {
 
     const headers = new HttpHeaders({ enctype: 'multipart/form-data' });
 
-    return this.http.post(
-      '/api/announce/post/ProprietaireWithPropriete',
-      formData,
-      { headers: headers, responseType: 'text' }
-    );
+    return this.http.post('/api/annonce/add', formData, {
+      headers: headers,
+      responseType: 'text',
+    });
   }
 }
