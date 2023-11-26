@@ -28,13 +28,21 @@ export class AnnounceService {
     return this.dataSubject;
   }
 
-  addProprietaireWithPropriete(data: any, files: File[]): Observable<any> {
+  addProprietaireWithPropriete(
+    data: any,
+
+    files: File[]
+  ): Observable<any> {
     const formData: FormData = new FormData();
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
 
     // Append JSON data
     formData.append('data', JSON.stringify(data));
+    /*     formData.append('property', propriete);
 
-    /* formData.append('proprietaire', data.proprietaire);
+    formData.append('properietaire', proprietaire);
+  */ /* formData.append('proprietaire', data.proprietaire);
     formData.append('propriete', data.propriete);
     formData.append('optionalInformation', data.optionalInformation); */
 
@@ -42,14 +50,13 @@ export class AnnounceService {
     /* for (let i = 0; i < files.length; i++) {
       formData.append('images', files[i]);
     } */
+
     files.forEach((element) => {
       formData.append('images', element);
     });
 
-    const headers = new HttpHeaders({ enctype: 'multipart/form-data' });
-
     return this.http.post('/api/annonce/add', formData, {
-      headers: headers,
+      headers,
       responseType: 'text',
     });
   }

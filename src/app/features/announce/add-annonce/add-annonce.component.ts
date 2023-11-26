@@ -168,7 +168,7 @@ export class AddAnnonceComponent implements OnInit {
       phone: [, [Validators.required]],
     });
   }
-
+  firstName;
   createProprieteForm() {
     this.proprieteFormControl = this.formBuilder.group({
       prpType: [, [Validators.required]],
