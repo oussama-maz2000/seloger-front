@@ -42,3 +42,31 @@ export interface Announce {
   publicService?: string[];
   availability?: string;
 } */
+
+export interface Property {
+  prpType: string;
+  annType: string;
+  jrcType: string;
+  willaya: string;
+  address: string;
+  etage: number;
+  facade: number;
+  price: number;
+  surface: number;
+  service: string[];
+  hygiene: string[];
+  pieces: string[];
+  servicePublic: string[];
+  climatisation: string;
+  chauffage: string;
+  cuisin: string;
+  disponible: string;
+  description: string;
+}
+
+export interface Properietaire {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+}

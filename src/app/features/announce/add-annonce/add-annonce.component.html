@@ -4,47 +4,22 @@
       <div class="card shadow-sm mb-3" style="width: 100%">
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <button
-              [class]="profileBtn"
-              id="v-pills-home-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-home"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-home"
-              aria-selected="true"
-              disabled="true"
-            >
+            <button [class]="profileBtn" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
+              type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" disabled="true">
               Information du Propriétaire
             </button>
           </li>
           <li class="list-group-item">
-            <button
-              [class]="proprieteBtn"
-              id="v-pills-profile-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-profile"
-              aria-selected="false"
-              disabled="true"
-            >
+            <button [class]="proprieteBtn" id="v-pills-profile-tab" data-bs-toggle="pill"
+              data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+              aria-selected="false" disabled="true">
               Information de la propriete
             </button>
           </li>
           <li class="list-group-item">
-            <button
-              [class]="optionalBtn"
-              id="v-pills-optional-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-optional"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-optional"
-              aria-selected="false"
-              disabled="true"
-            >
+            <button [class]="optionalBtn" id="v-pills-optional-tab" data-bs-toggle="pill"
+              data-bs-target="#v-pills-optional" type="button" role="tab" aria-controls="v-pills-optional"
+              aria-selected="false" disabled="true">
               Information Optional de la propriete
             </button>
           </li>
@@ -53,13 +28,7 @@
     </div>
     <div class="col-sm-8">
       <div class="tab-content" id="v-pills-tabContent">
-        <div
-          [class]="showProfilTab"
-          id="v-pills-home"
-          role="tabpanel"
-          aria-labelledby="v-pills-home-tab"
-          tabindex="0"
-        >
+        <div [class]="showProfilTab" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
           <div class="shadow-sm p-3 rounded" id="custom-card">
             <h5 class="h5 d-flex justify-content-center">
               Information sur le propriétaire
@@ -70,29 +39,18 @@
                 <div>
                   <label for="nom" class="form-label">Nom</label>
                   <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="firstName"
-                      id="input"
-                      formControlName="firstName"
-                    />
+                    <input type="text" class="form-control" name="firstName" id="input" formControlName="firstName" />
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprietaireFormValidation &&
                         !proprietaireFormControl.get('firstName').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprietaireFormControl.get('firstName').errors[
                             'required'
                           ]
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez renseigner le nom de proprietaire
                       </span>
                     </span>
@@ -101,30 +59,19 @@
                 <div>
                   <label for="email" class="form-label">Email</label>
                   <div class="input-group">
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      id="input"
-                      formControlName="email"
-                    />
+                    <input type="email" class="form-control" name="email" id="input" formControlName="email" />
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprietaireFormValidation &&
                         !proprietaireFormControl.get('email').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprietaireFormControl.get('email').errors[
                             'required'
                           ] ||
                           proprietaireFormControl.get('email').errors['email']
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez renseigner l'email de proprietaire
                       </span>
                     </span>
@@ -135,29 +82,18 @@
                 <div>
                   <label for="prenom" class="form-label">Prenom</label>
                   <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="lastName"
-                      id="input"
-                      formControlName="lastName"
-                    />
+                    <input type="text" class="form-control" name="lastName" id="input" formControlName="lastName" />
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprietaireFormValidation &&
                         !proprietaireFormControl.get('lastName').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprietaireFormControl.get('lastName').errors[
                             'required'
                           ]
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez renseigner le prenom de proprietaire
                       </span>
                     </span>
@@ -167,30 +103,19 @@
                   <label for="address" class="form-label">Phone</label>
                   <div class="input-group">
                     <span class="input-group-text" id="phone">+213</span>
-                    <input
-                      type="tel"
-                      class="form-control"
-                      id="phone"
-                      name="phone"
-                      formControlName="phone"
-                      style="width: 80%"
-                    />
+                    <input type="tel" class="form-control" id="phone" name="phone" formControlName="phone"
+                      style="width: 80%" />
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprietaireFormValidation &&
                         !proprietaireFormControl.get('phone').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprietaireFormControl.get('phone').errors[
                             'required'
                           ]
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez renseigner l'address de proprietaire
                       </span>
                     </span>
@@ -199,24 +124,15 @@
               </div>
             </div>
             <div class="d-flex justify-content-end mt-4">
-              <button
-                type="button"
-                class="btn btn-primary"
-                style="background-color: #ff385c; color: white; border: unset"
-                (click)="nextToPropriete()"
-              >
+              <button type="button" class="btn btn-primary"
+                style="background-color: #ff385c; color: white; border: unset" (click)="nextToPropriete()">
                 Suivant
               </button>
             </div>
           </div>
         </div>
-        <div
-          [class]="showProprieteTab"
-          id="v-pills-profile"
-          role="tabpanel"
-          aria-labelledby="v-pills-profile-tab"
-          tabindex="0"
-        >
+        <div [class]="showProprieteTab" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
+          tabindex="0">
           <div class="shadow-sm p-3 mb-5 bg-body rounded" id="custom-card">
             <h5 class="h5 d-flex justify-content-center">
               Information sur la propriete
@@ -226,8 +142,7 @@
               <div class="col-sm-6">
                 <div>
                   <label for="property" class="form-label">
-                    Type de propriete</label
-                  >
+                    Type de propriete</label>
                   <div class="input-group">
                     <select class="form-select" formControlName="prpType">
                       <option>Maison</option>
@@ -235,18 +150,13 @@
                     </select>
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprieteFormValidation &&
                         !proprieteFormControl.get('prpType').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprieteFormControl.get('prpType').errors['required']
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez selectionner le type de proprietaire
                       </span>
                     </span>
@@ -261,18 +171,13 @@
                     </select>
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprieteFormValidation &&
                         !proprieteFormControl.get('jrcType').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprieteFormControl.get('jrcType').errors['required']
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez selectionner le type juridic de propriete
                       </span>
                     </span>
@@ -282,27 +187,16 @@
                 <div>
                   <label for="address" class="form-label">Address</label>
                   <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="address"
-                      id="input"
-                      formControlName="address"
-                    />
+                    <input type="text" class="form-control" name="address" id="input" formControlName="address" />
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprieteFormValidation &&
                         !proprieteFormControl.get('address').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprieteFormControl.get('address').errors['required']
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez saisir l'address de propriete
                       </span>
                     </span>
@@ -312,29 +206,18 @@
                 <div>
                   <label for="facade" class="form-label">Facade</label>
                   <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="facade"
-                      id="input"
-                      formControlName="facade"
-                    />
+                    <input type="text" class="form-control" name="facade" id="input" formControlName="facade" />
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprieteFormValidation &&
                         !proprieteFormControl.get('facade').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprieteFormControl.get('facade').errors[
                             'required'
                           ] || proprieteFormControl.get('facade').errors['min']
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez saisir nombre de facade
                       </span>
                     </span>
@@ -344,31 +227,20 @@
                 <div>
                   <label for="surface" class="form-label">Suraface</label>
                   <div class="input-group">
-                    <input
-                      type="tel"
-                      class="form-control"
-                      aria-describedby="surface"
-                      id="surface"
-                      formControlName="surface"
-                      style="width: 80%"
-                    />
+                    <input type="tel" class="form-control" aria-describedby="surface" id="surface"
+                      formControlName="surface" style="width: 80%" />
                     <span class="input-group-text" id="surface">m²</span>
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprieteFormValidation &&
                         !proprieteFormControl.get('surface').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprieteFormControl.get('surface').errors[
                             'required'
                           ] || proprieteFormControl.get('surface').errors['min']
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez saisir la surface de propriety
                       </span>
                     </span>
@@ -378,8 +250,7 @@
               <div class="col-sm-6">
                 <div>
                   <label for="announce" class="form-label">
-                    Type de announce</label
-                  >
+                    Type de announce</label>
                   <div class="input-group">
                     <select class="form-select" formControlName="annType">
                       <option>A vendre</option>
@@ -387,18 +258,13 @@
                     </select>
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprieteFormValidation &&
                         !proprieteFormControl.get('annType').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprieteFormControl.get('annType').errors['required']
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez selectionner le type d'annonce
                       </span>
                     </span>
@@ -407,28 +273,19 @@
 
                 <div>
                   <label for="willaya" class="form-label">Willaya </label>
-                  <select
-                    class="form-select"
-                    id="willaya"
-                    formControlName="willaya"
-                  >
+                  <select class="form-select" id="willaya" formControlName="willaya">
                     <option *ngFor="let element of willays" [value]="element">
                       {{ element }}
                     </option>
                   </select>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprieteFormValidation &&
                         !proprieteFormControl.get('willaya').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprieteFormControl.get('willaya').errors['required']
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez selectionner la willaya
                       </span>
                     </span>
@@ -438,29 +295,18 @@
                 <div>
                   <label for="etage" class="form-label">Etage</label>
                   <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="etage"
-                      id="input"
-                      formControlName="etage"
-                    />
+                    <input type="text" class="form-control" name="etage" id="input" formControlName="etage" />
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprieteFormValidation &&
                         !proprieteFormControl.get('etage').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprieteFormControl.get('etage').errors[
                             'required'
                           ] || proprieteFormControl.get('etage').errors['min']
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez saisir combier d'etage
                       </span>
                     </span>
@@ -470,31 +316,20 @@
                 <div>
                   <label for="prix" class="form-label">Prix</label>
                   <div class="input-group">
-                    <input
-                      type="tel"
-                      class="form-control"
-                      id="price"
-                      name="price"
-                      formControlName="price"
-                      style="width: 80%"
-                    />
+                    <input type="tel" class="form-control" id="price" name="price" formControlName="price"
+                      style="width: 80%" />
                     <span class="input-group-text" id="price">DZD</span>
                   </div>
                   <span class="space-error-msg">
-                    <span
-                      *ngIf="
+                    <span *ngIf="
                         checkProprieteFormValidation &&
                         !proprieteFormControl.get('price').valid
-                      "
-                    >
-                      <span
-                        *ngIf="
+                      ">
+                      <span *ngIf="
                           proprieteFormControl.get('price').errors[
                             'required'
                           ] || proprieteFormControl.get('price').errors['min']
-                        "
-                        class="error-message"
-                      >
+                        " class="error-message">
                         Veuillez saisir le prix
                       </span>
                     </span>
@@ -505,11 +340,7 @@
                   <label for="images" class="form-label">Images</label>
                   <div class="input-group">
                     <ngx-dropzone (change)="onSelect($event)">
-                      <ngx-dropzone-preview
-                        *ngFor="let f of files"
-                        [removable]="true"
-                        (removed)="onRemove(f)"
-                      >
+                      <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
                         <ngx-dropzone-label>{{ f.name }} </ngx-dropzone-label>
                       </ngx-dropzone-preview>
                     </ngx-dropzone>
@@ -518,32 +349,18 @@
               </div>
             </div>
             <div class="d-flex justify-content-between">
-              <button
-                type="button"
-                class="btn btn-warning"
-                (click)="backToProfile()"
-                style="color: white"
-              >
+              <button type="button" class="btn btn-warning" (click)="backToProfile()" style="color: white">
                 Retour
               </button>
-              <button
-                type="button"
-                class="btn btn-primary"
-                (click)="nextToOptional()"
-                style="background-color: #ff385c; color: white; border: unset"
-              >
+              <button type="button" class="btn btn-primary" (click)="nextToOptional()"
+                style="background-color: #ff385c; color: white; border: unset">
                 Suivant
               </button>
             </div>
           </div>
         </div>
-        <div
-          [class]="showOptionalTab"
-          id="v-pills-optional"
-          role="tabpanel"
-          aria-labelledby="v-pills-optional-tab"
-          tabindex="0"
-        >
+        <div [class]="showOptionalTab" id="v-pills-optional" role="tabpanel" aria-labelledby="v-pills-optional-tab"
+          tabindex="0">
           <div class="shadow-sm p-3 mb-5 bg-body rounded" id="custom-card">
             <h5 class="h5 d-flex justify-content-center">
               Information plus sur la propriete
@@ -553,43 +370,27 @@
                 <div class="form-group pb-4">
                   <label class="form-label">Service et accessibilité</label>
                   <div class="dropdown" (click)="preventClose($event)">
-                    <div
-                      class="btn btn-secondary dropdown"
-                      role="button"
-                      id="dropdownMenuButton01"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
+                    <div class="btn btn-secondary dropdown" role="button" id="dropdownMenuButton01"
+                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="data-selected">
                         {{
-                          proprieteFormControl.get("service").value.length > 2
-                            ? proprieteFormControl.get("service").value.length +
-                              "
+                        proprieteFormControl.get("service").value.length > 2
+                        ? proprieteFormControl.get("service").value.length +
+                        "
                         element"
-                            : proprieteFormControl.get("service").value
+                        : proprieteFormControl.get("service").value
                         }}
                       </div>
                     </div>
 
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton01"
-                    >
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton01">
                       <ul class="list-unstyled">
                         <li *ngFor="let item of serviceAccessibilityList">
                           <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              [value]="item"
-                              id="{{ item }}"
-                              (click)="$event.stopPropagation()"
-                              (change)="
+                            <input class="form-check-input" type="checkbox" [value]="item" id="{{ item }}"
+                              (click)="$event.stopPropagation()" (change)="
                                 addOrRemoveFormControl($event, 'service')
-                              "
-                              formArrayName="service"
-                            />
+                              " formArrayName="service" />
                             <label class="form-check-label" for="{{ item }}">
                               {{ item }}
                             </label>
@@ -602,43 +403,27 @@
                 <div class="form-group pb-4">
                   <label class="form-label">hygiène</label>
                   <div class="dropdown" (click)="preventClose($event)">
-                    <div
-                      class="btn btn-secondary dropdown"
-                      role="button"
-                      id="dropdownMenuButton02"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
+                    <div class="btn btn-secondary dropdown" role="button" id="dropdownMenuButton02"
+                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="data-selected">
                         {{
-                          proprieteFormControl.get("hygiene").value.length > 2
-                            ? proprieteFormControl.get("hygiene").value.length +
-                              "
+                        proprieteFormControl.get("hygiene").value.length > 2
+                        ? proprieteFormControl.get("hygiene").value.length +
+                        "
                         element"
-                            : proprieteFormControl.get("hygiene").value
+                        : proprieteFormControl.get("hygiene").value
                         }}
                       </div>
                     </div>
 
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton02"
-                    >
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton02">
                       <ul class="list-unstyled">
                         <li *ngFor="let item of hygieneList">
                           <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              [value]="item"
-                              id="{{ item }}"
-                              (click)="$event.stopPropagation()"
-                              (change)="
+                            <input class="form-check-input" type="checkbox" [value]="item" id="{{ item }}"
+                              (click)="$event.stopPropagation()" (change)="
                                 addOrRemoveFormControl($event, 'hygiene')
-                              "
-                              formArrayName="hygiene"
-                            />
+                              " formArrayName="hygiene" />
                             <label class="form-check-label" for="{{ item }}">
                               {{ item }}
                             </label>
@@ -651,43 +436,27 @@
                 <div class="form-group pb-4">
                   <label class="form-label">pièces</label>
                   <div class="dropdown" (click)="preventClose($event)">
-                    <div
-                      class="btn btn-secondary dropdown"
-                      role="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
+                    <div class="btn btn-secondary dropdown" role="button" id="dropdownMenuButton"
+                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="data-selected">
                         {{
-                          proprieteFormControl.get("pieces").value.length > 2
-                            ? proprieteFormControl.get("pieces").value.length +
-                              "
+                        proprieteFormControl.get("pieces").value.length > 2
+                        ? proprieteFormControl.get("pieces").value.length +
+                        "
                         element"
-                            : proprieteFormControl.get("pieces").value
+                        : proprieteFormControl.get("pieces").value
                         }}
                       </div>
                     </div>
 
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <ul class="list-unstyled">
                         <li *ngFor="let item of piecesList">
                           <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              [value]="item"
-                              id="{{ item }}"
-                              (click)="$event.stopPropagation()"
-                              (change)="
+                            <input class="form-check-input" type="checkbox" [value]="item" id="{{ item }}"
+                              (click)="$event.stopPropagation()" (change)="
                                 addOrRemoveFormControl($event, 'pieces')
-                              "
-                              formArrayName="pieces"
-                            />
+                              " formArrayName="pieces" />
                             <label class="form-check-label" for="{{ item }}">
                               {{ item }}
                             </label>
@@ -700,45 +469,29 @@
                 <div class="form-group pb-4">
                   <label class="form-label">service public</label>
                   <div class="dropdown" (click)="preventClose($event)">
-                    <div
-                      class="btn btn-secondary dropdown"
-                      role="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
+                    <div class="btn btn-secondary dropdown" role="button" id="dropdownMenuButton"
+                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="data-selected">
                         {{
-                          proprieteFormControl.get("servicePublic").value
-                            .length > 2
-                            ? proprieteFormControl.get("servicePublic").value
-                                .length +
-                              "
+                        proprieteFormControl.get("servicePublic").value
+                        .length > 2
+                        ? proprieteFormControl.get("servicePublic").value
+                        .length +
+                        "
                         element"
-                            : proprieteFormControl.get("servicePublic").value
+                        : proprieteFormControl.get("servicePublic").value
                         }}
                       </div>
                     </div>
 
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <ul class="list-unstyled">
                         <li *ngFor="let item of publicServcieList">
                           <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              [value]="item"
-                              id="{{ item }}"
-                              (click)="$event.stopPropagation()"
-                              (change)="
+                            <input class="form-check-input" type="checkbox" [value]="item" id="{{ item }}"
+                              (click)="$event.stopPropagation()" (change)="
                                 addOrRemoveFormControl($event, 'servicePublic')
-                              "
-                              formArrayName="servicePublic"
-                            />
+                              " formArrayName="servicePublic" />
                             <label class="form-check-label" for="{{ item }}">
                               {{ item }}
                             </label>
@@ -752,8 +505,7 @@
               <div class="col-sm-6">
                 <div class="pb-4">
                   <label for="climatisation" class="form-label">
-                    Climatisation</label
-                  >
+                    Climatisation</label>
                   <div class="input-group">
                     <select class="form-select" formControlName="climatisation">
                       <option>Non exist</option>
@@ -783,48 +535,28 @@
                 </div>
 
                 <div class="pb-4">
-                  <label for="disponible" class="form-label"
-                    >La disponibilité</label
-                  >
+                  <label for="disponible" class="form-label">La disponibilité</label>
                   <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="disponible"
-                      formControlName="disponible"
-                    />
+                    <input type="text" class="form-control" name="disponible" formControlName="disponible" />
                   </div>
                 </div>
               </div>
               <div class="col-sm-12">
                 <div>
                   <div class="edit">
-                    <quill-editor
-                      class="content-editor"
-                      [modules]="quillConfig"
-                      [placeholder]="'description'"
-                      formControlName="description"
-                    >
+                    <quill-editor class="content-editor" [modules]="quillConfig" [placeholder]="'description'"
+                      formControlName="description">
                     </quill-editor>
                   </div>
                 </div>
               </div>
             </div>
             <div class="d-flex justify-content-between">
-              <button
-                type="button"
-                class="btn btn-warning"
-                style="color: white"
-                (click)="backToPropriete()"
-              >
+              <button type="button" class="btn btn-warning" style="color: white" (click)="backToPropriete()">
                 Retour
               </button>
-              <button
-                type="button"
-                class="btn btn-danger"
-                style="background-color: #ff385c; color: white; border: unset"
-                (click)="sendDataToServer()"
-              >
+              <button type="button" class="btn btn-danger"
+                style="background-color: #ff385c; color: white; border: unset" (click)="sendDataToServer()">
                 Create
               </button>
             </div>

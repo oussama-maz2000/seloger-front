@@ -12,6 +12,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Properietaire, Property } from 'src/app/core/model/announce.interface';
 import { AnnounceService } from 'src/app/core/services/announce-service/annonce.service';
 import {
   willaya,
@@ -43,7 +44,7 @@ export class AddAnnonceComponent implements OnInit {
   checkProprietaireFormValidation: boolean = false;
   checkProprieteFormValidation: boolean = false;
   showProfilTab: string = 'tab-pane fade show active';
-  showProprieteTab: string = 'tab-pane fade';
+  showProprieteTab: string = 'tab-pane fade ';
   showOptionalTab: string = 'tab-pane fade ';
   profileBtn: string = 'nav-link active';
   proprieteBtn: string = 'nav-link';
@@ -171,7 +172,7 @@ export class AddAnnonceComponent implements OnInit {
   firstName;
   createProprieteForm() {
     this.proprieteFormControl = this.formBuilder.group({
-      prpType: [, [Validators.required]],
+      prpType: [],
       annType: [, [Validators.required]],
       jrcType: [, [Validators.required]],
       willaya: [, [Validators.required]],
@@ -232,14 +233,11 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   sendDataToServer(): void {
-    const combinedData = {
-      proprietaire: this.proprietaireFormControl.value,
-      propriete: this.proprieteFormControl.value,
-    };
-    console.log(combinedData);
+    let property: Property = this.proprieteFormControl.value;
+    let properietaire: Properietaire = this.proprietaireFormControl.value;
 
     this.annonceService
-      .addProprietaireWithPropriete(combinedData, this.images.value)
+      .addProprietaireWithPropriete(properietaire, property)
       .subscribe(
         (response) => {
           // Handle success

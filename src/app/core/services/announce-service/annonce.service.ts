@@ -1,6 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Announce } from '../../model/announce.interface';
+import {
+  Announce,
+  Properietaire,
+  Property,
+} from '../../model/announce.interface';
 import { Observable, Subject, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -29,16 +33,20 @@ export class AnnounceService {
   }
 
   addProprietaireWithPropriete(
-    data: any,
+    properietaire: Properietaire,
 
-    files: File[]
+    /* files: File[], */
+    property: Property
   ): Observable<any> {
     const formData: FormData = new FormData();
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data');
+    /*  const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data'); */
 
+    const headers = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+    });
     // Append JSON data
-    formData.append('data', JSON.stringify(data));
+    //  formData.append('data', JSON.stringify(data));
     /*     formData.append('property', propriete);
 
     formData.append('properietaire', proprietaire);
@@ -51,12 +59,13 @@ export class AnnounceService {
       formData.append('images', files[i]);
     } */
 
-    files.forEach((element) => {
+    /* files.forEach((element) => {
       formData.append('images', element);
-    });
+    }); */
 
+    formData.append('properietaire', JSON.stringify(properietaire));
+    formData.append('property', JSON.stringify(property));
     return this.http.post('/api/annonce/add', formData, {
-      headers,
       responseType: 'text',
     });
   }
