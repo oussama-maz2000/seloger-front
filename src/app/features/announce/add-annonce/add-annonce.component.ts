@@ -22,6 +22,13 @@ import {
   publicServcieList,
   quillConfig,
 } from 'src/app/core/shared/data';
+import {
+  validateNumber,
+  validatePhoneNumber,
+  validatePublicService,
+  validateServiceAccessebility,
+  validatehygiene,
+} from 'src/app/core/validation/ValidationFn';
 
 @Component({
   selector: 'app-add-annonce',
@@ -41,11 +48,14 @@ export class AddAnnonceComponent implements OnInit {
   proprieteFormControl: FormGroup;
   optionalInformationFormControl: FormGroup;
   uploadFilesFormControl: FormGroup;
+
   checkProprietaireFormValidation: boolean = false;
   checkProprieteFormValidation: boolean = false;
+
   showProfilTab: string = 'tab-pane fade show active';
   showProprieteTab: string = 'tab-pane fade ';
   showOptionalTab: string = 'tab-pane fade ';
+
   profileBtn: string = 'nav-link active';
   proprieteBtn: string = 'nav-link';
   optionalBtn: string = 'nav-link ';
@@ -151,11 +161,14 @@ export class AddAnnonceComponent implements OnInit {
 
   onSubmitPropriete(): boolean {
     this.checkProprieteFormValidation = true;
+    console.log(this.proprieteFormControl.valid);
 
     return this.proprieteFormControl.valid;
   }
 
   onSubmitOptionalInformation(): boolean {
+    console.log(this.optionalInformationFormControl.valid);
+
     return this.optionalInformationFormControl.valid;
   }
 
@@ -166,43 +179,34 @@ export class AddAnnonceComponent implements OnInit {
       firstName: [, Validators.required],
       lastName: [, Validators.required],
       email: [, [Validators.required, Validators.email]],
-      phone: [, [Validators.required]],
+      phone: [, [Validators.required, validatePhoneNumber()]],
     });
   }
   firstName;
   createProprieteForm() {
     this.proprieteFormControl = this.formBuilder.group({
-      prpType: [],
-      annType: [, [Validators.required]],
+      prpType: ['Maison', [Validators.required]],
+      annType: ['A vendre', [Validators.required]],
       jrcType: [, [Validators.required]],
       willaya: [, [Validators.required]],
       address: [, [Validators.required]],
-      etage: [, [Validators.required, Validators.min(0)]],
-      facade: [, [Validators.required, Validators.min(0)]],
-      price: [, [Validators.required, Validators.min(0)]],
-      surface: [, [Validators.required, Validators.min(0)]],
-      service: this.formBuilder.array([]),
-      hygiene: this.formBuilder.array([]),
-      pieces: this.formBuilder.array([]),
-      servicePublic: this.formBuilder.array([]),
-      climatisation: ['Non exist'],
-      chauffage: ['Chemini'],
-      cuisin: ['Séparer'],
-      disponible: [],
-      description: [],
+      etage: [, [Validators.required, validateNumber()]],
+      facade: [, [Validators.required, validateNumber()]],
+      price: [, [Validators.required, validateNumber()]],
+      surface: [, [Validators.required, validateNumber()]],
     });
   }
 
   createOptionalInformationForm() {
     this.optionalInformationFormControl = this.formBuilder.group({
-      serviceAccessibilite: this.formBuilder.array([]),
-      hygiene: this.formBuilder.array([]),
+      service: this.formBuilder.array([], [validateServiceAccessebility()]),
+      hygiene: this.formBuilder.array([], [validatehygiene()]),
       pieces: this.formBuilder.array([]),
-      servicePublic: this.formBuilder.array([]),
+      servicePublic: this.formBuilder.array([], [validatePublicService()]),
       climatisation: ['Non exist'],
       chauffage: ['Chemini'],
       cuisin: ['Séparer'],
-      disponibilite: [],
+      disponible: [],
       description: [],
     });
   }
@@ -214,7 +218,7 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   addOrRemoveFormControl(e: any, formControlName: string) {
-    const controlArray: FormArray = this.proprieteFormControl.get(
+    const controlArray: FormArray = this.optionalInformationFormControl.get(
       formControlName
     ) as FormArray;
 
@@ -233,11 +237,35 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   sendDataToServer(): void {
-    let property: Property = this.proprieteFormControl.value;
+    let property: Property = {
+      prpType: this.proprieteFormControl.get('prpType').value,
+      annType: this.proprieteFormControl.get('annType').value,
+      jrcType: this.proprieteFormControl.get('jrcType').value,
+      willaya: this.proprieteFormControl.get('willaya').value,
+      address: this.proprieteFormControl.get('address').value,
+      etage: this.proprieteFormControl.get('etage').value,
+      facade: this.proprieteFormControl.get('facade').value,
+      price: this.proprieteFormControl.get('price').value,
+      surface: this.proprieteFormControl.get('surface').value,
+      service: this.optionalInformationFormControl.get('service').value,
+      hygiene: this.optionalInformationFormControl.get('hygiene').value,
+      pieces: this.optionalInformationFormControl.get('pieces').value,
+      servicePublic:
+        this.optionalInformationFormControl.get('servicePublic').value,
+      climatisation:
+        this.optionalInformationFormControl.get('climatisation').value,
+      chauffage: this.optionalInformationFormControl.get('chauffage').value,
+      cuisin: this.optionalInformationFormControl.get('cuisin').value,
+      disponible: this.optionalInformationFormControl.get('disponible').value,
+      description: this.optionalInformationFormControl.get('description').value,
+    };
+
     let properietaire: Properietaire = this.proprietaireFormControl.value;
 
+    console.log(this.images.value);
+
     this.annonceService
-      .addProprietaireWithPropriete(properietaire, property)
+      .addProprietaireWithPropriete(properietaire, property, this.images.value)
       .subscribe(
         (response) => {
           // Handle success

@@ -1,14 +1,14 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export function validateServiceAccessebility(): ValidatorFn {
   const serviceAccessibilityList = [
-    'ELEVATOR',
-    'INTERCOM',
-    'CHIP PORT',
-    'GUARDIAN',
-    'PARKING',
-    'COLLECTION PARABLES',
-    'INTERNET',
+    'Ascenseur',
+    'Interphone',
+    'Puce Port',
+    'Gardien',
+    'Parking',
+    'Internet',
+    'Parabole Collectif',
   ];
   return (control: AbstractControl): { [key: string]: boolean } | null => {
     if (serviceAccessibilityList.indexOf(control.value) == -1)
@@ -28,11 +28,11 @@ export function validatePieces(): ValidatorFn {
 
 export function validatehygiene(): ValidatorFn {
   const hygieneList = [
-    'WATER_ANK',
-    'WATER PUMP',
-    'BATHROOM',
-    'SEPARATE TOILET',
-    'NO SEPARATE TOILET',
+    "Réservoir D'eau",
+    'Pompe A Eau',
+    'Toilettes Séparées',
+    'Toilettes Non Séparées',
+    'Salle De Bain',
   ];
 
   return (control: AbstractControl): { [key: string]: boolean } | null => {
@@ -44,14 +44,12 @@ export function validatehygiene(): ValidatorFn {
 
 export function validatePublicService(): ValidatorFn {
   const publicServcieList = [
-    'PRIMARY SCHOOL',
-    'SECONDARY SCHOOL',
-    'HIGH SCHOOL',
-    'BALCONY',
-    'BANK',
-    'PUBLIC GARDEN',
-    'COURT',
-    'TOWN HALL',
+    'Jardin Public',
+    'Tribunal',
+    'École Primaire',
+    'École secondaire',
+    'Lycée',
+    'Banque',
   ];
   return (control: AbstractControl): { [key: string]: boolean } | null => {
     if (publicServcieList.indexOf(control.value) == -1)
@@ -61,8 +59,18 @@ export function validatePublicService(): ValidatorFn {
 }
 
 export function validateNumber(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: boolean } | null => {
-    if (Number.isNaN(control.value)) return { invalidNum: true };
+  return (control: AbstractControl): ValidationErrors | null => {
+    const isNotNumber = isNaN(control.value);
+    return isNotNumber ? { notANumber: { value: control.value } } : null;
+  };
+}
+export function validatePhoneNumber(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    if (control.value) {
+      const phoneNum = control.value.match(/\d/g);
+      const isValid = phoneNum && phoneNum.length === 10;
+      return isValid ? null : { phoneNotValid: { value: control.value } };
+    }
     return null;
   };
 }

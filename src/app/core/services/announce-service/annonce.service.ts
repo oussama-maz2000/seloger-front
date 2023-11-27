@@ -35,8 +35,8 @@ export class AnnounceService {
   addProprietaireWithPropriete(
     properietaire: Properietaire,
 
-    /* files: File[], */
-    property: Property
+    property: Property,
+    files: File[]
   ): Observable<any> {
     const formData: FormData = new FormData();
     /*  const headers = new HttpHeaders();
@@ -65,6 +65,9 @@ export class AnnounceService {
 
     formData.append('properietaire', JSON.stringify(properietaire));
     formData.append('property', JSON.stringify(property));
+    files.forEach((element) => {
+      formData.append('images', element);
+    });
     return this.http.post('/api/annonce/add', formData, {
       responseType: 'text',
     });
