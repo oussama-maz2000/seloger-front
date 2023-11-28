@@ -268,11 +268,9 @@ export class AddAnnonceComponent implements OnInit {
       .addProprietaireWithPropriete(properietaire, property, this.images.value)
       .subscribe(
         (response) => {
-          // Handle success
           console.log('Data sent successfully', response);
         },
         (error) => {
-          // Handle error
           console.error('Error sending data', error);
         }
       );

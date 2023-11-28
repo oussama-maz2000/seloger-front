@@ -39,30 +39,10 @@ export class AnnounceService {
     files: File[]
   ): Observable<any> {
     const formData: FormData = new FormData();
-    /*  const headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data'); */
 
     const headers = new HttpHeaders({
       'Content-Type': 'multipart/form-data',
     });
-    // Append JSON data
-    //  formData.append('data', JSON.stringify(data));
-    /*     formData.append('property', propriete);
-
-    formData.append('properietaire', proprietaire);
-  */ /* formData.append('proprietaire', data.proprietaire);
-    formData.append('propriete', data.propriete);
-    formData.append('optionalInformation', data.optionalInformation); */
-
-    // Append files
-    /* for (let i = 0; i < files.length; i++) {
-      formData.append('images', files[i]);
-    } */
-
-    /* files.forEach((element) => {
-      formData.append('images', element);
-    }); */
-
     formData.append('properietaire', JSON.stringify(properietaire));
     formData.append('property', JSON.stringify(property));
     files.forEach((element) => {
