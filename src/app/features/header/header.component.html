@@ -56,28 +56,19 @@
 
 <div class="container-fluid">
   <nav class="navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" style="padding: 0px" href="#"
-        ><img src="../../../../assets/logo.png" style="max-height: 45px" alt=""
-      /></a>
+    <div class="container-fluid" id="custom-nav">
+      <a class="navbar-brand pb-1" style="padding: 0px" href="#"><img src="../../../../assets/logo.png"
+          style="max-height: 45px" alt="" /></a>
       <div class="d-flex align-items-center" role="search">
-        <div
-          style="cursor: pointer; font-size: 20px; color: #222831"
-          title="Log In"
-          [routerLink]="['/mon-compte/connexion']"
-        >
+        <div style="cursor: pointer; font-size: 20px; color: #222831" title="Log In"
+          [routerLink]="['/mon-compte/connexion']">
           <i class="bi bi-box-arrow-in-right"></i>
         </div>
         &nbsp;&nbsp;&nbsp;&nbsp;
 
         <div class="btn-group">
-          <div
-            class="dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style="cursor: pointer; font-size: 20px; color: #ff385c"
-            title="services"
-          >
+          <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+            style="cursor: pointer; font-size: 20px; color: #ff385c" title="services">
             <i class="bi bi-globe"></i>
           </div>
           <ul class="dropdown-menu">
@@ -85,8 +76,7 @@
               <a class="dropdown-item" href="#">creation une announce</a>
             </li>
             <li>
-              <a class="dropdown-item" [routerLink]="['demand-compte']"
-                >creation de compte
+              <a class="dropdown-item" [routerLink]="['demand-compte']">creation de compte
               </a>
             </li>
           </ul>

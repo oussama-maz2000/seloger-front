@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
+import { Component } from '@angular/core';
+import { AnimationOptions } from 'ngx-lottie';
 
+import player from 'lottie-web';
 @Component({
   selector: 'app-spinner',
   templateUrl: './spinner.component.html',
   styleUrls: ['./spinner.component.css'],
 })
-export class SpinnerComponent implements OnInit {
-  constructor(private spinner: NgxSpinnerService) {}
+export class SpinnerComponent {
+  options: AnimationOptions = {
+    path: '../../../../assets/maison/lottie.json',
+  };
 
-  ngOnInit(): void {
-    this.spinner.show();
-  }
+  styles: Partial<CSSStyleDeclaration> = {
+    maxWidth: '500px',
+    margin: '0 auto',
+    padding: '0px',
+  };
+}
+export function playerFactory() {
+  return player;
 }

@@ -38,7 +38,8 @@ import { MessageComponent } from './core/shared/message/message.component';
 import { TestComponent } from './features/test/test/test.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { DemandCompteComponent } from './features/demand-compte/demand-compte.component';
-
+import { LottieModule } from 'ngx-lottie';
+import { playerFactory } from '../app/core/shared/spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +86,9 @@ import { DemandCompteComponent } from './features/demand-compte/demand-compte.co
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([AnnounceEffect]),
+    LottieModule.forRoot({
+      player: playerFactory,
+    }),
   ],
 
   exports: [NgxSpinnerModule],

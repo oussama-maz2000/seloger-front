@@ -8,6 +8,7 @@ import { AnnounceService } from 'src/app/core/services/announce-service/annonce.
 import {
   ActionTypes,
   AddAnnounceSuccessAction,
+  CreateAnnonce,
   LoadAnnounceAction,
   LoadAnnounceSuccessAction,
   addAnnounceAction,
@@ -67,4 +68,8 @@ export class AnnounceEffect {
       })
     );
   });
+
+  // createAnnonce$ = createEffect(() => {
+  //   return this.actions$.pipe(ofType(CreateAnnonce),)
+  // })
 }

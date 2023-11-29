@@ -5,3 +5,7 @@
 .dropdown-toggle::after {
   content: unset;
 }
+#custom-nav {
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.11);
+  border-radius: 6px;
+}

@@ -55,7 +55,7 @@ export interface Property {
   surface: number;
   service: string[];
   hygiene: string[];
-  pieces: string[];
+  pieces: string;
   servicePublic: string[];
   climatisation: string;
   chauffage: string;

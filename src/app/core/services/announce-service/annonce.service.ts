@@ -34,7 +34,6 @@ export class AnnounceService {
 
   addProprietaireWithPropriete(
     properietaire: Properietaire,
-
     property: Property,
     files: File[]
   ): Observable<any> {

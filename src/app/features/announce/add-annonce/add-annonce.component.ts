@@ -201,7 +201,7 @@ export class AddAnnonceComponent implements OnInit {
     this.optionalInformationFormControl = this.formBuilder.group({
       service: this.formBuilder.array([], [validateServiceAccessebility()]),
       hygiene: this.formBuilder.array([], [validatehygiene()]),
-      pieces: this.formBuilder.array([]),
+      pieces: [''],
       servicePublic: this.formBuilder.array([], [validatePublicService()]),
       climatisation: ['Non exist'],
       chauffage: ['Chemini'],
@@ -262,7 +262,7 @@ export class AddAnnonceComponent implements OnInit {
 
     let properietaire: Properietaire = this.proprietaireFormControl.value;
 
-    console.log(this.images.value);
+    console.log(property);
 
     this.annonceService
       .addProprietaireWithPropriete(properietaire, property, this.images.value)
