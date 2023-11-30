@@ -56,13 +56,14 @@
       <div class="col-sm-8 m-auto">
         <h3 class="h2">Creation Une Annonce</h3>
         <div class="tab-content" id="v-pills-tabContent">
-          <div [class]="showProfilTab" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
+          <!-- <div [class]="showProfilTab" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
             tabindex="0">
+
             <div class="shadow-sm p-3 mb-5 rounded" id="custom-card">
               <h5 class="h4 d-flex justify-content-center">
                 Information sur le propriétaire
               </h5>
-              <!-- <hr class="hr-line"> -->
+               <hr class="hr-line"> 
               <div class="row" [formGroup]="proprietaireFormControl">
                 <div class="col-sm-6">
                   <div>
@@ -159,7 +160,7 @@
                 </button>
               </div>
             </div>
-          </div>
+          </div> -->
           <div [class]="showProprieteTab" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
             tabindex="0">
             <div class="shadow-sm p-3 mb-5 bg-body rounded" id="custom-card">
@@ -242,7 +243,7 @@
                   <div>
                     <label for="facade" class="form-label">Facade</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" name="facade" id="input" formControlName="facade" />
+                      <input type="tel" class="form-control" name="facade" id="input" formControlName="facade" />
                     </div>
                     <span class="space-error-msg">
                       <span *ngIf="
@@ -281,6 +282,24 @@
                           " class="error-message">
                           Veuillez saisir la surface de propriety
                         </span>
+                      </span>
+                    </span>
+                  </div>
+                  <div>
+                    <label for="meublee" class="form-label">
+                      Meublée</label>
+                    <div class="input-group">
+                      <select class="form-select" formControlName="meublee">
+                        <option>Oui</option>
+                        <option>Non</option>
+                      </select>
+                    </div>
+                    <span class="space-error-msg">
+                      <span *ngIf="
+                          checkProprieteFormValidation &&
+                          !proprieteFormControl.get('etatType').valid
+                        ">
+                        Veuillez selectionner le type d'annonce
                       </span>
                     </span>
                   </div>
@@ -337,7 +356,7 @@
                   <div>
                     <label for="etage" class="form-label">Etage</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" name="etage" id="input" formControlName="etage" />
+                      <input type="tel" class="form-control" name="etage" id="input" formControlName="etage" />
                     </div>
                     <span class="space-error-msg">
                       <span *ngIf="
@@ -377,7 +396,25 @@
                       </span>
                     </span>
                   </div>
-
+                  <div>
+                    <label for="announce" class="form-label">
+                      État de propriété</label>
+                    <div class="input-group">
+                      <select class="form-select" formControlName="etatType">
+                        <option>Finie lux</option>
+                        <option>Simple</option>
+                        <option>Carcasse</option>
+                      </select>
+                    </div>
+                    <span class="space-error-msg">
+                      <span *ngIf="
+                          checkProprieteFormValidation &&
+                          !proprieteFormControl.get('etatType').valid
+                        ">
+                        Veuillez selectionner le type d'annonce
+                      </span>
+                    </span>
+                  </div>
                   <div class="mb-4" [formGroup]="uploadFilesFormControl">
                     <label for="images" class="form-label">Images</label>
                     <div class="input-group">
@@ -539,7 +576,7 @@
                         </div>
                       </div>
 
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
                         <ul class="list-unstyled">
                           <li *ngFor="let item of publicServcieList">
                             <div class="form-check">
@@ -556,6 +593,16 @@
                             </div>
                           </li>
                         </ul>
+                      </div>
+                      <div class="py-4">
+                        <label for="avances" class="form-label">Les Avances</label>
+                        <div class="input-group">
+                          <select class="form-select" formControlName="avances">
+                            <option *ngFor="let element of avances" [value]="element">
+                              {{ element }}
+                            </option>
+                          </select>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -583,11 +630,20 @@
                   </div>
 
                   <div class="pb-4">
+                    <label for="city" class="form-label">City</label>
+                    <div class="input-group">
+                      <select class="form-select" formControlName="city">
+                        <option>Clôture</option>
+                        <option>Ouverte</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="pb-4">
                     <label for="cuisin" class="form-label"> Cuisin</label>
                     <div class="input-group">
                       <select class="form-select" formControlName="cuisin">
                         <option>Séparer</option>
-                        <option>Coin</option>
+                        <option>Ouverte</option>
                       </select>
                     </div>
                   </div>

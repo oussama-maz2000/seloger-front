@@ -13,7 +13,15 @@ import {
   LoadAnnounceSuccessAction,
   addAnnounceAction,
 } from '../action/announce.action';
-import { catchError, map, mergeMap, of, withLatestFrom } from 'rxjs';
+import {
+  catchError,
+  debounceTime,
+  map,
+  mergeMap,
+  of,
+  tap,
+  withLatestFrom,
+} from 'rxjs';
 //
 import { Announce } from 'src/app/core/model/announce.interface';
 import { MessageAction, SpinnerAction } from '../action/shared.action';
@@ -69,7 +77,30 @@ export class AnnounceEffect {
     );
   });
 
-  // createAnnonce$ = createEffect(() => {
-  //   return this.actions$.pipe(ofType(CreateAnnonce),)
-  // })
+  createAnnonce$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(CreateAnnonce),
+        mergeMap((element) =>
+          this.announceService
+            .addProprietaireWithPropriete(
+              element.proprietaire,
+              element.property,
+              element.files
+            )
+            .pipe(
+              tap((result) => {
+                console.log(result);
+                this.store.dispatch(SpinnerAction({ status: false }));
+                // Perform any additional side-effects here
+              })
+              // If you need to dispatch an action based on the result, use map
+              // map(result => new SuccessAction(result)),
+            )
+        )
+        // If you are not dispatching a new action, keep dispatch: false
+      );
+    },
+    { dispatch: false }
+  );
 }

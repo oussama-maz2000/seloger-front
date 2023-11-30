@@ -36,12 +36,8 @@ export class AnnounceService {
     properietaire: Properietaire,
     property: Property,
     files: File[]
-  ): Observable<any> {
+  ) {
     const formData: FormData = new FormData();
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
-    });
     formData.append('properietaire', JSON.stringify(properietaire));
     formData.append('property', JSON.stringify(property));
     files.forEach((element) => {

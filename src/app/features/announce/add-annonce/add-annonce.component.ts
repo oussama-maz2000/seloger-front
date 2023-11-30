@@ -12,6 +12,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { Properietaire, Property } from 'src/app/core/model/announce.interface';
 import { AnnounceService } from 'src/app/core/services/announce-service/annonce.service';
 import {
@@ -21,6 +22,7 @@ import {
   piecesList,
   publicServcieList,
   quillConfig,
+  avances,
 } from 'src/app/core/shared/data';
 import {
   validateNumber,
@@ -29,6 +31,9 @@ import {
   validateServiceAccessebility,
   validatehygiene,
 } from 'src/app/core/validation/ValidationFn';
+import { State } from 'src/app/store';
+import { CreateAnnonce } from 'src/app/store/action/announce.action';
+import { SpinnerAction } from 'src/app/store/action/shared.action';
 
 @Component({
   selector: 'app-add-annonce',
@@ -42,6 +47,7 @@ export class AddAnnonceComponent implements OnInit {
   piecesList: string[];
   publicServcieList: string[];
   willays: string[];
+  avances: string[];
   quillConfig: any;
 
   proprietaireFormControl: FormGroup;
@@ -52,18 +58,15 @@ export class AddAnnonceComponent implements OnInit {
   checkProprietaireFormValidation: boolean = false;
   checkProprieteFormValidation: boolean = false;
 
-  showProfilTab: string = 'tab-pane fade show active';
-  showProprieteTab: string = 'tab-pane fade ';
-  showOptionalTab: string = 'tab-pane fade ';
+  showProfilTab: string = 'tab-pane fade ';
+  showProprieteTab: string = 'tab-pane fade';
+  showOptionalTab: string = 'tab-pane fade  show active';
 
   profileBtn: string = 'nav-link active';
   proprieteBtn: string = 'nav-link';
   optionalBtn: string = 'nav-link ';
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private annonceService: AnnounceService
-  ) {}
+  constructor(private formBuilder: FormBuilder, private store: Store<State>) {}
 
   ngOnInit(): void {
     this.serviceAccessibilityList = serviceAccessibilityList;
@@ -72,7 +75,7 @@ export class AddAnnonceComponent implements OnInit {
     this.publicServcieList = publicServcieList;
     this.willays = willaya;
     this.quillConfig = quillConfig;
-
+    this.avances = avances;
     this.createProfileProprietaireForm();
     this.createProprieteForm();
     this.createOptionalInformationForm();
@@ -130,9 +133,7 @@ export class AddAnnonceComponent implements OnInit {
     if (this.onSubmitPropriete()) {
       this.showProprieteTab = 'tab-pane fade';
       this.showOptionalTab = 'tab-pane fade active show';
-
       this.proprieteBtn = 'nav-link ';
-
       this.optionalBtn = 'nav-link active';
     }
   }
@@ -140,14 +141,12 @@ export class AddAnnonceComponent implements OnInit {
   backToProfile(): void {
     this.showProprieteTab = 'tab-pane fade';
     this.showProfilTab = 'tab-pane fade active show';
-
     this.profileBtn = 'nav-link active';
     this.proprieteBtn = 'nav-link';
   }
   backToPropriete(): void {
     this.showProprieteTab = 'tab-pane fade active show';
     this.showOptionalTab = 'tab-pane fade ';
-
     this.proprieteBtn = 'nav-link active';
     this.optionalBtn = 'nav-link ';
   }
@@ -161,14 +160,10 @@ export class AddAnnonceComponent implements OnInit {
 
   onSubmitPropriete(): boolean {
     this.checkProprieteFormValidation = true;
-    console.log(this.proprieteFormControl.valid);
-
     return this.proprieteFormControl.valid;
   }
 
   onSubmitOptionalInformation(): boolean {
-    console.log(this.optionalInformationFormControl.valid);
-
     return this.optionalInformationFormControl.valid;
   }
 
@@ -194,6 +189,8 @@ export class AddAnnonceComponent implements OnInit {
       facade: [, [Validators.required, validateNumber()]],
       price: [, [Validators.required, validateNumber()]],
       surface: [, [Validators.required, validateNumber()]],
+      etatType: [, [Validators.required]],
+      meublee: [, [Validators.required]],
     });
   }
 
@@ -208,6 +205,7 @@ export class AddAnnonceComponent implements OnInit {
       cuisin: ['Séparer'],
       disponible: [],
       description: [],
+      avances: [],
     });
   }
 
@@ -262,17 +260,15 @@ export class AddAnnonceComponent implements OnInit {
 
     let properietaire: Properietaire = this.proprietaireFormControl.value;
 
-    console.log(property);
-
-    this.annonceService
-      .addProprietaireWithPropriete(properietaire, property, this.images.value)
-      .subscribe(
-        (response) => {
-          console.log('Data sent successfully', response);
-        },
-        (error) => {
-          console.error('Error sending data', error);
-        }
+    this.store.dispatch(SpinnerAction({ status: true }));
+    setTimeout(() => {
+      this.store.dispatch(
+        CreateAnnonce({
+          proprietaire: properietaire,
+          property: property,
+          files: this.images.value,
+        })
       );
+    }, 5000);
   }
 }

@@ -76,6 +76,7 @@ export const hygieneList = [
   'Toilettes Séparées',
   'Toilettes Non Séparées',
   'Salle De Bain',
+  'chauffe eau',
 ];
 
 export const piecesList = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'Plus'];
@@ -100,3 +101,18 @@ export const quillConfig = {
     ],
   },
 };
+export const avances = [
+  'sans avances',
+  '1 mois',
+  '2 mois',
+  '3 mois',
+  '4 mois',
+  '5 mois',
+  '6 mois',
+  '7 mois',
+  '8 mois',
+  '9 mois',
+  '10 mois',
+  '11 mois',
+  '12 mois',
+];
