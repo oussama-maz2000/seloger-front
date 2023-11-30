@@ -1,10 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  Announce,
-  Properietaire,
-  Property,
-} from '../../model/announce.interface';
+import { Announce, Property } from '../../model/announce.interface';
 import { Observable, Subject, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -32,13 +28,8 @@ export class AnnounceService {
     return this.dataSubject;
   }
 
-  addProprietaireWithPropriete(
-    properietaire: Properietaire,
-    property: Property,
-    files: File[]
-  ) {
+  addProprietaireWithPropriete(property: Property, files: File[]) {
     const formData: FormData = new FormData();
-    formData.append('properietaire', JSON.stringify(properietaire));
     formData.append('property', JSON.stringify(property));
     files.forEach((element) => {
       formData.append('images', element);

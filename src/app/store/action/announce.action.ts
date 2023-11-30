@@ -1,9 +1,5 @@
 import { Action, createAction, props } from '@ngrx/store';
-import {
-  Announce,
-  Properietaire,
-  Property,
-} from 'src/app/core/model/announce.interface';
+import { Announce, Property } from 'src/app/core/model/announce.interface';
 import { type } from 'src/app/core/utils/utils';
 
 export const ActionTypes = {
@@ -35,7 +31,6 @@ export const LoadAnnounceSuccessAction = createAction(
 export const CreateAnnonce = createAction(
   ActionTypes.CREATE_ANNONCE,
   props<{
-    proprietaire: Properietaire;
     property: Property;
     files: File[];
   }>()

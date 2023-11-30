@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -13,8 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Properietaire, Property } from 'src/app/core/model/announce.interface';
-import { AnnounceService } from 'src/app/core/services/announce-service/annonce.service';
+import { Property } from 'src/app/core/model/announce.interface';
 import {
   willaya,
   serviceAccessibilityList,
@@ -48,22 +41,18 @@ export class AddAnnonceComponent implements OnInit {
   publicServcieList: string[];
   willays: string[];
   avances: string[];
-  quillConfig: any;
 
-  proprietaireFormControl: FormGroup;
+  quillConfig: any;
   proprieteFormControl: FormGroup;
   optionalInformationFormControl: FormGroup;
   uploadFilesFormControl: FormGroup;
 
-  checkProprietaireFormValidation: boolean = false;
   checkProprieteFormValidation: boolean = false;
 
-  showProfilTab: string = 'tab-pane fade ';
-  showProprieteTab: string = 'tab-pane fade';
-  showOptionalTab: string = 'tab-pane fade  show active';
+  showProprieteTab: string = 'tab-pane fade ';
+  showOptionalTab: string = 'tab-pane fade show active ';
 
-  profileBtn: string = 'nav-link active';
-  proprieteBtn: string = 'nav-link';
+  proprieteBtn: string = 'nav-link active';
   optionalBtn: string = 'nav-link ';
 
   constructor(private formBuilder: FormBuilder, private store: Store<State>) {}
@@ -76,7 +65,6 @@ export class AddAnnonceComponent implements OnInit {
     this.willays = willaya;
     this.quillConfig = quillConfig;
     this.avances = avances;
-    this.createProfileProprietaireForm();
     this.createProprieteForm();
     this.createOptionalInformationForm();
     this.createUploadsFileForm();
@@ -121,14 +109,6 @@ export class AddAnnonceComponent implements OnInit {
 
   /* handles the jumping between forms  */
 
-  nextToPropriete(): void {
-    if (this.onSubmitProprietaire()) {
-      this.showProprieteTab = 'tab-pane fade active show';
-      this.showProfilTab = 'tab-pane fade';
-      this.profileBtn = 'nav-link';
-      this.proprieteBtn = 'nav-link active';
-    }
-  }
   nextToOptional(): void {
     if (this.onSubmitPropriete()) {
       this.showProprieteTab = 'tab-pane fade';
@@ -138,12 +118,6 @@ export class AddAnnonceComponent implements OnInit {
     }
   }
 
-  backToProfile(): void {
-    this.showProprieteTab = 'tab-pane fade';
-    this.showProfilTab = 'tab-pane fade active show';
-    this.profileBtn = 'nav-link active';
-    this.proprieteBtn = 'nav-link';
-  }
   backToPropriete(): void {
     this.showProprieteTab = 'tab-pane fade active show';
     this.showOptionalTab = 'tab-pane fade ';
@@ -152,11 +126,6 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   /* submit the forms */
-
-  onSubmitProprietaire(): boolean {
-    this.checkProprietaireFormValidation = true;
-    return this.proprietaireFormControl.valid;
-  }
 
   onSubmitPropriete(): boolean {
     this.checkProprieteFormValidation = true;
@@ -169,19 +138,10 @@ export class AddAnnonceComponent implements OnInit {
 
   /* creation of the form controlers */
 
-  createProfileProprietaireForm() {
-    this.proprietaireFormControl = this.formBuilder.group({
-      firstName: [, Validators.required],
-      lastName: [, Validators.required],
-      email: [, [Validators.required, Validators.email]],
-      phone: [, [Validators.required, validatePhoneNumber()]],
-    });
-  }
-  firstName;
   createProprieteForm() {
     this.proprieteFormControl = this.formBuilder.group({
-      prpType: ['Maison', [Validators.required]],
-      annType: ['A vendre', [Validators.required]],
+      prpType: [, [Validators.required]],
+      annType: [, [Validators.required]],
       jrcType: [, [Validators.required]],
       willaya: [, [Validators.required]],
       address: [, [Validators.required]],
@@ -191,6 +151,7 @@ export class AddAnnonceComponent implements OnInit {
       surface: [, [Validators.required, validateNumber()]],
       etatType: [, [Validators.required]],
       meublee: [, [Validators.required]],
+      negociable: [, [Validators.required]],
     });
   }
 
@@ -200,12 +161,13 @@ export class AddAnnonceComponent implements OnInit {
       hygiene: this.formBuilder.array([], [validatehygiene()]),
       pieces: [''],
       servicePublic: this.formBuilder.array([], [validatePublicService()]),
-      climatisation: ['Non exist'],
-      chauffage: ['Chemini'],
-      cuisin: ['Séparer'],
+      climatisation: [],
+      chauffage: [],
+      city: [],
+      avances: [],
+      cuisin: [],
       disponible: [],
       description: [],
-      avances: [],
     });
   }
 
@@ -245,6 +207,9 @@ export class AddAnnonceComponent implements OnInit {
       facade: this.proprieteFormControl.get('facade').value,
       price: this.proprieteFormControl.get('price').value,
       surface: this.proprieteFormControl.get('surface').value,
+      etatType: this.proprieteFormControl.get('etatType').value,
+      meublee: this.proprieteFormControl.get('meublee').value,
+      negociable: this.proprieteFormControl.get('negociable').value,
       service: this.optionalInformationFormControl.get('service').value,
       hygiene: this.optionalInformationFormControl.get('hygiene').value,
       pieces: this.optionalInformationFormControl.get('pieces').value,
@@ -256,19 +221,19 @@ export class AddAnnonceComponent implements OnInit {
       cuisin: this.optionalInformationFormControl.get('cuisin').value,
       disponible: this.optionalInformationFormControl.get('disponible').value,
       description: this.optionalInformationFormControl.get('description').value,
+      avances: this.optionalInformationFormControl.get('avances').value,
+      city: this.optionalInformationFormControl.get('city').value,
     };
-
-    let properietaire: Properietaire = this.proprietaireFormControl.value;
+    console.log(property);
 
     this.store.dispatch(SpinnerAction({ status: true }));
-    setTimeout(() => {
+    /* setTimeout(() => {
       this.store.dispatch(
         CreateAnnonce({
-          proprietaire: properietaire,
           property: property,
           files: this.images.value,
         })
       );
-    }, 5000);
+    }, 5000) */
   }
 }

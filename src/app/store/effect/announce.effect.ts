@@ -83,11 +83,7 @@ export class AnnounceEffect {
         ofType(CreateAnnonce),
         mergeMap((element) =>
           this.announceService
-            .addProprietaireWithPropriete(
-              element.proprietaire,
-              element.property,
-              element.files
-            )
+            .addProprietaireWithPropriete(element.property, element.files)
             .pipe(
               tap((result) => {
                 console.log(result);

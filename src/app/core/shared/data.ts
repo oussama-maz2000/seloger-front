@@ -88,6 +88,12 @@ export const publicServcieList = [
   'École secondaire',
   'Lycée',
   'Banque',
+  'Mosquée',
+  'Université',
+  'Transport',
+  'Hospitalier',
+  'Clinique',
+  'Commerces',
 ];
 
 export const quillConfig = {

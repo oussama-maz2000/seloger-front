@@ -62,11 +62,10 @@ export interface Property {
   cuisin: string;
   disponible: string;
   description: string;
-}
-
-export interface Properietaire {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
+  etatType: string;
+  meublee: string;
+  avances: string;
+  city: string;
+  negociable: string;
+  imgPath?: string[];
 }
