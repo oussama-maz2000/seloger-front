@@ -40,6 +40,8 @@ import { FooterComponent } from './features/footer/footer.component';
 import { DemandCompteComponent } from './features/demand-compte/demand-compte.component';
 import { LottieModule } from 'ngx-lottie';
 import { playerFactory } from '../app/core/shared/spinner/spinner.component';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +79,11 @@ import { playerFactory } from '../app/core/shared/spinner/spinner.component';
     BrowserAnimationsModule,
     AgGridModule,
     QuillModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 20000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
     NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
     StoreModule.forRoot(reducers, {
       runtimeChecks: {

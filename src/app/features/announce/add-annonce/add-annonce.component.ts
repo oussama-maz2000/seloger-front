@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
 import { Property } from 'src/app/core/model/announce.interface';
 import {
   willaya,
@@ -41,16 +42,16 @@ export class AddAnnonceComponent implements OnInit {
   publicServcieList: string[];
   willays: string[];
   avances: string[];
-
   quillConfig: any;
+
   proprieteFormControl: FormGroup;
   optionalInformationFormControl: FormGroup;
   uploadFilesFormControl: FormGroup;
 
   checkProprieteFormValidation: boolean = false;
 
-  showProprieteTab: string = 'tab-pane fade ';
-  showOptionalTab: string = 'tab-pane fade show active ';
+  showProprieteTab: string = 'tab-pane fade show active';
+  showOptionalTab: string = 'tab-pane fade';
 
   proprieteBtn: string = 'nav-link active';
   optionalBtn: string = 'nav-link ';
@@ -140,8 +141,8 @@ export class AddAnnonceComponent implements OnInit {
 
   createProprieteForm() {
     this.proprieteFormControl = this.formBuilder.group({
-      prpType: [, [Validators.required]],
-      annType: [, [Validators.required]],
+      prpType: [],
+      annType: [],
       jrcType: [, [Validators.required]],
       willaya: [, [Validators.required]],
       address: [, [Validators.required]],
@@ -212,7 +213,7 @@ export class AddAnnonceComponent implements OnInit {
       negociable: this.proprieteFormControl.get('negociable').value,
       service: this.optionalInformationFormControl.get('service').value,
       hygiene: this.optionalInformationFormControl.get('hygiene').value,
-      pieces: this.optionalInformationFormControl.get('pieces').value,
+      piece: this.optionalInformationFormControl.get('pieces').value,
       servicePublic:
         this.optionalInformationFormControl.get('servicePublic').value,
       climatisation:
@@ -222,18 +223,17 @@ export class AddAnnonceComponent implements OnInit {
       disponible: this.optionalInformationFormControl.get('disponible').value,
       description: this.optionalInformationFormControl.get('description').value,
       avances: this.optionalInformationFormControl.get('avances').value,
-      city: this.optionalInformationFormControl.get('city').value,
+      etatCity: this.optionalInformationFormControl.get('city').value,
     };
-    console.log(property);
 
     this.store.dispatch(SpinnerAction({ status: true }));
-    /* setTimeout(() => {
+    setTimeout(() => {
       this.store.dispatch(
         CreateAnnonce({
           property: property,
           files: this.images.value,
         })
       );
-    }, 5000) */
+    }, 5000);
   }
 }

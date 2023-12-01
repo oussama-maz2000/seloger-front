@@ -26,6 +26,8 @@ import {
 import { Announce } from 'src/app/core/model/announce.interface';
 import { MessageAction, SpinnerAction } from '../action/shared.action';
 import { getAllAnnounces } from '../selector/announce.selector';
+import { ToastrService } from 'ngx-toastr';
+import { ToasterService } from 'src/app/core/services/announce-service/toast.service';
 
 @Injectable()
 export class AnnounceEffect {
@@ -33,7 +35,8 @@ export class AnnounceEffect {
     private actions$: Actions,
     private store: Store<State>,
     private router: Router,
-    private announceService: AnnounceService
+    private announceService: AnnounceService,
+    private toastr: ToasterService
   ) {}
 
   addAnnounce$ = createEffect(
@@ -44,13 +47,7 @@ export class AnnounceEffect {
           return this.announceService.addAnnounce(action.formValues).pipe(
             map((data: Announce[]) => {
               this.store.dispatch(SpinnerAction({ status: false }));
-              this.store.dispatch(
-                MessageAction({
-                  status: true,
-                  typeMessage: 'suc',
-                  message: 'well saved',
-                })
-              );
+
               this.store.dispatch(AddAnnounceSuccessAction({ announce: data }));
               this.router.navigate(['admin']);
             })
@@ -88,10 +85,18 @@ export class AnnounceEffect {
               tap((result) => {
                 console.log(result);
                 this.store.dispatch(SpinnerAction({ status: false }));
+                this.toastr.showSuccess(result); // Assuming 'success' is the method
+
                 // Perform any additional side-effects here
+              }),
+              catchError((error: any) => {
+                console.log(error);
+                this.toastr.showError(error.error); // Assuming 'error' is the method
+                setTimeout(() => {
+                  this.store.dispatch(SpinnerAction({ status: false }));
+                }, 2000);
+                return of();
               })
-              // If you need to dispatch an action based on the result, use map
-              // map(result => new SuccessAction(result)),
             )
         )
         // If you are not dispatching a new action, keep dispatch: false

@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import {
   getAlert,
   getLoading,
   getType,
 } from './store/selector/shared.selector';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.showLoading = this.store.select(getLoading);
-    this.showAlert = this.store.select(getAlert);
+    /* this.showAlert = this.store.select(getAlert); */
   }
 }

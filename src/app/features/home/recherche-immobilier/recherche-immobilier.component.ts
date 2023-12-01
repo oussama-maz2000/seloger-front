@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
+import { ToasterService } from 'src/app/core/services/announce-service/toast.service';
 import { willaya } from 'src/app/core/shared/data';
 import { LoadAnnounceAction } from 'src/app/store/action/announce.action';
 import { SpinnerAction } from 'src/app/store/action/shared.action';
@@ -18,7 +20,8 @@ export class RechercheImmobilierComponent {
   constructor(
     private formBuilder: FormBuilder,
     private store: Store,
-    private router: Router
+    private router: Router,
+    private toastr: ToasterService
   ) {
     this.willays = willaya;
   }
@@ -55,9 +58,10 @@ export class RechercheImmobilierComponent {
   showData() {
     console.log(this.searchForm.value);
     //console.log(this.searchForm.value['willaya']['$ngOptionLabel']);
-    this.store.dispatch(LoadAnnounceAction());
+    /* this.store.dispatch(LoadAnnounceAction()); */
     /* this.store.dispatch(SpinnerAction({ status: true }));
      */
-    this.router.navigate(['annonce']);
+
+    /*  this.router.navigate(['annonce']); */
   }
 }

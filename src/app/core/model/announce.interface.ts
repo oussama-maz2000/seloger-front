@@ -47,15 +47,15 @@ export interface Property {
   prpType: string;
   annType: string;
   jrcType: string;
-  willaya: string;
   address: string;
+  willaya: string;
   etage: number;
   facade: number;
   price: number;
   surface: number;
   service: string[];
   hygiene: string[];
-  pieces: string;
+  piece: string;
   servicePublic: string[];
   climatisation: string;
   chauffage: string;
@@ -65,7 +65,7 @@ export interface Property {
   etatType: string;
   meublee: string;
   avances: string;
-  city: string;
+  etatCity: string;
   negociable: string;
   imgPath?: string[];
 }
