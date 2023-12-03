@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ToastrService } from 'ngx-toastr';
 import { Property } from 'src/app/core/model/announce.interface';
 import {
   willaya,
