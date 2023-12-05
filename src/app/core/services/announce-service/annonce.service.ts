@@ -38,4 +38,9 @@ export class AnnounceService {
       responseType: 'text',
     });
   }
+
+  getProperties() {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get('/api/annonce/get-properties', { headers });
+  }
 }

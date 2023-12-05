@@ -1,15 +1,14 @@
-<i (click)="openFullScreen(content)" class="bi bi-pencil-square">
+<div class="d-flex justify-content-between"><i (click)="openFullScreen(content)" class="bi bi-pencil-square">
+  </i>
+  <i class="bi bi-trash3"></i>
+</div>
+<div>
   <ng-template #content let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">
         Annonce update from dialog component
       </h4>
-      <button
-        type="button"
-        class="btn-close"
-        aria-label="Close"
-        (click)="modal.dismiss('Cross click')"
-      ></button>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
       <form>
@@ -51,11 +50,7 @@
 
           <div class="input-group mt-1">
             <input type="text" class="form-control" placeholder="title" />
-            <input
-              type="text"
-              class="form-control"
-              placeholder="availability"
-            />
+            <input type="text" class="form-control" placeholder="availability" />
           </div>
           <div class="input-group mt-1">
             <select class="form-select" aria-label="Default select example">
@@ -71,70 +66,34 @@
           </div>
           <div class="input-group mt-1">
             <div class="d-flex justify-content-around">
-              <p-multiSelect
-                [style]="{ 'max-width': '220px', width: '215px' }"
-                [options]="serviceAccessibility"
-                optionLabel="label"
-                [filter]="false"
-                placeholder="service"
-              ></p-multiSelect>
-              <p-multiSelect
-                [style]="{ 'max-width': '220px', width: '215px' }"
-                [options]="serviceAccessibility"
-                optionLabel="label"
-                [filter]="false"
-                placeholder="service"
-              ></p-multiSelect>
-              <p-multiSelect
-                [style]="{ 'max-width': '220px', width: '215px' }"
-                [options]="serviceAccessibility"
-                optionLabel="label"
-                [filter]="false"
-                placeholder="service"
-              ></p-multiSelect>
-              <p-multiSelect
-                [style]="{ 'max-width': '220px', width: '215px' }"
-                [options]="serviceAccessibility"
-                optionLabel="label"
-                [filter]="false"
-                placeholder="service"
-              ></p-multiSelect>
+              <p-multiSelect [style]="{ 'max-width': '220px', width: '215px' }" [options]="serviceAccessibility"
+                optionLabel="label" [filter]="false" placeholder="service"></p-multiSelect>
+              <p-multiSelect [style]="{ 'max-width': '220px', width: '215px' }" [options]="serviceAccessibility"
+                optionLabel="label" [filter]="false" placeholder="service"></p-multiSelect>
+              <p-multiSelect [style]="{ 'max-width': '220px', width: '215px' }" [options]="serviceAccessibility"
+                optionLabel="label" [filter]="false" placeholder="service"></p-multiSelect>
+              <p-multiSelect [style]="{ 'max-width': '220px', width: '215px' }" [options]="serviceAccessibility"
+                optionLabel="label" [filter]="false" placeholder="service"></p-multiSelect>
             </div>
           </div>
 
           <div class="input-group mt-3">
             <ngx-dropzone (change)="onSelect($event)" class="form-control">
-              <ngx-dropzone-label
-                >select or drop your images</ngx-dropzone-label
-              >
-              <ngx-dropzone-preview
-                *ngFor="let f of files"
-                [removable]="true"
-                (removed)="onRemove(f)"
-              >
-                <ngx-dropzone-label
-                  >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
-                >
+              <ngx-dropzone-label>select or drop your images</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
               </ngx-dropzone-preview>
             </ngx-dropzone>
-            <quill-editor
-              class="content-editor"
-              [modules]="quillConfig"
-              [placeholder]="'description'"
-            >
+            <quill-editor class="content-editor" [modules]="quillConfig" [placeholder]="'description'">
             </quill-editor>
           </div>
         </div>
       </form>
     </div>
     <div class="modal-footer">
-      <button
-        type="button"
-        class="btn btn-outline-primary"
-        (click)="modal.close('Save click')"
-      >
+      <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">
         Updae
       </button>
     </div>
   </ng-template>
-</i>
+</div>

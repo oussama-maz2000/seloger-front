@@ -28,6 +28,11 @@ import { MessageAction, SpinnerAction } from '../action/shared.action';
 import { getAllAnnounces } from '../selector/announce.selector';
 import { ToastrService } from 'ngx-toastr';
 import { ToasterService } from 'src/app/core/services/announce-service/toast.service';
+import {
+  getProperties,
+  getPropertiesWithSuccess,
+} from '../action/properties.action';
+import { PropertyResponse } from 'src/app/core/model/Property.interface';
 
 @Injectable()
 export class AnnounceEffect {
@@ -104,4 +109,17 @@ export class AnnounceEffect {
     },
     { dispatch: false }
   );
+
+  getProperties$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(getProperties),
+      mergeMap((element) => {
+        return this.announceService.getProperties().pipe(
+          map((properties: PropertyResponse[]) => {
+            return getPropertiesWithSuccess({ properties });
+          })
+        );
+      })
+    );
+  });
 }

@@ -25,24 +25,6 @@ export interface Announce {
   imgPaths?: string[];
 }
 
-/* export interface AnnounceResponse {
-  propType: string;
-  anncType: string;
-  juridicType: string;
-  etage: number;
-  facade: number;
-  title?: string;
-  description?: string;
-  serviceAccessibility?: string[];
-  cuisin?: string;
-  hygiene?: string[];
-  pieces?: string[];
-  lime?: string;
-  airCondition?: boolean;
-  publicService?: string[];
-  availability?: string;
-} */
-
 export interface Property {
   prpType: string;
   annType: string;

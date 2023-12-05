@@ -4,11 +4,11 @@
 footer {
   background-color: black;
   color: white;
-  position: absolute;
+  /* position: absolute;
   width: 100%;
   min-height: 320px;
-  /*  top: 100rem; */
-  left: 0;
+    top: 100rem; 
+  left: 0; */
 }
 
 .h5-title {

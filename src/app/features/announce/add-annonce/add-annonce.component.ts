@@ -73,21 +73,22 @@ export class AddAnnonceComponent implements OnInit {
   get images() {
     return this.uploadFilesFormControl.get('images') as FormArray;
   }
-
   onSelect(event: any): void {
-    /* if (event.addedFiles[0].size < 2222222222) {
-      this.files.push(...event.addedFiles);
-    } */
-
     for (const file of event.addedFiles) {
-      // Check for duplicates before adding to the form array
-      const fileExists = this.files.some(
+      // Initialize fileExists for each file in the loop
+      let fileExists = this.files.some(
         (existingFile) => existingFile.name === file.name
       );
 
-      if (!fileExists) {
+      // Check if the file type is valid and if it doesn't already exist
+      if (
+        (file.type === 'image/jpeg' ||
+          file.type === 'image/webp' ||
+          file.type === 'image/png') &&
+        !fileExists
+      ) {
         this.files.push(file);
-        this.images.push(new FormControl(file));
+        this.images.push(new FormControl(file)); // Assuming FormControl usage is correct
       }
     }
   }
@@ -110,7 +111,7 @@ export class AddAnnonceComponent implements OnInit {
   /* handles the jumping between forms  */
 
   nextToOptional(): void {
-    if (this.onSubmitPropriete()) {
+    if (this.onSubmitPropriete() && this.uploadFilesFormControl.valid) {
       this.showProprieteTab = 'tab-pane fade';
       this.showOptionalTab = 'tab-pane fade active show';
       this.proprieteBtn = 'nav-link ';
@@ -140,8 +141,8 @@ export class AddAnnonceComponent implements OnInit {
 
   createProprieteForm() {
     this.proprieteFormControl = this.formBuilder.group({
-      prpType: [],
-      annType: [],
+      prpType: [, [Validators.required]],
+      annType: [, [Validators.required]],
       jrcType: [, [Validators.required]],
       willaya: [, [Validators.required]],
       address: [, [Validators.required]],
@@ -173,7 +174,7 @@ export class AddAnnonceComponent implements OnInit {
 
   createUploadsFileForm() {
     this.uploadFilesFormControl = this.formBuilder.group({
-      images: this.formBuilder.array([]),
+      images: this.formBuilder.array([], [Validators.required]),
     });
   }
 
@@ -224,6 +225,8 @@ export class AddAnnonceComponent implements OnInit {
       avances: this.optionalInformationFormControl.get('avances').value,
       etatCity: this.optionalInformationFormControl.get('city').value,
     };
+    console.log(this.images.value);
+    console.log(property);
 
     this.store.dispatch(SpinnerAction({ status: true }));
     setTimeout(() => {
