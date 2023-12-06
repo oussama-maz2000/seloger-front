@@ -90,13 +90,11 @@ export class AnnounceEffect {
               tap((result) => {
                 console.log(result);
                 this.store.dispatch(SpinnerAction({ status: false }));
-                this.toastr.showSuccess(result); // Assuming 'success' is the method
-
-                // Perform any additional side-effects here
+                this.toastr.showSuccess(result);
               }),
               catchError((error: any) => {
                 console.log(error);
-                this.toastr.showError(error.error); // Assuming 'error' is the method
+                this.toastr.showError(error.error);
                 setTimeout(() => {
                   this.store.dispatch(SpinnerAction({ status: false }));
                 }, 2000);
@@ -104,7 +102,6 @@ export class AnnounceEffect {
               })
             )
         )
-        // If you are not dispatching a new action, keep dispatch: false
       );
     },
     { dispatch: false }

@@ -1,19 +1,180 @@
+.hr-line {
+  width: 100%;
+  color: #ff385c;
+  border: 0.3px solid #ff385c;
+  opacity: unset;
+  border-radius: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  font-size: 16px;
+  border: solid 0.8px #ddd;
+  height: 42px;
+  color: #2b2b2b;
+  background-color: white;
+  transition-duration: 0.2s;
+}
+.form-label {
+  font-family: "Nunito", serif;
+  font-weight: 600;
+  /* font-size: 16px; */
+}
+
+.input-group {
+  width: 100%;
+}
+.form-select {
+  width: 100%;
+  font-size: 16px;
+  border: solid 0.8px #ddd;
+
+  height: 42px;
+  color: #2b2b2b;
+  background-color: white;
+  transition-duration: 0.2s;
+}
+
 ngx-dropzone {
-  height: 100px;
+  /*  display: unset; */
+  align-items: unset;
+  height: 9rem;
+  cursor: pointer;
+  width: 26em;
+  font-size: 16px;
+  border: solid 0.8px #ddd;
+  color: #2b2b2b;
+  background-color: white;
+  transition-duration: 0.2s;
+  overflow-x: auto;
+  width: 100%;
 }
-p-multiselect {
-  max-width: 220px;
-  min-width: 220px;
+
+ngx-dropzone-preview {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  margin: 10px;
+  max-width: 24rem;
+  min-height: 20px;
+  min-width: 24rem;
+  padding: 0px 20px;
+  position: relative;
 }
-.custom-multiselect {
-  max-width: 220px;
-  min-width: 220px;
+
+ngx-dropzone-label {
+  font-weight: 400;
+  padding-left: 3px;
+  font-size: 12px;
 }
-.p-multiselect .p-multiselect-panel {
-  min-width: auto;
-  max-width: 220px;
+
+.list-group-item {
+  border: unset;
 }
+
+ul.list-group.list-group-flush {
+  border: unset;
+}
+#custom-card {
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  height: 25rem;
+  overflow: auto;
+  background-color: white;
+  /*   background-color: rgba(255, 255, 255, 0.431); */
+}
+
+.h5 .h3 {
+  font-family: "Nunito", serif;
+  color: #2b2b2b;
+  font-weight: 800;
+}
+.h2 {
+  color: #2b2b2b;
+}
+
+.dropdown .btn {
+  width: 100%;
+  font-size: 16px;
+  border: solid 0.8px #ddd;
+  height: 42px;
+  color: #2b2b2b;
+  background-color: white;
+  transition-duration: 0.2s;
+
+  /* height: 40px; */
+
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.dropdown-toggle::after {
+  margin-left: 17.255em;
+  vertical-align: 0.3em;
+}
+
+.data-selected {
+  display: flex;
+  padding-top: 2px;
+  font-weight: 400;
+}
+
+.form-check .form-check-input {
+  margin-left: unset;
+  margin-right: 4px;
+}
+
+.dropdown-menu.show {
+  width: 60%;
+}
+
+.form-check-label {
+  font-family: "Nunito", serif;
+  color: #2b2b2b;
+  font-weight: 400;
+  font-size: 13px;
+}
+button.nav-link.active {
+  background-color: #ff385c;
+  width: 100%;
+  border-radius: 6px;
+  color: white;
+  transition: 0.8s;
+}
+
+button .btn {
+  background-color: #ff385c;
+  color: white;
+}
+
+.space-error-msg {
+  display: inline-block;
+  /* height: 1px; */
+}
+.error-message {
+  color: rgb(197, 42, 42);
+  /* line-height: 18px; */
+  font-size: 12px;
+  font-family: arial;
+}
+
 quill-editor {
   width: 100%;
   height: 7rem;
+  border: solid 0px #ddd;
+}
+
+#main {
+  background-image: url(../../../../assets/background.webp);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 3rem 1rem;
+  height: 100%;
+}
+ngx-dropzone-preview {
+  min-height: 85% !important;
+  height: 85% !important;
 }

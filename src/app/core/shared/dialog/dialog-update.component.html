@@ -1,5 +1,5 @@
-<div class="d-flex justify-content-between"><i (click)="openFullScreen(content)" class="bi bi-pencil-square">
-  </i>
+<div class="d-flex justify-content-between">
+  <i (click)="openFullScreen(content)" class="bi bi-pencil-square"> </i>
   <i class="bi bi-trash3"></i>
 </div>
 <div>
@@ -8,91 +8,436 @@
       <h4 class="modal-title" id="modal-basic-title">
         Annonce update from dialog component
       </h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
     </div>
     <div class="modal-body">
-      <form>
-        <div class="mb-3">
-          <div class="input-group">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Property</option>
-              <option value="1">house</option>
-              <option value="2">apartement</option>
-            </select>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Annonce</option>
-              <option value="1">rent</option>
-              <option value="2">sale</option>
-            </select>
-          </div>
-          <div class="input-group mt-1">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>juridic</option>
-              <option value="1">notarie</option>
-              <option value="2">akkar</option>
-            </select>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>willaya</option>
-              <option value="1">rent</option>
-              <option value="2">sale</option>
-            </select>
-          </div>
+      <form [formGroup]="updatePropertyForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <div>
+              <label for="property" class="form-label">
+                Type de propriete</label
+              >
+              <div class="input-group">
+                <select class="form-select" formControlName="prpType">
+                  <option>Maison</option>
+                  <option>Appartement</option>
+                </select>
+              </div>
+            </div>
 
-          <div class="input-group mt-1">
-            <input type="number" class="form-control" placeholder="etage" />
-            <input type="number" class="form-control" placeholder="facade" />
-            <input type="number" class="form-control" placeholder="surface" />
-            <input type="number" class="form-control" placeholder="prix" />
-          </div>
-          <div class="input-group mt-1">
-            <input type="text" class="form-control" placeholder="address" />
-          </div>
+            <div>
+              <label for="juridic" class="form-label"> Type juridic</label>
+              <div class="input-group">
+                <select class="form-select" formControlName="jrcType">
+                  <option>AADL</option>
+                  <option>logement promotionnel public</option>
+                  <option>Logement Social Participatif</option>
+                  <option>Logement promotionnel</option>
+                  <option>Logement Promotionnel Aidé</option>
+                  <option>Contrat de propriété</option>
+                </select>
+              </div>
+            </div>
 
-          <div class="input-group mt-1">
-            <input type="text" class="form-control" placeholder="title" />
-            <input type="text" class="form-control" placeholder="availability" />
-          </div>
-          <div class="input-group mt-1">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>willaya</option>
-              <option value="1">rent</option>
-              <option value="2">sale</option>
-            </select>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>willaya</option>
-              <option value="1">rent</option>
-              <option value="2">sale</option>
-            </select>
-          </div>
-          <div class="input-group mt-1">
-            <div class="d-flex justify-content-around">
-              <p-multiSelect [style]="{ 'max-width': '220px', width: '215px' }" [options]="serviceAccessibility"
-                optionLabel="label" [filter]="false" placeholder="service"></p-multiSelect>
-              <p-multiSelect [style]="{ 'max-width': '220px', width: '215px' }" [options]="serviceAccessibility"
-                optionLabel="label" [filter]="false" placeholder="service"></p-multiSelect>
-              <p-multiSelect [style]="{ 'max-width': '220px', width: '215px' }" [options]="serviceAccessibility"
-                optionLabel="label" [filter]="false" placeholder="service"></p-multiSelect>
-              <p-multiSelect [style]="{ 'max-width': '220px', width: '215px' }" [options]="serviceAccessibility"
-                optionLabel="label" [filter]="false" placeholder="service"></p-multiSelect>
+            <div>
+              <label for="address" class="form-label">Address</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="address"
+                  id="input"
+                  formControlName="address"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="facade" class="form-label">Facade</label>
+              <div class="input-group">
+                <input
+                  type="tel"
+                  class="form-control"
+                  name="facade"
+                  id="input"
+                  formControlName="facade"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="surface" class="form-label">Suraface</label>
+              <div class="input-group">
+                <input
+                  type="tel"
+                  class="form-control"
+                  aria-describedby="surface"
+                  id="surface"
+                  style="width: 80%"
+                  formControlName="surface"
+                />
+                <span class="input-group-text" id="surface">m²</span>
+              </div>
+            </div>
+            <div>
+              <label for="meublee" class="form-label"> Meublée</label>
+              <div class="input-group">
+                <select class="form-select" formControlName="meublee">
+                  <option>Oui</option>
+                  <option>Non</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group pb-4">
+              <label class="form-label">Service et accessibilité</label>
+              <div class="dropdown" (click)="preventClose($event)">
+                <div
+                  class="btn btn-secondary dropdown"
+                  role="button"
+                  id="dropdownMenuButton01"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <div class="data-selected">
+                    {{
+                      updatePropertyForm.get("service").value.length > 2
+                        ? updatePropertyForm.get("service").value.length +
+                          "
+                    element"
+                        : updatePropertyForm.get("service").value
+                    }}
+                  </div>
+                </div>
+
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton01"
+                >
+                  <ul class="list-unstyled">
+                    <li *ngFor="let item of serviceAccessibilityList">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          [value]="item"
+                          id="{{ item }}"
+                          (click)="$event.stopPropagation()"
+                          (change)="addOrRemoveFormControl($event, 'service')"
+                          formArrayName="service"
+                        />
+                        <label class="form-check-label" for="{{ item }}">
+                          {{ item }}
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="form-group pb-4">
+              <label class="form-label">hygiène</label>
+              <div class="dropdown" (click)="preventClose($event)">
+                <div
+                  class="btn btn-secondary dropdown"
+                  role="button"
+                  id="dropdownMenuButton02"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <div class="data-selected">
+                    {{
+                      updatePropertyForm.get("hygiene").value.length > 2
+                        ? updatePropertyForm.get("hygiene").value.length +
+                          "
+                    element"
+                        : updatePropertyForm.get("hygiene").value
+                    }}
+                  </div>
+                </div>
+
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton02"
+                >
+                  <ul class="list-unstyled">
+                    <li *ngFor="let item of hygieneList">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          [value]="item"
+                          id="{{ item }}"
+                          (click)="$event.stopPropagation()"
+                          (change)="addOrRemoveFormControl($event, 'hygiene')"
+                          formArrayName="hygiene"
+                        />
+                        <label class="form-check-label" for="{{ item }}">
+                          {{ item }}
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="form-group pb-4">
+              <label class="form-label">pièces</label>
+              <div class="dropdown" (click)="preventClose($event)">
+                <div
+                  class="btn btn-secondary dropdown"
+                  role="button"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <div class="data-selected">
+                    {{ updatePropertyForm.get("pieces").value }}
+                  </div>
+                </div>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <ul class="list-unstyled">
+                    <li *ngFor="let item of piecesList">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          [value]="item"
+                          id="{{ item }}"
+                          (click)="$event.stopPropagation()"
+                          formControlName="pieces"
+                        />
+                        <label class="form-check-label" for="{{ item }}">
+                          {{ item }}
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="form-group pb-4">
+              <label class="form-label">service public</label>
+              <div class="dropdown" (click)="preventClose($event)">
+                <div
+                  class="btn btn-secondary dropdown"
+                  role="button"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <div class="data-selected">
+                    {{
+                      updatePropertyForm.get("servicePublic").value.length > 2
+                        ? updatePropertyForm.get("servicePublic").value.length +
+                          "
+                    element"
+                        : updatePropertyForm.get("servicePublic").value
+                    }}
+                  </div>
+                </div>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <ul class="list-unstyled">
+                    <li *ngFor="let item of publicServcieList">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          [value]="item"
+                          id="{{ item }}"
+                          (click)="$event.stopPropagation()"
+                          (change)="
+                            addOrRemoveFormControl($event, 'servicePublic')
+                          "
+                          formArrayName="servicePublic"
+                        />
+                        <label class="form-check-label" for="{{ item }}">
+                          {{ item }}
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="pt-4">
+                  <label for="disponible" class="form-label"
+                    >La disponibilité</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="disponible"
+                      formControlName="disponible"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="input-group mt-3">
-            <ngx-dropzone (change)="onSelect($event)" class="form-control">
-              <ngx-dropzone-label>select or drop your images</ngx-dropzone-label>
-              <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-              </ngx-dropzone-preview>
-            </ngx-dropzone>
-            <quill-editor class="content-editor" [modules]="quillConfig" [placeholder]="'description'">
-            </quill-editor>
+          <div class="col-sm-6">
+            <div>
+              <label for="announce" class="form-label"> Type de announce</label>
+              <div class="input-group">
+                <select class="form-select" formControlName="annType">
+                  <option>A vendre</option>
+                  <option>A louer</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="willaya" class="form-label">Willaya </label>
+              <select
+                class="form-select"
+                id="willaya"
+                formControlName="willaya"
+              >
+                <option *ngFor="let element of willays" [value]="element">
+                  {{ element }}
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <label for="etage" class="form-label">Etage</label>
+              <div class="input-group">
+                <input
+                  type="tel"
+                  class="form-control"
+                  name="etage"
+                  id="input"
+                  formControlName="etage"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="prix" class="form-label">Prix</label>
+              <div class="input-group">
+                <input
+                  type="tel"
+                  id="price"
+                  name="price"
+                  formControlName="price"
+                  style="
+                    width: 89%;
+                    border-top-left-radius: 6px;
+                    border-bottom-left-radius: 6px;
+                  "
+                />
+                <span class="input-group-text" id="price">DZD</span>
+              </div>
+            </div>
+            <div>
+              <label for="etatType" class="form-label">
+                État de propriété</label
+              >
+              <div class="input-group">
+                <select class="form-select" formControlName="etatType">
+                  <option>Finie lux</option>
+                  <option>Simple</option>
+                  <option>Carcasse</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="negociable" class="form-label"> Négociable</label>
+              <div class="input-group">
+                <select class="form-select" formControlName="negociable">
+                  <option>Oui</option>
+                  <option>Non</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="pb-4">
+              <label for="climatisation" class="form-label">
+                Climatisation</label
+              >
+              <div class="input-group">
+                <select class="form-select" formControlName="climatisation">
+                  <option>Non exist</option>
+                  <option>Exist</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="pb-4">
+              <label for="chauffage" class="form-label"> Chauffage</label>
+              <div class="input-group">
+                <select class="form-select" formControlName="chauffage">
+                  <option>Central</option>
+                  <option>Chemini</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="pb-4">
+              <label for="city" class="form-label">City</label>
+              <div class="input-group">
+                <select class="form-select" formControlName="etatCity">
+                  <option>Clôturer</option>
+                  <option>Ouverte</option>
+                </select>
+              </div>
+            </div>
+            <div class="pb-4">
+              <label for="cuisin" class="form-label"> Cuisin</label>
+              <div class="input-group">
+                <select class="form-select" formControlName="cuisin">
+                  <option>Séparer</option>
+                  <option>Ouverte</option>
+                </select>
+              </div>
+            </div>
+            <div class="pb-4">
+              <label for="avances" class="form-label">Les Avances</label>
+              <div class="input-group">
+                <select class="form-select" formControlName="avances">
+                  <option *ngFor="let element of avances" [value]="element">
+                    {{ element }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div>
+              <div class="edit">
+                <quill-editor
+                  class="content-editor"
+                  [modules]="quillConfig"
+                  [placeholder]="'description'"
+                  formControlName="description"
+                >
+                </quill-editor>
+              </div>
+            </div>
           </div>
         </div>
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">
-        Updae
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="modal.close('Save click')"
+      >
+        Update
       </button>
     </div>
   </ng-template>
