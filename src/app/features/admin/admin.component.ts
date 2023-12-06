@@ -71,6 +71,7 @@ export class AdminComponent implements OnInit {
   onGridReady(params: GridReadyEvent) {}
 
   onCellClicked(e: CellClickedEvent): void {
-    /* this.ancService.setData(e.data); */
+    /* this.ancService.propertySignal.set(e.data); */
+    this.ancService.setData(e.data);
   }
 }

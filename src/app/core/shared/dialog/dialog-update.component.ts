@@ -9,6 +9,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { QuillModule } from 'ngx-quill';
 import { quillConfig } from 'src/app/core/shared/data';
 import { AnnounceService } from '../../services/announce-service/annonce.service';
+import { PropertyResponse } from '../../model/Property.interface';
 @Component({
   selector: 'app-dialog-update',
   standalone: true,
@@ -78,7 +79,7 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
       animation: true,
     });
 
-    this.ancService.getData().subscribe((data) => console.log(data));
+    this.ancService.data$.subscribe((data) => console.log(data));
   }
 
   onSelect(event: any): void {
@@ -98,7 +99,6 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
 
   agInit(params: ICellRendererParams<any, any, any>): void {
     this.cellValue = this.getValueToDisplay(params);
-    console.log('ag init ');
   }
   refresh(params: ICellRendererParams<any, any, any>): boolean {
     this.cellValue = this.getValueToDisplay(params);

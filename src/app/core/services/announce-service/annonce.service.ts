@@ -1,11 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Announce, Property } from '../../model/announce.interface';
 import { Observable, Subject, of } from 'rxjs';
+import { PropertyResponse } from '../../model/Property.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AnnounceService {
-  private dataSubject = new Subject<any>();
+  dataSubject = new Subject<any>();
+  data$ = this.dataSubject.asObservable();
+  propertySignal = signal<any | null>('');
 
   constructor(private http: HttpClient) {}
 
@@ -42,5 +45,9 @@ export class AnnounceService {
   getProperties() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get('/api/annonce/get-properties', { headers });
+  }
+
+  setPropertySignal(proeprty: PropertyResponse) {
+    this.propertySignal.set(proeprty);
   }
 }
