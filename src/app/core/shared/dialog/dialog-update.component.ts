@@ -21,7 +21,7 @@ import {
   serviceAccessibilityList,
   hygieneList,
   piecesList,
-  publicServcieList,
+  publicServiceList,
   avances,
 } from 'src/app/core/shared/data';
 import { AnnounceService } from '../../services/announce-service/annonce.service';
@@ -57,11 +57,12 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
   serviceAccessibilityList: string[];
   hygieneList: string[];
   piecesList: string[];
-  publicServcieList: string[];
+  publicServiceList: string[];
   updatePropertyForm: FormGroup;
   avances: string[];
-
+  imagesListLink: string[];
   oldProperty: PropertyResponse = null;
+  uploadFilesFormControl: FormGroup;
 
   constructor(
     private modalService: NgbModal,
@@ -73,9 +74,10 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
     this.serviceAccessibilityList = serviceAccessibilityList;
     this.hygieneList = hygieneList;
     this.piecesList = piecesList;
-    this.publicServcieList = publicServcieList;
+    this.publicServiceList = publicServiceList;
     this.avances = avances;
     this.updateProprieteForm();
+    this.updateFileaForm();
   }
   ngOnInit(): void {}
 
@@ -103,11 +105,8 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
         etatType: data.etatType,
         meublee: data.meublee,
         negociable: data.negociable,
-        /* service: data.service, */
-        hygiene: data.hygiene,
-        pieces: data.pieces,
-        servicePublicdata: data.servicePublic,
-        climatisationdata: data.climatisation,
+        piece: data.piece,
+        climatisation: data.climatisation,
         chauffage: data.chauffage,
         etatCity: data.etatCity,
         avances: data.avances,
@@ -115,19 +114,32 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
         disponible: data.disponible,
         description: data.description,
       });
-      this.updatePropertyForm.get('service').patchValue(data.service);
+
+      this.updateServiceAccessebility(data.service);
+      this.updateServicePublic(data.servicePublic);
+      this.updateHygiene(data.hygiene);
+      this.imagesListLink = data.imagesLink;
     });
   }
 
   onSelect(event: any): void {
-    /* if (event.addedFiles[0].size < 2222222222) {
-      this.files.push(...event.addedFiles);
-    } */
-    /*  const imageArray = this.fromRequired.get('images') as FormArray;
-    this.files.push(...event.addedFiles);
-    for (const file of this.files) {
-      imageArray.push(new FormControl(file));
-    } */
+    for (const file of event.addedFiles) {
+      // Initialize fileExists for each file in the loop
+      let fileExists = this.files.some(
+        (existingFile) => existingFile.name === file.name
+      );
+
+      // Check if the file type is valid and if it doesn't already exist
+      if (
+        (file.type === 'image/jpeg' ||
+          file.type === 'image/webp' ||
+          file.type === 'image/png') &&
+        !fileExists
+      ) {
+        this.files.push(file);
+        this.images.push(new FormControl(file)); // Assuming FormControl usage is correct
+      }
+    }
   }
   onRemove(event) {
     console.log(event);
@@ -181,7 +193,7 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
       negociable: [, [Validators.required]],
       service: this.formBuilder.array([], [validateServiceAccessebility()]),
       hygiene: this.formBuilder.array([], [validatehygiene()]),
-      pieces: [''],
+      piece: [],
       servicePublic: this.formBuilder.array([], [validatePublicService()]),
       climatisation: [,],
       chauffage: [],
@@ -193,7 +205,129 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
     });
   }
 
+  updateFileaForm() {
+    this.uploadFilesFormControl = this.formBuilder.group({
+      images: this.formBuilder.array([], [Validators.required]),
+    });
+  }
+
+  updateServiceAccessebility(services: string[]) {
+    const serviceAccessibility = this.updatePropertyForm.get(
+      'service'
+    ) as FormArray;
+    serviceAccessibility.clear();
+    services.forEach((element) => {
+      const control = this.formBuilder.control(element, [Validators.required]);
+      serviceAccessibility.push(control);
+    });
+  }
+
+  updateServicePublic(servicePublics: string[]) {
+    const servicePublic = this.updatePropertyForm.get(
+      'servicePublic'
+    ) as FormArray;
+    servicePublic.clear();
+    servicePublics.forEach((element) => {
+      const control = this.formBuilder.control(element, [Validators.required]);
+      servicePublic.push(control);
+    });
+  }
+
+  updateHygiene(hygienes: string[]) {
+    const hygieneControl = this.updatePropertyForm.get('hygiene') as FormArray;
+    hygieneControl.clear();
+    hygienes.forEach((element) => {
+      const control = this.formBuilder.control(element, [Validators.required]);
+      hygieneControl.push(control);
+    });
+  }
+
   preventClose(event: Event): void {
     event.stopPropagation();
+  }
+
+  isServiceChecked(item: string): boolean {
+    return this.updatePropertyForm.get('servicePublic').value.includes(item);
+  }
+
+  addOrRemoveService(item: string, event: any) {
+    const servicePublicArray = this.updatePropertyForm.get(
+      'servicePublic'
+    ) as FormArray;
+    if (event.target.checked) {
+      // Add the item if it's checked and not already in the array
+      if (!servicePublicArray.value.includes(item)) {
+        servicePublicArray.push(new FormControl(item));
+      }
+    } else {
+      // Remove the item if it's unchecked
+      const index = servicePublicArray.value.indexOf(item);
+      if (index >= 0) {
+        servicePublicArray.removeAt(index);
+      }
+    }
+  }
+  addOrRemoveHygiene(item: string, event: any) {
+    const hygieneArray = this.updatePropertyForm.get('hygiene') as FormArray;
+    if (event.target.checked) {
+      // Add the item if it's checked and not already in the array
+      if (!hygieneArray.value.includes(item)) {
+        hygieneArray.push(new FormControl(item));
+      }
+    } else {
+      // Remove the item if it's unchecked
+      const index = hygieneArray.value.indexOf(item);
+      if (index >= 0) {
+        hygieneArray.removeAt(index);
+      }
+    }
+  }
+
+  addOrRemoveServiceAccessibility(item: string, event: any) {
+    const serviceArray = this.updatePropertyForm.get('service') as FormArray;
+    if (event.target.checked) {
+      // Add the item if it's checked and not already in the array
+      if (!serviceArray.value.includes(item)) {
+        serviceArray.push(new FormControl(item));
+      }
+    } else {
+      // Remove the item if it's unchecked
+      const index = serviceArray.value.indexOf(item);
+      if (index >= 0) {
+        serviceArray.removeAt(index);
+      }
+    }
+  }
+
+  isHygieneChecked(item: string): boolean {
+    return this.updatePropertyForm.get('hygiene').value.includes(item);
+  }
+  isServiceAccessibilityChecked(item: string): boolean {
+    return this.updatePropertyForm.get('service').value.includes(item);
+  }
+
+  submitData(modal: any) {
+    console.log(this.updatePropertyForm.value);
+    modal.close('Save click');
+  }
+
+  removeItem(index: number): void {
+    alert('are you sure');
+    this.imagesListLink.splice(index, 1);
+  }
+
+  onRemoveFile(event) {
+    const indexToRemove = this.files.findIndex(
+      (file) => file.name === event.name
+    );
+
+    if (indexToRemove !== -1) {
+      this.files.splice(indexToRemove, 1);
+      this.images.removeAt(indexToRemove);
+    }
+  }
+
+  get images() {
+    return this.uploadFilesFormControl.get('images') as FormArray;
   }
 }

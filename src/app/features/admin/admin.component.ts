@@ -58,7 +58,7 @@ export class AdminComponent implements OnInit {
     { headerName: 'Etat Type', field: 'etatType' },
     { headerName: 'Etage', field: 'etage', width: 100 },
     { headerName: 'Facade', field: 'facade', width: 100 },
-    { headerName: 'Prix', field: 'price' },
+    { headerName: 'Prix', field: 'price', sortingOrder: ['asc', 'desc'] },
     { headerName: 'Surface', width: 200, field: 'surface' },
 
     {

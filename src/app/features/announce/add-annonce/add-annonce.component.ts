@@ -13,7 +13,7 @@ import {
   serviceAccessibilityList,
   hygieneList,
   piecesList,
-  publicServcieList,
+  publicServiceList,
   quillConfig,
   avances,
 } from 'src/app/core/shared/data';
@@ -38,7 +38,7 @@ export class AddAnnonceComponent implements OnInit {
   serviceAccessibilityList: string[];
   hygieneList: string[];
   piecesList: string[];
-  publicServcieList: string[];
+  publicServiceList: string[];
   willays: string[];
   avances: string[];
   quillConfig: any;
@@ -61,7 +61,7 @@ export class AddAnnonceComponent implements OnInit {
     this.serviceAccessibilityList = serviceAccessibilityList;
     this.hygieneList = hygieneList;
     this.piecesList = piecesList;
-    this.publicServcieList = publicServcieList;
+    this.publicServiceList = publicServiceList;
     this.willays = willaya;
     this.quillConfig = quillConfig;
     this.avances = avances;

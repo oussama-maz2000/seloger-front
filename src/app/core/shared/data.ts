@@ -81,7 +81,7 @@ export const hygieneList = [
 
 export const piecesList = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'Plus'];
 
-export const publicServcieList = [
+export const publicServiceList = [
   'Jardin Public',
   'Tribunal',
   'École Primaire',

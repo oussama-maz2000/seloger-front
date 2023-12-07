@@ -75,7 +75,7 @@ import { ToastrModule } from 'ngx-toastr';
     InputTextModule,
     ConfirmDialogModule,
     MessageComponent,
-    TableModule,
+
     BrowserAnimationsModule,
     AgGridModule,
     QuillModule.forRoot(),

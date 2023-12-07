@@ -9,7 +9,7 @@ import {
   serviceAccessibilityList,
   hygieneList,
   piecesList,
-  publicServcieList,
+  publicServiceList,
   quillConfig,
 } from 'src/app/core/shared/data';
 import { validateNumber } from 'src/app/core/validation/ValidationFn';
@@ -27,7 +27,7 @@ export class CreateAnnonceComponent implements OnInit {
   serviceAccessibilityList: string[];
   hygieneList: string[];
   piecesList: string[];
-  publicServcieList: string[];
+  publicServiceList: string[];
   quillConfig: any;
   fromRequired: FormGroup;
   files: File[] = [];
@@ -37,7 +37,7 @@ export class CreateAnnonceComponent implements OnInit {
     this.serviceAccessibilityList = serviceAccessibilityList;
     this.hygieneList = hygieneList;
     this.piecesList = piecesList;
-    this.publicServcieList = publicServcieList;
+    this.publicServiceList = publicServiceList;
     this.quillConfig = quillConfig;
   }
 
