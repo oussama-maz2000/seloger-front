@@ -1,6 +1,7 @@
 <div class="d-flex justify-content-between">
-  <i (click)="openFullScreen(content)" class="bi bi-pencil-square"> </i>
-  <i class="bi bi-trash3"></i>
+  <i (click)="openFullScreen(content)" class="bi bi-pencil-square" style="color: #2b2b2b;font-size: 15px;"> </i>
+  <i class="bi bi-trash3" style="color: #ff385c;font-size: 15px;"></i>
+
 </div>
 <div>
   <ng-template #content let-modal>
@@ -345,10 +346,12 @@
               <div class="col-sm-4">
                 <label for="images anciennes" class="form-label">images anciennes</label>
                 <ul class="list-group" style="overflow:auto;height: 9rem;border: 1px solid whitesmoke;">
-                  <li *ngFor="let item of imagesListLink; let i = index" class="list-group-item">
+                  <li *ngFor="let item of imagesListLink; let i = index" class="list-group-item"
+                    style="color: #2b2b2b;font-size: 15px;">
                     {{ item.substring(82) }}
                     <span class="float-right icon-delete" (click)="removeItem(i)">
-                      <i class="bi bi-trash3"></i> <!-- Font Awesome icon, you can use any other icon library -->
+                      <i class="bi bi-trash3" style="color: #ff385c;font-size: 15px;"></i>
+                      <!-- Font Awesome icon, you can use any other icon library -->
                     </span>
                   </li>
                 </ul>

@@ -1,12 +1,13 @@
 <body>
   <div class="container-fluid">
-    <div class="row" style="height: 700px">
-      <div class="col-sm-9 pb-4">
-        <ag-grid-angular class="ag-theme-alpine" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
+    <div class="row">
+      <div class="col-sm-12 mb-2" style="height: 700px">
+        <ag-grid-angular class="ag-theme-alpine shadow-sm" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
           [rowData]="propertiesData$ | async" [rowSelection]="'multiple'" [animateRows]="true"
-          (gridReady)="onGridReady($event)" (cellClicked)="onCellClicked($event)" [pagination]="true"></ag-grid-angular>
+          (rowClicked)="onRowClicked($event)" (gridReady)="onGridReady($event)" (cellClicked)="onCellClicked($event)"
+          [pagination]="true"></ag-grid-angular>
       </div>
-      <div class="col-sm-3"></div>
+
     </div>
   </div>
 </body>

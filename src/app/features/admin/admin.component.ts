@@ -52,14 +52,23 @@ export class AdminComponent implements OnInit {
 
   public columnDefs: ColDef[] = [
     /*     { field: 'make', width: 100, suppressSizeToFit: true }, */
-    { field: 'prpType', headerName: 'Property Type' },
-    { headerName: 'Announce Type', field: 'annType' },
-    { headerName: 'Juridique Type', field: 'jrcType', width: 300 },
-    { headerName: 'Etat Type', field: 'etatType' },
-    { headerName: 'Etage', field: 'etage', width: 100 },
-    { headerName: 'Facade', field: 'facade', width: 100 },
-    { headerName: 'Prix', field: 'price', sortingOrder: ['asc', 'desc'] },
-    { headerName: 'Surface', width: 200, field: 'surface' },
+    { field: 'id', headerName: 'ID', width: 100 },
+    { field: 'prpType', headerName: 'Property Type', width: 130 },
+    { headerName: 'Announce Type', field: 'annType', width: 140 },
+    { headerName: 'Juridique Type', field: 'jrcType', width: 220 },
+    { headerName: 'Etat Type', field: 'etatType', width: 120 },
+    { headerName: 'Willaya', field: 'willaya', width: 120 },
+    { headerName: 'Address', field: 'address', width: 250 },
+    { headerName: 'Etage', field: 'etage', width: 90 },
+    { headerName: 'Facade', field: 'facade', width: 90 },
+    {
+      headerName: 'Prix',
+      field: 'price',
+      sortingOrder: ['asc', 'desc'],
+      width: 160,
+    },
+    { headerName: 'Surface', width: 100, field: 'surface' },
+    { headerName: 'Negociable', width: 120, field: 'negociable' },
 
     {
       field: 'Action',
@@ -68,10 +77,15 @@ export class AdminComponent implements OnInit {
     },
   ];
 
-  onGridReady(params: GridReadyEvent) {}
+  onGridReady(params: GridReadyEvent) {
+    /* console.log(params); */
+  }
 
   onCellClicked(e: CellClickedEvent): void {
-    /* this.ancService.propertySignal.set(e.data); */
     this.ancService.setData(e.data);
+  }
+
+  onRowClicked(event) {
+    console.log(event.data);
   }
 }
