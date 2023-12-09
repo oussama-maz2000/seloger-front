@@ -31,6 +31,7 @@ import { ToasterService } from 'src/app/core/services/announce-service/toast.ser
 import {
   getProperties,
   getPropertiesWithSuccess,
+  updatePropertyAction,
 } from '../action/properties.action';
 import { PropertyResponse } from 'src/app/core/model/Property.interface';
 
@@ -119,4 +120,22 @@ export class AnnounceEffect {
       })
     );
   });
+
+  updateProperty$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(updatePropertyAction),
+        mergeMap((element) => {
+          return this.announceService
+            .updateProperty(element.property, element.images)
+            .pipe(
+              tap((result) => {
+                console.log(result);
+              })
+            );
+        })
+      );
+    },
+    { dispatch: false }
+  );
 }

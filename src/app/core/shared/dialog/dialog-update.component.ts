@@ -37,6 +37,8 @@ import {
   validatehygiene,
 } from '../../validation/ValidationFn';
 import { Property } from '../../model/announce.interface';
+import { Store } from '@ngrx/store';
+import { updatePropertyAction } from 'src/app/store/action/properties.action';
 @Component({
   selector: 'app-dialog-update',
   standalone: true,
@@ -71,7 +73,8 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
   constructor(
     private modalService: NgbModal,
     private ancService: AnnounceService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private store: Store
   ) {
     this.quillConfig = quillConfig;
     this.willays = willaya;
@@ -336,7 +339,12 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
 
   submitData(modal: any) {
     let property: Property = this.updatePropertyForm.value;
-    console.log(property);
+    this.store.dispatch(
+      updatePropertyAction({
+        property: property,
+        images: this.images.value,
+      })
+    );
 
     modal.close('Save click');
   }

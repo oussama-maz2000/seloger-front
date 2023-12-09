@@ -53,7 +53,7 @@ export class AnnounceService {
     files.forEach((element) => {
       formData.append('images', element);
     });
-    return this.http.post('/api/annonce/add', formData, {
+    return this.http.put('/api/annonce/modifie-propertie', formData, {
       responseType: 'text',
     });
   }
