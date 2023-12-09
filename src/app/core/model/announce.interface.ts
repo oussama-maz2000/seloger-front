@@ -26,15 +26,18 @@ export interface Announce {
 }
 
 export interface Property {
+  id?: number;
   prpType: string;
   annType: string;
   jrcType: string;
+  etatType: string;
   address: string;
   willaya: string;
   etage: number;
   facade: number;
   price: number;
   surface: number;
+  imagesLink?: string[];
   service: string[];
   hygiene: string[];
   piece: string;
@@ -44,10 +47,8 @@ export interface Property {
   cuisin: string;
   disponible: string;
   description: string;
-  etatType: string;
   meublee: string;
   avances: string;
   etatCity: string;
   negociable: string;
-  imgPath?: string[];
 }

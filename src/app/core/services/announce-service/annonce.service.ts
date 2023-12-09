@@ -47,7 +47,14 @@ export class AnnounceService {
     return this.http.get('/api/annonce/get-properties', { headers });
   }
 
-  setPropertySignal(proeprty: PropertyResponse) {
-    this.propertySignal.set(proeprty);
+  updateProperty(property: Property, files: File[]) {
+    const formData: FormData = new FormData();
+    formData.append('property', JSON.stringify(property));
+    files.forEach((element) => {
+      formData.append('images', element);
+    });
+    return this.http.post('/api/annonce/add', formData, {
+      responseType: 'text',
+    });
   }
 }

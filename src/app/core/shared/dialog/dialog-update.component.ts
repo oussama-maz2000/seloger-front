@@ -26,13 +26,17 @@ import {
 } from 'src/app/core/shared/data';
 import { AnnounceService } from '../../services/announce-service/annonce.service';
 
-import { PropertyResponse } from '../../model/Property.interface';
+import {
+  PropertyDetails,
+  PropertyResponse,
+} from '../../model/Property.interface';
 import {
   validateNumber,
   validatePublicService,
   validateServiceAccessebility,
   validatehygiene,
 } from '../../validation/ValidationFn';
+import { Property } from '../../model/announce.interface';
 @Component({
   selector: 'app-dialog-update',
   standalone: true,
@@ -93,6 +97,7 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
 
     this.ancService.data$.subscribe((data) => {
       this.updatePropertyForm.patchValue({
+        id: data.id,
         prpType: data.prpType,
         annType: data.annType,
         jrcType: data.jrcType,
@@ -113,6 +118,7 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
         cuisin: data.cuisin,
         disponible: data.disponible,
         description: data.description,
+        imagesLink: data.imagesLink,
       });
 
       this.updateServiceAccessebility(data.service);
@@ -179,6 +185,7 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
 
   updateProprieteForm() {
     this.updatePropertyForm = this.formBuilder.group({
+      id: [],
       prpType: [, [Validators.required]],
       annType: [, [Validators.required]],
       jrcType: [, [Validators.required]],
@@ -202,6 +209,7 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
       cuisin: [],
       disponible: [],
       description: [],
+      imagesLink: [],
     });
   }
 
@@ -306,14 +314,9 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
     return this.updatePropertyForm.get('service').value.includes(item);
   }
 
-  submitData(modal: any) {
-    console.log(this.updatePropertyForm.value);
-    modal.close('Save click');
-  }
-
   removeItem(index: number): void {
     alert('are you sure');
-    this.imagesListLink.splice(index, 1);
+    this.updatePropertyForm.get('imagesLink').value.splice(index, 1);
   }
 
   onRemoveFile(event) {
@@ -329,5 +332,12 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
 
   get images() {
     return this.uploadFilesFormControl.get('images') as FormArray;
+  }
+
+  submitData(modal: any) {
+    let property: Property = this.updatePropertyForm.value;
+    console.log(property);
+
+    modal.close('Save click');
   }
 }
