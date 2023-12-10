@@ -15,7 +15,6 @@ import { RechercheImmobilierComponent } from './features/home/recherche-immobili
 import { ImmobilierTemplateComponent } from './features/test/immobilier-template/immobilier-template.component';
 import { ImageSliderComponent } from './features/test/image-slider/image-slider.component';
 import { LogInComponent } from './features/log-in/log-in.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { QuillModule } from 'ngx-quill';

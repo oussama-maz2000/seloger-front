@@ -67,6 +67,30 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
   updatePropertyForm: FormGroup;
   avances: string[];
   imagesListLink: string[];
+  imagesListlink: string[] = [
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+    'https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/AGENCE_ID_4146429256060_352366',
+  ];
   oldProperty: PropertyResponse = null;
   uploadFilesFormControl: FormGroup;
 
@@ -319,6 +343,7 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
 
   removeItem(index: number): void {
     alert('are you sure');
+    this.imagesListLink.slice(index, 1);
     this.updatePropertyForm.get('imagesLink').value.splice(index, 1);
   }
 

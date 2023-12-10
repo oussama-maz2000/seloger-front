@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
 import {
@@ -28,11 +29,13 @@ import { getPropertiesSelector } from 'src/app/store/selector/properties.selecto
 export class AdminComponent implements OnInit {
   data$: Observable<any>;
   propertiesData$: Observable<any>;
+  selectedRowData: any;
 
   constructor(
     private store: Store<State>,
     private http: HttpClient,
-    private ancService: AnnounceService
+    private ancService: AnnounceService,
+    private router: Router
   ) {
     this.store.dispatch(getProperties());
   }
@@ -86,6 +89,6 @@ export class AdminComponent implements OnInit {
   }
 
   onRowClicked(event) {
-    console.log(event.data);
+    this.router.navigate(['annonce/annonce-details', event.data.id]);
   }
 }

@@ -178,3 +178,38 @@ ngx-dropzone-preview {
   min-height: 85% !important;
   height: 85% !important;
 }
+
+.images-container {
+  height: 9rem;
+  border: solid 0.8px #ddd;
+  border-radius: 8px;
+  color: #2b2b2b;
+  transition-duration: 0.2s;
+  overflow-x: auto;
+  cursor: pointer;
+  width: 100%;
+}
+
+.list-group-item {
+  list-style-type: none;
+}
+
+.img-thumbnail {
+  min-width: 170px;
+  min-height: 127px;
+  max-width: 170px;
+  max-height: 127px;
+  padding: unset;
+}
+
+.bi-x-circle {
+  position: absolute;
+  bottom: 45px;
+  left: 150px;
+  font-size: 16px;
+  color: #ff385c;
+  cursor: pointer;
+}
+.image-wrapper {
+  position: relative;
+}
