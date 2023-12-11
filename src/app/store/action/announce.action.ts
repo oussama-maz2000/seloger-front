@@ -19,14 +19,14 @@ export const addAnnounceAction = createAction(
 );
 export const AddAnnounceSuccessAction = createAction(
   ActionTypes.ADD_ANNOUNCE_SUCCESS,
-  props<{ announce: Announce[] }>()
+  props<{ annonce: Property[] }>()
 );
 
 export const LoadAnnounceAction = createAction(ActionTypes.LOAD_ANNOUNCE);
 
 export const LoadAnnounceSuccessAction = createAction(
   ActionTypes.LOAD_ANNOUNCE_SUCCESS,
-  props<{ announces: Announce[] }>()
+  props<{ annonces: Property[] }>()
 );
 export const CreateAnnonce = createAction(
   ActionTypes.CREATE_ANNONCE,

@@ -5,5 +5,5 @@ const getAnnounceState =
   createFeatureSelector<AnnounceState>('announceReducer');
 
 export const getAllAnnounces = createSelector(getAnnounceState, (state) => {
-  return state.announces;
+  return state.annonces;
 });

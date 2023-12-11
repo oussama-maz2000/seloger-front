@@ -26,13 +26,13 @@ const _announceReducer = createReducer(
   on(announceAction.AddAnnounceSuccessAction, (state, action) => {
     return {
       ...state,
-      announces: action.announce,
+      annonces: action.annonce,
     };
   }),
   on(announceAction.LoadAnnounceSuccessAction, (state, action) => {
     return {
       ...state,
-      announces: action.announces,
+      annonces: action.annonces,
     };
   })
 );

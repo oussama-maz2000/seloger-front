@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable, elementAt, filter, map, mergeMap, of } from 'rxjs';
 import { willaya } from 'src/app/core/shared/data';
 import { getAllAnnounces } from 'src/app/store/selector/announce.selector';
-import { Announce } from 'src/app/core/model/announce.interface';
+import { Announce, Property } from 'src/app/core/model/announce.interface';
 @Component({
   selector: 'app-annonce-list',
   templateUrl: './annonce-list.component.html',
@@ -13,7 +13,7 @@ import { Announce } from 'src/app/core/model/announce.interface';
 export class AnnonceListComponent implements OnInit {
   willaya: string[];
 
-  data$: Observable<Announce[]>;
+  data$: Observable<Property[]>;
   selectedBesoin = [];
   filterForm: FormGroup;
   constructor(private store: Store, private formBuilder: FormBuilder) {
@@ -37,10 +37,10 @@ export class AnnonceListComponent implements OnInit {
       this.data$ = this.store.select(getAllAnnounces);
     } else {
       this.data$ = this.data$.pipe(
-        map((elements: Announce[]) =>
+        map((elements: Property[]) =>
           elements.filter(
-            (element: Announce) =>
-              element.anncType ===
+            (element: Property) =>
+              element.annType ===
               this.filterForm.get('besoin').value.toUpperCase()
           )
         )
@@ -54,10 +54,10 @@ export class AnnonceListComponent implements OnInit {
       this.data$ = this.store.select(getAllAnnounces);
     } else {
       this.data$ = this.data$.pipe(
-        map((elements: Announce[]) =>
+        map((elements: Property[]) =>
           elements.filter(
-            (element: Announce) =>
-              element.propType ===
+            (element: Property) =>
+              element.prpType ===
               this.filterForm.get('property').value.toUpperCase()
           )
         )
@@ -71,9 +71,9 @@ export class AnnonceListComponent implements OnInit {
       this.data$ = this.store.select(getAllAnnounces);
     } else {
       this.data$ = this.data$.pipe(
-        map((elements: Announce[]) =>
+        map((elements: Property[]) =>
           elements.filter(
-            (element: Announce) =>
+            (element: Property) =>
               element.willaya == this.filterForm.get('willaya').value
           )
         )
@@ -86,9 +86,9 @@ export class AnnonceListComponent implements OnInit {
       this.data$ = this.store.select(getAllAnnounces);
     } else {
       this.data$ = this.data$.pipe(
-        map((elements: Announce[]) =>
+        map((elements: Property[]) =>
           elements.filter(
-            (element: Announce) =>
+            (element: Property) =>
               element.price <= this.filterForm.get('price').value
           )
         )

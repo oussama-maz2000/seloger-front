@@ -1,9 +1,9 @@
-import { Announce } from 'src/app/core/model/announce.interface';
+import { Announce, Property } from 'src/app/core/model/announce.interface';
 
 export interface AnnounceState {
-  announces: Announce[];
+  annonces: Property[];
 }
 
 export const intialAnnounceState: AnnounceState = {
-  announces: undefined,
+  annonces: undefined,
 };

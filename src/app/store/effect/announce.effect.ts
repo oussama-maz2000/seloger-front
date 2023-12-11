@@ -23,7 +23,7 @@ import {
   withLatestFrom,
 } from 'rxjs';
 //
-import { Announce } from 'src/app/core/model/announce.interface';
+import { Announce, Property } from 'src/app/core/model/announce.interface';
 import { MessageAction, SpinnerAction } from '../action/shared.action';
 import { getAllAnnounces } from '../selector/announce.selector';
 import { ToastrService } from 'ngx-toastr';
@@ -51,10 +51,10 @@ export class AnnounceEffect {
         ofType(addAnnounceAction),
         mergeMap((action) => {
           return this.announceService.addAnnounce(action.formValues).pipe(
-            map((data: Announce[]) => {
+            map((data: Property[]) => {
               this.store.dispatch(SpinnerAction({ status: false }));
 
-              this.store.dispatch(AddAnnounceSuccessAction({ announce: data }));
+              this.store.dispatch(AddAnnounceSuccessAction({ annonce: data }));
               this.router.navigate(['admin']);
             })
           );
@@ -70,10 +70,9 @@ export class AnnounceEffect {
       withLatestFrom(this.store.select(getAllAnnounces)),
       mergeMap(([action, Announce]) => {
         return this.announceService.getAllAnnounces().pipe(
-          map((announces: Announce[]) => {
+          map((announces: Property[]) => {
             this.store.dispatch(SpinnerAction({ status: false }));
-
-            return LoadAnnounceSuccessAction({ announces });
+            return LoadAnnounceSuccessAction({ annonces: announces });
           })
         );
       })

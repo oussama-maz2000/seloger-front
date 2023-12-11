@@ -20,7 +20,7 @@ export class AnnounceService {
 
   getAllAnnounces() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get('/api/announce/get/announces', { headers });
+    return this.http.get('/api/annonce/get-all-annonces', { headers });
   }
 
   setData(data: any): void {
