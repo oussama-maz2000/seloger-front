@@ -120,13 +120,13 @@ export class AnnounceEffect {
     );
   });
 
-  updateProperty$ = createEffect(
+   updateProperty$ = createEffect(
     () => {
       return this.actions$.pipe(
         ofType(updatePropertyAction),
         mergeMap((element) => {
           return this.announceService
-            .updateProperty(element.property, element.images)
+            .updateProperty(element.property, element.images,element.id,element.pathsDeleted)
             .pipe(
               tap((result) => {
                 console.log(result);

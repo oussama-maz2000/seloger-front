@@ -334,13 +334,13 @@
                       </ngx-dropzone-preview>
                     </ngx-dropzone>
                   </div>
-                  <!-- <span class="space-error-msg">
-                              <span *ngIf="checkProprieteFormValidation && images.length <= 0">
+                <span class="space-error-msg">
+                              <span *ngIf="images.length<= 0">
                                 <span class="error-message">
                                   Veuillez selectionner une ou plusieurs images
                                 </span>
                               </span>
-                            </span> -->
+                            </span>
                 </div>
               </div>
 
@@ -352,7 +352,7 @@
                     <li *ngFor="let item of imagesListLink; let i = index" class="list-group-item">
                       <span class="image-wrapper">
                         <img src="{{item}}" class="img-thumbnail" alt="Image {{i}}">
-                        <i class="bi bi-x-circle" (click)="removeItem(i)"></i>
+                        <i class="bi bi-x-circle" (click)="removeItem(i,item)"></i>
                       </span>
                     </li>
                   </ul>
