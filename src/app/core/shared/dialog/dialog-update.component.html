@@ -24,6 +24,20 @@
                   <option>Appartement</option>
                 </select>
               </div>
+              <span class="space-error-msg">
+                <span *ngIf="
+                                          checkProprieteFormValidation &&
+                                          !updatePropertyForm.get('prpType').valid
+                                        ">
+                  <span *ngIf="
+                                            updatePropertyForm.get('prpType').errors[
+                                              'required'
+                                            ]
+                                          " class="error-message">
+                    Veuillez selectionner le type de proprietaire
+                  </span>
+                </span>
+              </span>
             </div>
 
             <div>
@@ -38,6 +52,20 @@
                   <option>Contrat de propriété</option>
                 </select>
               </div>
+              <span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('jrcType').valid
+                                      ">
+                  <span *ngIf="
+                                          updatePropertyForm.get('jrcType').errors[
+                                            'required'
+                                          ]
+                                        " class="error-message">
+                    Veuillez selectionner le type juridic de propriete
+                  </span>
+                </span>
+              </span>
             </div>
 
             <div>
@@ -45,6 +73,20 @@
               <div class="input-group">
                 <input type="text" class="form-control" name="address" id="input" formControlName="address" />
               </div>
+              <span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('address').valid
+                                      ">
+                  <span *ngIf="
+                                          updatePropertyForm.get('address').errors[
+                                            'required'
+                                          ]
+                                        " class="error-message">
+                    Veuillez saisir l'address de propriete
+                  </span>
+                </span>
+              </span>
             </div>
 
             <div>
@@ -52,6 +94,21 @@
               <div class="input-group">
                 <input type="tel" class="form-control" name="facade" id="input" formControlName="facade" />
               </div>
+              <span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('facade').valid
+                                      ">
+                  <span *ngIf="
+                                          updatePropertyForm.get('facade').errors[
+                                            'required'
+                                          ] ||
+                                          updatePropertyForm.get('facade').errors['min']
+                                        " class="error-message">
+                    Veuillez saisir nombre de facade
+                  </span>
+                </span>
+              </span>
             </div>
 
             <div>
@@ -61,6 +118,21 @@
                   formControlName="surface" />
                 <span class="input-group-text" id="surface">m²</span>
               </div>
+              <span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('surface').valid
+                                      ">
+                  <span *ngIf="
+                                          updatePropertyForm.get('surface').errors[
+                                            'required'
+                                          ] ||
+                                          updatePropertyForm.get('surface').errors['min']
+                                        " class="error-message">
+                    Veuillez saisir la surface de propriety
+                  </span>
+                </span>
+              </span>
             </div>
             <div>
               <label for="meublee" class="form-label"> Meublée</label>
@@ -69,7 +141,14 @@
                   <option>Oui</option>
                   <option>Non</option>
                 </select>
-              </div>
+              </div><span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('meublee').valid
+                                      " class="error-message">
+                  Veuillez selectionner un champ
+                </span>
+              </span>
             </div>
 
             <div class="form-group pb-4">
@@ -210,7 +289,20 @@
                   <option>A vendre</option>
                   <option>A louer</option>
                 </select>
-              </div>
+              </div><span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('annType').valid
+                                      ">
+                  <span *ngIf="
+                                          updatePropertyForm.get('annType').errors[
+                                            'required'
+                                          ]
+                                        " class="error-message">
+                    Veuillez selectionner le type d'annonce
+                  </span>
+                </span>
+              </span>
             </div>
 
             <div>
@@ -220,6 +312,20 @@
                   {{ element }}
                 </option>
               </select>
+              <span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('willaya').valid
+                                      ">
+                  <span *ngIf="
+                                          updatePropertyForm.get('willaya').errors[
+                                            'required'
+                                          ]
+                                        " class="error-message">
+                    Veuillez selectionner la willaya
+                  </span>
+                </span>
+              </span>
             </div>
 
             <div>
@@ -227,6 +333,20 @@
               <div class="input-group">
                 <input type="tel" class="form-control" name="etage" id="input" formControlName="etage" />
               </div>
+              <span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('etage').valid
+                                      ">
+                  <span *ngIf="
+                                          updatePropertyForm.get('etage').errors[
+                                            'required'
+                                          ] || updatePropertyForm.get('etage').errors['min']
+                                        " class="error-message">
+                    Veuillez saisir combien d'etage
+                  </span>
+                </span>
+              </span>
             </div>
 
             <div>
@@ -239,6 +359,20 @@
                   " />
                 <span class="input-group-text" id="price">DZD</span>
               </div>
+              <span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('price').valid
+                                      ">
+                  <span *ngIf="
+                                          updatePropertyForm.get('price').errors[
+                                            'required'
+                                          ] || updatePropertyForm.get('price').errors['min']
+                                        " class="error-message">
+                    Veuillez saisir le prix
+                  </span>
+                </span>
+              </span>
             </div>
             <div>
               <label for="etatType" class="form-label">
@@ -249,7 +383,14 @@
                   <option>Simple</option>
                   <option>Carcasse</option>
                 </select>
-              </div>
+              </div><span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('etatType').valid
+                                      " class="error-message">
+                  Veuillez selectionner l'état de propriété
+                </span>
+              </span>
             </div>
             <div>
               <label for="negociable" class="form-label"> Négociable</label>
@@ -258,7 +399,14 @@
                   <option>Oui</option>
                   <option>Non</option>
                 </select>
-              </div>
+              </div><span class="space-error-msg">
+                <span *ngIf="
+                                        checkProprieteFormValidation &&
+                                        !updatePropertyForm.get('etatType').valid
+                                      " class="error-message">
+                  Veuillez selectionner l'état de propriété
+                </span>
+              </span>
             </div>
 
             <div class="pb-4">
@@ -334,13 +482,13 @@
                       </ngx-dropzone-preview>
                     </ngx-dropzone>
                   </div>
-                <span class="space-error-msg">
-                              <span *ngIf="images.length<= 0">
-                                <span class="error-message">
-                                  Veuillez selectionner une ou plusieurs images
-                                </span>
-                              </span>
-                            </span>
+                  <span class="space-error-msg">
+                    <span *ngIf="checkProprieteFormValidation && images.length<= 0 && imagesListLink.length<=0">
+                      <span class="error-message">
+                        Veuillez selectionner une ou plusieurs images
+                      </span>
+                    </span>
+                  </span>
                 </div>
               </div>
 

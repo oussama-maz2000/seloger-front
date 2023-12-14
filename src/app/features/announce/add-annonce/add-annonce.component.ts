@@ -75,12 +75,10 @@ export class AddAnnonceComponent implements OnInit {
   }
   onSelect(event: any): void {
     for (const file of event.addedFiles) {
-      // Initialize fileExists for each file in the loop
       let fileExists = this.files.some(
         (existingFile) => existingFile.name === file.name
       );
 
-      // Check if the file type is valid and if it doesn't already exist
       if (
         (file.type === 'image/jpeg' ||
           file.type === 'image/webp' ||

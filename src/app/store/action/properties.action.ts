@@ -19,5 +19,5 @@ export const getPropertiesWithSuccess = createAction(
 );
 export const updatePropertyAction = createAction(
   ActionTypes.UPDATE_PROPERTIE,
-  props<{ property: Property; images: File[],id:number,pathsDeleted:string[] }>()
+  props<{ property: Property; images: File[]; pathsDeleted: string[] }>()
 );

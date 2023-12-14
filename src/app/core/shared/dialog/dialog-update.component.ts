@@ -26,10 +26,7 @@ import {
 } from 'src/app/core/shared/data';
 import { AnnounceService } from '../../services/announce-service/annonce.service';
 
-import {
-  PropertyDetails,
-  PropertyResponse,
-} from '../../model/Property.interface';
+import { PropertyResponse } from '../../model/Property.interface';
 import {
   validateNumber,
   validatePublicService,
@@ -39,6 +36,8 @@ import {
 import { Property } from '../../model/announce.interface';
 import { Store } from '@ngrx/store';
 import { updatePropertyAction } from 'src/app/store/action/properties.action';
+import { ToasterService } from '../../services/announce-service/toast.service';
+import { SpinnerAction } from 'src/app/store/action/shared.action';
 @Component({
   selector: 'app-dialog-update',
   standalone: true,
@@ -64,18 +63,22 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
   hygieneList: string[];
   piecesList: string[];
   publicServiceList: string[];
-  updatePropertyForm: FormGroup;
   avances: string[];
-  imagesListLink: string[];
+
+  imagesListLink: string[] = [];
   removedLinks: string[] = [];
-  oldProperty: PropertyResponse = null;
+
+  checkProprieteFormValidation: boolean = false;
+
+  updatePropertyForm: FormGroup;
   uploadFilesFormControl: FormGroup;
 
   constructor(
     private modalService: NgbModal,
     private ancService: AnnounceService,
     private formBuilder: FormBuilder,
-    private store: Store
+    private store: Store,
+    private toast: ToasterService
   ) {
     this.quillConfig = quillConfig;
     this.willays = willaya;
@@ -85,20 +88,9 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
     this.publicServiceList = publicServiceList;
     this.avances = avances;
     this.updateProprieteForm();
-    this.updateFileaForm();
+    this.updateFilesForm();
   }
-  ngOnInit(): void {}
-
-  openFullScreen(content) {
-    const modalRef = this.modalService.open(content, {
-      size: 'xl',
-      centered: true,
-      windowClass: 'full-screen-modal',
-      keyboard: true,
-      scrollable: true,
-      animation: true,
-    });
-
+  ngOnInit(): void {
     this.ancService.data$.subscribe((data) => {
       this.updatePropertyForm.patchValue({
         id: data.id,
@@ -129,6 +121,17 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
       this.updateServicePublic(data.servicePublic);
       this.updateHygiene(data.hygiene);
       this.imagesListLink = data.imagesLink;
+    });
+  }
+
+  openFullScreen(content) {
+    const modalRef = this.modalService.open(content, {
+      size: 'xl',
+      centered: true,
+      windowClass: 'full-screen-modal',
+      keyboard: true,
+      scrollable: true,
+      animation: true,
     });
   }
 
@@ -195,10 +198,10 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
       jrcType: [, [Validators.required]],
       willaya: [, [Validators.required]],
       address: [, [Validators.required]],
-      etage: [, [Validators.required, validateNumber()]],
-      facade: [, [Validators.required, validateNumber()]],
+      etage: [, [Validators.required, validateNumber(), Validators.min(0)]],
+      facade: [, [Validators.required, validateNumber(), Validators.min(1)]],
       price: [, [Validators.required, validateNumber()]],
-      surface: [, [Validators.required, validateNumber()]],
+      surface: [, [Validators.required, validateNumber(), Validators.min(0)]],
       etatType: [, [Validators.required]],
       meublee: [, [Validators.required]],
       negociable: [, [Validators.required]],
@@ -217,7 +220,7 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
     });
   }
 
-  updateFileaForm() {
+  updateFilesForm() {
     this.uploadFilesFormControl = this.formBuilder.group({
       images: this.formBuilder.array([], [Validators.required]),
     });
@@ -341,22 +344,23 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
   }
 
   submitData(modal: any) {
-    let propertyId: number = this.updatePropertyForm.get('id').value;
+    this.checkProprieteFormValidation = true;
+
     let property: Property = this.updatePropertyForm.value;
-    this.ancService.updateProperty(
-      property,
-      this.images.value,
-      propertyId,
-      this.removedLinks
-    );
+    console.log(this.updatePropertyForm.value);
 
-    /*  this.store.dispatch(
-      updatePropertyAction({
-        property: property,
-        images: this.images.value,
-      })
-    ); */
-
+    /* if (this.updatePropertyForm.valid || this.checkProprieteFormValidation) {
+      this.store.dispatch(
+        updatePropertyAction({
+          property: property,
+          images: this.images.value,
+          pathsDeleted: this.removedLinks,
+        })
+      );
+      this.store.dispatch(SpinnerAction({ status: true }));
+      modal.close('Save click');
+    }
+   */
     modal.close('Save click');
   }
 }

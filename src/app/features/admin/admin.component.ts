@@ -89,6 +89,6 @@ export class AdminComponent implements OnInit {
   }
 
   onRowClicked(event) {
-    this.router.navigate(['annonce/annonce-details', event.data.id]);
+   // this.router.navigate(['annonce/annonce-details', event.data.id]);
   }
 }

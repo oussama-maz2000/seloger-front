@@ -120,16 +120,30 @@ export class AnnounceEffect {
     );
   });
 
-   updateProperty$ = createEffect(
+  updateProperty$ = createEffect(
     () => {
       return this.actions$.pipe(
         ofType(updatePropertyAction),
         mergeMap((element) => {
           return this.announceService
-            .updateProperty(element.property, element.images,element.id,element.pathsDeleted)
+            .updateProperty(
+              element.property,
+              element.images,
+              element.pathsDeleted
+            )
             .pipe(
               tap((result) => {
                 console.log(result);
+                this.store.dispatch(SpinnerAction({ status: false }));
+                this.toastr.showSuccess(result);
+              }),
+              catchError((error: any) => {
+                console.log(error);
+                this.toastr.showError(error.error);
+                setTimeout(() => {
+                  this.store.dispatch(SpinnerAction({ status: false }));
+                }, 2000);
+                return of();
               })
             );
         })
