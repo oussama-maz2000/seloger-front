@@ -285,7 +285,6 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
   addOrRemoveHygiene(item: string, event: any) {
     const hygieneArray = this.updatePropertyForm.get('hygiene') as FormArray;
     if (event.target.checked) {
-      // Add the item if it's checked and not already in the array
       if (!hygieneArray.value.includes(item)) {
         hygieneArray.push(new FormControl(item));
       }
@@ -322,10 +321,11 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
   }
 
   removeItem(index: number, item: string): void {
-    alert('are you sure');
-    this.imagesListLink.slice(index, 1);
-    this.removedLinks.push(item);
-    this.updatePropertyForm.get('imagesLink').value.splice(index, 1);
+    if (confirm('are you sure')) {
+      this.imagesListLink.slice(index, 1);
+      this.removedLinks.push(item);
+      this.updatePropertyForm.get('imagesLink').value.splice(index, 1);
+    }
   }
 
   onRemoveFile(event) {
@@ -345,11 +345,10 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
 
   submitData(modal: any) {
     this.checkProprieteFormValidation = true;
-
     let property: Property = this.updatePropertyForm.value;
-    console.log(this.updatePropertyForm.value);
+    property.imagesLink = this.imagesListLink;
 
-    /* if (this.updatePropertyForm.valid || this.checkProprieteFormValidation) {
+    if (this.updatePropertyForm.valid || this.checkProprieteFormValidation) {
       this.store.dispatch(
         updatePropertyAction({
           property: property,
@@ -360,7 +359,6 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
       this.store.dispatch(SpinnerAction({ status: true }));
       modal.close('Save click');
     }
-   */
-    modal.close('Save click');
+    // modal.close('Save click');
   }
 }
