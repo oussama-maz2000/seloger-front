@@ -1,5 +1,22 @@
 <body>
   <div class="container-fluid">
+    <div class="row py-3 text-center">
+      <div class="col-sm"><button type="button" class="btn btn-outline-primary"><i class="bi bi-building-fill"></i> 2
+          Appartement</button></div>
+      <div class="col-sm"><button type="button" class="btn btn-outline-primary"><i class="bi bi-house-fill"></i> 12
+          Maison</button></div>
+      <div class="col-sm"><button type="button" class="btn btn-outline-primary"><i class="bi bi-file-fill"></i> 4
+          Terrains</button></div>
+      <div class="col-sm"><button type="button" class="btn btn-outline-primary"><i class="bi bi-shop"></i> 10
+          Locaux</button></div>
+      <div class="col-sm">
+        <button type="button" class="btn btn-outline-danger" (click)="displayDialog()">
+          <i class="bi bi-plus-circle-fill"></i>
+          Create Annonce
+        </button>
+
+      </div>
+    </div>
     <div class="row">
       <div class="col-sm-12 mb-2" style="height: 700px">
         <ag-grid-angular class="ag-theme-alpine shadow-sm" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"

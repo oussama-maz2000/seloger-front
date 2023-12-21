@@ -89,6 +89,7 @@ export class DialogUpdateComponent implements ICellRendererAngularComp, OnInit {
     this.avances = avances;
     this.updateProprieteForm();
     this.updateFilesForm();
+    console.log('called from dialog');
   }
   ngOnInit(): void {
     this.ancService.data$.subscribe((data) => {

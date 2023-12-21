@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TypeImmobilier } from 'src/app/core/model/type-immobilier.enum';
 
 @Component({
   selector: 'app-immobilier-template',
